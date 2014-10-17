@@ -91,9 +91,10 @@ require_once('template/header.html');
 						    	<div id="message_0"></div>
 						  	</div>					
 					  					  
-					  	<hr class="hr_line">
+					  	
 
-							<div class="form-group ">
+							<div class="form-group term_insurance">
+							<hr class="hr_line">
 						    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;">Срок страхования</label>
 							    <div class="col-sm-8"  style="padding-top:2%">							
 									<select class="form-control input-sm" name="term_insurance" id="term_insurance" required>
@@ -173,7 +174,51 @@ require_once('template/header.html');
 							    </div>
 						  	</div>					  
 
+					  	
+
+							<div class="form-group kbm">
+							<hr class="hr_line">
+						    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;">Класс КБМ</label>
+							    <div class="col-sm-2"  style="padding-top:2%">							
+									<select class="form-control input-sm" name="kbm" id="kbm" required>
+							  		<?php
+							  			$query = mysql_query("SELECT * FROM `kbm` ORDER BY `id`");
+							  			while ($row = mysql_fetch_assoc($query)) {
+							  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+							  			}
+							  		?>
+									</select>
+							    </div>
+						  	</div>					  
+
 					  	<hr class="hr_line">
+
+							<div class="form-group">
+						    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;">Имеется прицеп</label>
+							    <div class="col-sm-8"  style="padding-top:2%">															
+									<div class="radio">
+										  	<label><input type="radio" name="trailer" value="1" checked><small>Нет</small></label>
+									</div>
+									<div class="radio">
+										  	<label><input type="radio" name="trailer" value="2"><small>Да</small></label>
+									</div>
+							    </div>
+						  	</div>
+
+					  	<hr class="hr_line">
+
+
+							<div class="form-group">
+						    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;">Были ли грубые нарушения условий страхования в соответствии с п.3 ст.9 ФЗ «Об обязательном страховании гражданской ответственности владельцев транспортных средств»</label>
+							    <div class="col-sm-8"  style="padding-top:5%">															
+									<div class="radio">
+										  	<label><input type="radio" name="violations" value="1" checked><small>Нет</small></label>
+									</div>
+									<div class="radio">
+										  	<label><input type="radio" name="violations" value="2"><small>Да</small></label>
+									</div>
+							    </div>
+						  	</div>					  						  	
 
 					  	<hr>					  	
 
@@ -192,13 +237,6 @@ require_once('template/header.html');
 	<small>©<?php echo date("Y") ?>. <a href="https://www.sngi.ru">Страховое общество «Сургутнефтегаз».</a> Все права защищены.</small>
 </div>
 </body>
-
-<div id="dialog">
-  	<p>    
-    	Количество водителей при ограниченном количестве водителей не может быть более 5!
-  	</p>
-</div>
-
 </html>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -230,8 +268,9 @@ $(document).ready(function(){
 	});
 
 //срок страхования при выборе места регистрации
-	//скрываем изначально срок страхования до 20 дней включительно
+	//скрываем изначально срок страхования до 20 дней включительно и весь блок срока страхования
 	$("#term_insurance option[value=" + 12 + "]").hide();
+		$(".term_insurance").hide();
 	//скрываем и отображаем пункты в зависимости от выбора места регистрации
 	$(document).on("change", ".place_reg", function(){
 		var a = $(this).val();
@@ -246,6 +285,14 @@ $(document).ready(function(){
 			}
 			$("#term_insurance option[value=" + 12 + "]").hide();
 			$('#term_insurance').val(1);			
+		}
+		//Скртыие отображение кбм и срока страхования в зависимсоти от выбранного места регистрации ТС
+		if(a == 1){
+			$(".term_insurance").hide();
+			$(".kbm").show();
+		} else {
+			$(".term_insurance").show();
+			$(".kbm").hide();			
 		}
 	});	
 
@@ -305,6 +352,7 @@ $(document).ready(function(){
  		$("#minus_"+a).remove();
  		$("#message_1").append(c);		
 	});
+
 //проверка данных формы
     $('#main_form').submit(function( event ) {
 
