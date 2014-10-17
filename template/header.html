@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ОСАГО</title>
+    <link rel='shortcut icon' href='/images/favicon.ico' type='image/x-icon'>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/css/jquery-ui.css" rel="stylesheet">
+    <link href="/css/jquery-ui.structure.css" rel="stylesheet">
+    <link href="/css/jquery-ui.theme.css" rel="stylesheet">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/jquery.mask.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.ui.datepicker-ru.js"></script>
+    <script src="/js/function.js"></script>
+  </head>
+  <body>    
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom:2px">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main_menu">
+            <span class="xs-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/"><img src="/images/logo.png" height="50"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="main_menu">
+          <ul class="nav navbar-nav">
+            <li <?php echo ($_SERVER['PHP_SELF'] == "/osago.php" ?  " class=\"active\"" : "") ?>> <a href="/osago.php">Заключить новый договор</a></li>
+            <li <?php echo ($_SERVER['PHP_SELF'] == "/contract.php" ?  " class=\"active\"" : "") ?>> <a href="/contract.php">Раннее заключённые договора</a></li>
+            
+            <?php if(isset($_SESSION["access"][4])){ ?>
+            <li <?php echo ($_SERVER['PHP_SELF'] == "/bso_add.php" || $_SERVER['PHP_SELF'] == "/bso_return.php" ?  " class=\"active\"" : "") ?>> <a class="dropdown-toggle" data-toggle="dropdown" href="#">БСО<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/bso_add.php">Добавить БСО</a></li>
+                <li><a href="/bso_return.php">Возврат БСО</a></li>
+              </ul>
+            </li>
+            <?php } ?>
+            
+            <?php if(isset($_SESSION["access"][7])){ ?>
+            <li <?php echo ($_SERVER['PHP_SELF'] == "/a7_add.php" || $_SERVER['PHP_SELF'] == "/a7_return.php" ?  " class=\"active\"" : "") ?>> <a class="dropdown-toggle" data-toggle="dropdown" href="#">А7<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/a7_add.php">Добавить бланки А7</a></li>
+                <li><a href="/a7_return.php">Возврат бланков А7</a></li>
+              </ul>
+            </li>
+            <?php } ?>
+            
+            <?php if(isset($_SESSION["access"][5])){ ?>
+            <li <?php echo ($_SERVER['PHP_SELF'] == "/admin.php" || $_SERVER['PHP_SELF'] == "/user_add.php" || $_SERVER['PHP_SELF'] == "/user_edit.php" || $_SERVER['PHP_SELF'] == "/unit_add.php" || $_SERVER['PHP_SELF'] == "/unit_edit.php"?  " class=\"active\"" : "") ?>> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Администрирование <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/admin.php">Общая структура</a></li>
+                <li><a href="/user_add.php">Добавить пользователя</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal_1">Редактировать пользователя</a></li>
+                <li><a href="/unit_add.php">Добавить подразделение</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal_2">Редактировать подразделение</a></li>
+              </ul>
+            </li>
+            <?php } ?>
+            <li> <a href="/method/exit.php">Выход</a></li>
+          </ul>
+            <form class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Поиск по № договора">
+              </div>
+              <button type="submit" class="btn btn-default">Найти</button>
+            </form>          
+        </div>          
+      </div>
+    </nav>
+    <div class="container-fluid" style="font-size:11px">
+      <ul class="list-inline text-muted text-center list-group">
+        <li class="list-group-item"><b>Подразделение:</b> <em><?php echo $_SESSION["unit_name"] ?></em></li>
+        <li class="list-group-item"><b>Пользователь:</b> <em><?php echo $_SESSION["second_name"].' '.$_SESSION["first_name"].' '.$_SESSION["third_name"] ?></em></li>
+        <li class="list-group-item"><b>Продукт:</b> <em>ОСАГО</em></li>        
+      </ul>   
+    </div>
+
+<!-- модаль по редактированию пользователей-->
+<div class="modal fade" id="modal_1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Редактирование пользователя</h4>
+      </div>
+      <div class="modal-body">
+       <form class="form-horizontal" role="form"  method="post" action="/user_edit.php">
+            <div class="form-group">
+                <select class="form-control" name="user" required>
+                <option value="" disabled selected>Выберите пользователя</option>
+                <?php
+                $query=mysql_query("SELECT * FROM `user` ORDER BY second_name");
+	                while($row = mysql_fetch_assoc($query)){
+	                echo "<option value=\"$row[user_id]\" >$row[second_name] $row[first_name] $row[third_name]</option>";
+              	}
+              	?>    
+              </select>
+            </div>
+		    <div class="form-group">
+		      <button type="submit" class="btn btn-primary">Редактировать пользователя</button>
+		    </div>            
+       </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Модаль по редактированию подразделений -->
+<div class="modal fade" id="modal_2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Редактирование подразделения</h4>
+      </div>
+      <div class="modal-body">
+       <form class="form-horizontal" role="form"  method="post" action="/unit_edit.php">
+            <div class="form-group">
+                <select class="form-control" name="unit_id" required>
+                <option value="" disabled selected>Выберите подразделение</option>
+                <?php
+                $query=mysql_query("SELECT * FROM `unit` ORDER BY unit_full_name");
+                  while($row = mysql_fetch_assoc($query)){
+                  echo "<option value=\"$row[unit_id]\" >$row[unit_full_name]</option>";
+                }
+                ?>    
+              </select>
+            </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Редактировать подразделение</button>
+        </div>            
+       </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
