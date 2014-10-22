@@ -24,7 +24,7 @@ require_once('template/header.html');
 		<div class="col-md-6 col-md-offset-3" id="user_data">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
-	    			<h3 class="panel-title">Рассчёт стоимости полиса ОСАГО</h3>
+	    			<h3 class="panel-title">Расчёт стоимости полиса ОСАГО</h3>
 	  			</div>
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
@@ -222,7 +222,7 @@ require_once('template/header.html');
 					  	<hr>					  	
 
 					  	<div class="form-group">
-					      	<button type="submit" class="btn btn-default">Рассчитать стоимость</button>
+					      	<button type="submit" class="btn btn-success btn-block">Рассчитать стоимость</button>
 					  	</div>
 					</form>
 	  			</div>
@@ -253,7 +253,7 @@ $(document).ready(function(){
       }
     });    	
 //отображение списка городов субъекта
-	$(document).on("change", "#subject", function(){
+	$(document).on("change load", "#subject", function(){
 		var a = $(this).val();
 			$.ajax({
 			  type: "POST",
