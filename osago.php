@@ -21,12 +21,12 @@ require_once('template/header.html');
 </style>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6 col-md-offset-3" id="user_data">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
 	    			<h3 class="panel-title">Рассчёт стоимости полиса ОСАГО</h3>
 	  			</div>
-	  			<div class="panel-body" id="user_data">
+	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
 					  	
 					  	<hr class="hr_line">
@@ -183,7 +183,7 @@ require_once('template/header.html');
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `kbm` ORDER BY `id`");
 							  			while ($row = mysql_fetch_assoc($query)) {
-							  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+							  				echo '<option value='.$row["id"].' '.($row["id"] == '5' ? ' selected' : '').'>'.$row["name"].'</option>';
 							  			}
 							  		?>
 									</select>
@@ -224,10 +224,11 @@ require_once('template/header.html');
 					  	<div class="form-group">
 					      	<button type="submit" class="btn btn-default">Рассчитать стоимость</button>
 					  	</div>
-
 					</form>
 	  			</div>
 			</div>
+		</div>
+		<div class="col-md-4 col-md-offset-4">
 			<div id="message"></div>
 		</div>
 	</div>

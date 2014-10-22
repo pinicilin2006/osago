@@ -13,12 +13,18 @@ require_once('../function.php');
 //require_once('../template/header.html');
 connect_to_base();
 $err_text='';
+if($_SESSION["step_1"]){
+	unset($_SESSION["step_1"]);
+}
+if($_SESSION["calc"]){
+	unset($_SESSION["calc"]);
+}
 foreach($_POST as $key => $val){
 	if(empty($val)){
 		continue;
 	}
 	$$key = mysql_escape_string($val);
-	//echo $key."=".$$key."<br>";
+	$_SESSION["step_1"]["$$key"] = mysql_escape_string($val);
 }
 //exit();
 //проверяем на наличие переданных данных
@@ -154,33 +160,33 @@ if($category == '2' || $category == '3'){
 		if($type_ins != 'jur'){
 			$t = $tb * $kt * $kbm * $kvs * $ko * $km * $ks * $kn;
 			$formula = 'Т = ТБ * КТ * КБМ * КВС * КО * КМ * КС * КН';
-			$koef = "ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КВС = $kvs <br> КО = $ko <br> КМ = $km <br> КС = $ks <br> КН = $kn";
+			$koef = "<br>ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КВС = $kvs <br> КО = $ko <br> КМ = $km <br> КС = $ks <br> КН = $kn";
 		} else {
 			$t = $tb * $kt * $kbm * $ko * $km * $ks * $kn * $kpr;
 			$formula = 'Т = ТБ * КТ * КБМ * КО * КМ * КС * КН * КПр';
-			$koef = "ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КО = $ko <br> КМ = $km <br> КС = $ks <br> КН = $kn <br> КПр = $kpr";			
+			$koef = "<br>ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КО = $ko <br> КМ = $km <br> КС = $ks <br> КН = $kn <br> КПр = $kpr";			
 		}
 	}
 	if($place_reg == '2'){
 		if($type_ins != 'jur'){
 			$t = $tb * $kt * $kbm * $kvs * $ko * $km * $kp * $kn;
 			$formula = 'Т = ТБ * КТ * КБМ * КВС * КО * КМ * КП * КН';
-			$koef = "ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КВС = $kvs <br> КО = $ko <br> КМ = $km <br> КП = $kp <br> КН = $kn";
+			$koef = "<br>ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КВС = $kvs <br> КО = $ko <br> КМ = $km <br> КП = $kp <br> КН = $kn";
 		} else {
 			$t = $tb * $kt * $kbm * $ko * $km * $kp * $kn * $kpr;
 			$formula = 'Т = ТБ * КТ * КБМ * КО * КМ * КП * КН * КПр';
-			$koef = "ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КО = $ko <br> КМ = $km <br> КП = $kp <br> КН = $kn <br> КПр = $kpr";			
+			$koef = "<br>ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КО = $ko <br> КМ = $km <br> КП = $kp <br> КН = $kn <br> КПр = $kpr";			
 		}
 	}
 	if($place_reg == '3'){
 		if($type_ins != 'jur'){
 			$t = $tb * $kvs * $ko * $km * $kp;
 			$formula = 'Т = ТБ * КВС * КО * КМ * КП';
-			$koef = "ТБ = $tb <br> КВС = $kvs <br> КО = $ko <br> КМ = $km <br> КП = $kp";
+			$koef = "<br>ТБ = $tb <br> КВС = $kvs <br> КО = $ko <br> КМ = $km <br> КП = $kp";
 		} else {
 			$t = $tb * $ko * $km * $kp * $kpr;
 			$formula = 'Т = ТБ * КО * КМ * КП * КПр';
-			$koef = "ТБ = $tb <br> КО = $ko <br> КМ = $km <br> КП = $kp <br> КПр = $kpr";			
+			$koef = "<br>ТБ = $tb <br> КО = $ko <br> КМ = $km <br> КП = $kp <br> КПр = $kpr";			
 		}
 	}		
 } else {
@@ -188,33 +194,33 @@ if($category == '2' || $category == '3'){
 		if($type_ins != 'jur'){
 			$t = $tb * $kt * $kbm * $kvs * $ko * $ks * $kn * $kpr;
  			$formula = 'Т = ТБ * КТ * КБМ * КВС * КО * КС * КН * КПр';
-			$koef = "ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КВС = $kvs <br> КО = $ko <br> КС = $ks <br> КН = $kn <br> КПр = $kpr";
+			$koef = "<br>ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КВС = $kvs <br> КО = $ko <br> КС = $ks <br> КН = $kn <br> КПр = $kpr";
 		} else {
 			$t = $tb * $kt * $kbm * $ko * $ks * $kn * $kpr;
 			$formula = 'Т = ТБ * КТ * КБМ * КО * КС * КН * КПр';
-			$koef = "ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КО = $ko <br> КС = $ks <br> КН = $kn <br> КПр = $kpr";			
+			$koef = "<br>ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КО = $ko <br> КС = $ks <br> КН = $kn <br> КПр = $kpr";			
 		}
 	}
 	if($place_reg == '2'){
 		if($type_ins != 'jur'){
 			$t = $tb * $kt * $kbm * $kvs * $ko * $kp * $kn * $kpr;
 			$formula = 'Т = ТБ * КТ * КБМ * КВС * КО * КП * КН * КПр';
-			$koef = "ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КВС = $kvs <br> КО = $ko <br> КП = $kp <br> КН = $kn <br> КПр = $kpr";
+			$koef = "<br>ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КВС = $kvs <br> КО = $ko <br> КП = $kp <br> КН = $kn <br> КПр = $kpr";
 		} else {
 			$t = $tb * $kt * $kbm * $ko * $kp * $kn * $kpr;
 			$formula = 'Т = ТБ * КТ * КБМ * КО * КП * КН * КПр';
-			$koef = "ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КО = $ko <br> КП = $kp <br> КН = $kn <br> КПр = $kpr";			
+			$koef = "<br>ТБ = $tb <br> КТ = $kt <br> КБМ = $kbm <br> КО = $ko <br> КП = $kp <br> КН = $kn <br> КПр = $kpr";			
 		}
 	}
 	if($place_reg == '3'){
 		if($type_ins != 'jur'){
 			$t = $tb * $kvs * $ko * $kp * $kpr;
 			$formula = 'Т = ТБ * КВС * КО * КП * КПр';
-			$koef = "ТБ = $tb <br> КВС = $kvs <br> КО = $ko <br> КП = $kp <br> КПр = $kpr";
+			$koef = "<br>ТБ = $tb <br> КВС = $kvs <br> КО = $ko <br> КП = $kp <br> КПр = $kpr";
 		} else {
 			$t = $tb * $ko * $kp * $kpr;
 			$formula = 'Т = ТБ * КО * КП * КПр';
-			$koef = "ТБ = $tb <br> КО = $ko <br> КП = $kp <br> КПр = $kpr";			
+			$koef = "<br>ТБ = $tb <br> КО = $ko <br> КП = $kp <br> КПр = $kpr";			
 		}
 	}
 }
@@ -229,9 +235,36 @@ $t = round($t, 2);
 // $ks = 1;//коэфф КС (период использования)
 // $kp = 1;//коэфф КП (срок страхования)
 // $kn = 1;//Коэфф КН (грубые нарушения)
-// $_SESSION["calc"]["t"] = $t
-echo "<ul><li>Коэффициенты:<br> $koef</li><li>Формула расчёта: $formula</li><li>Итоговый страховой тариф: $t</li></ul>";
-echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+$_SESSION["calc"]["t"] = $t;
+$_SESSION["calc"]["tb"] = $tb;
+$_SESSION["calc"]["kt"] = $kt;
+$_SESSION["calc"]["kbm"] = $kbm;
+$_SESSION["calc"]["ko"] = $ko;
+$_SESSION["calc"]["kvs"] = $kvs;
+$_SESSION["calc"]["km"] = $km;
+$_SESSION["calc"]["kpr"] = $kpr;
+$_SESSION["calc"]["ks"] = $ks;
+$_SESSION["calc"]["kp"] = $kp;
+$_SESSION["calc"]["kn"] = $kn;
+
+echo '
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Результат расчёта стоимости полиса ОСАГА</h3>
+	</div>
+  	<div class="panel-body">';
+echo '
+<b>Базовый страховой тариф и коэффициенты:</b>'.$koef.'
+<hr>
+<b>Формула расчёта:</b> '.$formula.'
+<hr>
+<b>Итоговый страховой тариф:</b> <span class="text-danger"><b>'.$t.'</b></span>
+<hr>
+';
+//echo "<ul><li><h4>Коэффициенты:</h4>$koef</li><li><h4>Формула расчёта:</h4> $formula</li><li><h4>Итоговый страховой тариф:</h4> $t</li></ul><hr>";
+echo "<p class=\"text-center\"><button type=\"button\" class=\"btn btn-success\" >Оформить полис</button></p>";
+echo "<p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+echo '</div></div>';
 ?>
 
 

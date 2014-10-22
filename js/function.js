@@ -216,7 +216,7 @@ function calc_osago(){
 			  url: '/ajax/osago_calc.php',
 			  data: a,
 			  success: function(data) {
-			  	$("#user_data").slideUp(400);
+			  	$("#user_data").slideUp();
 			  	$("#message").html(data);
 			  }
 			});
