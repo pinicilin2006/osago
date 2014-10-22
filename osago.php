@@ -129,8 +129,8 @@ require_once('template/header.html');
 
 							<div class="form-group capacity">
 							<hr class="hr_line">
-						    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;"><small>Мощность двигателя (лошадиных сил)</small></label>
-							    <div class="col-sm-8"  style="padding-top:2%">							
+						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Мощность двигателя (лошадиных сил)</small></label>
+							    <div class="col-sm-7"  style="padding-top:2%">							
 									<select class="form-control input-sm" name="capacity" id="capacity" required>
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `capacity` ORDER BY `id`");
@@ -179,7 +179,7 @@ require_once('template/header.html');
 							<hr class="hr_line">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Класс КБМ</small></label>
 							    <div class="col-sm-7"  style="padding-top:2%">							
-									<select class="form-control input-sm" name="kbm" id="kbm" required>
+									<select class="form-control input-sm" name="class_kbm" id="kbm" required>
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `kbm` ORDER BY `id`");
 							  			while ($row = mysql_fetch_assoc($query)) {
@@ -354,7 +354,8 @@ $(document).ready(function(){
 
 //проверка данных формы
     $('#main_form').submit(function( event ) {
-
+    	calc_osago();
+    	return false;
     });
 
 ///////////////////////////////////////////////////////////

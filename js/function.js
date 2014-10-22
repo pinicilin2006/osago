@@ -209,6 +209,20 @@ function return_a7(){
 			return false;
 }
 
+function calc_osago(){
+			var a = $("#main_form").serialize();
+			$.ajax({
+			  type: "POST",
+			  url: '/ajax/osago_calc.php',
+			  data: a,
+			  success: function(data) {
+			  	$("#user_data").slideUp(400);
+			  	$("#message").html(data);
+			  }
+			});
+			return false;
+}
+
 function button_return(){
 	$('#user_data').slideDown();
 	$('#message').html('');

@@ -22,7 +22,7 @@ $query = mysql_query("SELECT * FROM `kt_city` WHERE `id_subject` = ".$subject.""
 if(mysql_num_rows($query)>0){
 	$return .='<div><select class="form-control input-sm" name="city" id="city" required><option value="" disabled selected>Город</option>';
 	while ($row = mysql_fetch_assoc($query)) {
-		$return .= '<option id='.$row["id"].'>'.$row["name"].'</option>';
+		$return .= '<option value='.$row["id"].'>'.$row["name"].'</option>';
 	}
 	$return .='</select></div>';
 }
