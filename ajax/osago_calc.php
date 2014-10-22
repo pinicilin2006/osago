@@ -250,7 +250,7 @@ $_SESSION["calc"]["kn"] = $kn;
 echo '
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">Результат расчёта стоимости полиса ОСАГА</h3>
+		<h3 class="panel-title">Результат расчёта стоимости полиса ОСАГО</h3>
 	</div>
   	<div class="panel-body">';
 echo '
