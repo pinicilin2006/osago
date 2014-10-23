@@ -36,15 +36,15 @@ require_once('template/header.html');
 						    	<div class="col-sm-7" id="type_ins">
 									
 									<div class="radio">
-								  		<label><input type="radio" name="type_ins" value="phiz" checked><small>Физическое лицо</small></label>
+								  		<label><input type="radio" name="type_ins" class="type_ins" value="phiz" checked><small>Физическое лицо</small></label>
 									</div>
 
 									<div class="radio">
-								  		<label><input type="radio" name="type_ins" value="ip"><small>Индивидуальный предприниматель</small></label>
+								  		<label><input type="radio" name="type_ins" class="type_ins" value="ip"><small>Индивидуальный предприниматель</small></label>
 									</div>
 
 									<div class="radio">
-								  		<label><input type="radio" name="type_ins" value="jur"><small>Юридическое лицо</small></label>
+								  		<label><input type="radio" name="type_ins" class="type_ins" value="jur"><small>Юридическое лицо</small></label>
 									</div>	
 						    	</div>
 						  	</div>
@@ -151,7 +151,7 @@ require_once('template/header.html');
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `period_use` ORDER BY `id`");
 							  			while ($row = mysql_fetch_assoc($query)) {
-							  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+							  				echo '<option value='.$row["id"].' '.($row["id"] == 8 ? ' selected' : '').'>'.$row["name"].'</option>';
 							  			}
 							  		?>
 									</select>
@@ -266,7 +266,22 @@ $(document).ready(function(){
 			});
 			return false;
 	});
-
+//период использования транспортного средства
+	//Для юриков доступно минимум 6 месяцев
+	$(document).on("change", ".type_ins", function(){
+		var a = $(this).val();
+		if(a == 'jur'){
+			for(x=1;x<4;x++){
+				$("#period_use option[value=" + x + "]").hide();
+			}
+			$('#period_use').val(4);
+		} else {
+			for(x=1;x<4;x++){
+				$("#period_use option[value=" + x + "]").show();
+			}
+			$('#period_use').val(1);			
+		}
+	});	
 //срок страхования при выборе места регистрации
 	//скрываем изначально срок страхования до 20 дней включительно и весь блок срока страхования
 	$("#term_insurance option[value=" + 12 + "]").hide();
