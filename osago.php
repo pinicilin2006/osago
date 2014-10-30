@@ -253,7 +253,7 @@ $(document).ready(function(){
       }
     });    	
 //отображение списка городов субъекта
-	$(document).on("change load", "#subject", function(){
+	$(document).on("change", "#subject", function(){
 		var a = $(this).val();
 			$.ajax({
 			  type: "POST",
@@ -266,6 +266,17 @@ $(document).ready(function(){
 			});
 			return false;
 	});
+//Отображение списка городов при возвращение назад
+var a = $("#subject").val();
+			$.ajax({
+			  type: "POST",
+			  url: '/ajax/subject_city.php',
+			  data: "subject="+a,
+			  success: function(data) {
+			  	$('#message_0').html(data);
+			  	
+			  }
+			});
 //период использования транспортного средства
 	//Для юриков доступно минимум 6 месяцев
 	$(document).on("change", ".type_ins", function(){

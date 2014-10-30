@@ -24,7 +24,7 @@ foreach($_POST as $key => $val){
 		continue;
 	}
 	$$key = mysql_escape_string($val);
-	$_SESSION["step_1"]["$$key"] = mysql_escape_string($val);
+	$_SESSION["step_1"]["$key"] = mysql_escape_string($val);
 }
 //exit();
 //проверяем на наличие переданных данных
@@ -258,7 +258,7 @@ echo '
 ';
 //echo "<ul><li><h4>Коэффициенты:</h4>$koef</li><li><h4>Формула расчёта:</h4> $formula</li><li><h4>Итоговый страховой тариф:</h4> $t</li></ul><hr>";
 //echo "<p class=\"text-center\"><button type=\"button\" class=\"btn btn-success\" >Оформить полис</button></p>";
-echo '<a href="/osago_step_2.php" class="btn btn-success btn-block " role="button" disabled="disabled">Оформить полис</a>';
+echo '<a href="/osago_step_2.php" class="btn btn-success btn-block " role="button">Оформить полис</a>';
 echo "<button type=\"button\" class=\"btn btn-danger btn-block\" id=\"button_return\" onclick=\"button_return();\">Вернутся к расчёту</button>";
 echo '</div></div>';
 ?>
