@@ -9,7 +9,7 @@ if(!isset($_SESSION["calc"]) || !isset($_SESSION["step_1"])){
 	exit;	
 }
 // echo "<pre>";
-// print_r($_SESSION["step_1"]);
+// print_r($_SESSION);
 // echo "</pre>";
 require_once('config.php');
 require_once('function.php');
@@ -36,10 +36,10 @@ require_once('template/header.html');
 								<div class="radio">
 									  	<label><input type="radio" name="owner" class="owner" value="2"><small>Юридическое лицо</small></label>
 								</div>
-								<hr class="hr_line">
+								
 						    </div>
 					  	</div>
-
+						<hr>
 					<div id="phiz">				  	
 						  	<div class="form-group">
 						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
@@ -470,7 +470,38 @@ require_once('template/header.html');
 					      		</select>
 					    	</div>
 					  	</div>
+						<div class="form-group">
+					    	<label for="auto_used" class="col-sm-4 control-label"><small>Транспортное средство будет использоваться:</small></label>
+						    	<div id="auto_used">
+							    	<div class="col-sm-4" style="padding-top:2%">
+							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_start_1" id="auto_used_start_1" placeholder="c" required>
+							      		<hr class="hr_line">
+							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_start_2" id="auto_used_start_2" placeholder="c">
+							      		<hr class="hr_line">
+							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" id="auto_used_start_3" placeholder="c">
+							    	</div>
+							    	<div class="col-sm-4" style="padding-top:2%">
+							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" id="auto_used_end_1" placeholder="по" required>
+							      		<hr class="hr_line">
+							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" id="auto_used_end_2" placeholder="по">
+							      		<hr class="hr_line">
+							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" id="auto_used_end_3" placeholder="по">
+							    	</div>
+							    </div>
+					  	</div>
+					  	<hr class="hr_line">					  	
+						<div class="form-group">
+					    	<label for="osago_old" class="col-sm-4 control-label"><small>Предыдущий договор обязательного страхования гражданской ответственности владельцев транспортных средств в отношении указанного транспортного средства:</small></label>
+						    	<div id="osago_old">
+							    	<div class="col-sm-8" style="padding-top:2%">
+							      		<input type="text" class="form-control input-sm" name="osago_old_series" id="osago_old_series" placeholder="серия">
+							      		<input type="text" class="form-control input-sm" name="osago_old_number" id="osago_old_number" placeholder="номер">
+							      		<input type="text" class="form-control input-sm" name="osago_old_name" id="osago_old_name" placeholder="страховщик">
+							    	</div>
+							    </div>
+					  	</div>					  	
 					  	<hr>
+
 
 				  	<?php
 				  	if($_SESSION["step_1"]["drivers"] == 2){
@@ -503,10 +534,39 @@ require_once('template/header.html');
 					  		}
 				  		}
 				  	}
-				  	?>
-
-
+				  	?>					  						  						  	
 					  	<hr class="hr_red">
+						  	<div class="form-group">
+						    	<label for="bso_number" class="col-sm-4 control-label"><small>Номер выдаваемого полиса</small></label>
+						    	<div class="col-sm-8">
+									<select class="form-control input-sm" name="bso_number" required>
+							  			<option value="" disabled>Выберите номер бланка</option>
+								  		<?php
+								  		$query=mysql_query("SELECT * FROM `bso` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");
+								  		while($row = mysql_fetch_assoc($query)){
+											echo '<option value="'.$row["number"].'" >'.$row["number"].'</option>';
+										}
+										?>    
+									</select>	      		
+						    	</div>
+						  	</div>
+						  	<hr class="hr_line">
+							<div class="form-group" style="padding-top:2%">
+						    	<label for="a7_number" class="col-sm-4 control-label"><small>Номер выдаваемого бланка А7</small></label>
+						    	<div class="col-sm-8">
+									<select class="form-control input-sm" name="a7_number" required>
+							  			<option value="" disabled>Выберите номер бланка</option>
+								  		<?php
+								  		$query=mysql_query("SELECT * FROM `a7` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");
+								  		while($row = mysql_fetch_assoc($query)){
+											echo '<option value="'.$row["number"].'" >'.$row["number"].'</option>';
+										}
+										?>    
+									</select>	      		
+						    	</div>
+						  	</div>						  						  	
+					  	<hr class="hr_red">
+
 					  	<div class="form-group">
 					      	<button type="submit" class="btn btn-success btn-block">Рассчитать стоимость</button>
 					  	</div>
@@ -564,6 +624,13 @@ $(document).ready(function(){
 	  changeYear: true,
 	  changeMonth: true,
 	  yearRange: "c-70:c"
+	});
+	$( ".auto_used" ).datepicker({
+	  dateFormat: "dd.mm.yy",
+	  minDate: "0d",
+	  changeYear: true,
+	  changeMonth: true,
+	  yearRange: "c:c+10"
 	});
 	
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
@@ -688,9 +755,9 @@ $(document).ready(function(){
 	$(document).on("change", ".insisown", function(){
 		var a = $(this).val();
 		if(a=='2'){
-			$('input:radio[name="owner"]').filter('[value="1"]').prop('checked',true);
-			$("#jur").slideUp();
-			$("#phiz").slideDown();
+			// $('input:radio[name="owner"]').filter('[value="1"]').prop('checked',true);
+			// $("#jur").slideUp();
+			// $("#phiz").slideDown();
 			//$("#owner").slideDown();
 			$("#owner_data").slideDown();
 		} else {
