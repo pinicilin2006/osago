@@ -27,7 +27,7 @@ require_once('template/header.html');
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post" required> 
 					 <h4><b>Данные страхователя</b></h4>
 						<div class="form-group" id="owner">
-							<hr class="hr_line">
+							<hr class="hr_red">
 					    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Страхователь</small></label>
 						    <div class="col-sm-7">															
 								<div class="radio">
@@ -115,7 +115,7 @@ require_once('template/header.html');
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
-						    	<label for="jur_name" class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
+						    	<label class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm" name="jur_name" id="jur_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm" name="jur_name" id="jur_number" placeholder="Номер" required>
@@ -123,7 +123,7 @@ require_once('template/header.html');
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
-						    	<label for="jur_name" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
+						    	<label for="jur_inn" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm" name="jur_inn" id="jur_inn" placeholder="Номер" required>
 						    	</div>
@@ -155,7 +155,7 @@ require_once('template/header.html');
 				  	</div>				  				  	
 				  	<hr class="hr_line"><br>
 				  	<div class="form-group">
-				    	<label for="date_birth" class="col-sm-4 control-label"><small>Телефон</small></label>
+				    	<label for="phone" class="col-sm-4 control-label"><small>Телефон</small></label>
 				    	<div class="col-sm-8">
 				      		<input type="text" class="form-control input-sm" name="phone" id="phone" required>
 				    	</div>
@@ -179,42 +179,42 @@ require_once('template/header.html');
 
 				  	<hr>
 						<h4><b>Данные собственника</b></h4>
-						 <hr> 	
+						 <hr class="hr_red">	
 						
 						<?php 
 						if($_SESSION["step_1"]["type_ins"] != 'jur'){
 						?>										  	
 						  	<div class="form-group">
-						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
+						    	<label for="owner_second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
 						      		<input type="text" class="form-control input-sm" name="owner_second_name" id="owner_second_name" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
-						    	<label for="first_name" class="col-sm-4 control-label"><small>Имя</small></label>
+						    	<label for="owner_first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
 						      		<input type="text" class="form-control input-sm" name="owner_first_name" id="owner_first_name" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
-						    	<label for="third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
+						    	<label for="owner_third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
 						      		<input type="text" class="form-control input-sm" name="owner_third_name" id="owner_third_name" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
-						    	<label for="date_birth" class="col-sm-4 control-label"><small>Дата рождения</small></label>
+						    	<label for="owner_date_birth" class="col-sm-4 control-label"><small>Дата рождения</small></label>
 						    	<div class="col-sm-8">
 						      		<input type="text" class="form-control input-sm date_birth" name="owner_date_birth" id="owner_date_birth" placeholder="Дата рождения" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group" style="padding-top:2%">
-						    	<label for="date_birth" class="col-sm-4 control-label"><small>Документ, удостоверяющий личность</small></label>
-						    	<div class="col-sm-8">
+						    	<label for="owner_doc" class="col-sm-4 control-label"><small>Документ, удостоверяющий личность</small></label>
+						    	<div class="col-sm-8" id="owner_doc">
 						      		<input type="text" class="form-control input-sm" name="owner_doc_name" id="owner_doc_name" placeholder="Наименование" value="Паспорт РФ" required>
 						      		<input type="text" class="form-control input-sm" name="owner_doc_series" id="owner_doc_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm" name="owner_doc_number" id="owner_doc_number" placeholder="Номер" required>
@@ -224,7 +224,7 @@ require_once('template/header.html');
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group" style="padding-top:2%">
-						    	<label for="date_birth" class="col-sm-4 control-label"><small>Гражданство</small></label>
+						    	<label for="owner_citizenship" class="col-sm-4 control-label"><small>Гражданство</small></label>
 						    	<div class="col-sm-8">
 						      		<input type="text" class="form-control input-sm" name="owner_citizenship" id="owner_citizenship" placeholder="Гражданство" value="Российская федерация" required>
 						    	</div>
@@ -255,7 +255,7 @@ require_once('template/header.html');
 						?>
 
 						  	<div class="form-group">
-						    	<label for="jur_name" class="col-sm-4 control-label"><small>Наименования юр. лица (полностью)</small></label>
+						    	<label for="owner_jur_name" class="col-sm-4 control-label"><small>Наименования юр. лица (полностью)</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_name" placeholder="Наименования юр. лица (полностью)" required>
 						    	</div>
@@ -263,14 +263,14 @@ require_once('template/header.html');
 						  	<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label for="jur_name" class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
-						    	<div class="col-sm-8" style="padding-top:2%">
+						    	<div class="col-sm-8" style="padding-top:2%" id="jur_name">
 						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
-						    	<label for="jur_name" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
+						    	<label for="owner_jur_inn" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm" name="owner_jur_inn" id="owner_jur_inn" placeholder="Номер" required>
 						    	</div>
@@ -310,8 +310,10 @@ require_once('template/header.html');
 					  	</div>					  					  	
 				  	</div>
 				  	<hr class="hr_line">
+				  	
+
 				  	<h4><b>Данные транспортного средства</b></h4>
-				  	<hr>					  	
+				  	<hr class="hr_red">					  	
 
 						<div class="form-group ">
 					    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;"><small>Марка ТС</small></label>
@@ -329,7 +331,182 @@ require_once('template/header.html');
 					    	</div>
 					  	</div>
 
+					  	
+					  	<div class="form-group">
+					    	<label for="vin" class="col-sm-4 control-label"><small>Идентификационный номер ТС (VIN)</small></label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm" name="vin" id="vin" required>
+					    	</div>
+					  	</div>	
 
+					  	
+					  	<div class="form-group">
+					    	<label for="year_manufacture" class="col-sm-4 control-label"><small>Год изготовления</small></label>
+					    	<div class="col-sm-2">
+					      		<input type="text" class="form-control input-sm" name="year_manufacture" id="year_manufacture" required>
+					    	</div>
+					  	</div>
+
+					  	
+					  	<div class="form-group">
+					    	<label for="power" class="col-sm-4 control-label"><small>Мощность двигателя ТС (л.с.)</small></label>
+					    	<div class="col-sm-2">
+					      		<input type="text" class="form-control input-sm" name="power" id="power" required>
+					    	</div>
+					  	</div>
+
+					  	
+					  	<div class="form-group">
+					    	<label for="chassis" class="col-sm-4 control-label"><small>Шасси (рама) №</small></label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm" name="chassis" id="chassis">
+					    	</div>
+					  	</div>
+
+					  	
+					  	<div class="form-group">
+					    	<label for="trailer" class="col-sm-4 control-label"><small>Кузов (прицеп) №</small></label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm" name="trailer" id="trailer">
+					    	</div>
+					  	</div>
+					  	
+					  	<?php
+					  	if($_SESSION["step_1"]["category"] == 4 || $_SESSION["step_1"]["category"] == 5){
+					  	?>
+					  	
+					  	<div class="form-group">
+					    	<label for="max_weight" class="col-sm-4 control-label"><small>>Разрешенная максимальная масса</small></label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm" name="max_weight" id="max_weight" placeholder="кг" required>
+					    	</div>
+					  	</div>
+					  	
+					  	<?php
+					  	}
+					  	?>
+
+
+					  	<?php
+					  	if($_SESSION["step_1"]["category"] == 6 || $_SESSION["step_1"]["category"] == 7 || $_SESSION["step_1"]["category"] == 8 || $_SESSION["step_1"]["category"] == 9 || $_SESSION["step_1"]["category"] == 10){
+					  	?>
+					  	
+					  	<div class="form-group">
+					    	<label for="number_seats" class="col-sm-4 control-label"><small>Количество пассажирских мест</small></label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm" name="number_seats" id="number_seats" required>
+					    	</div>
+					  	</div>
+					  	
+					  	<?php
+					  	}
+					  	?>					  	
+
+					  	<div class="form-group">
+					    	<label for="auto_doc_type" class="col-sm-4 control-label"><small>Документ о регистрации ТС</small></label>
+					    	<div class="col-sm-8">
+					      		<select class="form-control input-sm" id="auto_doc_type" name="auto_doc_type">
+					      		<option value="1">ПТС</option>
+					      		<option value="2">Свидетельство о регистрации</option>
+					      		<option value="3">Технический паспорт</option>
+					      		<option value="4">ПСМ</option>
+					      		</select>
+					    	</div>
+					  	</div>
+
+					  	<div class="form-group">
+					    	<label for="auto_doc_series" class="col-sm-4 control-label"><small>Серия</small></label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm" name="auto_doc_series" id="auto_doc_series" required>
+					    	</div>
+					  	</div>
+
+
+					  	<div class="form-group">
+					    	<label for="auto_doc_number" class="col-sm-4 control-label"><small>Номер</small></label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm" name="auto_doc_number" id="auto_doc_number" required>
+					    	</div>
+					  	</div>					  	
+
+
+					  	<div class="form-group">
+					    	<label for="auto_doc_date" class="col-sm-4 control-label"><small>Дата выдачи</small></label>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm" name="auto_doc_date" id="auto_doc_date" required>
+					    	</div>
+					  	</div>
+
+					  	<div class="form-group">
+					    	<label for="auto_diag_card" class="col-sm-4 control-label"><small>Диагностическая карта, <br>свидетельствующая о прохождении<br> технического осмотра:</small></label>
+					    	<div class="col-sm-8" id="auto_diag_card" style="padding-top:2%">
+					      		<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" placeholder="Номер" required>
+					      		<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
+					    	</div>
+					  	</div>					  	
+
+
+					  	<div class="form-group">
+					    	<label for="auto_reg_number" class="col-sm-4 control-label"><small>Государственный регистрационный знак</small></label>
+					    	<div class="col-sm-8" style="padding-top:2%">
+					      		<input type="text" class="form-control input-sm" name="auto_reg_number" id="auto_reg_number" required>
+					    	</div>
+					  	</div>
+
+
+					  	<div class="form-group">
+					    	<label for="purpose_use" class="col-sm-4 control-label"><small>Цель использования ТС</small></label>
+					    	<div class="col-sm-8">
+					      		<select class="form-control input-sm" id="purpose_use" name="purpose_use">
+					      		<option value="1">личная</option>
+					      		<option value="2">учебная езда</option>
+					      		<option value="3">такси</option>
+					      		<option value="4">перевозка опасных и легко воспламеняющихся грузов</option>
+					      		<option value="5">прокат/краткосрочная аренда</option>
+					      		<option value="6">регулярные пассажирские перевозки/ перевозки пассажиров по заказам</option>
+					      		<option value="7">дорожные и специальные транспортные средства</option>
+					      		<option value="8">экстренные и коммунальные службы</option>
+					      		<option value="9">прочее</option>
+					      		</select>
+					    	</div>
+					  	</div>
+					  	<hr>
+
+				  	<?php
+				  	if($_SESSION["step_1"]["drivers"] == 2){
+				  	?>
+				  	<h4><b>К управлению транспортным средством допущены:</b></h4>
+				  	<hr class="hr_red">
+				  	<?php	
+				  		for($x=1;$x<6;$x++){
+				  			if(isset($_SESSION["step_1"]["driver_$x"])){
+				  				
+
+				  	?>
+	
+
+					  	<div class="form-group">
+					    	<label for="driver_<?php echo $x ?>" class="col-sm-4 control-label"><small>Данные водителя №<?php echo $x ?>:</small></label>
+					    	<div class="col-sm-8" id="driver_<?php echo $x ?>">
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_second_name" placeholder="Фамилия" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
+					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_experience" placeholder="Стаж" required>
+					    	</div>
+					  	</div>
+					  	<hr>				  			
+
+				  	<?php	
+					  		}
+				  		}
+				  	}
+				  	?>
+
+
+					  	<hr class="hr_red">
 					  	<div class="form-group">
 					      	<button type="submit" class="btn btn-success btn-block">Рассчитать стоимость</button>
 					  	</div>
@@ -354,7 +531,11 @@ $(document).ready(function(){
 	$('#doc_date').mask('00.00.0000');
 	$('#phone').mask('(000)000-00-00',{placeholder: "(___)___-__-__"} );
 	$('#owner_doc_date').mask('00.00.0000');
-	$('#owner_phone').mask('(000)000-00-00',{placeholder: "(___)___-__-__"} );		
+	$('#owner_phone').mask('(000)000-00-00',{placeholder: "(___)___-__-__"} );
+	$('#year_manufacture').mask('0000');
+	$('#power').mask('0000');
+	$('#auto_doc_date').mask('00.00.0000');	
+	$('#auto_diag_card_next_date').mask('00.0000');	
 //Календарик	
 	$( ".date_birth" ).datepicker({
 	  dateFormat: "dd.mm.yy",
@@ -377,7 +558,13 @@ $(document).ready(function(){
 	  changeMonth: true,
 	  yearRange: "c-70:c"
 	});
-
+	$( "#auto_doc_date" ).datepicker({
+	  dateFormat: "dd.mm.yy",
+	  maxDate: "0d",
+	  changeYear: true,
+	  changeMonth: true,
+	  yearRange: "c-70:c"
+	});
 	
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 	//отображение списка городов субъекта для страхователя
