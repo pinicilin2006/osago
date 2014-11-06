@@ -7,6 +7,7 @@ if(isset($_SESSION['user_id'])){
 require_once('config.php');
 require_once('function.php');
 require_once('template/header_login.html');
+check_browser();
 ?>
 <div class="container">
     <div class="row">
