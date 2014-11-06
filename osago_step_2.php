@@ -644,6 +644,7 @@ $(document).ready(function(){
 				  data: "subject="+a,
 				  success: function(data) {
 				  	$('#message_0').html(data);
+				  	$('#message_4').hide();
 				  	
 				  }
 				});
@@ -702,6 +703,7 @@ $(document).ready(function(){
 				  data: "owner_subject="+a,
 				  success: function(data) {
 				  	$('#owner_message_0').html(data);
+				  	$('#owner_message_4').hide();
 				  	
 				  }
 				});
