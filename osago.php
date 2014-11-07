@@ -69,11 +69,26 @@ require_once('template/header.html');
 
 								</div>	
 					    	</div>
-					  					  
-					  
+
 					  	<hr class="hr_line">
 
-						  	<div class="form-group ">
+					  		<div class="form-group ">
+					    		<label for="citizenship" class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Гражданство собственника ТС</small></label>
+					    		<div class="col-sm-7" id="citizenship">
+								
+									<div class="radio">
+									  	<label><input type="radio" name="citizenship" class="citizenship" value="1" checked><small>Российская федерация</small></label>
+									</div>
+
+									<div class="radio">
+									  	<label><input type="radio" name="citizenship" class="citizenship" value="2"><small>Иностранное государство</small></label>
+									</div>
+
+								</div>	
+					    	</div>				  					  
+
+						  	<div class="form-group ig_hide">
+						  	<hr class="hr_line">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Территория преимущественного использования ТС</small></label>
 						    	<div class="col-sm-7"  style="padding-top:2%">							
 									<select class="form-control input-sm" name="subject" id="subject" required>
@@ -141,10 +156,9 @@ require_once('template/header.html');
 									</select>
 							    </div>
 						  	</div>					  
-
-					  	<hr class="hr_line">
-
-							<div class="form-group ">
+					  	
+							<div class="form-group ig_hide period_use">
+							<hr class="hr_line">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Период использования ТС</small></label>
 							    <div class="col-sm-7"  style="padding-top:2%">							
 									<select class="form-control input-sm" name="period_use" id="period_use" required>
@@ -158,15 +172,14 @@ require_once('template/header.html');
 							    </div>
 						  	</div>					  
 
-					  	<hr class="hr_line">
-
-							<div class="form-group ">
+							<div class="form-group ig_hide">
+							<hr class="hr_line">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Количество водителей, допущенных к управлению</small></label>
 							    <div class="col-sm-7"  style="padding-top:2%">							
 									<div class="radio">
 									  	<label><input type="radio" name="drivers" class="drivers" value="1" checked><small>Без ограничений</small></label>
 									</div>
-									<div class="radio">
+									<div class="radio" id="drivers_limit">
 									  	<label><input type="radio" name="drivers" class="drivers" value="2"><small>Ограниченное количество</small></label>
 									</div>
 									<div id="message_1"></div>									
@@ -175,7 +188,7 @@ require_once('template/header.html');
 
 					  	
 
-							<div class="form-group kbm">
+							<div class="form-group kbm ig_hide">
 							<hr class="hr_line">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Класс КБМ</small></label>
 							    <div class="col-sm-7"  style="padding-top:2%">							
@@ -251,7 +264,19 @@ $(document).ready(function(){
       	show: {
         delay: 0
       }
-    });    	
+    });
+// //Скртыие полей для гражданина иностранного государства
+//     $(document).on("change", ".citizenship", function(){
+//     	var a = $(this).val();
+//     	if(a == '2'){
+//     		$(".ig_hide").hide();
+//     		$("#subject").prop('required',false);
+
+//     	}else{
+//     		$(".ig_hide").slideDown();
+//     		$("#subject").prop('required',true);
+//     	}
+//     });	
 //отображение списка городов субъекта
 	$(document).on("change", "#subject", function(){
 		var a = $(this).val();
@@ -282,11 +307,17 @@ var a = $("#subject").val();
 	$(document).on("change", ".type_ins", function(){
 		var a = $(this).val();
 		if(a == 'jur'){
-			for(x=1;x<4;x++){
+			//оставляем доступным вариант с неограниченным количеством водителей
+			$('input:radio[name="drivers"]').filter('[value="1"]').prop('checked',true);
+			$("#message_1").html('');
+			$("#drivers_limit").hide();
+			//период использования ТС
+			for(x=1;x<4;x++){				
 				$("#period_use option[value=" + x + "]").hide();
 			}
 			$('#period_use').val(4);
 		} else {
+			$("#drivers_limit").show(); 
 			for(x=1;x<4;x++){
 				$("#period_use option[value=" + x + "]").show();
 			}
@@ -300,12 +331,22 @@ var a = $("#subject").val();
 	//скрываем и отображаем пункты в зависимости от выбора места регистрации
 	$(document).on("change", ".place_reg", function(){
 		var a = $(this).val();
+		if(a == '2'){
+    		$(".ig_hide").hide();
+    		$("#subject").prop('required',false);
+
+    	}else{
+    		$(".ig_hide").slideDown();
+    		$("#subject").prop('required',true);
+    	}
 		if(a == 3){
+			$(".period_use").slideUp();
 			for(x=1;x<12;x++){
 				$("#term_insurance option[value=" + x + "]").hide();				
 			}
 			$('#term_insurance').val(12);
 		} else {
+			$(".period_use").slideDown();
 			for(x=1;x<12;x++){
 				$("#term_insurance option[value=" + x + "]").show();				
 			}

@@ -35,7 +35,10 @@ if(!$type_ins){
 if(!$place_reg){
 	$err_text .= "<li class=\"text-danger\">Не указано место регистрации ТС</li>";
 }
-if(!$subject){
+if(!$citizenship){
+	$err_text .= "<li class=\"text-danger\">Не указано гражданство собственника ТС</li>";
+}
+if(!$subject && $place_reg != 2){
 	$err_text .= "<li class=\"text-danger\">Не указана территория примущественного использования ТС</li>";
 }
 if($subject && !$city){
@@ -46,10 +49,10 @@ if($subject && !$city){
 if(!$category){
 	$err_text .= "<li class=\"text-danger\">Не указан тип (категория) и назначение ТС</li>";
 }
-if(!$period_use){
+if(!$period_use && $place_reg != 2){
 	$err_text .= "<li class=\"text-danger\">Не указан период использования ТС</li>";
 }
-if(!$drivers){
+if(!$drivers && $place_reg != 2){
 	$err_text .= "<li class=\"text-danger\">Не указано количество водителей, допущенных к управлению ТС</li>";
 }
 if(!$trailer){
@@ -82,12 +85,16 @@ $list_subject_3 = array(42,76,78,79,53);
 
 //Получаем ТБ
 $tb_query = mysql_fetch_assoc(mysql_query("SELECT * FROM `category` WHERE `id` = '".$category."'"));
-$tb = $tb_query['tb_'.($type_ins == 'phiz' || $type_ins == 'ip' ? 'phiz' : 'jur').'_'.(in_array($subject, $list_subject_1) ? '1' : '').(in_array($subject, $list_subject_2) ? '2' : '').(in_array($subject, $list_subject_3) ? '3' : '')];
-
+if($place_reg !=2){
+	$tb = $tb_query['tb_'.($type_ins == 'phiz' || $type_ins == 'ip' ? 'phiz' : 'jur').'_'.(in_array($subject, $list_subject_1) ? '1' : '').(in_array($subject, $list_subject_2) ? '2' : '').(in_array($subject, $list_subject_3) ? '3' : '')];
+} else {
+	$tb = $tb_query['tb_'.($type_ins == 'phiz' || $type_ins == 'ip' ? 'phiz' : 'jur').'_4'];	
+}
 //Получаем КТ
-$kt_query = mysql_fetch_assoc(mysql_query("SELECT * FROM `".(isset($city) ? 'kt_city' : 'kt_subject')."` WHERE `id` = '".(isset($city) ? $city : $subject)."'"));
-$kt = $kt_query['koef_'.($category != 11  ? '1' : '2')];
-
+if($place_reg !=2){
+	$kt_query = mysql_fetch_assoc(mysql_query("SELECT * FROM `".(isset($city) ? 'kt_city' : 'kt_subject')."` WHERE `id` = '".(isset($city) ? $city : $subject)."'"));
+	$kt = $kt_query['koef_'.($category != 11  ? '1' : '2')];
+}
 //Получаем КБМ
 if($place_reg == 1){
 	$kbm_query = mysql_fetch_assoc(mysql_query("SELECT * FROM `kbm` WHERE `id` = '".$class_kbm."'"));

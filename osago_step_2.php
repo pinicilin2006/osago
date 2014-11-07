@@ -75,34 +75,8 @@ require_once('template/header.html');
 						      		<input type="text" class="form-control input-sm" name="doc_name" id="doc_name" placeholder="Наименование" value="Паспорт РФ" required>
 						      		<input type="text" class="form-control input-sm" name="doc_series" id="doc_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm" name="doc_number" id="doc_number" placeholder="Номер" required>
-						      		<input type="text" class="form-control input-sm" name="doc_place" id="doc_place" placeholder="Орган, выдавший документ" required>
-						      		<input type="text" class="form-control input-sm" name="doc_date" id="doc_date" placeholder="Дата выдачи" required>
 						    	</div>
-						  	</div>
-						  	<hr class="hr_line">
-						  	<div class="form-group" style="padding-top:2%">
-						    	<label for="date_birth" class="col-sm-4 control-label"><small>Гражданство</small></label>
-						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="citizenship" id="citizenship" placeholder="Гражданство" value="Российская федерация" required>
-						    	</div>
-						  	</div>				  	
-						  	<hr class="hr_line">
-						  	<div class="form-group" style="padding-top:2%">
-						    	<label for="country_birth" class="col-sm-4 control-label"><small>Место рождения</small></label>
-						    	<div class="col-sm-8">
-									<select class="form-control input-sm" name="place_birth" required>
-							  			<option value="" disabled>Выберите страну</option>
-								  		<?php
-								  		$query=mysql_query("SELECT * FROM `country` WHERE `checked` = '1' ORDER BY `name`");
-								  		while($row = mysql_fetch_assoc($query)){
-											echo '<option value="'.$row["id"].'" '.($row["id"] == '165' ? ' selected' : '').' >'.$row["name"].'</option>';
-										}
-										?>    
-									</select>
-									<input type="text" class="form-control input-sm" name="place_birth_city" placeholder="Дополнительная информация (область, район, населенный пункт)" required>				      		
-						    	</div>
-						  	</div>
-
+						  	</div>						  	
 				  	</div>
 
 				  	<div id="jur" style="display:none">
@@ -218,34 +192,8 @@ require_once('template/header.html');
 						      		<input type="text" class="form-control input-sm" name="owner_doc_name" id="owner_doc_name" placeholder="Наименование" value="Паспорт РФ" required>
 						      		<input type="text" class="form-control input-sm" name="owner_doc_series" id="owner_doc_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm" name="owner_doc_number" id="owner_doc_number" placeholder="Номер" required>
-						      		<input type="text" class="form-control input-sm" name="owner_doc_place" id="owner_doc_place" placeholder="Орган, выдавший документ" required>
-						      		<input type="text" class="form-control input-sm" name="owner_doc_date" id="owner_doc_date" placeholder="Дата выдачи" required>
 						    	</div>
 						  	</div>
-						  	<hr class="hr_line">
-						  	<div class="form-group" style="padding-top:2%">
-						    	<label for="owner_citizenship" class="col-sm-4 control-label"><small>Гражданство</small></label>
-						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="owner_citizenship" id="owner_citizenship" placeholder="Гражданство" value="Российская федерация" required>
-						    	</div>
-						  	</div>				  	
-						  	<hr class="hr_line">
-						  	<div class="form-group" style="padding-top:2%">
-						    	<label for="country_birth" class="col-sm-4 control-label"><small>Место рождения</small></label>
-						    	<div class="col-sm-8">
-									<select class="form-control input-sm" name="owner_place_birth" required>
-							  			<option value="" disabled>Выберите страну</option>
-								  		<?php
-								  		$query=mysql_query("SELECT * FROM `country` WHERE `checked` = '1' ORDER BY `name`");
-								  		while($row = mysql_fetch_assoc($query)){
-											echo '<option value="'.$row["id"].'" '.($row["id"] == '165' ? ' selected' : '').' >'.$row["name"].'</option>';
-										}
-										?>    
-									</select>
-									<input type="text" class="form-control input-sm" name="owner_place_birth_city" placeholder="Дополнительная информация (область, район, населенный пункт)" required>				      		
-						    	</div>
-						  	</div>
-
 					  	<?php
 					  	}
 					  	?>
