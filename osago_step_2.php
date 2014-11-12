@@ -488,7 +488,7 @@ require_once('template/header.html');
 					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_experience" placeholder="Стаж" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_experience" placeholder="Стаж управления ТС соответствующей категории, полных лет" required>
 					    	</div>
 					  	</div>
 					  	<hr>				  			
@@ -586,8 +586,18 @@ require_once('template/header.html');
 						    	</div>
 						  	</div>
 					  	<hr class="hr_red">
+
+						  	<div class="form-group">
+						    	<label for="special_notes" class="col-sm-4 control-label"><small>Особые отметки</small></label>
+						    	<div class="col-sm-8">
+						      		<input type="text" class="form-control input-sm" name="special_notes" id="special_notes">
+						    	</div>
+						  	</div>
+
+						<hr class="hr_red">
+
 					  	<div class="form-group">
-					      	<button type="submit" class="btn btn-success btn-block">Рассчитать стоимость</button>
+					      	<button type="submit" class="btn btn-success btn-block">Оформить полис</button>
 					  	</div>
 					</form>
 	  			</div>
@@ -616,6 +626,7 @@ $(document).ready(function(){
 	$('#auto_doc_date').mask('00.00.0000');	
 	$('#auto_diag_card_next_date').mask('00.0000');	
 	$('#start_date').mask('00.00.0000');
+	$('#start_time').mask('00:00');
 //Календарик	
 	$( ".date_birth" ).datepicker({
 	  dateFormat: "dd.mm.yy",
@@ -843,6 +854,7 @@ $(document).ready(function(){
 		var a = $(this).val();//дата начала действия
 		var b = "<?php echo date("d.m.Y") ?>";//дата сегодня
 		var c = "<?php echo $_SESSION["step_1"]["term_insurance"]?>";
+		var timeNow = new Date();
  		var arrStartDate = a.split('.');
  		var arrTodayDate = b.split('.');
 		var startDate = new Date(arrStartDate[2], arrStartDate[1]-1, arrStartDate[0]);
@@ -855,6 +867,7 @@ $(document).ready(function(){
 			$("#start_time").val('00:00');
 			return false;
 		}
+		//если дата больше либо равна текущей
 		if(startDate > todayDate || a == b){
 			//alert(startDate);
 			var endDate = startDate;
@@ -878,48 +891,50 @@ $(document).ready(function(){
 			var end_date = dd+'.'+mm+'.'+yyyy;
 			$("#end_date").val(end_date);
 		}
-
-
-
-
-
-
-
-
-
-
-		// //если дата меньше текущей
-		// if(moment(a, 'DD.MM.YYYY').isBefore(b, 'DD.MM.YYYY')){
-		// 	alert(moment(a, 'DD.MM.YYYY')+'-'+moment(b, 'DD.MM.YYYY'));
-		// 	$(this).val('');
-		// 	$("#start_time").prop("disabled", true)
-		// 	$("#start_time").val('00:00');
-		// 	return false;
-		// }
-		// //если дата больше или равна текущей
-		// if(moment(a, 'DD.MM.YYYY').isAfter(b, 'DD.MM.YYYY') || moment(a, 'DD.MM.YYYY').isSame(b, 'DD.MM.YYYY')){
-		// 	if(c == '1' || c == '12'){
-		// 		var type_data = 'days';
-		// 	} else {
-		// 		var type_data = 'months';
-		// 	}
-		// 	var arr = [0,15,1,2,3,4,5,6,7,8,9,12,20];
-		// 	var srok = arr[c];	
-		// 	var end_date = moment(a, 'DD.MM.YYYY').add(type_data, srok).subtract('days', 1).format('DD.MM.YYYY');
-		// 	$("#end_date").val(end_date);
-		// }
-		// //Работа с полем времени начала действия полиса если дата равна текущей
-		// if(moment(a, 'DD.MM.YYYY').isSame(b, 'DD.MM.YYYY')){
-		// 	$("#start_time").prop("disabled", false);
-		// 	var time_now = moment().format('HH:mm');
-		// 	// $("#start_time").val(time_now);
-		// } else{
-		// 	$("#start_time").prop("disabled", true);
-		// 	$("#start_time").val('00:00');
-		// }		 
+		//работа сполем времени начала действия договора если дата равна сегодняшней
+		if(a == b){
+			var hours = timeNow.getHours();
+			if(hours < 10){
+				hours = '0'+hours;
+			}
+			var minutes = timeNow.getMinutes();
+			if(minutes < 10){
+				minutes = '0'+minutes;
+			}
+			var hhmm = hours+':'+minutes;
+			$("#start_time").prop("disabled", false)
+			$("#start_time").val(hhmm);
+		} else {
+			$("#start_time").prop("disabled", true)
+			$("#start_time").val('00:00');
+		}		 
 	});
-
-//Отслеживаем изменение время старта	
+//Отслеживаем изменение время старта
+	$(document).on("change", "#start_time", function(){
+		var timeNow = new Date();
+		var hhNow = timeNow.getHours();
+		if(hhNow < 9){
+			hhNow = '0'+hhNow;
+		}
+		var mmNow = timeNow.getMinutes();
+		if(mmNow < 9){
+			mmNow = '0'+mmNow;
+		}		
+		var timeStart = $(this).val().split(':');
+		var hhStart = timeStart[0];
+		var mmStart = timeStart[1];
+		if(hhNow < hhStart){
+			return false;
+		}else if(hhNow == hhStart){
+			if(mmNow < mmStart){
+				return false;
+			} else {
+				$("#start_time").val(hhNow+':'+mmNow);
+			}
+		} else {
+			$("#start_time").val(hhNow+':'+mmNow);
+		}
+	});
 //проверка данных формы
     $('#main_form').submit(function( event ) {
     	
