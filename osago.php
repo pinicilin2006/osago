@@ -120,7 +120,30 @@ require_once('template/header.html');
 							  		?>
 									</select>
 							    </div>
-						  	</div>					  
+						  	</div>	
+
+							<div class="form-group" id="srok_year">
+							<hr class="hr_line">
+						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Срок страхования</small></label>
+							    <div class="col-sm-7"  style="padding-top:2%">							
+							    <b>1 год</b>
+							    </div>
+						  	</div>	
+
+						<hr class="hr_line">
+						  	<div class="form-group">
+						    	<label for="year_manufacture" class="col-sm-5 control-label"><small>Год изготовления</small></label>
+						    	<div class="col-sm-2" style="padding-top:2%">
+						      		<select class="form-control input-sm" name="year_manufacture" id="year_manufacture" required>
+						      		<?php
+						      		$a = date("Y");
+						      		for($x=$a;$x>=$a-120;$x--){
+						      			echo '<option value='.$x.'>'.$x.'</option>';
+						      		}
+						      		?>
+						      		</select>
+						    	</div>
+						  	</div>
 
 					  	<hr class="hr_line">
 
@@ -325,6 +348,8 @@ var a = $("#subject").val();
 		}
 	});	
 //срок страхования при выборе места регистрации
+	//приоткрытие страницы ставим значение по умолчанию для срока страхования
+	$("#term_insurance").val(11);
 	//скрываем изначально срок страхования до 20 дней включительно и весь блок срока страхования
 	$("#term_insurance option[value=" + 12 + "]").hide();
 		$(".term_insurance").hide();
@@ -356,10 +381,13 @@ var a = $("#subject").val();
 		//Скртыие отображение кбм и срока страхования в зависимсоти от выбранного места регистрации ТС
 		if(a == 1){
 			$(".term_insurance").hide();
+			$("#term_insurance").val(11);
 			$(".kbm").show();
+			$("#srok_year").show();
 		} else {
 			$(".term_insurance").show();
-			$(".kbm").hide();			
+			$(".kbm").hide();
+			$("#srok_year").hide();			
 		}
 	});	
 

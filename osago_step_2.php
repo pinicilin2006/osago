@@ -70,9 +70,16 @@ require_once('template/header.html');
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group" style="padding-top:2%">
-						    	<label for="date_birth" class="col-sm-4 control-label"><small>Документ, удостоверяющий личность</small></label>
+						    	<label class="col-sm-4 control-label"><small>Документ, удостоверяющий личность</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="doc_name" id="doc_name" placeholder="Наименование" value="Паспорт РФ" required>
+						      	<select class="form-control input-sm" name="doc_name" id="doc_name" required>
+						  		<?php
+						  		$query=mysql_query("SELECT * FROM `document` WHERE `active` = 1 ORDER BY `name`");
+						  		while($row = mysql_fetch_assoc($query)){
+									echo '<option value="'.$row["id"].'" '.($row["id"] == 10 ? 'selected' : '').' >'.$row["name"].'</option>';
+								}
+								?>    
+								</select>
 						      		<input type="text" class="form-control input-sm" name="doc_series" id="doc_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm" name="doc_number" id="doc_number" placeholder="Номер" required>
 						    	</div>
@@ -189,7 +196,14 @@ require_once('template/header.html');
 						  	<div class="form-group" style="padding-top:2%">
 						    	<label for="owner_doc" class="col-sm-4 control-label"><small>Документ, удостоверяющий личность</small></label>
 						    	<div class="col-sm-8" id="owner_doc">
-						      		<input type="text" class="form-control input-sm" name="owner_doc_name" id="owner_doc_name" placeholder="Наименование" value="Паспорт РФ" required>
+						      	<select class="form-control input-sm" name="owner_doc_name" id="owner_doc_name" required>
+						  		<?php
+						  		$query=mysql_query("SELECT * FROM `document` WHERE `active` = 1 ORDER BY `name`");
+						  		while($row = mysql_fetch_assoc($query)){
+									echo '<option value="'.$row["id"].'" '.($row["id"] == 10 ? 'selected' : '').' >'.$row["name"].'</option>';
+								}
+								?>    
+								</select>
 						      		<input type="text" class="form-control input-sm" name="owner_doc_series" id="owner_doc_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm" name="owner_doc_number" id="owner_doc_number" placeholder="Номер" required>
 						    	</div>
@@ -283,18 +297,10 @@ require_once('template/header.html');
 					  	<div class="form-group">
 					    	<label for="vin" class="col-sm-4 control-label"><small>Идентификационный номер ТС (VIN)</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="vin" id="vin" required>
-					    	</div>
-					  	</div>	
-
-					  	
-					  	<div class="form-group">
-					    	<label for="year_manufacture" class="col-sm-4 control-label"><small>Год изготовления</small></label>
-					    	<div class="col-sm-2">
-					      		<input type="text" class="form-control input-sm" name="year_manufacture" id="year_manufacture" required>
-					    	</div>
-					  	</div>
-
+					      		<input type="text" class="form-control input-sm empty_data_input" name="vin" id="vin" required>
+					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
+					    	</div>				    	
+					  	</div>						  	
 					  	
 					  	<div class="form-group">
 					    	<label for="power" class="col-sm-4 control-label"><small>Мощность двигателя ТС (л.с.)</small></label>
@@ -307,16 +313,18 @@ require_once('template/header.html');
 					  	<div class="form-group">
 					    	<label for="chassis" class="col-sm-4 control-label"><small>Шасси (рама) №</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="chassis" id="chassis">
-					    	</div>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="chassis" id="chassis">
+					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
+					    	</div>				    	
 					  	</div>
 
 					  	
 					  	<div class="form-group">
 					    	<label for="trailer" class="col-sm-4 control-label"><small>Кузов (прицеп) №</small></label>
-					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="trailer" id="trailer">
-					    	</div>
+					    	<div class="col-sm-4">
+					      		<input type="text" class="form-control input-sm empty_data_input" name="trailer" id="trailer">
+					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      						      		
+					    	</div>					    	
 					  	</div>
 					  	
 					  	<?php
@@ -324,7 +332,7 @@ require_once('template/header.html');
 					  	?>
 					  	
 					  	<div class="form-group">
-					    	<label for="max_weight" class="col-sm-4 control-label"><small>>Разрешенная максимальная масса</small></label>
+					    	<label for="max_weight" class="col-sm-4 control-label"><small>Разрешенная максимальная масса</small></label>
 					    	<div class="col-sm-8">
 					      		<input type="text" class="form-control input-sm" name="max_weight" id="max_weight" placeholder="кг" required>
 					    	</div>
@@ -384,7 +392,11 @@ require_once('template/header.html');
 					      		<input type="text" class="form-control input-sm" name="auto_doc_date" id="auto_doc_date" required>
 					    	</div>
 					  	</div>
-
+					  	<?php
+					  	if((((date("Y")-$_SESSION["step_1"]["year_manufacture"])<3) && ($_SESSION["step_1"]["category"] == 1 || $_SESSION["step_1"]["category"] == 2)) || ($_SESSION["step_1"]["category"] == 3 || $_SESSION["step_1"]["category"] == 6 || $_SESSION["step_1"]["category"] == 7 || $_SESSION["step_1"]["category"] == 8 || $_SESSION["step_1"]["category"] == 9 || $_SESSION["step_1"]["category"] == 10) || ((date("Y")-$_SESSION["step_1"]["year_manufacture"]) == 0 && ($_SESSION["step_1"]["category"] == 4 || $_SESSION["step_1"]["category"] == 5)) || $_SESSION["step_1"]["place_reg"] == 3){
+					  		//....
+					  	} else { 
+					  	?>
 					  	<div class="form-group">
 					    	<label for="auto_diag_card" class="col-sm-4 control-label"><small>Диагностическая карта, <br>свидетельствующая о прохождении<br> технического осмотра:</small></label>
 					    	<div class="col-sm-8" id="auto_diag_card" style="padding-top:2%">
@@ -392,13 +404,16 @@ require_once('template/header.html');
 					      		<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
 					    	</div>
 					  	</div>					  	
-
+					  	<?php
+					  	}
+					  	?>
 
 					  	<div class="form-group">
 					    	<label for="auto_reg_number" class="col-sm-4 control-label"><small>Государственный регистрационный знак</small></label>
-					    	<div class="col-sm-8" style="padding-top:2%">
-					      		<input type="text" class="form-control input-sm" name="auto_reg_number" id="auto_reg_number" required>
-					    	</div>
+					    	<div class="col-sm-8">
+					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" required>
+					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      		
+					    	</div>					    	
 					  	</div>
 
 
@@ -482,7 +497,63 @@ require_once('template/header.html');
 					  		}
 				  		}
 				  	}
-				  	?>					  						  						  	
+				  	?>	
+						<hr class="hr_red">
+						  	<div class="form-group">
+						    	<label class="col-sm-4 control-label"><small>Срок действия договора страхования</small></label>
+						    	<div class="col-sm-4" style="padding-top:2%">
+						      		<input type="text" class="form-control input-sm" name="start_date" id="start_date" value="<?php echo date('d.m.Y', strtotime("+1 days"))?>" placeholder="Дата начала действия договора" required>
+						      		<input type="time" class="form-control input-sm" name="start_time" id="start_time" value="00:00" placeholder="Время начала действия договора" disabled required>	
+						    	</div>	
+						    	<div class="col-sm-4" style="padding-top:2%">
+						      		<input type="text" class="form-control input-sm" name="end_date" id="end_date" value="<?php 
+						      		//echo($_SESSION["step_1"]["place_reg"] == 1 ?  date('d.m.Y', strtotime("+1 years")) : '')
+						      		if($_SESSION["step_1"]["place_reg"] == 1) {
+						      			echo date('d.m.Y', strtotime("+1 years"));
+						      		}
+						      		if($_SESSION["step_1"]["place_reg"] == 3){
+						      			echo date('d.m.Y', strtotime("+20 days"));
+						      		}
+						      		if($_SESSION["step_1"]["place_reg"] == 2){
+						      			if($_SESSION["step_1"]["term_insurance"] == 1){
+						      				echo date('d.m.Y', strtotime("+15 days"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 2){
+						      				echo date('d.m.Y', strtotime("+1 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 3){
+						      				echo date('d.m.Y', strtotime("+(2 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 4){
+						      				echo date('d.m.Y', strtotime("+3 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 5){
+						      				echo date('d.m.Y', strtotime("+4 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 6){
+						      				echo date('d.m.Y', strtotime("+5 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 7){
+						      				echo date('d.m.Y', strtotime("+6 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 8){
+						      				echo date('d.m.Y', strtotime("+7 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 9){
+						      				echo date('d.m.Y', strtotime("+6 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 10){
+						      				echo date('d.m.Y', strtotime("+9 months"));
+						      			}
+						      			if($_SESSION["step_1"]["term_insurance"] == 11){
+						      				echo date('d.m.Y', strtotime("+1 years"));
+						      			}						      									      									      									      									      									      									      			
+						      									      									      									      			
+						      		}						      		
+						      		?>" placeholder="Дата окончания действия договора" required disabled>
+						      		<input type="time" class="form-control input-sm" name="end_time" id="end_time" value="23:59" placeholder="Время окончания действия договора" required disabled>				      		
+						    	</div>							    					    	
+						  	</div>					  					  					  						  						  	
 					  	<hr class="hr_red">
 						  	<div class="form-group">
 						    	<label for="bso_number" class="col-sm-4 control-label"><small>Номер выдаваемого полиса</small></label>
@@ -498,6 +569,7 @@ require_once('template/header.html');
 									</select>	      		
 						    	</div>
 						  	</div>
+
 						  	<hr class="hr_line">
 							<div class="form-group" style="padding-top:2%">
 						    	<label for="a7_number" class="col-sm-4 control-label"><small>Номер выдаваемого бланка А7</small></label>
@@ -512,9 +584,8 @@ require_once('template/header.html');
 										?>    
 									</select>	      		
 						    	</div>
-						  	</div>						  						  	
+						  	</div>
 					  	<hr class="hr_red">
-
 					  	<div class="form-group">
 					      	<button type="submit" class="btn btn-success btn-block">Рассчитать стоимость</button>
 					  	</div>
@@ -544,6 +615,7 @@ $(document).ready(function(){
 	$('#power').mask('0000');
 	$('#auto_doc_date').mask('00.00.0000');	
 	$('#auto_diag_card_next_date').mask('00.0000');	
+	$('#start_date').mask('00.00.0000');
 //Календарик	
 	$( ".date_birth" ).datepicker({
 	  dateFormat: "dd.mm.yy",
@@ -580,7 +652,14 @@ $(document).ready(function(){
 	  changeMonth: true,
 	  yearRange: "c:c+10"
 	});
-	
+	$( "#start_date" ).datepicker({
+	  dateFormat: "dd.mm.yy",
+	  minDate: "0d",
+	  changeYear: true,
+	  changeMonth: true,
+	  yearRange: "c:c+10",
+	  showOn: "focus"
+	});
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 	//отображение списка городов субъекта для страхователя
 		$(document).on("change", "#subject", function(){
@@ -744,6 +823,103 @@ $(document).ready(function(){
 				return false;
 		});
 
+//Заполняем поле словом "Отсутствует" в случае отметки соответтсвующего чекбокса
+	$(document).on("change", ".empty_data", function(){
+		if($(this).prop("checked")){
+			$(this).prevAll('.input-sm:first').val('Отсутствует');
+		}else{
+			$(this).prevAll('.input-sm:first').val('');
+		}
+	});
+//Убираем галочку с чекбокса при фокусе на поле
+	$(document).on("keydown", ".empty_data_input", function(){
+		if($(this).nextAll('.empty_data:first').prop("checked")){
+			$(this).nextAll('.empty_data:first').prop("checked", false)
+		}
+	});
+
+//Заполняем дату окончания действия договора страхования
+	$(document).on("change", "#start_date", function(){
+		var a = $(this).val();//дата начала действия
+		var b = "<?php echo date("d.m.Y") ?>";//дата сегодня
+		var c = "<?php echo $_SESSION["step_1"]["term_insurance"]?>";
+ 		var arrStartDate = a.split('.');
+ 		var arrTodayDate = b.split('.');
+		var startDate = new Date(arrStartDate[2], arrStartDate[1]-1, arrStartDate[0]);
+ 		var todayDate = new Date(arrTodayDate[2], arrTodayDate[1]-1, arrTodayDate[0]); 				
+		//alert(startDate+'-'+todayDate);
+		//если дата меньше текущей
+		if(startDate < todayDate){
+			$(this).val('');
+			$("#start_time").prop("disabled", true)
+			$("#start_time").val('00:00');
+			return false;
+		}
+		if(startDate > todayDate || a == b){
+			//alert(startDate);
+			var endDate = startDate;
+			var arr = [0,15,1,2,3,4,5,6,7,8,9,12,20];
+			var srok = arr[c];
+			if(c == '1' || c == '12'){//прибавляем дни
+				endDate.setDate(endDate.getDate()+srok);
+			} else {//прибавляем месяцы
+				endDate.setMonth(endDate.getMonth()+srok);
+			}
+			endDate.setDate(endDate.getDate()-1);
+			var dd = endDate.getDate();
+			if(dd<10){
+				dd = '0'+dd;
+			}		
+			var mm = endDate.getMonth()+1;
+			if(mm<10){
+				mm = '0'+mm;
+			}				
+			var yyyy = endDate.getFullYear();
+			var end_date = dd+'.'+mm+'.'+yyyy;
+			$("#end_date").val(end_date);
+		}
+
+
+
+
+
+
+
+
+
+
+		// //если дата меньше текущей
+		// if(moment(a, 'DD.MM.YYYY').isBefore(b, 'DD.MM.YYYY')){
+		// 	alert(moment(a, 'DD.MM.YYYY')+'-'+moment(b, 'DD.MM.YYYY'));
+		// 	$(this).val('');
+		// 	$("#start_time").prop("disabled", true)
+		// 	$("#start_time").val('00:00');
+		// 	return false;
+		// }
+		// //если дата больше или равна текущей
+		// if(moment(a, 'DD.MM.YYYY').isAfter(b, 'DD.MM.YYYY') || moment(a, 'DD.MM.YYYY').isSame(b, 'DD.MM.YYYY')){
+		// 	if(c == '1' || c == '12'){
+		// 		var type_data = 'days';
+		// 	} else {
+		// 		var type_data = 'months';
+		// 	}
+		// 	var arr = [0,15,1,2,3,4,5,6,7,8,9,12,20];
+		// 	var srok = arr[c];	
+		// 	var end_date = moment(a, 'DD.MM.YYYY').add(type_data, srok).subtract('days', 1).format('DD.MM.YYYY');
+		// 	$("#end_date").val(end_date);
+		// }
+		// //Работа с полем времени начала действия полиса если дата равна текущей
+		// if(moment(a, 'DD.MM.YYYY').isSame(b, 'DD.MM.YYYY')){
+		// 	$("#start_time").prop("disabled", false);
+		// 	var time_now = moment().format('HH:mm');
+		// 	// $("#start_time").val(time_now);
+		// } else{
+		// 	$("#start_time").prop("disabled", true);
+		// 	$("#start_time").val('00:00');
+		// }		 
+	});
+
+//Отслеживаем изменение время старта	
 //проверка данных формы
     $('#main_form').submit(function( event ) {
     	
