@@ -16,6 +16,18 @@ require_once('function.php');
 connect_to_base();
 require_once('template/header.html');
 ?>
+
+<style type="text/css">
+	#top {
+	  bottom: 0;
+	  cursor: pointer;
+	  display: none;
+	  font-size: 200%;
+	  position: fixed;
+	  right: 0;
+	}
+</style>
+<div id="top"><span class="glyphicon glyphicon-arrow-up"></span></div>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="col-md-6 col-md-offset-3" id="user_data">
@@ -24,7 +36,7 @@ require_once('template/header.html');
 	    			<h3 class="panel-title">Оформление полиса ОСАГО</h3>
 	  			</div>
 	  			<div class="panel-body">
-					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post" required> 
+					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
 					 <h4><b>Данные страхователя</b></h4>
 						<div class="form-group" id="owner">
 							<hr class="hr_red">
@@ -398,10 +410,11 @@ require_once('template/header.html');
 					  	} else { 
 					  	?>
 					  	<div class="form-group">
-					    	<label for="auto_diag_card" class="col-sm-4 control-label"><small>Диагностическая карта, <br>свидетельствующая о прохождении<br> технического осмотра:</small></label>
+					    	<label for="auto_diag_card" class="col-sm-4 control-label"><small>Диагностическая карта, <br>свидетельствующая о прохождении<br> ТО:</small></label>
 					    	<div class="col-sm-8" id="auto_diag_card" style="padding-top:2%">
 					      		<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" placeholder="Номер" required>
 					      		<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
+					      		<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
 					    	</div>
 					  	</div>					  	
 					  	<?php
@@ -436,20 +449,33 @@ require_once('template/header.html');
 						<div class="form-group">
 					    	<label for="auto_used" class="col-sm-4 control-label"><small>Транспортное средство будет использоваться:</small></label>
 						    	<div id="auto_used">
-							    	<div class="col-sm-4" style="padding-top:2%">
-							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_start_1" id="auto_used_start_1" placeholder="c" required>
-							      		<hr class="hr_line">
-							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_start_2" id="auto_used_start_2" placeholder="c">
-							      		<hr class="hr_line">
-							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" id="auto_used_start_3" placeholder="c">
+							    	<div class="col-sm-8" style="padding-top:2%">
+							    		<div class="col-sm-6">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_1" id="auto_used_start_1" placeholder="c" required>
+							      		</div>
+							      		<div class="col-sm-6">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" id="auto_used_end_1" placeholder="по" required>
+							      		</div>
+							      		<div class="col-sm-6">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_2" id="auto_used_start_2" placeholder="c">
+							      		</div>
+							      		<div class="col-sm-6">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" id="auto_used_end_2" placeholder="по">
+							      		</div>
+							      		<div class="col-sm-6">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" id="auto_used_start_3" placeholder="c">
+							      		</div>
+							      		<div class="col-sm-6">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" id="auto_used_end_3" placeholder="по">
+							      		</div>
 							    	</div>
-							    	<div class="col-sm-4" style="padding-top:2%">
+<!-- 							    	<div class="col-sm-4" style="padding-top:2%">
 							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" id="auto_used_end_1" placeholder="по" required>
 							      		<hr class="hr_line">
 							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" id="auto_used_end_2" placeholder="по">
 							      		<hr class="hr_line">
 							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" id="auto_used_end_3" placeholder="по">
-							    	</div>
+							    	</div> -->
 							    </div>
 					  	</div>
 					  	<hr class="hr_line">					  	
@@ -503,7 +529,7 @@ require_once('template/header.html');
 						    	<label class="col-sm-4 control-label"><small>Срок действия договора страхования</small></label>
 						    	<div class="col-sm-4" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm" name="start_date" id="start_date" value="<?php echo date('d.m.Y', strtotime("+1 days"))?>" placeholder="Дата начала действия договора" required>
-						      		<input type="time" class="form-control input-sm" name="start_time" id="start_time" value="00:00" placeholder="Время начала действия договора" disabled required>	
+						      		<input type="text" class="form-control input-sm" name="start_time" id="start_time" value="00:00" placeholder="Время начала действия договора" disabled required>	
 						    	</div>	
 						    	<div class="col-sm-4" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm" name="end_date" id="end_date" value="<?php 
@@ -595,9 +621,21 @@ require_once('template/header.html');
 						  	</div>
 
 						<hr class="hr_red">
+						  	<div class="form-group">
+						    	<label for="ais_request_identifier" class="col-sm-4 control-label"><small>Идентификатор запроса КБМ/ТО</small></label>
+						    	<div class="col-sm-8">
+						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" id="ais_request_identifier" required>
+						    	</div>
+						  	</div>
 
+						<hr class="hr_red">
 					  	<div class="form-group">
-					      	<button type="submit" class="btn btn-success btn-block">Оформить полис</button>
+					      	<div class="col-sm-6">
+					      		<button type="submit" name="action" value="add" class="btn btn-primary btn-block">Оформить полис</button>
+					      	</div>
+					      	<div class="col-sm-6">	
+					      		<button type="submit" name="action" value="project" class="btn btn-danger btn-block">Сохранить как проект</button>
+					      	</div>
 					  	</div>
 					</form>
 	  			</div>
@@ -614,7 +652,23 @@ require_once('template/header.html');
 </body>
 </html>
 <script type="text/javascript">
+var top_show = 150; // В каком положении полосы прокрутки начинать показ кнопки "Наверх"
+var delay = 1000; // Задержка прокрутки
 $(document).ready(function(){
+
+/////////////////////////////////////////////////////////
+$(window).scroll(function () { // При прокрутке попадаем в эту функцию
+      /* В зависимости от положения полосы прокрукти и значения top_show, скрываем или открываем кнопку "Наверх" */
+      if ($(this).scrollTop() > top_show) $('#top').fadeIn();
+      else $('#top').fadeOut();
+    });
+    $('#top').click(function () { // При клике по кнопке "Наверх" попадаем в эту функцию
+      /* Плавная прокрутка наверх */
+      $('body, html').animate({
+        scrollTop: 0
+      }, delay);
+    });
+
 /////////////////////////////////////////////////////////
 	$('.date_birth').mask('00.00.0000');
 	$('#doc_date').mask('00.00.0000');
@@ -913,11 +967,11 @@ $(document).ready(function(){
 	$(document).on("change", "#start_time", function(){
 		var timeNow = new Date();
 		var hhNow = timeNow.getHours();
-		if(hhNow < 9){
+		if(hhNow < 10){
 			hhNow = '0'+hhNow;
 		}
 		var mmNow = timeNow.getMinutes();
-		if(mmNow < 9){
+		if(mmNow < 10){
 			mmNow = '0'+mmNow;
 		}		
 		var timeStart = $(this).val().split(':');
@@ -936,9 +990,17 @@ $(document).ready(function(){
 		}
 	});
 //проверка данных формы
-    $('#main_form').submit(function( event ) {
-    	
-    });
+	$('#main_form').validate({ // initialize the plugin
+    	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.
+    	submitHandler: function(form) {
+    	add_polis();
+    	return false; 
+    	}
+    }); 
+    // $('#main_form').submit(function( event ) {
+    // 	add_polis();
+    // 	return false;    	
+    // });
 
 ///////////////////////////////////////////////////////////
 });

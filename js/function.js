@@ -223,6 +223,20 @@ function calc_osago(){
 			return false;
 }
 
+function add_polis(){
+			var a = $("#main_form").serialize();
+			$.ajax({
+			  type: "POST",
+			  url: '/ajax/polis_add.php',
+			  data: a,
+			  success: function(data) {
+			  	$("#user_data").slideUp();
+			  	$("#message").html(data);
+			  }
+			});
+			return false;
+}
+
 function button_return(){
 	$('#user_data').slideDown();
 	$('#message').html('');

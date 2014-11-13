@@ -223,6 +223,7 @@ require_once('template/header.html');
 							  			}
 							  		?>
 									</select>
+									<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос КБМ в АИС РСА</small></a></span>
 							    </div>
 						  	</div>					  
 
