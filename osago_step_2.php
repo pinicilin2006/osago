@@ -37,16 +37,17 @@ require_once('template/header.html');
 	  			</div>
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
+					 <input type="hidden" name="md5_id" value="<?php echo md5(date("F j, Y, g:i:s "))?>">
 					 <h4><b>Данные страхователя</b></h4>
 						<div class="form-group" id="owner">
 							<hr class="hr_red">
 					    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Страхователь</small></label>
 						    <div class="col-sm-7">															
 								<div class="radio">
-									  	<label><input type="radio" name="owner" class="owner" value="1" checked><small>Физическое лицо / индивидуальный предприниматель</small></label>
+									  	<label><input type="radio" name="insurer" class="insurer" value="1" checked><small>Физическое лицо / индивидуальный предприниматель</small></label>
 								</div>
 								<div class="radio">
-									  	<label><input type="radio" name="owner" class="owner" value="2"><small>Юридическое лицо</small></label>
+									  	<label><input type="radio" name="insurer" class="insurer" value="2"><small>Юридическое лицо</small></label>
 								</div>
 								
 						    </div>
@@ -110,8 +111,8 @@ require_once('template/header.html');
 						  	<div class="form-group">
 						    	<label class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_name" id="jur_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="jur_name" id="jur_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="jur_series" id="jur_series" placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm" name="jur_number" id="jur_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -576,8 +577,8 @@ require_once('template/header.html');
 						      			}						      									      									      									      									      									      									      			
 						      									      									      									      			
 						      		}						      		
-						      		?>" placeholder="Дата окончания действия договора" required disabled>
-						      		<input type="time" class="form-control input-sm" name="end_time" id="end_time" value="23:59" placeholder="Время окончания действия договора" required disabled>				      		
+						      		?>" placeholder="Дата окончания действия договора" required readonly>
+						      		<input type="time" class="form-control input-sm" name="end_time" id="end_time" value="23:59" placeholder="Время окончания действия договора" required readonly>				      		
 						    	</div>							    					    	
 						  	</div>					  					  					  						  						  	
 					  	<hr class="hr_red">
@@ -677,6 +678,7 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	$('#owner_phone').mask('(000)000-00-00',{placeholder: "(___)___-__-__"} );
 	$('#year_manufacture').mask('0000');
 	$('#power').mask('0000');
+	$('.auto_used').mask('00.00.0000');	
 	$('#auto_doc_date').mask('00.00.0000');	
 	$('#auto_diag_card_next_date').mask('00.0000');	
 	$('#start_date').mask('00.00.0000');
@@ -861,7 +863,7 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	});
 
 //Отображение полей для ввода данных собственника в зависимости от выбранного типа собственника
-	$(document).on("change", ".owner", function(){
+	$(document).on("change", ".insurer", function(){
 		var a = $(this).val();
 		if(a == '1'){
 			$("#jur").slideUp();
@@ -947,6 +949,7 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 		}
 		//работа сполем времени начала действия договора если дата равна сегодняшней
 		if(a == b){
+			timeNow.setMinutes(timeNow.getMinutes() + 5);
 			var hours = timeNow.getHours();
 			if(hours < 10){
 				hours = '0'+hours;
@@ -966,6 +969,7 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 //Отслеживаем изменение время старта
 	$(document).on("change", "#start_time", function(){
 		var timeNow = new Date();
+		timeNow.setMinutes(timeNow.getMinutes() + 5);
 		var hhNow = timeNow.getHours();
 		if(hhNow < 10){
 			hhNow = '0'+hhNow;
