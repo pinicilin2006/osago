@@ -4,12 +4,12 @@ if(!isset($_SESSION['user_id'])){
 	header("Location: login.php");
 	exit;
 }
-echo "<pre>";
-print_r($_POST);
-echo "</pre><br><pre>";
-print_r($_SESSION);
-echo "</pre>";
-echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre><br><pre>";
+// print_r($_SESSION);
+// echo "</pre>";
+// echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 //exit();
 require_once('../config.php');
 require_once('../function.php');
@@ -29,11 +29,17 @@ if(!empty($err_text)){
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 	exit();
 }
+$step_2 = '';
+$step_2 = array();
 foreach($_POST as $key => $val){
 	if(empty($val)){
 		continue;
 	}
+	if($key == 'owner_doc_name' && $_POST["insisown"] == 1){
+		continue;
+	}
 	$$key = mysql_escape_string($val);
+	$step_2[$key] = $$key;
 }
 
 if(!$insurer){
@@ -201,6 +207,7 @@ if($insisown == 1){
 		$owner_type = 2;
 	}
 }
+//анные по ТС
 $vehicle_data = array(
 	'mark' => $mark,
 	'model' => $model,
@@ -225,11 +232,59 @@ if(isset($number_seats)){
 	$vehicle_data['number_seats'] = $number_seats;
 }
 $vehicle_data = serialize($vehicle_data);
-echo $insurer_id.' '.$insurer_type."<br>".$owner_id." ".$owner_type;
-echo "<br>";
-echo "<pre>";
-print_r($vehicle_data);
-echo "</pre>";
+
+//Данные по водителям
+if($_SESSION["step_1"]["driver"] == 1){
+	$drivers_data = '';
+} else {
+	$number_of_drivers = 0;
+	$drivers_data = array();
+	for($x=1;$x<6;$x++){
+		if(isset($_SESSION["step_1"]["driver_$x"])){
+			$number_of_drivers++;
+			$drivers_data["driver_".$x."_first_name"] = ${"driver_".$x."_first_name"};
+			$drivers_data["driver_".$x."_second_name"] = ${"driver_".$x."_second_name"};
+			$drivers_data["driver_".$x."_third_name"] = ${"driver_".$x."_third_name"};
+			$drivers_data["driver_".$x."_date_birth"] = ${"driver_".$x."_date_birth"};
+			$drivers_data["driver_".$x."_series"] = ${"driver_".$x."_series"};
+			$drivers_data["driver_".$x."_number"] = ${"driver_".$x."_number"};
+			$drivers_data["driver_".$x."_experience"] = ${"driver_".$x."_experience"};
+		}
+	}
+	$drivers_data['number_of_drivers'] = $number_of_drivers;
+	$drivers_data = serialize($drivers_data);
+}
+$calc_data = serialize($_SESSION['step_1']);
+$calc_result = serialize($_SESSION['calc']);
+$step_2_data = serialize($step_2);
+// echo $insurer_id.' '.$insurer_type."<br>".$owner_id." ".$owner_type;
+// echo "<br>";
+// echo "<pre>";
+// print_r($step_2);
+// echo "</pre>";
+if(mysql_num_rows(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5_id."'"))>0){
+	echo "<br><p class=\"text-danger text-center\">Ошибка!<br>Данные не могут быть повторно добавлены !</p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+	exit();	
+}
+$query = "INSERT INTO `contract` (user_id,unit_id,insurer_id,insurer_type,owner_id,owner_type,vehicle_data,drivers_data,calc_data,calc_result,start_date,start_time,end_date,step_2_data,bso_number,a7_number,rsa_number,project,md5_id) VALUES ('".$_SESSION['user_id']."','".$_SESSION['unit_id']."','".$insurer_id."','".$insurer_type."','".$owner_id."','".$owner_type."','".$vehicle_data."','".$drivers_data."','".$calc_data."','".$calc_result."','".$start_date."','".(isset($start_time) ? $start_time : '00:00')."','".$end_date."','".$step_2_data."','".($action=='project' ? '' : $bso_number)."','".($action=='project' ? '' : $a7_number)."','".$ais_request_identifier."','".($action == 'project' ? '1' : '0')."','".$md5_id."')";
+//echo $query;
+//echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+if(mysql_query($query)){
+	$contract_id = mysql_fetch_assoc(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5_id."'"));
+	$contract_id = $contract_id["id"];
+	echo '<div class="alert alert-success text-center">Данные успешно добавлены!</div>';
+	echo '<center><div class="btn-group btn-group-justified"><div class="btn-group"><a href="/print/statement.php?id='.$contract_id.'" target="_blank" class="btn btn-default" >Распечатать заявление</a></div><div class="btn-group"><a href="/print/bso.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать полис</a></div><div class="btn-group"><a href="/print/a7.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать бланк А7</a></div></div></center>';
+
+
+
+	// echo '<p><a href="/print/statement.php?id='.$contract_id.'" class="btn btn-primary active" role="button">Распечатать заявление</a></p>';
+	// echo '<p><a href="/print/bso.php?id='.$contract_id.'" class="btn btn-primary active" role="button">Распечатать полис</a></p>';
+	// echo '<p><a href="/print/a7.php?id='.$contract_id.'" class="btn btn-primary active" role="button">Распечатать бланк А7</a></p></center>';
+}else{
+	echo "<p class=\"text-danger\">Произошла ошибка при добавление договора в базу данных!</p>";
+	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+}
+//echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 ?>
 
 
