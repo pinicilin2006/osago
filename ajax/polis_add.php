@@ -272,14 +272,17 @@ $query = "INSERT INTO `contract` (user_id,unit_id,insurer_id,insurer_type,owner_
 if(mysql_query($query)){
 	$contract_id = mysql_fetch_assoc(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5_id."'"));
 	$contract_id = $contract_id["id"];
-	echo '<div class="alert alert-success text-center">Данные успешно добавлены!</div>';
-	echo '<center><div class="btn-group btn-group-justified"><div class="btn-group"><a href="/print/statement.php?id='.$contract_id.'" target="_blank" class="btn btn-default" >Распечатать заявление</a></div><div class="btn-group"><a href="/print/bso.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать полис</a></div><div class="btn-group"><a href="/print/a7.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать бланк А7</a></div></div></center>';
+	if($action == 'add'){
+		echo '<div class="alert alert-success text-center">Данные успешно добавлены!</div>';
+		echo '<center><div class="btn-group btn-group-justified"><div class="btn-group"><a href="/print/statement.php?id='.$contract_id.'" target="_blank" class="btn btn-default" >Распечатать заявление</a></div><div class="btn-group"><a href="/print/bso.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать полис</a></div><div class="btn-group"><a href="/print/a7.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать бланк А7</a></div></div></center>';
+	}
+	if($action == 'project'){
+		echo '<div class="alert alert-success text-center">Проект договора сохранён!</div>';
+		echo '<center><div class="btn-group btn-group-justified"><div class="btn-group"><a href="/print/statement.php?id='.$contract_id.'" target="_blank" class="btn btn-default" >Распечатать заявление</a></div><div class="btn-group"></div></div></center>';
 
-
-
-	// echo '<p><a href="/print/statement.php?id='.$contract_id.'" class="btn btn-primary active" role="button">Распечатать заявление</a></p>';
-	// echo '<p><a href="/print/bso.php?id='.$contract_id.'" class="btn btn-primary active" role="button">Распечатать полис</a></p>';
-	// echo '<p><a href="/print/a7.php?id='.$contract_id.'" class="btn btn-primary active" role="button">Распечатать бланк А7</a></p></center>';
+	}
+	unset($_SESSION["step_1"]);
+	unset($_SESSION["calc"]);
 }else{
 	echo "<p class=\"text-danger\">Произошла ошибка при добавление договора в базу данных!</p>";
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
