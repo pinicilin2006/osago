@@ -4,6 +4,8 @@ if(!isset($_SESSION['user_id'])){
 	header("Location: login.php");
 	exit;
 }
+	unset($_SESSION["step_1"]);
+	unset($_SESSION["calc"]);
 // echo "<pre>";
 // print_r($_SESSION);
 // echo "</pre>";
@@ -11,6 +13,19 @@ require_once('config.php');
 require_once('function.php');
 connect_to_base();
 require_once('template/header.html');
+//Забираем данные 
+if(isset($_SESSION['access'][10])){
+	$query = "SELECT * FROM `contract`";
+}
+elseif(isset($_SESSION['access'][6])){
+	$query = "SELECT * FROM `contract` WHERE `unit_id` = '".$_SESSION['unit_id']."' ORDER BY `id`";
+} else {
+	$query = "SELECT * FROM `contract` WHERE `user_id` = '".$_SESSION['user_id']."' ORDER BY `id`";
+}
+if(mysql_num_rows(mysql_query($query))<1){
+	echo "<p class=\"text-danger text-center\">Отсутствуют договора в базе данных!</p>";
+	exit();
+}
 ?>
 <div class="container-fluid">
 	<div class="row-fluid">
@@ -20,7 +35,59 @@ require_once('template/header.html');
 	    			<h3 class="panel-title">Ранее заключённые договора</h3>
 	  			</div>
 	  			<div class="panel-body">
-	    			Данные по договорам
+		  			<div class="table-responsive">
+		    			<table class='table table-striped table-hover table-condensed table-bordered'>
+		    				<thead>
+		    					<tr>
+				    				<th>№</th>
+				    				<th>Дата заключения договора</th>
+				    				<th>Страхователь</th>
+				    				<th>№ БСО</th>
+				    				<th>Дата/время начала действия договора</th>
+				    				<th>Дата/время окончания действия договора</th>
+				    				<th>Страховой тариф</th>
+				    				<th>Действие</th>
+				    			</tr>
+			    			</thead>
+			    			<tbody>
+<?php
+$query = mysql_query($query);
+while($row = mysql_fetch_assoc($query)){
+	echo "<tr>";
+	echo "<td>".$row['id']."</td>";
+	echo "<td>".date('d.m.Y', strtotime($row["time_create"]))."</td>";
+	$insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($row["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$row["insurer_id"]."'"));
+	if($row["insurer_type"] == 1){
+		echo "<td>".$insurer_data['second_name']." ".$insurer_data['first_name']." ".$insurer_data['third_name']."</td>";
+	} 
+	if($row["insurer_type"] == 2){
+		echo "<td>".$insurer_data['jur_name']."</td>";
+	}
+	echo "<td>".$row['bso_number']."</td>"; 
+	echo "<td>".$row['start_date']." / ".$row['start_time']."</td>"; 
+	echo "<td>".$row['end_date']." / 23:59</td>";
+	$calc_result = unserialize($row['calc_result']);
+	echo "<td>".$calc_result['t']."</td>";
+	echo '<td>
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Действие <span class="caret"></span></button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="/print/statement.php?id='.$row['id'].'" target="_blank"">Распечатать <br>заявление</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Распечатать <br>БСО</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Распечатать <br>бланк А7</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Аннулировать договор</a></li>
+  </ul>
+</div>
+	</td>';
+	echo "</tr>";
+}
+?>		    				
+			    			</tbody>
+		    			</table>
+		    		</div>
 	  			</div>
 			</div>
 		</div>

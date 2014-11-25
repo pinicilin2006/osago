@@ -292,7 +292,7 @@ $params['[TARIF]'] = $calc_result['t'];
 $params['[AIS_REQUEST]'] = $contract_data['rsa_data'];
 $params['[SPECIAL_NOTES]'] = $contract_data['special_notes'];
 $agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
-$params['[AGENT_NAME]'] = $agent_data['second_name'].' '.substr($agent_data['first_name'], 0, 1).'.'.substr($agent_data['third_name'], 0, 1).'.';
+$params['[AGENT_NAME]'] = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
 
 // echo "<pre>";
 // print_r($calc_result);
