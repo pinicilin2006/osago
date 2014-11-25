@@ -15,6 +15,19 @@ require_once('config.php');
 require_once('function.php');
 connect_to_base();
 require_once('template/header.html');
+$category_code = array(
+	'1' => 1,
+	'2' => 2,
+	'3' => 2,
+	'4' => 3,
+	'5' => 3,
+	'6' => 4,
+	'7' => 4,
+	'8' => 4,
+	'9' => 6,
+	'10' => 5,
+	'11' => 7
+);
 ?>
 
 <style type="text/css">
@@ -305,6 +318,22 @@ require_once('template/header.html');
 								<div id="message_mark"></div>
 					    	</div>
 					  	</div>
+
+						<div class="form-group ">
+					    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;"><small>Категория ТС</small></label>
+					    	<div class="col-sm-8">							
+								<select class="form-control input-sm" name="category" id="category" required>
+						  		<?php
+						  			$query = mysql_query("SELECT * FROM `category_code` WHERE `group` = '".$category_code[$_SESSION["step_1"]["category"]]."' ORDER BY `id`");
+						  			while ($row = mysql_fetch_assoc($query)) {
+						  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+						  			}
+						  		?>
+								</select>
+								<div id="message_mark"></div>
+					    	</div>
+					  	</div>
+
 
 					  	
 					  	<div class="form-group">

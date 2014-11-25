@@ -223,7 +223,7 @@ $vehicle_data = array(
 	'purpose_use' => $purpose_use,
 	// 'max_weight' => (isset($max_weight) ? $max_weight : ''),
 	// 'number_seats' => (isset($number_seats) ? $number_seats : ''),
-	'category' => $_SESSION["step_1"]["category"],
+	'category' => $category,
 	);
 if($max_weight){
 	$vehicle_data['max_weight'] = $max_weight;

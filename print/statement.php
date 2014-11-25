@@ -211,9 +211,91 @@ if($contract_data["owner_type"] == 2){
 
 }
 
+//Данные по автомобилю
+$vehicle_data = unserialize($contract_data['vehicle_data']);
+$calc_data = unserialize($contract_data['calc_data']);
+//Получаем марку и модель
+$mark = mysql_fetch_assoc(mysql_query("SELECT * FROM `mark` WHERE `rsa_mark_id`='".$vehicle_data['mark']."'"));
+$mark = $mark['name'];
+$model = mysql_fetch_assoc(mysql_query("SELECT * FROM `model` WHERE `rsa_model_id`='".$vehicle_data['model']."'"));
+$model = $model['name'];
+$category = mysql_fetch_assoc(mysql_query("SELECT * FROM `category_code` WHERE `id`='".$vehicle_data['category']."'"));
+$category = $category['name'];
+$params['[MARK]'] = $mark;
+$params['[MODEL]'] = $model;
+$params['[CATEGORY]'] = $category;
+$params['[VIN]'] = $vehicle_data['vin'];
+$params['[YEAR_MANUFACTURED]'] = $calc_data['year_manufacture'];
+$params['[POWER]'] = $vehicle_data['power'];
+$params['[POWER_K]'] = round($vehicle_data['power']*1.35962, 2);
+$params['[MAX_WEIGHT]'] = (isset($vehicle_data['max_weight']) ? $vehicle_data['max_weight'] : '------');
+$params['[MAX_PASSENGER]'] = (isset($vehicle_data['number_seats']) ? $vehicle_data['number_seats'] : '------');
+$params['[CHASSIS]'] = $vehicle_data['chassis'];
+$params['[TRAILER]'] = $vehicle_data['trailer'];
+$params['[AUTO_DOC_SERIES]'] = $vehicle_data['auto_doc_series'];
+$params['[AUTO_DOC_NUMBER]'] = $vehicle_data['auto_doc_number'];
+$params['[AUTO_DOC_DATE]'] = $vehicle_data['auto_doc_date'];
+$params['[AUTO_REG_NUMBER]'] = $vehicle_data['auto_reg_number'];
+$params['[AUTO_DIAG_CARD_NUMBER]'] = (isset($vehicle_data['auto_diag_card_number']) ? $vehicle_data['auto_diag_card_number'] : '------');
+$params['[AUTO_DIAG_CARD_NEXT_DATE]'] = (isset($vehicle_data['auto_diag_card_next_date']) ? $vehicle_data['auto_diag_card_next_date'] : '------');
+$params['[TRAILER_YES]'] = ($calc_data['trailer'] == 1 ? 'V' : ' ');
+$params['[TRAILER_NO]'] = ($calc_data['trailer'] == 2 ? 'V' : ' ');
+for($x=1;$x<10;$x++){
+	if($vehicle_data["purpose_use"] == $x){
+		$params['['.$x.']'] = '|v|';
+	} else {
+		$params['['.$x.']'] = '|_|';
+	}
+}
+$params['[NO_LIMIT]'] = ($calc_data['drivers'] == 1 ? 'v' : ' ');
+$params['[LIMIT]'] = ($calc_data['drivers'] == 2 ? 'v' : ' ');
+if($calc_data['drivers'] == 2){
+	$drivers_data = unserialize($contract_data['drivers_data']);
+}
+for($x=1;$x<6;$x++){
+	if($calc_data['drivers'] == 2 && $x<=$drivers_data['number_of_drivers']){
+		$params['[DRIVER_'.$x.'_NAME]'] = $drivers_data['driver_'.$x.'_second_name'].' '.$drivers_data['driver_'.$x.'_first_name'].' '.$drivers_data['driver_'.$x.'_third_name'];
+		$params['[DRIVER_'.$x.'_DATE]'] = $drivers_data['driver_'.$x.'_date_birth'];
+		$params['[DRIVER_'.$x.'_DOC]'] =  $drivers_data['driver_'.$x.'_series'].' '.$drivers_data['driver_'.$x.'_number'];
+		$params['[DRIVER_'.$x.'_EXP]'] = $drivers_data['driver_'.$x.'_experience'];
+	} else {
+		$params['[DRIVER_'.$x.'_NAME]'] = '------------';
+		$params['[DRIVER_'.$x.'_DATE]'] = '------------';
+		$params['[DRIVER_'.$x.'_DOC]'] =  '------------';
+		$params['[DRIVER_'.$x.'_EXP]'] = '------------';
+	}
+}
+$step_2_data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $contract_data['step_2_data']);//боримся с проблемой unserialize если есть кавычки
+$step_2_data = unserialize($step_2_data);
+$params['[START_PERIOD_USE_1]'] = $step_2_data['auto_used_start_1'].' г.';
+$params['[END_PERIOD_USE_1]'] = $step_2_data['auto_used_end_1'].' г.';
+$params['[START_PERIOD_USE_2]'] = (isset($step_2_data['auto_used_start_2']) && isset($step_2_data['auto_used_end_2']) ? $step_2_data['auto_used_start_2'].' г.' : '------------');
+$params['[END_PERIOD_USE_2]'] = (isset($step_2_data['auto_used_start_2']) && isset($step_2_data['auto_used_end_2']) ? $step_2_data['auto_used_end_2'].' г.' : '------------');
+$params['[START_PERIOD_USE_3]'] = (isset($step_2_data['auto_used_start_3']) && isset($step_2_data['auto_used_end_3']) ? $step_2_data['auto_used_start_3'].' г.' : '------------');
+$params['[END_PERIOD_USE_3]'] = (isset($step_2_data['auto_used_start_3']) && isset($step_2_data['auto_used_end_3']) ? $step_2_data['auto_used_end_3'].' г.' : '------------');
+$params['[OSAGO_OLD_SERIES]'] = (isset($step_2_data['osago_old_series']) ? $step_2_data['osago_old_series'] : '------------');
+$params['[OSAGO_OLD_NUMBER]'] = (isset($step_2_data['osago_old_number']) ? $step_2_data['osago_old_number'] : '------------');
+$params['[OSAGO_OLD_NAME]'] = (isset($step_2_data['osago_old_name']) ? $step_2_data['osago_old_name'] : '------------');
+$params['[BSO_NUMBER]'] = (isset($step_2_data['bso_number']) ? $step_2_data['bso_number'] : '------------');
+$params['[DATE_CREATE]'] = date('d.m.Y', strtotime($contract_data["time_create"]));
+$calc_result = unserialize($contract_data['calc_result']);
+$params['[TB]'] = $calc_result['tb'];
+$params['[KT]'] = $calc_result['kt'];
+$params['[KBM]'] = $calc_result['kbm'];
+$params['[KVS]'] = $calc_result['kvs'];
+$params['[KS]'] = $calc_result['ks'];
+$params['[KP]'] = $calc_result['kp'];
+$params['[KM]'] = $calc_result['km'];
+$params['[KPR]'] = $calc_result['kpr'];
+$params['[KN]'] = $calc_result['kn'];
+$params['[TARIF]'] = $calc_result['t'];
+$params['[AIS_REQUEST]'] = $contract_data['rsa_data'];
+$params['[SPECIAL_NOTES]'] = $contract_data['special_notes'];
+$agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
+$params['[AGENT_NAME]'] = $agent_data['second_name'].' '.substr($agent_data['first_name'], 0, 1).'.'.substr($agent_data['third_name'], 0, 1).'.';
 
 // echo "<pre>";
-// print_r($city_data);
+// print_r($calc_result);
 // echo "</pre>";
 // exit();
 /////////////////////////////////////////////////////////////////////////////////////////////////////
