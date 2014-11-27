@@ -242,13 +242,13 @@ $params['[TRAILER_YES]'] = ($calc_data['trailer'] == 1 ? 'V' : ' ');
 $params['[TRAILER_NO]'] = ($calc_data['trailer'] == 2 ? 'V' : ' ');
 for($x=1;$x<10;$x++){
 	if($vehicle_data["purpose_use"] == $x){
-		$params['['.$x.']'] = '|v|';
+		$params['['.$x.']'] = '<w:sym w:font="Wingdings" w:char="F0FE"/>';
 	} else {
-		$params['['.$x.']'] = '|_|';
+		$params['['.$x.']'] = '<w:sym w:font="Wingdings" w:char="F0A8"/>';
 	}
 }
-$params['[NO_LIMIT]'] = ($calc_data['drivers'] == 1 ? 'v' : ' ');
-$params['[LIMIT]'] = ($calc_data['drivers'] == 2 ? 'v' : ' ');
+$params['[NO_LIMIT]'] = ($calc_data['drivers'] == 1 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
+$params['[LIMIT]'] = ($calc_data['drivers'] == 2 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
 if($calc_data['drivers'] == 2){
 	$drivers_data = unserialize($contract_data['drivers_data']);
 }

@@ -38,14 +38,19 @@ $tplIdx = $pdf->importPage(1);
 //указываем размер страницы
 $pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
 //указываем шрифт и размер
-$pdf->SetFont('ArialMT', '', '12');
+$pdf->SetFont('ArialMT', '', '13');
 //указываем цвет текста 
 $pdf->SetTextColor(0,0,0);
 ////////////////////////////////////////////////////////Добавляем данные в полис//////////////////////////////
-//Время
-$start_time = explode(':', $contract_data['start_time']);
-$pdf->SetXY(120, 35);
-$pdf->Write(0, $start_time[0]);
+//Время начала действия договора
+$pdf->SetXY(123.8, 40.5);
+$pdf->Write(0, $contract_data['start_time'][0]);
+$pdf->SetXY(128.8, 40.5);
+$pdf->Write(0, $contract_data['start_time'][1]);
+$pdf->SetXY(140.3, 40.5);
+$pdf->Write(0, $contract_data['start_time'][3]);
+$pdf->SetXY(145.3, 40.5);
+$pdf->Write(0, $contract_data['start_time'][4]);
 //Отдаём готовый pdf. D - выдаст запрос на скачивание. I - отобразит в браузере
 $pdf->Output('policy.pdf', 'I'); 
 
