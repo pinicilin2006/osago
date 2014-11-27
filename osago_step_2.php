@@ -339,7 +339,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="vin" class="col-sm-4 control-label"><small>Идентификационный номер ТС (VIN)</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="vin" id="vin" required>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="vin" id="vin" maxlength="17" required>
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
 					    	</div>				    	
 					  	</div>						  	
@@ -404,10 +404,12 @@ $category_code = array(
 					    	<label for="auto_doc_type" class="col-sm-4 control-label"><small>Документ о регистрации ТС</small></label>
 					    	<div class="col-sm-8">
 					      		<select class="form-control input-sm" id="auto_doc_type" name="auto_doc_type">
-					      		<option value="1">ПТС</option>
-					      		<option value="2">Свидетельство о регистрации</option>
-					      		<option value="3">Технический паспорт</option>
-					      		<option value="4">ПСМ</option>
+						  		<?php
+						  			$query = mysql_query("SELECT * FROM `document_auto` WHERE `active` = '1' ORDER BY `id`");
+						  			while ($row = mysql_fetch_assoc($query)) {
+						  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+						  			}
+						  		?>
 					      		</select>
 					    	</div>
 					  	</div>

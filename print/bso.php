@@ -26,6 +26,12 @@ if(mysql_num_rows(mysql_query($query))<1){
 $contract_data = mysql_fetch_assoc(mysql_query($query));
 //Получаем данные страхователя
 $insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
+$owner_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["owner_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["owner_id"]."'"));
+$vehicle_data = unserialize($contract_data['vehicle_data']);
+$step_2_data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $contract_data['step_2_data']);//боримся с проблемой unserialize если есть кавычки
+$step_2_data = unserialize($step_2_data);
+$calc_data = unserialize($contract_data['calc_data']);
+$calc_result = unserialize($contract_data['calc_result']);
 require_once('fpdf17/fpdf.php'); 
 require_once('fpdi/fpdi.php'); 
 //Вносим необходимые данные в полис и отдаём в формате pdf
@@ -36,7 +42,10 @@ $pdf->setSourceFile('blank/bso.pdf');
 // Указываем номер импортируемой страницы
 $tplIdx = $pdf->importPage(1); 
 //указываем размер страницы
+//$pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
 $pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
+//Ставим поля по нулям
+$pdf->SetMargins(0,0,0,0);
 //указываем шрифт и размер
 $pdf->SetFont('ArialMT', '', '13');
 //указываем цвет текста 
@@ -51,6 +60,262 @@ $pdf->SetXY(140.3, 40.5);
 $pdf->Write(0, $contract_data['start_time'][3]);
 $pdf->SetXY(145.3, 40.5);
 $pdf->Write(0, $contract_data['start_time'][4]);
+//Дата начала
+$pdf->SetXY(161, 40.5);
+$pdf->Write(0, $contract_data['start_date'][0]);
+$pdf->SetXY(166, 40.5);
+$pdf->Write(0, $contract_data['start_date'][1]);
+$pdf->SetXY(173.7, 40.5);
+$pdf->Write(0, $contract_data['start_date'][3]);
+$pdf->SetXY(178.9, 40.5);
+$pdf->Write(0, $contract_data['start_date'][4]);
+$pdf->SetXY(193, 40.5);
+$pdf->Write(0, $contract_data['start_date'][8]);
+$pdf->SetXY(198.3, 40.5);
+$pdf->Write(0, $contract_data['start_date'][9]);
+//Дата окончания
+$pdf->SetXY(161, 48.1);
+$pdf->Write(0, $contract_data['end_date'][0]);
+$pdf->SetXY(166, 48.1);
+$pdf->Write(0, $contract_data['end_date'][1]);
+$pdf->SetXY(173.7, 48.1);
+$pdf->Write(0, $contract_data['end_date'][3]);
+$pdf->SetXY(178.9, 48.1);
+$pdf->Write(0, $contract_data['end_date'][4]);
+$pdf->SetXY(193, 48.1);
+$pdf->Write(0, $contract_data['end_date'][8]);
+$pdf->SetXY(198.3, 48.1);
+$pdf->Write(0, $contract_data['end_date'][9]);
+//Период использования
+//Первый период
+//старт
+$pdf->SetXY(8.7, 68);
+$pdf->Write(0, $step_2_data['auto_used_start_1'][0]);
+$pdf->SetXY(13.7, 68);
+$pdf->Write(0, $step_2_data['auto_used_start_1'][1]);
+$pdf->SetXY(21.2, 68);
+$pdf->Write(0, $step_2_data['auto_used_start_1'][3]);
+$pdf->SetXY(26.4, 68);
+$pdf->Write(0, $step_2_data['auto_used_start_1'][4]);
+$pdf->SetXY(38, 68);
+$pdf->Write(0, $step_2_data['auto_used_start_1'][8]);
+$pdf->SetXY(43, 68);
+$pdf->Write(0, $step_2_data['auto_used_start_1'][9]);
+//конец
+$pdf->SetXY(60.7, 68);
+$pdf->Write(0, $step_2_data['auto_used_end_1'][0]);
+$pdf->SetXY(65.7, 68);
+$pdf->Write(0, $step_2_data['auto_used_end_1'][1]);
+$pdf->SetXY(73.2, 68);
+$pdf->Write(0, $step_2_data['auto_used_end_1'][3]);
+$pdf->SetXY(78.4, 68);
+$pdf->Write(0, $step_2_data['auto_used_end_1'][4]);
+$pdf->SetXY(90, 68);
+$pdf->Write(0, $step_2_data['auto_used_end_1'][8]);
+$pdf->SetXY(95, 68);
+$pdf->Write(0, $step_2_data['auto_used_end_1'][9]);
+//Второй период
+if(isset($step_2_data['auto_used_start_2']) && isset($step_2_data['auto_used_end_2'])){
+	//старт
+	$pdf->SetXY(111.2, 68);
+	$pdf->Write(0, $step_2_data['auto_used_start_2'][0]);
+	$pdf->SetXY(116.2, 68);
+	$pdf->Write(0, $step_2_data['auto_used_start_2'][1]);
+	$pdf->SetXY(123.7, 68);
+	$pdf->Write(0, $step_2_data['auto_used_start_2'][3]);
+	$pdf->SetXY(128.9, 68);
+	$pdf->Write(0, $step_2_data['auto_used_start_2'][4]);
+	$pdf->SetXY(140.5, 68);
+	$pdf->Write(0, $step_2_data['auto_used_start_2'][8]);
+	$pdf->SetXY(145.5, 68);
+	$pdf->Write(0, $step_2_data['auto_used_start_2'][9]);
+	//конец
+	$pdf->SetXY(163.2, 68);
+	$pdf->Write(0, $step_2_data['auto_used_end_2'][0]);
+	$pdf->SetXY(168.2, 68);
+	$pdf->Write(0, $step_2_data['auto_used_end_2'][1]);
+	$pdf->SetXY(175.7, 68);
+	$pdf->Write(0, $step_2_data['auto_used_end_2'][3]);
+	$pdf->SetXY(180.9, 68);
+	$pdf->Write(0, $step_2_data['auto_used_end_2'][4]);
+	$pdf->SetXY(192.5, 68);
+	$pdf->Write(0, $step_2_data['auto_used_end_2'][8]);
+	$pdf->SetXY(197.5, 68);
+	$pdf->Write(0, $step_2_data['auto_used_end_2'][9]);	
+} else {
+	//старт
+	$pdf->SetXY(111.2, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(116.2, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(123.7, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(128.9, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(140.5, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(145.5, 67.4);
+	$pdf->Write(0, '-');
+	//конец
+	$pdf->SetXY(163.2, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(168.2, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(175.7, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(180.9, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(192.5, 67.4);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(197.5, 67.4);
+	$pdf->Write(0, '-');		
+}
+//Третий период
+if(isset($step_2_data['auto_used_start_3']) && isset($step_2_data['auto_used_end_3'])){
+	//старт
+	$pdf->SetXY(8.7, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_start_3'][0]);
+	$pdf->SetXY(13.7, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_start_3'][1]);
+	$pdf->SetXY(21.2, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_start_3'][3]);
+	$pdf->SetXY(26.4, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_start_3'][4]);
+	$pdf->SetXY(38, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_start_3'][8]);
+	$pdf->SetXY(43, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_start_3'][9]);
+	//конец
+	$pdf->SetXY(60.7, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_end_3'][0]);
+	$pdf->SetXY(65.7, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_end_3'][1]);
+	$pdf->SetXY(73.2, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_end_3'][3]);
+	$pdf->SetXY(78.4, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_end_3'][4]);
+	$pdf->SetXY(90, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_end_3'][8]);
+	$pdf->SetXY(95, 74.2);
+	$pdf->Write(0, $step_2_data['auto_used_end_3'][9]);	
+} else {
+	//старт
+	$pdf->SetXY(8.7, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(13.7, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(21.2, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(26.4, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(38, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(43, 73.8);
+	$pdf->Write(0, '-');
+	//конец
+	$pdf->SetXY(60.7, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(65.7, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(73.2, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(78.4, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(90, 73.8);
+	$pdf->Write(0, '-');
+	$pdf->SetXY(95, 73.8);
+	$pdf->Write(0, '-');		
+}
+
+//Страхователь
+if($contract_data["insurer_type"] == 1){
+	$insurer = $insurer_data['second_name']." ".$insurer_data['first_name']." ".$insurer_data['third_name'];
+	$insurer = iconv('utf-8', 'windows-1251', "$insurer");
+}
+if($contract_data["insurer_type"] == 2){
+	$insurer = iconv('utf-8', 'windows-1251', $insurer_data['jur_name']);
+}
+$pdf->SetXY(7.7, 90);
+$pdf->Write(0, $insurer);
+
+//Собственник
+if($contract_data["owner_type"] == 1){
+	$owner = $owner_data['second_name']." ".$owner_data['first_name']." ".$owner_data['third_name'];
+	$owner = iconv('utf-8', 'windows-1251', "$owner");
+}
+if($contract_data["owner_type"] == 2){
+	$owner = iconv('utf-8', 'windows-1251', $owner_data['jur_name']);
+}
+$pdf->SetXY(7.7, 107);
+$pdf->Write(0, $owner);
+//Есть ли прицеп
+if($calc_data['trailer'] == 2){//если ДА
+	$pdf->SetXY(94.5, 114.7);
+	$pdf->Write(0, 'V');	
+}
+if($calc_data['trailer'] == 1){//если ДА
+	$pdf->SetXY(108, 114.7);
+	$pdf->Write(0, 'V');	
+}
+//Марка и модель транспортного средства
+$mark = mysql_fetch_assoc(mysql_query("SELECT * FROM `mark` WHERE `rsa_mark_id`='".$vehicle_data['mark']."'"));
+$mark = iconv('utf-8', 'windows-1251', $mark['name']);
+$model = mysql_fetch_assoc(mysql_query("SELECT * FROM `model` WHERE `rsa_model_id`='".$vehicle_data['model']."'"));
+$model = iconv('utf-8', 'windows-1251', $model['name']);
+$pdf->SetXY(7.7, 126);
+$pdf->Write(0, $mark.',');
+$pdf->SetXY(7.7, 131);
+$pdf->Write(0, $model);
+//VIN
+$vin = iconv('utf-8', 'windows-1251', $step_2_data['vin']);
+$pdf->SetXY(71.5, 129);
+$pdf->Write(0, $vin[0]);
+$pdf->SetXY(76.5, 129);
+$pdf->Write(0, $vin[1]);
+$pdf->SetXY(81.8, 129);
+$pdf->Write(0, $vin[2]);
+$pdf->SetXY(86.8, 129);
+$pdf->Write(0, $vin[3]);
+$pdf->SetXY(91.8, 129);
+$pdf->Write(0, $vin[4]);
+$pdf->SetXY(97.2, 129);
+$pdf->Write(0, $vin[5]);
+$pdf->SetXY(102.5, 129);
+$pdf->Write(0, $vin[6]);
+$pdf->SetXY(107.7, 129);
+$pdf->Write(0, $vin[7]);
+$pdf->SetXY(113, 129);
+$pdf->Write(0, $vin[8]);
+$pdf->SetXY(118.2, 129);
+$pdf->Write(0, $vin[9]);
+$pdf->SetXY(123.5, 129);
+$pdf->Write(0, $vin[10]);
+$pdf->SetXY(129, 129);
+$pdf->Write(0, $vin[11]);
+$pdf->SetXY(134.3, 129);
+$pdf->Write(0, $vin[12]);
+$pdf->SetXY(139.3, 129);
+$pdf->Write(0, $vin[13]);
+$pdf->SetXY(144.5, 129);
+$pdf->Write(0, $vin[14]);
+$pdf->SetXY(149.5, 129);
+$pdf->Write(0, $vin[15]);
+$pdf->SetXY(154.7, 129);
+$pdf->Write(0, $vin[16]);
+//Государственный регистрационный номер
+$auto_reg_number = iconv('utf-8', 'windows-1251', $vehicle_data['auto_reg_number']);
+$pdf->SetXY(166, 129);
+$pdf->Write(0, $auto_reg_number);
+//Вид документа
+$auto_doc_type = mysql_fetch_assoc(mysql_query("SELECT * FROM `document_auto` WHERE `id` = '".$vehicle_data['auto_doc_type']."'"));
+$auto_doc_type = iconv('utf-8', 'windows-1251', $auto_doc_type['name']);
+$pdf->SetFont('ArialMT', '', '10');
+$pdf->SetXY(25, 141);
+$pdf->Write(0, $auto_doc_type);
+// echo "<pre>";
+// print_r($auto_doc_type);
+// echo "</pre>";
+// exit();
 //Отдаём готовый pdf. D - выдаст запрос на скачивание. I - отобразит в браузере
 $pdf->Output('policy.pdf', 'I'); 
 
