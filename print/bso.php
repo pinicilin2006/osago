@@ -46,6 +46,7 @@ $tplIdx = $pdf->importPage(1);
 $pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
 //Ставим поля по нулям
 $pdf->SetMargins(0,0,0,0);
+$pdf->SetAutoPageBreak(false);
 //указываем шрифт и размер
 $pdf->SetFont('ArialMT', '', '13');
 //указываем цвет текста 
@@ -312,8 +313,126 @@ $auto_doc_type = iconv('utf-8', 'windows-1251', $auto_doc_type['name']);
 $pdf->SetFont('ArialMT', '', '10');
 $pdf->SetXY(25, 141);
 $pdf->Write(0, $auto_doc_type);
+//Серия
+$pdf->SetXY(135, 141);
+$pdf->Write(0, $vehicle_data['auto_doc_series']);
+//Номер
+$pdf->SetXY(175, 141);
+$pdf->Write(0, $vehicle_data['auto_doc_number']);
+//Цель использования
+//Личная
+if($step_2_data['purpose_use'] == 1){
+	$pdf->SetXY(85.2, 148.1);
+	$pdf->Write(0, 'V');	
+}
+//Учебная
+if($step_2_data['purpose_use'] == 2){
+	$pdf->SetXY(99.4, 148.1);
+	$pdf->Write(0, 'V');	
+}
+//Такси
+if($step_2_data['purpose_use'] == 3){
+	$pdf->SetXY(121.4, 148.1);
+	$pdf->Write(0, 'V');	
+}
+//Перевозка опасных и легковоспламенящихся грузов
+if($step_2_data['purpose_use'] == 4){
+	$pdf->SetXY(134, 148.1);
+	$pdf->Write(0, 'V');	
+}
+//Прокат/красткосрочная аренда
+if($step_2_data['purpose_use'] == 5){
+	$pdf->SetXY(4, 152.3);
+	$pdf->Write(0, 'V');	
+}
+//Регулярные поссажирские перевозки
+if($step_2_data['purpose_use'] == 6){
+	$pdf->SetXY(46.8, 152.3);
+	$pdf->Write(0, 'V');	
+}
+//Дорожные и специальные транспортные средства
+if($step_2_data['purpose_use'] == 7){
+	$pdf->SetXY(140, 152.3);
+	$pdf->Write(0, 'V');	
+}
+//экстренные и комунальные службы
+if($step_2_data['purpose_use'] == 8){
+	$pdf->SetXY(4, 156.1);
+	$pdf->Write(0, 'V');	
+}
+//прочее
+if($step_2_data['purpose_use'] == 1){
+	$pdf->SetXY(57.3, 156.1);
+	$pdf->Write(0, 'V');	
+}
+//ограниченное или не ограниченное число водителей
+$pdf->SetFont('ArialMT', '', '13');
+if($calc_data['drivers'] == 1){
+	$pdf->SetXY(163, 164.5);
+	$pdf->Write(0, 'V');	
+}else{
+	$pdf->SetXY(163, 169.5);
+	$pdf->Write(0, 'V');	
+}
+//Список водителей допущенных к управлению
+$pdf->SetFont('ArialMT', '', '10');
+if($calc_data['drivers'] == 2){
+	$drivers_data = unserialize($contract_data['drivers_data']);
+	$y = 0;
+	for($x=1;$x<5;$x++){
+		if($x<=$drivers_data['number_of_drivers']){
+			$first_name = iconv('utf-8', 'windows-1251', $drivers_data["driver_".$x."_first_name"]);
+			$second_name = iconv('utf-8', 'windows-1251', $drivers_data["driver_".$x."_second_name"]);
+			$third_name = iconv('utf-8', 'windows-1251', $drivers_data["driver_".$x."_third_name"]);
+			$series = iconv('utf-8', 'windows-1251', $drivers_data["driver_".$x."_series"]);
+			$number= iconv('utf-8', 'windows-1251', $drivers_data["driver_".$x."_number"]);
+			$pdf->SetXY(6, 182+$y);
+			$pdf->Write(0, $x);
+			$pdf->SetXY(12, 182+$y);
+			$pdf->Write(0, $second_name.' '.$first_name.' '.$third_name);
+			$pdf->SetXY(150, 182+$y);
+			$pdf->Write(0, $series.', '.$number);
+		}else{
+			$pdf->SetXY(3, 182+$y);
+			$pdf->Write(0, '------');
+			$pdf->SetXY(12, 182+$y);
+			$pdf->Write(0, '-----------------------------------------');
+			$pdf->SetXY(150, 182+$y);
+			$pdf->Write(0, '---------------------------------------');			
+		}
+	$y=$y+5.8;	
+	}
+}
+//Страховая премия
+	$tarif = num2str($calc_result['t']);
+	$tarif = iconv('utf-8', 'windows-1251', $tarif);
+	$pdf->SetXY(40, 236);
+	$pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
+//Особые отметки
+	$special_notes = iconv('utf-8', 'windows-1251', $contract_data['special_notes']);
+	$pdf->SetXY(5, 250);
+	$pdf->Write(0, $special_notes);
+//Дата заключения договора
+	$date_create = date('d.m.Y', strtotime($contract_data["time_create"]));
+	$pdf->SetXY(52, 263);
+	$pdf->Write(0, $date_create[0].$date_create[1]);
+	$month = get_month($date_create[3].$date_create[4]);
+	$month = iconv('utf-8', 'windows-1251', $month);
+	$pdf->SetXY(68, 263);
+	$pdf->Write(0, $month);
+	$pdf->SetXY(98, 263);
+	$pdf->Write(0, $date_create[8].$date_create[9]);
+//Дата выдачи полиса
+	$pdf->SetXY(52+27, 290);
+	$pdf->Write(0, $date_create[0].$date_create[1]);
+	$month = get_month($date_create[3].$date_create[4]);
+	$month = iconv('utf-8', 'windows-1251', $month);
+	$pdf->SetXY(68+27, 290);
+	$pdf->Write(0, $month);
+	$pdf->SetXY(98+26, 290);
+	$pdf->Write(0, $date_create[8].$date_create[9]);
 // echo "<pre>";
-// print_r($auto_doc_type);
+// print_r($date_create);
 // echo "</pre>";
 // exit();
 //Отдаём готовый pdf. D - выдаст запрос на скачивание. I - отобразит в браузере
