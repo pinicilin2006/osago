@@ -26,6 +26,9 @@ if(mysql_num_rows(mysql_query($query))<1){
 $contract_data = mysql_fetch_assoc(mysql_query($query));
 //Получаем данные страхователя
 $insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
+//Данные по второму шагу оформления полиса
+$step_2_data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $contract_data['step_2_data']);//боримся с проблемой unserialize если есть кавычки
+$step_2_data = unserialize($step_2_data);
 //если физ лицо
 if($contract_data["insurer_type"] == 1){
 	$params['[NAME]'] = $insurer_data['second_name']." ".$insurer_data['first_name']." ".$insurer_data['third_name'];
@@ -236,8 +239,8 @@ $params['[AUTO_DOC_SERIES]'] = $vehicle_data['auto_doc_series'];
 $params['[AUTO_DOC_NUMBER]'] = $vehicle_data['auto_doc_number'];
 $params['[AUTO_DOC_DATE]'] = $vehicle_data['auto_doc_date'];
 $params['[AUTO_REG_NUMBER]'] = $vehicle_data['auto_reg_number'];
-$params['[AUTO_DIAG_CARD_NUMBER]'] = (isset($vehicle_data['auto_diag_card_number']) ? $vehicle_data['auto_diag_card_number'] : '------');
-$params['[AUTO_DIAG_CARD_NEXT_DATE]'] = (isset($vehicle_data['auto_diag_card_next_date']) ? $vehicle_data['auto_diag_card_next_date'] : '------');
+$params['[AUTO_DIAG_CARD_NUMBER]'] = (isset($step_2_data['auto_diag_card_number']) ? $step_2_data['auto_diag_card_number'] : '------');
+$params['[AUTO_DIAG_CARD_NEXT_DATE]'] = (isset($step_2_data['auto_diag_card_next_date']) ? $step_2_data['auto_diag_card_next_date'] : '------');
 $params['[TRAILER_YES]'] = ($calc_data['trailer'] == 1 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
 $params['[TRAILER_NO]'] = ($calc_data['trailer'] == 2 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
 for($x=1;$x<10;$x++){
@@ -265,8 +268,6 @@ for($x=1;$x<6;$x++){
 		$params['[DRIVER_'.$x.'_EXP]'] = '------------';
 	}
 }
-$step_2_data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $contract_data['step_2_data']);//боримся с проблемой unserialize если есть кавычки
-$step_2_data = unserialize($step_2_data);
 $params['[START_PERIOD_USE_1]'] = $step_2_data['auto_used_start_1'].' г.';
 $params['[END_PERIOD_USE_1]'] = $step_2_data['auto_used_end_1'].' г.';
 $params['[START_PERIOD_USE_2]'] = (isset($step_2_data['auto_used_start_2']) && isset($step_2_data['auto_used_end_2']) ? $step_2_data['auto_used_start_2'].' г.' : '------------');
@@ -289,13 +290,13 @@ $params['[KM]'] = $calc_result['km'];
 $params['[KPR]'] = $calc_result['kpr'];
 $params['[KN]'] = $calc_result['kn'];
 $params['[TARIF]'] = $calc_result['t'];
-$params['[AIS_REQUEST]'] = $contract_data['rsa_data'];
+$params['[AIS_REQUEST]'] = $contract_data['rsa_number'];
 $params['[SPECIAL_NOTES]'] = $contract_data['special_notes'];
 $agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
 $params['[AGENT_NAME]'] = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
 
 // echo "<pre>";
-// print_r($calc_result);
+// print_r($vehicle_data);
 // echo "</pre>";
 // exit();
 /////////////////////////////////////////////////////////////////////////////////////////////////////
