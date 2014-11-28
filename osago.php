@@ -133,7 +133,7 @@ require_once('template/header.html');
 						<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label for="year_manufacture" class="col-sm-5 control-label"><small>Год изготовления</small></label>
-						    	<div class="col-sm-2" style="padding-top:2%">
+						    	<div class="col-sm-7" style="padding-top:2%">
 						      		<select class="form-control input-sm" name="year_manufacture" id="year_manufacture" required>
 						      		<?php
 						      		$a = date("Y");
