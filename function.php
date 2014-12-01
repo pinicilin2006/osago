@@ -71,7 +71,6 @@ function num2str($num) {
     $out[] = $kop.' '.morph($kop,$unit[0][0],$unit[0][1],$unit[0][2]); // kop
     return trim(preg_replace('/ {2,}/', ' ', join(' ',$out)));
 }
-
 /**
  * Склоняем словоформу
  * @ author runcore

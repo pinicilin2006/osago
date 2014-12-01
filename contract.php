@@ -72,11 +72,11 @@ while($row = mysql_fetch_assoc($query)){
 <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Действие <span class="caret"></span></button>
   <ul class="dropdown-menu" role="menu">
-    <li><a href="/print/statement.php?id='.$row['id'].'" target="_blank"">Распечатать <br>заявление</a></li>
+    <li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank">Распечатать <br>заявление</a></li>
     <li class="divider"></li>
-    <li><a href="/print/bso.php?id='.$row['id'].'" target="_blank"">Распечатать <br>БСО</a></li>
+    <li><a href="/print/bso.php?id='.$row['md5_id'].'" target="_blank">Распечатать <br>БСО</a></li>
     <li class="divider"></li>
-    <li><a href="#">Распечатать <br>бланк А7</a></li>
+    <li><a href="/print/a7.php?id='.$row['md5_id'].'" target="_blank">Распечатать <br>бланк А7</a></li>
     <li class="divider"></li>
     <li><a href="#">Аннулировать договор</a></li>
   </ul>

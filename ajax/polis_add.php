@@ -271,7 +271,7 @@ $query = "INSERT INTO `contract` (user_id,unit_id,insurer_id,insurer_type,owner_
 //echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 if(mysql_query($query)){
 	$contract_id = mysql_fetch_assoc(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5_id."'"));
-	$contract_id = $contract_id["id"];
+	$contract_id = $contract_id["md5_id"];
 	if($action == 'add'){
 		echo '<div class="alert alert-success text-center">Данные успешно добавлены!</div>';
 		echo '<center><div class="btn-group btn-group-justified"><div class="btn-group"><a href="/print/statement.php?id='.$contract_id.'" target="_blank" class="btn btn-default" >Распечатать заявление</a></div><div class="btn-group"><a href="/print/bso.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать полис</a></div><div class="btn-group"><a href="/print/a7.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать бланк А7</a></div></div></center>';

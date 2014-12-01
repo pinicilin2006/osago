@@ -14,9 +14,9 @@ connect_to_base();
 $params = array();
 $id = mysql_escape_string($_GET["id"]);
 if(isset($_SESSION["access"][6])){
-	$query = "SELECT * FROM `contract` WHERE `id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."'";
 }else{
-	$query = "SELECT * FROM `contract` WHERE `id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
 }
 if(mysql_num_rows(mysql_query($query))<1){
 	require_once('../template/header.html');
