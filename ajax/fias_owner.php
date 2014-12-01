@@ -18,13 +18,24 @@ connect_to_base();
 $return = '';
 if($_POST["owner_subject"] && !$_POST["owner_aoid"]){
 	$subject = mysql_real_escape_string($_POST["owner_subject"]);
-	$query = mysql_query("SELECT * FROM `d_fias_addrobj_3_4` WHERE `regioncode` = '".$subject."' ORDER BY `formalname`");
-	if(mysql_num_rows($query)>0){
+	if($subject == '77' || $subject == '78'){
 		$return .='<div><select class="form-control input-sm" name="owner_aoid" id="owner_aoid" required><option value="" disabled selected>Район / город</option>';
-		while ($row = mysql_fetch_assoc($query)) {
-			$return .= '<option value='.$row["aoid"].'>'.$row["shortname"].'. '.$row["formalname"].'</option>';
+		if($subject == '77'){
+			$return .= '<option value="0c5b2444-70a0-4932-980c-b4dc0d3f02b5">г. Москва</option>';
 		}
+		if($subject == '78'){
+			$return .= '<option value="c2deb16a-0330-4f05-821f-1d09c93331e6">г. Санкт-Петербург</option>';
+		}		
 		$return .='</select></div><div id="owner_message_1"></div>';
+	} else {
+		$query = mysql_query("SELECT * FROM `d_fias_addrobj_3_4` WHERE `regioncode` = '".$subject."' ORDER BY `formalname`");
+		if(mysql_num_rows($query)>0){
+			$return .='<div><select class="form-control input-sm" name="owner_aoid" id="owner_aoid" required><option value="" disabled selected>Район / город</option>';
+			while ($row = mysql_fetch_assoc($query)) {
+				$return .= '<option value='.$row["aoid"].'>'.$row["shortname"].'. '.$row["formalname"].'</option>';
+			}
+			$return .='</select></div><div id="owner_message_1"></div>';
+		}
 	}
 }
 
@@ -47,7 +58,15 @@ if($_POST["owner_aoid"]){
 			$return .= '<option value='.$row["aoguid"].'>'.$row["shortname"].'. '.$row["formalname"].'</option>';
 		}
 		$return .='</select></div><div id="owner_message_3"></div>';
-	}	
+	}
+	if($aoid == '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' || $aoid == 'c2deb16a-0330-4f05-821f-1d09c93331e6'){
+			$query_city = mysql_query("SELECT * FROM `d_fias_addrobj_7` WHERE `parentguid` = '".$aoid."' ORDER BY `formalname`");
+			$return .='<div><select class="form-control input-sm" name="owner_street" id="owner_street" required><option value="" disabled selected>Улица</option>';
+			while ($row = mysql_fetch_assoc($query_city)) {
+				$return .= '<option value='.$row["aoguid"].'>'.$row["shortname"].'. '.$row["formalname"].'</option>';
+			}
+			$return .='</select></div><div id="owner_message_3"></div>';		
+		}			
 }
 if($_POST["owner_city"]){
 	$city = mysql_real_escape_string($_POST["owner_city"]);

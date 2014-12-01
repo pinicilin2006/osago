@@ -273,6 +273,11 @@ if(mysql_query($query)){
 	$contract_id = mysql_fetch_assoc(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5_id."'"));
 	$contract_id = $contract_id["md5_id"];
 	if($action == 'add'){
+		if(mysql_query("DELETE FROM `bso` WHERE `number`= '".$bso_number."'") && mysql_query("DELETE FROM `a7` WHERE `number`= '".$a7_number."'")){
+			//..
+		} else {
+			echo 'Произошла ошибка при удаление бланка БСО или бланка а7 из базы доступных бланков';
+		}
 		echo '<div class="alert alert-success text-center">Данные успешно добавлены!</div>';
 		echo '<center><div class="btn-group btn-group-justified"><div class="btn-group"><a href="/print/statement.php?id='.$contract_id.'" target="_blank" class="btn btn-default" >Распечатать заявление</a></div><div class="btn-group"><a href="/print/bso.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать полис</a></div><div class="btn-group"><a href="/print/a7.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать бланк А7</a></div></div></center>';
 	}
