@@ -47,17 +47,22 @@ if(mysql_num_rows(mysql_query($query))<1){
 				    				<th>Дата/время окончания действия договора</th>
 				    				<th>Страховой тариф</th>
 				    				<th>Действие</th>
+				    				<th>Статус договора</th>
 				    			</tr>
 			    			</thead>
 			    			<tbody>
 <?php
 $query = mysql_query($query);
 while($row = mysql_fetch_assoc($query)){
-	if($row['project'] == '1'){
+	if($row['project'] == '1' && $row['annuled'] == '0'){
 		echo '<tr class="warning">';	
-	}else {
+	}
+	if($row['project'] == '0' && $row['annuled'] == '0'){
 		echo '<tr class="success">';
 	}
+	if($row['annuled'] == '1'){
+		echo '<tr class="error">';	
+	}	
 	echo "<td>".$row['id']."</td>";
 	echo "<td>".date('d.m.Y', strtotime($row["time_create"]))."</td>";
 	$insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($row["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$row["insurer_id"]."'"));
@@ -72,18 +77,28 @@ while($row = mysql_fetch_assoc($query)){
 	echo "<td>".$row['end_date']." / 23:59</td>";
 	$calc_result = unserialize($row['calc_result']);
 	echo "<td>".$calc_result['t']."</td>";
+	echo "<td>";
+	if($row['annuled'] == '1'){
+		echo "Аннулирован";
+	} else {
+		echo ($row['project'] == '0' ? 'Оформлен' : 'Проект');
+	}
+	echo "</td>";
 	echo '<td>
 <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Действие <span class="caret"></span></button>
   <ul class="dropdown-menu" role="menu">
-    <li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank">Распечатать <br>заявление</a></li>
-    <li class="divider"></li>
-    <li><a href="/print/bso.php?id='.$row['md5_id'].'" target="_blank">Распечатать <br>БСО</a></li>
-    <li class="divider"></li>
-    <li><a href="/print/a7.php?id='.$row['md5_id'].'" target="_blank">Распечатать <br>бланк А7</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Аннулировать договор</a></li>
-  </ul>
+    <li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank"><small>Распечатать <br>заявление</a></small></li>
+    <li class="divider" style="margin:0 0"></li>
+    <li><a href="/print/bso.php?id='.$row['md5_id'].'" target="_blank"><small>Распечатать <br>БСО</small></a></li>
+    <li class="divider" style="margin:0 0"></li>
+    <li><a href="/print/a7.php?id='.$row['md5_id'].'" target="_blank"><small>Распечатать <br>бланк А7</small></a></li>
+    <li class="divider" style="margin:0 0"></li>';
+    if($row['annuled'] == '0'){
+    	echo '<li><a href="/method/anul.php?id='.$row['md5_id'].'"><small>Аннулировать договор</small></a></li>';
+	}
+
+echo '</ul>
 </div>
 	</td>';
 	echo "</tr>";
