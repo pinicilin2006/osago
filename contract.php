@@ -53,7 +53,11 @@ if(mysql_num_rows(mysql_query($query))<1){
 <?php
 $query = mysql_query($query);
 while($row = mysql_fetch_assoc($query)){
-	echo "<tr>";
+	if($row['project'] == '1'){
+		echo '<tr class="warning">';	
+	}else {
+		echo '<tr class="success">';
+	}
 	echo "<td>".$row['id']."</td>";
 	echo "<td>".date('d.m.Y', strtotime($row["time_create"]))."</td>";
 	$insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($row["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$row["insurer_id"]."'"));

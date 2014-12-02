@@ -137,7 +137,7 @@ if(!empty($err_text)){
 }
 //проверяем есть ли данные по страхователю
 if($insurer == 1){
-	$query_insurer_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$first_name."' AND `second_name` = '".$second_name."' AND `third_name` = '".$third_name."' AND `date_birth` = '".$date_birth."'";
+	$query_insurer_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$first_name."' AND `second_name` = '".$second_name."' AND `third_name` = '".$third_name."' AND `date_birth` = '".$date_birth."' AND `doc_name` = '".$doc_name."' AND `doc_series` = '".$doc_series."' AND `doc_number` = '".$doc_number."' AND `aoid` = '".$aoid."' AND `city = '".$city."' AND `street` = '".$street."' AND `house` = '".$house."' AND `housing` = '".$housing."' AND `apartment` = '".$apartment."' AND `phone` = '".$phone."'";
 	if(mysql_num_rows(mysql_query($query_insurer_data))>0){
 		//.....//
 	} else {
@@ -174,7 +174,7 @@ if($insisown == 1){
 	$owner_type = $insurer;
 }else{
 	if($_SESSION["step_1"]["type_ins"] != 'jur'){
-		$query_owner_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$owner_first_name."' AND `second_name` = '".$owner_second_name."' AND `third_name` = '".$owner_third_name."' AND `date_birth` = '".$owner_date_birth."'";
+	$query_owner_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$owner_first_name."' AND `second_name` = '".$owner_second_name."' AND `third_name` = '".$owner_third_name."' AND `date_birth` = '".$owner_date_birth."' AND `doc_name` = '".$owner_doc_name."' AND `doc_series` = '".$owner_doc_series."' AND `doc_number` = '".$owner_doc_number."' AND `aoid` = '".$owner_aoid."' AND `city = '".$owner_city."' AND `street` = '".$owner_street."' AND `house` = '".$owner_house."' AND `housing` = '".$owner_housing."' AND `apartment` = '".$owner_apartment."' AND `phone` = '".$owner_phone."'";
 		if(mysql_num_rows(mysql_query($query_owner_data))>0){
 			//.....//
 		} else {

@@ -21,7 +21,7 @@ require_once('template/header.html');
 </style>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="col-md-6 col-md-offset-3" id="user_data">
+		<div class="col-md-12" id="user_data">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
 	    			<h3 class="panel-title">Расчёт стоимости полиса ОСАГО</h3>
