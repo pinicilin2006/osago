@@ -25,6 +25,7 @@ if(mysql_num_rows(mysql_query($query))<1){
 }
 $contract_data = mysql_fetch_assoc(mysql_query($query));
 //Получаем данные страхователя
+$agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
 $insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
 $owner_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["owner_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["owner_id"]."'"));
 $vehicle_data = unserialize($contract_data['vehicle_data']);
@@ -73,7 +74,7 @@ $pdf->Write(0, $name_osago_text_1);
 $pdf->SetXY(50, 64);
 $pdf->Write(0, $name_osago_text_2);
 //Представитель страховщика
-$agent = $_SESSION['second_name'].' '.$_SESSION['first_name'].' '.$_SESSION['third_name'];
+$agent = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
 $agent = iconv('utf-8', 'windows-1251', "$agent");
 $pdf->SetXY(100, 71);
 $pdf->Write(0, $agent);
@@ -94,10 +95,10 @@ $pdf->SetXY(35, 127);
 $pdf->Write(0, $month.'       20'.$date_create[8].$date_create[9]);
 // $pdf->SetXY(98, 127);
 // $pdf->Write(0, $date_create[8].$date_create[9]);
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
-exit();
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
+// exit();
 //Отдаём готовый pdf. D - выдаст запрос на скачивание. I - отобразит в браузере
 $pdf->Output('policy.pdf', 'I'); 
 
