@@ -21,7 +21,7 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".my
 ?>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
 	    			<h3 class="panel-title">Добавить подразделение:</h3>

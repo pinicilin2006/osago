@@ -43,7 +43,7 @@ $category_code = array(
 <div id="top"><span class="glyphicon glyphicon-arrow-up"></span></div>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="col-md-6 col-md-offset-3" id="user_data">
+		<div class="col-md-8 col-md-offset-2" id="user_data">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
 	    			<h3 class="panel-title">Оформление полиса ОСАГО</h3>

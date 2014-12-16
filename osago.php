@@ -265,7 +265,7 @@ require_once('template/header.html');
 	  			</div>
 			</div>
 		</div>
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-md-12">
 			<div id="message"></div>
 		</div>
 	</div>
