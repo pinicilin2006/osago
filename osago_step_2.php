@@ -711,7 +711,7 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	$('#power').mask('0000');
 	$('.auto_used').mask('00.00.0000');	
 	$('#auto_doc_date').mask('00.00.0000');	
-	$('#auto_diag_card_next_date').mask('00.0000');	
+	$('#auto_diag_card_next_date').mask('00.00.0000');	
 	$('#start_date').mask('00.00.0000');
 	$('#start_time').mask('00:00');
 //Календарик	
@@ -750,6 +750,13 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	  changeMonth: true,
 	  yearRange: "c:c+10"
 	});
+	$( "#auto_diag_card_next_date" ).datepicker({
+	  dateFormat: "dd.mm.yy",
+	  minDate: "0d",
+	  changeYear: true,
+	  changeMonth: true,
+	  yearRange: "c:c+10"
+	});	
 	$( "#start_date" ).datepicker({
 	  dateFormat: "dd.mm.yy",
 	  minDate: "0d",
