@@ -108,7 +108,7 @@ require_once('template/header.html');
 					  	
 
 							<div class="form-group term_insurance">
-							<hr class="hr_line">
+							<hr >
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Срок страхования</small></label>
 							    <div class="col-sm-7">							
 									<select class="form-control input-sm" name="term_insurance" id="term_insurance" required>
@@ -123,9 +123,9 @@ require_once('template/header.html');
 						  	</div>	
 
 							<div class="form-group" id="srok_year">
-							<hr class="hr_line">
+							<hr>
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Срок страхования</small></label>
-							    <div class="col-sm-7"  style="padding-top:2%">							
+							    <div class="col-sm-7">							
 							    <b>1 год</b>
 							    </div>
 						  	</div>	
