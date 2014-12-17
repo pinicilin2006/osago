@@ -51,6 +51,12 @@ if(!$unit_parent_id){
 }
 
 if(mysql_query("INSERT INTO `unit` (unit_full_name,unit_city,unit_address,unit_parent_id,active) VALUES('".$unit_full_name."','".$unit_city."','".$unit_address."','".$unit_parent_id."','".$active."')")){
+	if($unit_parent_id == '1'){
+		$id = mysql_insert_id();
+		if(!mysql_query("INSERT INTO `unit` (unit_full_name,unit_city,unit_parent_id,active) VALUES('Физические лица','".$unit_city."','".$id."','1')")){
+			echo "<p class=\"text-danger\">Произошла ошибка при добавление подразделения 'Физические лица'!</p>";
+		}
+	}
 	echo "<br><p class=\"text-success text-center\">Подразделение <b>$unit_full_name</b> успешно добавлено.";
 } else {
 	echo "<p class=\"text-danger\">Произошла ошибка при добавление подразделения в базу данных!</p>";

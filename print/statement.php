@@ -292,8 +292,14 @@ $params['[KN]'] = $calc_result['kn'];
 $params['[TARIF]'] = $calc_result['t'];
 $params['[AIS_REQUEST]'] = $contract_data['rsa_number'];
 $params['[SPECIAL_NOTES]'] = $contract_data['special_notes'];
-$agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
-$params['[AGENT_NAME]'] = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
+//определяем вид страхователя
+$unit_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$contract_data['unit_id']."'"));
+if($unit_data['unit_full_name'] == 'Физические лица'){
+	$agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
+	$params['[AGENT_NAME]'] = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
+} else {
+	$params['[AGENT_NAME]'] = $unit_data['unit_full_name'];
+}
 
 // echo "<pre>";
 // print_r($vehicle_data);

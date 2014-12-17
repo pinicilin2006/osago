@@ -131,7 +131,7 @@
                 <select class="form-control" name="unit_id" required>
                 <option value="" disabled selected>Выберите подразделение</option>
                 <?php
-                $query=mysql_query("SELECT * FROM `unit` ORDER BY unit_full_name");
+                $query=mysql_query("SELECT * FROM `unit` WHERE `unit_full_name` != 'Физические лица' ORDER BY unit_full_name");
                   while($row = mysql_fetch_assoc($query)){
                   echo "<option value=\"$row[unit_id]\" >$row[unit_full_name]</option>";
                 }

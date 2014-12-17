@@ -24,7 +24,7 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".my
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
-	    			<h3 class="panel-title">Добавить подразделение:</h3>
+	    			<h3 class="panel-title">Редактировать подразделение:</h3>
 	  			</div>	  			
 	  			<div class="panel-body" id="user_data">
 					<form class="form-horizontal col-sm-8 col-sm-offset-2" role="form" id="main_form">

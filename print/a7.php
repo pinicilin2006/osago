@@ -25,6 +25,7 @@ if(mysql_num_rows(mysql_query($query))<1){
 }
 $contract_data = mysql_fetch_assoc(mysql_query($query));
 //Получаем данные страхователя
+$unit_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$contract_data['unit_id']."'"));
 $agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
 $insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
 $owner_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["owner_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["owner_id"]."'"));
@@ -74,7 +75,11 @@ $pdf->Write(0, $name_osago_text_1);
 $pdf->SetXY(50, 64);
 $pdf->Write(0, $name_osago_text_2);
 //Представитель страховщика
-$agent = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
+if($unit_data['unit_full_name'] == 'Физические лица'){
+	$agent = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
+} else {
+	$agent = $unit_data['unit_full_name'];
+}
 $agent = iconv('utf-8', 'windows-1251', "$agent");
 $pdf->SetXY(100, 71);
 $pdf->Write(0, $agent);

@@ -67,15 +67,16 @@ require_once('template/header.html');
 					  </div>
 
 					  <div class="form-group">
-					  		<select class="form-control" name="unit" required>
-					  		<option value="" disabled selected>Выберите подразделение</option>
+					  		<select class="form-control" name="filial" id="filial" required>
+					  		<option value="" disabled selected>Выберите филиал</option>
 					  		<?php
-					  		$query=mysql_query("SELECT * FROM `unit` WHERE active = 1 ORDER BY unit_full_name");
+					  		$query=mysql_query("SELECT * FROM `unit` WHERE `active` = '1' AND `unit_parent_id` = '1' ORDER BY unit_full_name");
 					  		while($row = mysql_fetch_assoc($query)){
 								echo "<option value=\"$row[unit_id]\" >$row[unit_full_name]</option>";
 							}
 							?>    
 							</select>
+							<div id="message_1"></div>
 					  </div>
 
 					  <hr align="center" size="2" />
@@ -131,6 +132,20 @@ $(document).ready(function(){
     	$(this).val( $(this).val().replace(/[А-Яа-я]/g,'') );
     	 }
 	);
+//Получаем подразделения филиала
+	$(document).on("change", "#filial", function(){
+		var a = $(this).val();
+			$.ajax({
+			  type: "POST",
+			  url: '/ajax/filial_unit.php',
+			  data: "id="+a,
+			  success: function(data) {
+			  	$('#message_1').html(data);
+			  	
+			  }
+			});
+			return false;
+	})	
 //проверка данных формы
     $('#main_form').submit(function( event ) {
     	add_user();
