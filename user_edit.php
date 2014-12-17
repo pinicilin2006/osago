@@ -80,7 +80,7 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".my
 								echo ($unit["unit_id"] == $row1["unit_id"] ? " selected " : '');
 								echo ">$row1[unit_full_name]";
 								if($row1['unit_full_name'] == 'Физические лица'){
-									$filial_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$unit['unit_id']."'"));
+									$filial_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$row1['unit_parent_id']."'"));
 									echo ' ('.$filial_data['unit_full_name'].')';
 								}
 								echo "</option>";
