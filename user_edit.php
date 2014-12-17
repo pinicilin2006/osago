@@ -78,7 +78,12 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".my
 					  		while($row1 = mysql_fetch_assoc($query)){
 								echo "<option value=\"$row1[unit_id]\" ";
 								echo ($unit["unit_id"] == $row1["unit_id"] ? " selected " : '');
-								echo ">$row1[unit_full_name]</option>";
+								echo ">$row1[unit_full_name]";
+								if($row1['unit_full_name'] == 'Физические лица'){
+									$filial_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$unit['unit_id']."'"));
+									echo ' ('.$filial_data['unit_full_name'].')';
+								}
+								echo "</option>";
 							}
 							?>    
 							</select>

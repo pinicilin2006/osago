@@ -88,9 +88,9 @@ require_once('template/header.html');
 					    	</div>				  					  
 
 						  	<div class="form-group ig_hide">
-						  	<hr class="hr_line">
+						  	<hr>
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Территория преимущественного использования ТС</small></label>
-						    	<div class="col-sm-7"  style="padding-top:2%">							
+						    	<div class="col-sm-7">							
 									<select class="form-control input-sm" name="subject" id="subject" required>
 							  		<option value="" disabled selected>Субъект РФ</option>
 							  		<?php
@@ -110,7 +110,7 @@ require_once('template/header.html');
 							<div class="form-group term_insurance">
 							<hr class="hr_line">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Срок страхования</small></label>
-							    <div class="col-sm-7"  style="padding-top:2%">							
+							    <div class="col-sm-7">							
 									<select class="form-control input-sm" name="term_insurance" id="term_insurance" required>
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `term_insurance` ORDER BY `id`");
@@ -130,10 +130,10 @@ require_once('template/header.html');
 							    </div>
 						  	</div>	
 
-						<hr class="hr_line">
+						<hr>
 						  	<div class="form-group">
 						    	<label for="year_manufacture" class="col-sm-5 control-label"><small>Год изготовления</small></label>
-						    	<div class="col-sm-7" style="padding-top:2%">
+						    	<div class="col-sm-7">
 						      		<select class="form-control input-sm" name="year_manufacture" id="year_manufacture" required>
 						      		<?php
 						      		$a = date("Y");
@@ -145,11 +145,11 @@ require_once('template/header.html');
 						    	</div>
 						  	</div>
 
-					  	<hr class="hr_line">
+					  	<hr>
 
 							<div class="form-group ">
 						    	<label  class="col-sm-5 control-label" ><small>Тип (категория) и назначение транспортного средства</small></label>
-						    	<div class="col-sm-7"  style="padding-top:2%">																			  		  
+						    	<div class="col-sm-7">																			  		  
 						  		<?php
 						  			$query = mysql_query("SELECT * FROM `category` ORDER BY `id`");
 						  			$i = 0;
@@ -166,9 +166,9 @@ require_once('template/header.html');
 					  	
 
 							<div class="form-group capacity">
-							<hr class="hr_line">
+							<hr>
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Мощность двигателя (лошадиных сил)</small></label>
-							    <div class="col-sm-7"  style="padding-top:2%">							
+							    <div class="col-sm-7">							
 									<select class="form-control input-sm" name="capacity" id="capacity" required>
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `capacity` ORDER BY `id`");
@@ -181,9 +181,9 @@ require_once('template/header.html');
 						  	</div>					  
 					  	
 							<div class="form-group ig_hide period_use">
-							<hr class="hr_line">
+							<hr>
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Период использования ТС</small></label>
-							    <div class="col-sm-7"  style="padding-top:2%">							
+							    <div class="col-sm-7">							
 									<select class="form-control input-sm" name="period_use" id="period_use" required>
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `period_use` ORDER BY `id`");
@@ -196,9 +196,9 @@ require_once('template/header.html');
 						  	</div>					  
 
 							<div class="form-group ig_hide">
-							<hr class="hr_line">
+							<hr>
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Количество водителей, допущенных к управлению</small></label>
-							    <div class="col-sm-7"  style="padding-top:2%">							
+							    <div class="col-sm-7">							
 									<div class="radio">
 									  	<label><input type="radio" name="drivers" class="drivers" value="1" checked><small>Без ограничений</small></label>
 									</div>
@@ -212,9 +212,9 @@ require_once('template/header.html');
 					  	
 
 							<div class="form-group kbm ig_hide">
-							<hr class="hr_line">
+							<hr>
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Класс КБМ</small></label>
-							    <div class="col-sm-7"  style="padding-top:2%">							
+							    <div class="col-sm-7">							
 									<select class="form-control input-sm" name="class_kbm" id="kbm" required>
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `kbm` ORDER BY `id`");
@@ -227,11 +227,11 @@ require_once('template/header.html');
 							    </div>
 						  	</div>					  
 
-					  	<hr class="hr_line">
+					  	<hr>
 
 							<div class="form-group">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Имеется прицеп</small></label>
-							    <div class="col-sm-7"  style="padding-top:2%">															
+							    <div class="col-sm-7">															
 									<div class="radio">
 										  	<label><input type="radio" name="trailer" value="1" checked><small>Нет</small></label>
 									</div>
@@ -241,12 +241,12 @@ require_once('template/header.html');
 							    </div>
 						  	</div>
 
-					  	<hr class="hr_line">
+					  	<hr>
 
 
 							<div class="form-group">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Были ли грубые нарушения условий страхования в соответствии с п.3 ст.9 ФЗ «Об обязательном страховании гражданской ответственности владельцев транспортных средств»</small></label>
-							    <div class="col-sm-7"  style="padding-top:5%">															
+							    <div class="col-sm-7">															
 									<div class="radio">
 										  	<label><input type="radio" name="violations" value="1" checked><small>Нет</small></label>
 									</div>
