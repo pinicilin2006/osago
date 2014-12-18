@@ -422,6 +422,17 @@ if($calc_data['drivers'] == 2){
 	$pdf->Write(0, $month);
 	$pdf->SetXY(98, 263);
 	$pdf->Write(0, $date_create[8].$date_create[9]);
+//Наименование страхователя
+	$unit_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$contract_data['unit_id']."'"));
+	if($unit_data['unit_full_name'] == 'Физические лица'){
+		$agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
+		$agent = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
+		$agent = iconv('utf-8', 'windows-1251', $agent);
+	} else {
+		$agent = iconv('utf-8', 'windows-1251', $unit_data['unit_full_name']);
+	}
+	$pdf->SetXY(135, 283);
+	$pdf->Write(0, $agent);	
 //Дата выдачи полиса
 	$pdf->SetXY(52+27, 290);
 	$pdf->Write(0, $date_create[0].$date_create[1]);
