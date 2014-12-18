@@ -616,7 +616,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="bso_number" class="col-sm-4 control-label"><small>Номер выдаваемого полиса</small></label>
 						    	<div class="col-sm-8">
-									<select class="form-control input-sm" name="bso_number" required>
+									<select class="form-control input-sm" name="bso_number">
 							  			<option value="" disabled>Выберите номер бланка</option>
 								  		<?php
 								  		$query=mysql_query("SELECT * FROM `bso` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");
@@ -632,7 +632,7 @@ $category_code = array(
 							<div class="form-group" style="padding-top:2%">
 						    	<label for="a7_number" class="col-sm-4 control-label"><small>Номер выдаваемого бланка А7</small></label>
 						    	<div class="col-sm-8">
-									<select class="form-control input-sm" name="a7_number" required>
+									<select class="form-control input-sm" name="a7_number">
 							  			<option value="" disabled>Выберите номер бланка</option>
 								  		<?php
 								  		$query=mysql_query("SELECT * FROM `a7` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");

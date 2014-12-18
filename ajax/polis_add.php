@@ -130,6 +130,14 @@ if($md5_id){
 		$err_text .= "<li class=\"text-danger\">Данные уже внесенны в базу данных</li>";
 	}
 }
+if($action == 'add'){
+	if(!$bso_number){
+		$err_text .= "<li class=\"text-danger\">Не указан номер БСО</li>";
+	}
+	if(!$ais_request_identifier){
+		$err_text .= "<li class=\"text-danger\">Не указан номер запроса в АИС РСА</li>";
+	}		
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if(!empty($err_text)){
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
@@ -137,7 +145,7 @@ if(!empty($err_text)){
 }
 //проверяем есть ли данные по страхователю
 if($insurer == 1){
-	$query_insurer_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$first_name."' AND `second_name` = '".$second_name."' AND `third_name` = '".$third_name."' AND `date_birth` = '".$date_birth."' AND `doc_name` = '".$doc_name."' AND `doc_series` = '".$doc_series."' AND `doc_number` = '".$doc_number."' AND `aoid` = '".$aoid."' AND `city = '".$city."' AND `street` = '".$street."' AND `house` = '".$house."' AND `housing` = '".$housing."' AND `apartment` = '".$apartment."' AND `phone` = '".$phone."'";
+	$query_insurer_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$first_name."' AND `second_name` = '".$second_name."' AND `third_name` = '".$third_name."' AND `date_birth` = '".$date_birth."' AND `doc_name` = '".$doc_name."' AND `doc_series` = '".$doc_series."' AND `doc_number` = '".$doc_number."' AND `aoid` = '".$aoid."' AND `city` = '".$city."' AND `street` = '".$street."' AND `house` = '".$house."' AND `housing` = '".$housing."' AND `apartment` = '".$apartment."' AND `phone` = '".$phone."'";
 	if(mysql_num_rows(mysql_query($query_insurer_data))>0){
 		//.....//
 	} else {
@@ -149,6 +157,7 @@ if($insurer == 1){
 			exit();
 		}
 	}
+	//echo $query_insurer_data;
 	$insurer_data = mysql_fetch_assoc(mysql_query($query_insurer_data));
 	$insurer_id = $insurer_data["id"];
 }
@@ -174,7 +183,7 @@ if($insisown == 1){
 	$owner_type = $insurer;
 }else{
 	if($_SESSION["step_1"]["type_ins"] != 'jur'){
-	$query_owner_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$owner_first_name."' AND `second_name` = '".$owner_second_name."' AND `third_name` = '".$owner_third_name."' AND `date_birth` = '".$owner_date_birth."' AND `doc_name` = '".$owner_doc_name."' AND `doc_series` = '".$owner_doc_series."' AND `doc_number` = '".$owner_doc_number."' AND `aoid` = '".$owner_aoid."' AND `city = '".$owner_city."' AND `street` = '".$owner_street."' AND `house` = '".$owner_house."' AND `housing` = '".$owner_housing."' AND `apartment` = '".$owner_apartment."' AND `phone` = '".$owner_phone."'";
+	$query_owner_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$owner_first_name."' AND `second_name` = '".$owner_second_name."' AND `third_name` = '".$owner_third_name."' AND `date_birth` = '".$owner_date_birth."' AND `doc_name` = '".$owner_doc_name."' AND `doc_series` = '".$owner_doc_series."' AND `doc_number` = '".$owner_doc_number."' AND `aoid` = '".$owner_aoid."' AND `city` = '".$owner_city."' AND `street` = '".$owner_street."' AND `house` = '".$owner_house."' AND `housing` = '".$owner_housing."' AND `apartment` = '".$owner_apartment."' AND `phone` = '".$owner_phone."'";
 		if(mysql_num_rows(mysql_query($query_owner_data))>0){
 			//.....//
 		} else {
@@ -269,11 +278,12 @@ if(mysql_num_rows(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5
 $query = "INSERT INTO `contract` (user_id,unit_id,insurer_id,insurer_type,owner_id,owner_type,vehicle_data,drivers_data,calc_data,calc_result,start_date,start_time,end_date,step_2_data,bso_number,a7_number,rsa_number,project,md5_id) VALUES ('".$_SESSION['user_id']."','".$_SESSION['unit_id']."','".$insurer_id."','".$insurer_type."','".$owner_id."','".$owner_type."','".$vehicle_data."','".$drivers_data."','".$calc_data."','".$calc_result."','".$start_date."','".(isset($start_time) ? $start_time : '00:00')."','".$end_date."','".$step_2_data."','".($action=='project' ? '' : $bso_number)."','".($action=='project' ? '' : $a7_number)."','".$ais_request_identifier."','".($action == 'project' ? '1' : '0')."','".$md5_id."')";
 //echo $query;
 //echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+//exit();
 if(mysql_query($query)){
 	$contract_id = mysql_fetch_assoc(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5_id."'"));
 	$contract_id = $contract_id["md5_id"];
 	if($action == 'add'){
-		if(mysql_query("DELETE FROM `bso` WHERE `number`= '".$bso_number."'") && mysql_query("DELETE FROM `a7` WHERE `number`= '".$a7_number."'")){
+		if(mysql_query("DELETE FROM `bso` WHERE `number`= '".$bso_number."'") && (isset($a7_number) ? mysql_query("DELETE FROM `a7` WHERE `number`= '".$a7_number."'") : '') ){
 			//..
 		} else {
 			echo 'Произошла ошибка при удаление бланка БСО или бланка а7 из базы доступных бланков';
