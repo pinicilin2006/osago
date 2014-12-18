@@ -36,7 +36,7 @@ if(mysql_num_rows(mysql_query($query))<1){
 	  			</div>
 	  			<div class="panel-body">
 		  			<div class="table-responsive">
-		    			<table class='table table-striped table-hover table-condensed table-bordered'>
+		    			<table class='table table-hover table-responsive table-condensed table-bordered'>
 		    				<thead>
 		    					<tr>
 				    				<th>№</th>
@@ -55,13 +55,13 @@ if(mysql_num_rows(mysql_query($query))<1){
 $query = mysql_query($query);
 while($row = mysql_fetch_assoc($query)){
 	if($row['project'] == '1' && $row['annuled'] == '0'){
-		echo '<tr class="warning">';	
+		echo '<tr class="info">';	
 	}
 	if($row['project'] == '0' && $row['annuled'] == '0'){
 		echo '<tr class="success">';
 	}
 	if($row['annuled'] == '1'){
-		echo '<tr class="error">';	
+		echo '<tr class="danger">';	
 	}	
 	echo "<td>".$row['id']."</td>";
 	echo "<td>".date('d.m.Y', strtotime($row["time_create"]))."</td>";
