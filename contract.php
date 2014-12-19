@@ -95,8 +95,11 @@ while($row = mysql_fetch_assoc($query)){
     <li><a href="/print/a7.php?id='.$row['md5_id'].'" target="_blank"><small>Распечатать <br>бланк А7</small></a></li>
     <li class="divider" style="margin:0 0"></li>';
     if($row['annuled'] == '0'){
-    	echo '<li><a href="/method/anul.php?id='.$row['md5_id'].'"><small>Аннулировать договор</small></a></li>';
+    	echo '<li><a href="/method/anul.php?id='.$row['md5_id'].'"><small>Аннулировать</small></a></li><li class="divider" style="margin:0 0"></li>';
 	}
+    if($row['project'] == '1' && $row['annuled'] == '0'){
+    	echo '<li><a href="/edit_osago.php?id='.$row['md5_id'].'"><small>Редактировать</small></a></li><li class="divider" style="margin:0 0"></li>';
+	}	
 
 echo '</ul>
 </div>
