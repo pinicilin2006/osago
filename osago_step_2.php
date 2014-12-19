@@ -355,7 +355,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="chassis" class="col-sm-4 control-label"><small>Шасси (рама) №</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="chassis" id="chassis">
+					      		<input type="text" class="form-control input-sm empty_data_input" name="chassis" id="chassis" maxlength="17">
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
 					    	</div>				    	
 					  	</div>
@@ -364,7 +364,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="trailer" class="col-sm-4 control-label"><small>Кузов (прицеп) №</small></label>
 					    	<div class="col-sm-4">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="trailer" id="trailer">
+					      		<input type="text" class="form-control input-sm empty_data_input" name="trailer" id="trailer" maxlength="17">
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      						      		
 					    	</div>					    	
 					  	</div>
@@ -444,7 +444,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_diag_card" class="col-sm-4 control-label"><small>Диагностическая карта, <br>свидетельствующая о прохождении<br> ТО:</small></label>
 					    	<div class="col-sm-8" id="auto_diag_card" style="padding-top:2%">
-					      		<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" placeholder="Номер" required>
+					      		<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" placeholder="Номер" maxlength="21" required>
 					      		<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
 					      		<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
 					    	</div>
@@ -456,7 +456,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_reg_number" class="col-sm-4 control-label"><small>Государственный регистрационный знак</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" required>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" maxlength="8" required>
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      		
 					    	</div>					    	
 					  	</div>
@@ -515,8 +515,8 @@ $category_code = array(
 					    	<label for="osago_old" class="col-sm-4 control-label"><small>Предыдущий договор обязательного страхования гражданской ответственности владельцев транспортных средств в отношении указанного транспортного средства:</small></label>
 						    	<div id="osago_old">
 							    	<div class="col-sm-8" style="padding-top:2%">
-							      		<input type="text" class="form-control input-sm" name="osago_old_series" id="osago_old_series" placeholder="серия">
-							      		<input type="text" class="form-control input-sm" name="osago_old_number" id="osago_old_number" placeholder="номер">
+							      		<input type="text" class="form-control input-sm" name="osago_old_series" id="osago_old_series" placeholder="серия" maxlength="3">
+							      		<input type="text" class="form-control input-sm" name="osago_old_number" id="osago_old_number" placeholder="номер" maxlength="10">
 							      		<input type="text" class="form-control input-sm" name="osago_old_name" id="osago_old_name" placeholder="страховщик">
 							    	</div>
 							    </div>
