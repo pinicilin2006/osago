@@ -8,6 +8,10 @@ if(!isset($_SESSION["calc"]) || !isset($_SESSION["step_1"])){
 	header("Location: osago.php");
 	exit;	
 }
+if(!isset($_SESSION['user_id']) || !isset($_GET["id"]) || empty($_GET["id"])){
+	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p>";
+	exit();
+}
 // echo "<pre>";
 // print_r($_SESSION);
 // echo "</pre>";
@@ -15,6 +19,27 @@ require_once('config.php');
 require_once('function.php');
 connect_to_base();
 require_once('template/header.html');
+$id = mysql_real_escape_string($_GET['id']);
+if(isset($_SESSION["access"][3])){
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0'";
+}else{
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
+}
+//echo $query;
+if(mysql_num_rows(mysql_query($query))<1){
+	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p>";
+	exit();
+}
+//echo $query;
+$contract_data = mysql_fetch_assoc(mysql_query($query));
+//Получаем данные страхователя
+$insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
+//Данные по второму шагу оформления полиса
+$step_2_data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $contract_data['step_2_data']);//боримся с проблемой unserialize если есть кавычки
+$step_2_data = unserialize($step_2_data);
+echo '<pre>';
+print_r($insurer_data);
+echo '</pre>';
 $category_code = array(
 	'1' => 1,
 	'2' => 2,
@@ -50,48 +75,48 @@ $category_code = array(
 	  			</div>
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
-					 <input type="hidden" name="md5_id" value="<?php echo md5(date("F j, Y, g:i:s "))?>">
+					 <input type="hidden" name="md5_id" value="<?php echo $id ?>">
 					 <h4><b>Данные страхователя</b></h4>
 						<div class="form-group" id="owner">
 							<hr class="hr_red">
 					    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Страхователь</small></label>
 						    <div class="col-sm-7">															
 								<div class="radio">
-									  	<label><input type="radio" name="insurer" class="insurer" value="1" checked><small>Физическое лицо / индивидуальный предприниматель</small></label>
+									  	<label><input type="radio" name="insurer" class="insurer" value="1" <?php echo ($contract_data["insurer_type"] == '1' ? ' checked' : '') ?>><small>Физическое лицо / индивидуальный предприниматель</small></label>
 								</div>
 								<div class="radio">
-									  	<label><input type="radio" name="insurer" class="insurer" value="2"><small>Юридическое лицо</small></label>
+									  	<label><input type="radio" name="insurer" class="insurer" value="2" <?php echo ($contract_data["insurer_type"] == '2' ? ' checked' : '') ?>><small>Юридическое лицо</small></label>
 								</div>
 								
 						    </div>
 					  	</div>
 						<hr>
-					<div id="phiz">				  	
+					<div id="phiz" <?php echo ($step_2_data['insurer'] == '2' ? 'style="display:none"' : '')?>>				  	
 						  	<div class="form-group">
 						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="second_name" id="second_name" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm" name="second_name" id="second_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['second_name'] : '') ?>" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="first_name" id="first_name" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm" name="first_name" id="first_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['first_name'] : '') ?>" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="third_name" id="third_name" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm" name="third_name" id="third_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['third_name'] : '') ?>" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="date_birth" class="col-sm-4 control-label"><small>Дата рождения</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm date_birth" name="date_birth" id="date_birth" placeholder="Дата рождения" required>
+						      		<input type="text" class="form-control input-sm date_birth" name="date_birth" id="date_birth" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['date_birth'] : '') ?>" placeholder="Дата рождения" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -102,37 +127,37 @@ $category_code = array(
 						  		<?php
 						  		$query=mysql_query("SELECT * FROM `document` WHERE `active` = 1 ORDER BY `name`");
 						  		while($row = mysql_fetch_assoc($query)){
-									echo '<option value="'.$row["id"].'" '.($row["id"] == 10 ? 'selected' : '').' >'.$row["name"].'</option>';
+									echo '<option value="'.$row["id"].'" '.($row["id"] == $insurer_data['doc_name'] ? 'selected' : '').' >'.$row["name"].'</option>';
 								}
 								?>    
 								</select>
-						      		<input type="text" class="form-control input-sm" name="doc_series" id="doc_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="doc_number" id="doc_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="doc_series" id="doc_series" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['doc_series'] : '') ?>" placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm" name="doc_number" id="doc_number" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['doc_number'] : '') ?>" placeholder="Номер" required>
 						    	</div>
 						  	</div>						  	
 				  	</div>
 
-				  	<div id="jur" style="display:none">
+				  	<div id="jur" <?php echo ($step_2_data['insurer'] == '1' ? 'style="display:none"' : '')?>>
 
 						  	<div class="form-group">
 						    	<label for="jur_name" class="col-sm-4 control-label"><small>Наименования юр. лица (полностью)</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_name" id="jur_name" placeholder="Наименования юр. лица (полностью)" required>
+						      		<input type="text" class="form-control input-sm" name="jur_name" id="jur_name" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_name'] : '') ?>' placeholder="Наименования юр. лица (полностью)" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_series" id="jur_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="jur_number" id="jur_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="jur_series" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_series'] : '') ?>' id="jur_series" placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm" name="jur_number" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_number'] : '') ?>' id="jur_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label for="jur_inn" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_inn" id="jur_inn" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="jur_inn" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_inn'] : '') ?>' id="jur_inn" placeholder="Номер" required>
 						    	</div>
 						  	</div>				  	
 				  					  					  					  	
@@ -148,7 +173,7 @@ $category_code = array(
 						  		<?php
 						  		$query=mysql_query("SELECT * FROM `kt_subject` ORDER BY `name`");
 						  		while($row = mysql_fetch_assoc($query)){
-									echo '<option value="'.$row["id_fias"].'" >'.$row["name"].'</option>';
+									echo '<option value="'.$row["id_fias"].'" '.($insurer_data['subject'] == $row["id_fias"] ? ' selected' : '').'>'.$row["name"].'</option>';
 								}
 								?>    
 							</select>
@@ -456,7 +481,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_reg_number" class="col-sm-4 control-label"><small>Государственный регистрационный знак</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" maxlength="8" required>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" maxlength="11" required>
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      		
 					    	</div>					    	
 					  	</div>
@@ -782,6 +807,18 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				});
 				return false;
 		});
+	//Отображение списка городов для субъекта при редактирование договора
+		$('#message_0').html('');
+		$.ajax({
+		  type: "POST",
+		  url: '/ajax/fias.php',
+		  data: "subject="+<?php echo $insurer_data['subject'] ?>,
+		  success: function(data) {
+		  	$('#message_0').html(data);
+		  	$('#message_4').hide();
+		  	$('#aoid').val('<?php echo $insurer_data['aoid'] ?>');		  	
+		  }
+		});
 	//отображение списка населённых пунктов для страхователя
 		$(document).on("change", "#aoid", function(){
 			var a = $(this).val();
@@ -803,7 +840,6 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	//отображение списка улиц для населённых пунктов для страхователя
 		$(document).on("change", "#city", function(){
 			var a = $(this).val();
-			//$('#message_1').html(a);
 			$('#message_2').html('');
 				$.ajax({
 				  type: "POST",

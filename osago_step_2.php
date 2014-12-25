@@ -456,7 +456,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_reg_number" class="col-sm-4 control-label"><small>Государственный регистрационный знак</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" maxlength="8" required>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" maxlength="11" required>
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      		
 					    	</div>					    	
 					  	</div>

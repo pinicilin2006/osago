@@ -265,7 +265,11 @@ echo '
 ';
 //echo "<ul><li><h4>Коэффициенты:</h4>$koef</li><li><h4>Формула расчёта:</h4> $formula</li><li><h4>Итоговый страховой тариф:</h4> $t</li></ul><hr>";
 //echo "<p class=\"text-center\"><button type=\"button\" class=\"btn btn-success\" >Оформить полис</button></p>";
-echo '<a href="/osago_step_2.php" class="btn btn-success btn-block " role="button">Оформить полис</a>';
+if(isset($md5_id)){
+	echo '<a href="/edit_osago_step_2.php?id='.$md5_id.'" class="btn btn-success btn-block " role="button">Продолжить редактирование договора</a>';
+} else {
+	echo '<a href="/osago_step_2.php" class="btn btn-success btn-block " role="button">Оформить полис</a>';
+}
 echo "<button type=\"button\" class=\"btn btn-danger btn-block\" id=\"button_return\" onclick=\"button_return();\">Вернутся к расчёту</button>";
 echo '</div></div>';
 ?>

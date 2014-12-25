@@ -48,7 +48,7 @@ $calc_data = unserialize($contract_data['calc_data']);
 	  			</div>
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
-					  	
+					<input type="hidden" name="md5_id" value="<?php echo $id ?>">  	
 					  	<hr class="hr_line">
 						  	
 						  	<div class="form-group ">

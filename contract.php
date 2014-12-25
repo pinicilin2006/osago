@@ -87,18 +87,18 @@ while($row = mysql_fetch_assoc($query)){
 	echo '<td>
 <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Действие <span class="caret"></span></button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank"><small>Распечатать <br>заявление</a></small></li>
+  <ul class="dropdown-menu" role="menu">';
+    if($row['project'] == '1' && $row['annuled'] == '0'){
+    	echo '<li><a href="/edit_osago.php?id='.$row['md5_id'].'"><small>Редактировать</small></a></li><li class="divider" style="margin:0 0"></li>';
+	}
+echo '<li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank"><small>Заявление</a></small></li>
     <li class="divider" style="margin:0 0"></li>
-    <li><a href="/print/bso.php?id='.$row['md5_id'].'" target="_blank"><small>Распечатать <br>БСО</small></a></li>
+    <li><a href="/print/bso.php?id='.$row['md5_id'].'" target="_blank"><small>БСО</small></a></li>
     <li class="divider" style="margin:0 0"></li>
-    <li><a href="/print/a7.php?id='.$row['md5_id'].'" target="_blank"><small>Распечатать <br>бланк А7</small></a></li>
+    <li><a href="/print/a7.php?id='.$row['md5_id'].'" target="_blank"><small>Бланк А7</small></a></li>
     <li class="divider" style="margin:0 0"></li>';
     if($row['annuled'] == '0'){
     	echo '<li><a href="/method/anul.php?id='.$row['md5_id'].'"><small>Аннулировать</small></a></li><li class="divider" style="margin:0 0"></li>';
-	}
-    if($row['project'] == '1' && $row['annuled'] == '0'){
-    	echo '<li><a href="/edit_osago.php?id='.$row['md5_id'].'"><small>Редактировать</small></a></li><li class="divider" style="margin:0 0"></li>';
 	}	
 
 echo '</ul>
