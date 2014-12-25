@@ -15,15 +15,22 @@ if(!isset($_SESSION['user_id']) || !isset($_GET["id"]) || empty($_GET["id"])){
 	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p>";
 	exit();
 }
+$id = mysql_real_escape_string($_GET['id']);
 if(isset($_SESSION["access"][3])){
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '1'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '0' AND `annuled` = '0'";
 }else{
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '1' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '0' AND `annuled` = '0' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
 }
-if(mysql_num_fields(mysql_query($query))<1){
+if(mysql_num_rows(mysql_query($query))<1){
 	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p>";
 	exit();
 }
+//echo $query;
+$contract_data = mysql_fetch_assoc(mysql_query($query));
+$calc_data = unserialize($contract_data['calc_data']);
+// echo '<pre>';
+// print_r($calc_data);
+// echo '</pre>';
 ?>
 <style type="text/css">
   #category option {
@@ -49,15 +56,15 @@ if(mysql_num_fields(mysql_query($query))<1){
 						    	<div class="col-sm-7" id="type_ins">
 									
 									<div class="radio">
-								  		<label><input type="radio" name="type_ins" class="type_ins" value="phiz" checked><small>Физическое лицо</small></label>
+								  		<label><input type="radio" name="type_ins" class="type_ins" value="phiz" <?php echo ($calc_data['type_ins'] == 'phiz' ? ' checked' : '') ?> ><small>Физическое лицо</small></label>
 									</div>
 
 									<div class="radio">
-								  		<label><input type="radio" name="type_ins" class="type_ins" value="ip"><small>Индивидуальный предприниматель</small></label>
+								  		<label><input type="radio" name="type_ins" class="type_ins" value="ip" <?php echo ($calc_data['type_ins'] == 'ip' ? ' checked' : '') ?>><small>Индивидуальный предприниматель</small></label>
 									</div>
 
 									<div class="radio">
-								  		<label><input type="radio" name="type_ins" class="type_ins" value="jur"><small>Юридическое лицо</small></label>
+								  		<label><input type="radio" name="type_ins" class="type_ins" value="jur" <?php echo ($calc_data['type_ins'] == 'jur' ? ' checked' : '') ?>><small>Юридическое лицо</small></label>
 									</div>	
 						    	</div>
 						  	</div>
@@ -69,15 +76,15 @@ if(mysql_num_fields(mysql_query($query))<1){
 					    		<div class="col-sm-7" id="place_reg">
 								
 									<div class="radio">
-									  	<label><input type="radio" name="place_reg" class="place_reg" value="1" checked><small>Российская федерация</small></label>
+									  	<label><input type="radio" name="place_reg" class="place_reg" value="1" <?php echo ($calc_data['place_reg'] == '1' ? ' checked' : '') ?>><small>Российская федерация</small></label>
 									</div>
 
 									<div class="radio">
-									  	<label><input type="radio" name="place_reg" class="place_reg" value="2"><small>Иностранное государство</small></label>
+									  	<label><input type="radio" name="place_reg" class="place_reg" value="2" <?php echo ($calc_data['place_reg'] == '2' ? ' checked' : '') ?>><small>Иностранное государство</small></label>
 									</div>
 
 									<div class="radio">
-									  	<label><input type="radio" name="place_reg" class="place_reg" value="3"><small>ТС следует к месту регистрации</small></label>
+									  	<label><input type="radio" name="place_reg" class="place_reg" value="3" <?php echo ($calc_data['place_reg'] == '3' ? ' checked' : '') ?>><small>ТС следует к месту регистрации</small></label>
 									</div>
 
 								</div>	
@@ -90,11 +97,11 @@ if(mysql_num_fields(mysql_query($query))<1){
 					    		<div class="col-sm-7" id="citizenship">
 								
 									<div class="radio">
-									  	<label><input type="radio" name="citizenship" class="citizenship" value="1" checked><small>Российская федерация</small></label>
+									  	<label><input type="radio" name="citizenship" class="citizenship" value="1" <?php echo ($calc_data['citizenship'] == '1' ? ' checked' : '') ?>><small>Российская федерация</small></label>
 									</div>
 
 									<div class="radio">
-									  	<label><input type="radio" name="citizenship" class="citizenship" value="2"><small>Иностранное государство</small></label>
+									  	<label><input type="radio" name="citizenship" class="citizenship" value="2" <?php echo ($calc_data['citizenship'] == '2' ? ' checked' : '') ?>><small>Иностранное государство</small></label>
 									</div>
 
 								</div>	
@@ -109,7 +116,7 @@ if(mysql_num_fields(mysql_query($query))<1){
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `kt_subject` ORDER BY `name`");
 							  			while ($row = mysql_fetch_assoc($query)) {
-							  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+							  				echo '<option value='.$row["id"].' '.(isset($calc_data['subject']) && $calc_data['subject'] == $row["id"] ? 'selected' : '' ).'>'.$row["name"].'</option>';
 							  			}
 							  		?>
 									</select>
@@ -128,7 +135,7 @@ if(mysql_num_fields(mysql_query($query))<1){
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `term_insurance` ORDER BY `id`");
 							  			while ($row = mysql_fetch_assoc($query)) {
-							  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+							  				echo '<option value='.$row["id"].' '.($calc_data['term_insurance'] == $row["id"] ? 'selected' : '' ).'>'.$row["name"].'</option>';
 							  			}
 							  		?>
 									</select>
@@ -151,7 +158,7 @@ if(mysql_num_fields(mysql_query($query))<1){
 						      		<?php
 						      		$a = date("Y");
 						      		for($x=$a;$x>=$a-120;$x--){
-						      			echo '<option value='.$x.'>'.$x.'</option>';
+						      			echo '<option value='.$x.' '.($calc_data['year_manufacture'] == $x ? 'selected' : '').'>'.$x.'</option>';
 						      		}
 						      		?>
 						      		</select>
@@ -169,7 +176,7 @@ if(mysql_num_fields(mysql_query($query))<1){
 						  			while ($row = mysql_fetch_assoc($query)) {
 						  			$i++;	
 								  		echo '<div class="radio">
-										  <label><input type="radio" name="category" class="category" value="'.$row["id"].'"'.($i == 1 ? ' checked' : '').' ><small>'.$row["name"].'</small></label>
+										  <label><input type="radio" name="category" class="category" value="'.$row["id"].'"'.($i == $calc_data['category'] ? ' checked' : '').' ><small>'.$row["name"].'</small></label>
 										</div><hr class="hr_line">';
 						  			}
 						  		?>
@@ -186,7 +193,7 @@ if(mysql_num_fields(mysql_query($query))<1){
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `capacity` ORDER BY `id`");
 							  			while ($row = mysql_fetch_assoc($query)) {
-							  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+							  				echo '<option value='.$row["id"].' '.($calc_data['capacity'] == $row["id"] ? 'selected' : '').'>'.$row["name"].'</option>';
 							  			}
 							  		?>
 									</select>
@@ -201,7 +208,7 @@ if(mysql_num_fields(mysql_query($query))<1){
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `period_use` ORDER BY `id`");
 							  			while ($row = mysql_fetch_assoc($query)) {
-							  				echo '<option value='.$row["id"].' '.($row["id"] == 8 ? ' selected' : '').'>'.$row["name"].'</option>';
+							  				echo '<option value='.$row["id"].' '.($row["id"] == $calc_data['period_use'] ? ' selected' : '').'>'.$row["name"].'</option>';
 							  			}
 							  		?>
 									</select>
@@ -213,12 +220,37 @@ if(mysql_num_fields(mysql_query($query))<1){
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Количество водителей, допущенных к управлению</small></label>
 							    <div class="col-sm-7">							
 									<div class="radio">
-									  	<label><input type="radio" name="drivers" class="drivers" value="1" checked><small>Без ограничений</small></label>
+									  	<label><input type="radio" name="drivers" class="drivers" value="1" <?php echo ($calc_data['drivers'] == '1' ? ' checked' : '')?> ><small>Без ограничений</small></label>
 									</div>
 									<div class="radio" id="drivers_limit">
-									  	<label><input type="radio" name="drivers" class="drivers" value="2"><small>Ограниченное количество</small></label>
+									  	<label><input type="radio" name="drivers" class="drivers" value="2" <?php echo ($calc_data['drivers'] == '2' ? ' checked' : '')?>><small>Ограниченное количество</small></label>
 									</div>
-									<div id="message_1"></div>									
+									<div id="message_1">
+										<?php
+										if($calc_data['drivers'] == 2){
+											$i = 0;
+											for($x=1;$x<6;$x++){
+												if(isset($calc_data["driver_$x"])){
+													$i++;
+													echo '<select class="form-control input-sm driver_age" name="driver_'.$x.'">';
+													echo '<option value="1" '.($calc_data["driver_$x"] == '1' ? 'selected' : '').'><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option>';
+													echo '<option value="2" '.($calc_data["driver_$x"] == '2' ? 'selected' : '').'><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option>';
+													echo '<option value="3" '.($calc_data["driver_$x"] == '3' ? 'selected' : '').'><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option>';
+													echo '<option value="4" '.($calc_data["driver_$x"] == '4' ? 'selected' : '').'><small>Более 22 лет со стажем вождения свыше 3 лет</small></option>';
+													echo '</select>';
+												}
+											}
+											echo '<center>';
+											if($i<5){
+												echo '<span id="plus_'.$i.'" title="Добавить водителя" style="font-size:14px;top:0px" class="driver_plus glyphicon glyphicon-plus"></span>';
+											}
+											if($i>1){
+												echo '<span id="minus_'.$i.'" title="Удалить водителя" style="font-size:14px;top:0px;margin:0px 0px 0px 10px" class="driver_minus glyphicon glyphicon-minus"></span>';
+											}
+											echo '</center>';
+										}
+										?>
+									</div>									
 							    </div>
 						  	</div>					  
 
@@ -232,7 +264,7 @@ if(mysql_num_fields(mysql_query($query))<1){
 							  		<?php
 							  			$query = mysql_query("SELECT * FROM `kbm` ORDER BY `id`");
 							  			while ($row = mysql_fetch_assoc($query)) {
-							  				echo '<option value='.$row["id"].' '.($row["id"] == '5' ? ' selected' : '').'>'.$row["name"].'</option>';
+							  				echo '<option value='.$row["id"].' '.($row["id"] == $calc_data['class_kbm'] ? ' selected' : '').'>'.$row["name"].'</option>';
 							  			}
 							  		?>
 									</select>
@@ -246,10 +278,10 @@ if(mysql_num_fields(mysql_query($query))<1){
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Имеется прицеп</small></label>
 							    <div class="col-sm-7">															
 									<div class="radio">
-										  	<label><input type="radio" name="trailer" value="1" checked><small>Нет</small></label>
+										  	<label><input type="radio" name="trailer" value="1" <?php echo ($calc_data['trailer'] == '1' ? ' checked' : '')?>><small>Нет</small></label>
 									</div>
 									<div class="radio">
-										  	<label><input type="radio" name="trailer" value="2"><small>Да</small></label>
+										  	<label><input type="radio" name="trailer" value="2" <?php echo ($calc_data['trailer'] == '2' ? ' checked' : '')?>><small>Да</small></label>
 									</div>
 							    </div>
 						  	</div>
@@ -261,10 +293,10 @@ if(mysql_num_fields(mysql_query($query))<1){
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Были ли грубые нарушения условий страхования в соответствии с п.3 ст.9 ФЗ «Об обязательном страховании гражданской ответственности владельцев транспортных средств»</small></label>
 							    <div class="col-sm-7">															
 									<div class="radio">
-										  	<label><input type="radio" name="violations" value="1" checked><small>Нет</small></label>
+										  	<label><input type="radio" name="violations" value="1" <?php echo ($calc_data['violations'] == '1' ? ' checked' : '')?>><small>Нет</small></label>
 									</div>
 									<div class="radio">
-										  	<label><input type="radio" name="violations" value="2"><small>Да</small></label>
+										  	<label><input type="radio" name="violations" value="2" <?php echo ($calc_data['violations'] == '2' ? ' checked' : '')?>><small>Да</small></label>
 									</div>
 							    </div>
 						  	</div>					  						  	
@@ -336,88 +368,38 @@ var a = $("#subject").val();
 			  data: "subject="+a,
 			  success: function(data) {
 			  	$('#message_0').html(data);
-			  	
+			  	<?php
+			  	if(isset($calc_data['city'])){
+			  	?>
+			  	$('#city').val(<?php echo $calc_data['city'] ?>);
+			  	<?php } ?>
 			  }
 			});
 //период использования транспортного средства
 	//Для юриков доступно минимум 6 месяцев
 	$(document).on("change", ".type_ins", function(){
-		var a = $(this).val();
-		if(a == 'jur'){
-			//оставляем доступным вариант с неограниченным количеством водителей
-			$('input:radio[name="drivers"]').filter('[value="1"]').prop('checked',true);
-			$("#message_1").html('');
-			$("#drivers_limit").hide();
-			//период использования ТС
-			for(x=1;x<4;x++){				
-				$("#period_use option[value=" + x + "]").hide();
-			}
-			$('#period_use').val(4);
-		} else {
-			$("#drivers_limit").show(); 
-			for(x=1;x<4;x++){
-				$("#period_use option[value=" + x + "]").show();
-			}
-			$('#period_use').val(1);			
-		}
-	});	
+		type_ins($(this).val());
+	});
+	type_ins('<?php echo $calc_data['type_ins']?>');	
 //срок страхования при выборе места регистрации
 	//приоткрытие страницы ставим значение по умолчанию для срока страхования
-	$("#term_insurance").val(11);
+	//$("#term_insurance").val(11);
 	//скрываем изначально срок страхования до 20 дней включительно и весь блок срока страхования
 	$("#term_insurance option[value=" + 12 + "]").hide();
 		$(".term_insurance").hide();
 	//скрываем и отображаем пункты в зависимости от выбора места регистрации
 	$(document).on("change", ".place_reg", function(){
-		var a = $(this).val();
-		if(a == '2'){
-    		$(".ig_hide").hide();
-    		$("#subject").prop('required',false);
-
-    	}else{
-    		$(".ig_hide").slideDown();
-    		$("#subject").prop('required',true);
-    	}
-		if(a == 3){
-			$(".period_use").slideUp();
-			for(x=1;x<12;x++){
-				$("#term_insurance option[value=" + x + "]").hide();				
-			}
-			$('#term_insurance').val(12);
-		} else {
-			$(".period_use").slideDown();
-			for(x=1;x<12;x++){
-				$("#term_insurance option[value=" + x + "]").show();				
-			}
-			$("#term_insurance option[value=" + 12 + "]").hide();
-			$('#term_insurance').val(1);			
-		}
-		//Скртыие отображение кбм и срока страхования в зависимсоти от выбранного места регистрации ТС
-		if(a == 1){
-			$(".term_insurance").hide();
-			$("#term_insurance").val(11);
-			$(".kbm").show();
-			$("#srok_year").show();
-		} else {
-			$(".term_insurance").show();
-			$(".kbm").hide();
-			$("#srok_year").hide();			
-		}
+		place_reg($(this).val());
 	});	
-
+	place_reg(<?php echo $calc_data['place_reg']?>);
 //Скрытие и отображение мощности двигателя в зависимости от выбора категории (отображаем мощность толкьо привыборе категории В)
 	//При загрузки страницы по умолчанию скрываем мощность
 	$(".capacity").hide();
 	//Отображение/скрытие при выборе категории
 	$(document).on("change", ".category", function(){
-		var a = $(this).val();
-		if(a == '2' || a == '3'){
-			$(".capacity").slideDown();
-		} else {
-			$(".capacity").slideUp();
-		}
+		show_capacity($(this).val());
 	});	
-
+	show_capacity(<?php echo $calc_data['category']?>);
 //Выбор количества водителей при выборе ограниченного количества водителей допущенных к управлению транспортным средством
 	//Скрытие/отображение водительского стажа водителя
 	$(document).on("change", ".drivers", function(){
@@ -461,7 +443,8 @@ var a = $("#subject").val();
  		$("#minus_"+a).remove();
  		$("#message_1").append(c);		
 	});
-
+//выставляем значение для периода использования
+$('#period_use').val(<?php echo $calc_data['period_use']?>);
 //проверка данных формы
     $('#main_form').submit(function( event ) {
     	calc_osago();

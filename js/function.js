@@ -241,3 +241,70 @@ function button_return(){
 	$('#user_data').slideDown();
 	$('#message').html('');
 }
+
+function place_reg(a){
+	var a = a;
+	//alert(a);
+	if(a == '2'){
+		$(".ig_hide").hide();
+		$("#subject").prop('required',false);
+
+	}else{
+		$(".ig_hide").slideDown();
+		$("#subject").prop('required',true);
+	}
+	if(a == 3){
+		$(".period_use").slideUp();
+		for(x=1;x<12;x++){
+			$("#term_insurance option[value=" + x + "]").hide();				
+		}
+		$('#term_insurance').val(12);
+	} else {
+		$(".period_use").slideDown();
+		for(x=1;x<12;x++){
+			$("#term_insurance option[value=" + x + "]").show();				
+		}
+		$("#term_insurance option[value=" + 12 + "]").hide();
+		$('#term_insurance').val(1);			
+	}
+	//Скртыие отображение кбм и срока страхования в зависимсоти от выбранного места регистрации ТС
+	if(a == 1){
+		$(".term_insurance").hide();
+		$("#term_insurance").val(11);
+		$(".kbm").show();
+		$("#srok_year").show();
+	} else {
+		$(".term_insurance").show();
+		$(".kbm").hide();
+		$("#srok_year").hide();			
+	}
+}
+function show_capacity(a){
+	var a = a;
+	if(a == '2' || a == '3'){
+		$(".capacity").slideDown();
+	} else {
+		$(".capacity").slideUp();
+	}
+}
+
+function type_ins(a){
+	var a = a;
+	if(a == 'jur'){
+		//оставляем доступным вариант с неограниченным количеством водителей
+		$('input:radio[name="drivers"]').filter('[value="1"]').prop('checked',true);
+		$("#message_1").html('');
+		$("#drivers_limit").hide();
+		//период использования ТС
+		for(x=1;x<4;x++){				
+			$("#period_use option[value=" + x + "]").hide();
+		}
+		$('#period_use').val(4);
+	} else {
+		$("#drivers_limit").show(); 
+		for(x=1;x<4;x++){
+			$("#period_use option[value=" + x + "]").show();
+		}
+		$('#period_use').val(1);			
+	}	
+}

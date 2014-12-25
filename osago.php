@@ -356,40 +356,7 @@ var a = $("#subject").val();
 		$(".term_insurance").hide();
 	//скрываем и отображаем пункты в зависимости от выбора места регистрации
 	$(document).on("change", ".place_reg", function(){
-		var a = $(this).val();
-		if(a == '2'){
-    		$(".ig_hide").hide();
-    		$("#subject").prop('required',false);
-
-    	}else{
-    		$(".ig_hide").slideDown();
-    		$("#subject").prop('required',true);
-    	}
-		if(a == 3){
-			$(".period_use").slideUp();
-			for(x=1;x<12;x++){
-				$("#term_insurance option[value=" + x + "]").hide();				
-			}
-			$('#term_insurance').val(12);
-		} else {
-			$(".period_use").slideDown();
-			for(x=1;x<12;x++){
-				$("#term_insurance option[value=" + x + "]").show();				
-			}
-			$("#term_insurance option[value=" + 12 + "]").hide();
-			$('#term_insurance').val(1);			
-		}
-		//Скртыие отображение кбм и срока страхования в зависимсоти от выбранного места регистрации ТС
-		if(a == 1){
-			$(".term_insurance").hide();
-			$("#term_insurance").val(11);
-			$(".kbm").show();
-			$("#srok_year").show();
-		} else {
-			$(".term_insurance").show();
-			$(".kbm").hide();
-			$("#srok_year").hide();			
-		}
+		place_reg($(this).val());
 	});	
 
 //Скрытие и отображение мощности двигателя в зависимости от выбора категории (отображаем мощность толкьо привыборе категории В)
