@@ -17,9 +17,9 @@ if(!isset($_SESSION['user_id']) || !isset($_GET["id"]) || empty($_GET["id"])){
 }
 $id = mysql_real_escape_string($_GET['id']);
 if(isset($_SESSION["access"][3])){
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '0' AND `annuled` = '0'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0'";
 }else{
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '0' AND `annuled` = '0' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
 }
 if(mysql_num_rows(mysql_query($query))<1){
 	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p>";
