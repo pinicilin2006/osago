@@ -315,9 +315,11 @@ $pdf->SetXY(25, 141);
 $pdf->Write(0, $auto_doc_type);
 //Серия
 $pdf->SetXY(135, 141);
+$vehicle_data['auto_doc_series'] = iconv('utf-8', 'windows-1251', $vehicle_data['auto_doc_series']);
 $pdf->Write(0, $vehicle_data['auto_doc_series']);
 //Номер
 $pdf->SetXY(175, 141);
+$vehicle_data['auto_doc_number'] = iconv('utf-8', 'windows-1251', $vehicle_data['auto_doc_number']);
 $pdf->Write(0, $vehicle_data['auto_doc_number']);
 //Цель использования
 //Личная

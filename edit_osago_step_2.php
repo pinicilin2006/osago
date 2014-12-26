@@ -34,11 +34,15 @@ if(mysql_num_rows(mysql_query($query))<1){
 $contract_data = mysql_fetch_assoc(mysql_query($query));
 //Получаем данные страхователя
 $insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
+//Получаем данные собственника
+$owner_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["owner_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["owner_id"]."'"));
 //Данные по второму шагу оформления полиса
 $step_2_data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $contract_data['step_2_data']);//боримся с проблемой unserialize если есть кавычки
 $step_2_data = unserialize($step_2_data);
+//Данные по транспортному средству
+$vehicle_data = unserialize($contract_data['vehicle_data']);
 echo '<pre>';
-print_r($insurer_data);
+print_r($vehicle_data);
 echo '</pre>';
 $category_code = array(
 	'1' => 1,
@@ -179,9 +183,9 @@ $category_code = array(
 							</select>
 							<div id="message_0"></div>
 							<div id="message_4" style="display:none">								
-						      		<input type="text" class="form-control input-sm" name="house" id="house" placeholder="Номер дома" required>
-						      		<input type="text" class="form-control input-sm" name="housing" id="housing" placeholder="Корпус">
-						      		<input type="text" class="form-control input-sm" name="apartment" id="apartment" placeholder="Номер квартиры">						    						    	
+						      		<input type="text" class="form-control input-sm" name="house" value='<?php echo $insurer_data['house'] ?>' id="house" placeholder="Номер дома" required>
+						      		<input type="text" class="form-control input-sm" name="housing" value='<?php echo $insurer_data['housing'] ?>' id="housing" placeholder="Корпус">
+						      		<input type="text" class="form-control input-sm" name="apartment" value='<?php echo $insurer_data['apartment'] ?>' id="apartment" placeholder="Номер квартиры">						    						    	
 							</div>			      		
 				    	</div>
 				  	</div>				  				  	
@@ -189,7 +193,7 @@ $category_code = array(
 				  	<div class="form-group">
 				    	<label for="phone" class="col-sm-4 control-label"><small>Телефон</small></label>
 				    	<div class="col-sm-8">
-				      		<input type="text" class="form-control input-sm" name="phone" id="phone" required>
+				      		<input type="text" class="form-control input-sm" name="phone" value='<?php echo $insurer_data['phone'] ?>' id="phone" required>
 				    	</div>
 				  	</div>					  	
 				  	<hr class="hr_line">
@@ -198,16 +202,16 @@ $category_code = array(
 					    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Страхователь является собственником</small></label>
 						    <div class="col-sm-7">															
 								<div class="radio-inline">
-									  	<label><input type="radio" name="insisown" class="insisown" value="1" checked><small>Да</small></label>
+									  	<label><input type="radio" name="insisown" class="insisown" value="1" <?php echo ($contract_data['insurer_id'] == $contract_data['owner_id'] ? ' checked' : '') ?>><small>Да</small></label>
 								</div>
 								<div class="radio-inline">
-									  	<label><input type="radio" name="insisown" class="insisown" value="2"><small>Нет</small></label>
+									  	<label><input type="radio" name="insisown" class="insisown" value="2" <?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] ? ' checked' : '') ?>><small>Нет</small></label>
 								</div>
 						    </div>
 					  	</div>
 				  	
 
-				  	<div id="owner_data" style="display:none">
+				  	<div id="owner_data" <?php echo ($contract_data['insurer_id'] == $contract_data['owner_id'] ? ' style="display:none"' : '') ?>>
 
 				  	<hr>
 						<h4><b>Данные собственника</b></h4>
@@ -219,28 +223,28 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="owner_second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="owner_second_name" id="owner_second_name" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm" name="owner_second_name" id="owner_second_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['second_name'] : '') ?>' placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="owner_first_name" id="owner_first_name" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm" name="owner_first_name" id="owner_first_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['first_name'] : '') ?>' placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="owner_third_name" id="owner_third_name" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm" name="owner_third_name" id="owner_third_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['third_name'] : '') ?>' placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_date_birth" class="col-sm-4 control-label"><small>Дата рождения</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm date_birth" name="owner_date_birth" id="owner_date_birth" placeholder="Дата рождения" required>
+						      		<input type="text" class="form-control input-sm date_birth" name="owner_date_birth" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['date_birth'] : '') ?>' id="owner_date_birth" placeholder="Дата рождения" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -251,12 +255,12 @@ $category_code = array(
 						  		<?php
 						  		$query=mysql_query("SELECT * FROM `document` WHERE `active` = 1 ORDER BY `name`");
 						  		while($row = mysql_fetch_assoc($query)){
-									echo '<option value="'.$row["id"].'" '.($row["id"] == 10 ? 'selected' : '').' >'.$row["name"].'</option>';
+									echo '<option value="'.$row["id"].'" '.($contract_data['insurer_id'] != $contract_data['owner_id'] && $row["id"] == $owner_data['doc_name'] ? 'selected' : '').' >'.$row["name"].'</option>';
 								}
 								?>    
 								</select>
-						      		<input type="text" class="form-control input-sm" name="owner_doc_series" id="owner_doc_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="owner_doc_number" id="owner_doc_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="owner_doc_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['doc_series'] : '') ?>' id="owner_doc_series" placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm" name="owner_doc_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['doc_number'] : '') ?>' id="owner_doc_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
 					  	<?php
@@ -270,22 +274,22 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="owner_jur_name" class="col-sm-4 control-label"><small>Наименования юр. лица (полностью)</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_name" placeholder="Наименования юр. лица (полностью)" required>
+						      		<input type="text" class="form-control input-sm" name="owner_jur_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_name'] : '') ?>' id="owner_jur_name" placeholder="Наименования юр. лица (полностью)" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label for="jur_name" class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%" id="jur_name">
-						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_series'] : '') ?>' placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_number'] : '') ?>' placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label for="owner_jur_inn" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="owner_jur_inn" id="owner_jur_inn" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="owner_jur_inn" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_inn'] : '') ?>' id="owner_jur_inn" placeholder="Номер" required>
 						    	</div>
 						  	</div>				  	
 					  					  					  					  	
@@ -302,15 +306,15 @@ $category_code = array(
 							  		<?php
 							  		$query=mysql_query("SELECT * FROM `kt_subject` ORDER BY `name`");
 							  		while($row = mysql_fetch_assoc($query)){
-										echo '<option value="'.$row["id_fias"].'" >'.$row["name"].'</option>';
+										echo '<option value="'.$row["id_fias"].'" '.($contract_data['insurer_id'] != $contract_data['owner_id'] && $row["id_fias"] == $owner_data['subject'] ? ' selected' : '').'>'.$row["name"].'</option>';
 									}
 									?>    
 								</select>
 								<div id="owner_message_0"></div>
 								<div id="owner_message_4" style="display:none">								
-							      		<input type="text" class="form-control input-sm" name="owner_house" id="owner_house" placeholder="Номер дома" required>
-							      		<input type="text" class="form-control input-sm" name="owner_housing" id="owner_housing" placeholder="Корпус">
-							      		<input type="text" class="form-control input-sm" name="owner_apartment" id="owner_apartment" placeholder="Номер квартиры">						    						    	
+							      		<input type="text" class="form-control input-sm" name="owner_house" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] ? $owner_data['house'] : '') ?>' id="owner_house" placeholder="Номер дома" required>
+							      		<input type="text" class="form-control input-sm" name="owner_housing" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] ? $owner_data['housing'] : '') ?>' id="owner_housing" placeholder="Корпус">
+							      		<input type="text" class="form-control input-sm" name="owner_apartment" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] ? $owner_data['apartment'] : '') ?>' id="owner_apartment" placeholder="Номер квартиры">						    						    	
 								</div>			      		
 					    	</div>
 					  	</div>				  				  	
@@ -318,7 +322,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="date_birth" class="col-sm-4 control-label"><small>Телефон</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="owner_phone" id="owner_phone" required>
+					      		<input type="text" class="form-control input-sm" name="owner_phone" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] ? $owner_data['phone'] : '') ?>' id="owner_phone" required>
 					    	</div>
 					  	</div>					  					  	
 				  	</div>
@@ -332,11 +336,11 @@ $category_code = array(
 					    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;"><small>Марка ТС</small></label>
 					    	<div class="col-sm-8">							
 								<select class="form-control input-sm" name="mark" id="mark" required>
-						  		<option value="" disabled selected>Выберите марку ТС</option>
+						  		<option value="" disabled>Выберите марку ТС</option>
 						  		<?php
 						  			$query = mysql_query("SELECT * FROM `mark` ORDER BY `name`");
 						  			while ($row = mysql_fetch_assoc($query)) {
-						  				echo '<option value='.$row["rsa_mark_id"].'>'.$row["name"].'</option>';
+						  				echo '<option value='.$row["rsa_mark_id"].' '.($row['rsa_mark_id'] == $vehicle_data['mark'] ? ' selected' : '').'>'.$row["name"].'</option>';
 						  			}
 						  		?>
 								</select>
@@ -351,11 +355,10 @@ $category_code = array(
 						  		<?php
 						  			$query = mysql_query("SELECT * FROM `category_code` WHERE `group` = '".$category_code[$_SESSION["step_1"]["category"]]."' ORDER BY `id`");
 						  			while ($row = mysql_fetch_assoc($query)) {
-						  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+						  				echo '<option value='.$row["id"].' '.($row['id'] == $vehicle_data['category'] ? ' selected' : '').'>'.$row["name"].'</option>';
 						  			}
 						  		?>
 								</select>
-								<div id="message_mark"></div>
 					    	</div>
 					  	</div>
 
@@ -364,15 +367,15 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="vin" class="col-sm-4 control-label"><small>Идентификационный номер ТС (VIN)</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="vin" id="vin" maxlength="17" required>
-					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="vin" value='<?php echo $vehicle_data['vin']?>' id="vin" maxlength="17" required>
+					      		<input type="checkbox" class="empty_data" <?php echo ($vehicle_data['vin'] == 'Отсутствует' ? ' checked' : '')?>><label><small>Отсутствует</small></label>
 					    	</div>				    	
 					  	</div>						  	
 					  	
 					  	<div class="form-group">
 					    	<label for="power" class="col-sm-4 control-label"><small>Мощность двигателя ТС (л.с.)</small></label>
 					    	<div class="col-sm-2">
-					      		<input type="text" class="form-control input-sm" name="power" id="power" required>
+					      		<input type="text" class="form-control input-sm" name="power" value='<?php echo $vehicle_data['power']?>' id="power" required>
 					    	</div>
 					  	</div>
 
@@ -380,8 +383,8 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="chassis" class="col-sm-4 control-label"><small>Шасси (рама) №</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="chassis" id="chassis" maxlength="17">
-					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="chassis" value='<?php echo $vehicle_data['chassis']?>' id="chassis" maxlength="17">
+					      		<input type="checkbox" class="empty_data" <?php echo ($vehicle_data['chassis'] == 'Отсутствует' ? ' checked' : '')?>><label><small>Отсутствует</small></label>
 					    	</div>				    	
 					  	</div>
 
@@ -389,8 +392,8 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="trailer" class="col-sm-4 control-label"><small>Кузов (прицеп) №</small></label>
 					    	<div class="col-sm-4">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="trailer" id="trailer" maxlength="17">
-					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      						      		
+					      		<input type="text" class="form-control input-sm empty_data_input" name="trailer" value='<?php echo $vehicle_data['trailer']?>' id="trailer" maxlength="17">
+					      		<input type="checkbox" class="empty_data" <?php echo ($vehicle_data['trailer'] == 'Отсутствует' ? ' checked' : '')?>><label><small>Отсутствует</small></label>					      						      		
 					    	</div>					    	
 					  	</div>
 					  	
@@ -401,7 +404,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="max_weight" class="col-sm-4 control-label"><small>Разрешенная максимальная масса</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="max_weight" id="max_weight" placeholder="кг" required>
+					      		<input type="text" class="form-control input-sm" name="max_weight" id="max_weight" value='<?php echo (isset($vehicle_data['max_weight']) ? $vehicle_data['max_weight'] : '') ?>' placeholder="кг" required>
 					    	</div>
 					  	</div>
 					  	
@@ -417,7 +420,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="number_seats" class="col-sm-4 control-label"><small>Количество пассажирских мест</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="number_seats" id="number_seats" required>
+					      		<input type="text" class="form-control input-sm" name="number_seats" value='<?php echo (isset($vehicle_data['number_seats']) ? $vehicle_data['number_seats'] : '') ?>' id="number_seats" required>
 					    	</div>
 					  	</div>
 					  	
@@ -432,7 +435,7 @@ $category_code = array(
 						  		<?php
 						  			$query = mysql_query("SELECT * FROM `document_auto` WHERE `active` = '1' ORDER BY `id`");
 						  			while ($row = mysql_fetch_assoc($query)) {
-						  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+						  				echo '<option value='.$row["id"].' '.($row['id'] == $vehicle_data['auto_doc_type'] ? ' selected' : '').'>'.$row["name"].'</option>';
 						  			}
 						  		?>
 					      		</select>
@@ -442,7 +445,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_doc_series" class="col-sm-4 control-label"><small>Серия</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="auto_doc_series" id="auto_doc_series" required>
+					      		<input type="text" class="form-control input-sm" name="auto_doc_series" value='<?php echo $vehicle_data['auto_doc_series'] ?>' id="auto_doc_series" required>
 					    	</div>
 					  	</div>
 
@@ -450,7 +453,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_doc_number" class="col-sm-4 control-label"><small>Номер</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="auto_doc_number" id="auto_doc_number" required>
+					      		<input type="text" class="form-control input-sm" name="auto_doc_number" value='<?php echo $vehicle_data['auto_doc_number'] ?>' id="auto_doc_number" required>
 					    	</div>
 					  	</div>					  	
 
@@ -458,7 +461,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_doc_date" class="col-sm-4 control-label"><small>Дата выдачи</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="auto_doc_date" id="auto_doc_date" required>
+					      		<input type="text" class="form-control input-sm" name="auto_doc_date" value='<?php echo $vehicle_data['auto_doc_date'] ?>' id="auto_doc_date" required>
 					    	</div>
 					  	</div>
 					  	<?php
@@ -469,8 +472,8 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_diag_card" class="col-sm-4 control-label"><small>Диагностическая карта, <br>свидетельствующая о прохождении<br> ТО:</small></label>
 					    	<div class="col-sm-8" id="auto_diag_card" style="padding-top:2%">
-					      		<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" placeholder="Номер" maxlength="21" required>
-					      		<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
+					      		<input type="text" class="form-control input-sm" name="auto_diag_card_number" value='<?php echo (isset($step_2_data['auto_diag_card_number']) ? $step_2_data['auto_diag_card_number'] : '')?>' id="auto_diag_card_number" placeholder="Номер" maxlength="21" required>
+					      		<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" value='<?php echo (isset($step_2_data['auto_diag_card_next_date']) ? $step_2_data['auto_diag_card_next_date'] : '')?>' id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
 					      		<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
 					    	</div>
 					  	</div>					  	
@@ -481,8 +484,8 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_reg_number" class="col-sm-4 control-label"><small>Государственный регистрационный знак</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" maxlength="11" required>
-					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      		
+					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" value='<?php echo $vehicle_data['auto_reg_number'] ?>' id="auto_reg_number" maxlength="11" required>
+					      		<input type="checkbox" class="empty_data" <?php echo ($vehicle_data['auto_reg_number'] == 'Отсутствует' ? ' checked' : '')?>><label><small>Отсутствует</small></label>					      		
 					    	</div>					    	
 					  	</div>
 
@@ -491,15 +494,15 @@ $category_code = array(
 					    	<label for="purpose_use" class="col-sm-4 control-label"><small>Цель использования ТС</small></label>
 					    	<div class="col-sm-8">
 					      		<select class="form-control input-sm" id="purpose_use" name="purpose_use">
-					      		<option value="1">личная</option>
-					      		<option value="2">учебная езда</option>
-					      		<option value="3">такси</option>
-					      		<option value="4">перевозка опасных и легко воспламеняющихся грузов</option>
-					      		<option value="5">прокат/краткосрочная аренда</option>
-					      		<option value="6">регулярные пассажирские перевозки/ перевозки пассажиров по заказам</option>
-					      		<option value="7">дорожные и специальные транспортные средства</option>
-					      		<option value="8">экстренные и коммунальные службы</option>
-					      		<option value="9">прочее</option>
+					      		<option value="1" <?php echo ($vehicle_data['purpose_use'] == '1' ? ' selected' : '') ?>>личная</option>
+					      		<option value="2" <?php echo ($vehicle_data['purpose_use'] == '2' ? ' selected' : '') ?>>учебная езда</option>
+					      		<option value="3" <?php echo ($vehicle_data['purpose_use'] == '3' ? ' selected' : '') ?>>такси</option>
+					      		<option value="4" <?php echo ($vehicle_data['purpose_use'] == '4' ? ' selected' : '') ?>>перевозка опасных и легко воспламеняющихся грузов</option>
+					      		<option value="5" <?php echo ($vehicle_data['purpose_use'] == '5' ? ' selected' : '') ?>>прокат/краткосрочная аренда</option>
+					      		<option value="6" <?php echo ($vehicle_data['purpose_use'] == '6' ? ' selected' : '') ?>>регулярные пассажирские перевозки/ перевозки пассажиров по заказам</option>
+					      		<option value="7" <?php echo ($vehicle_data['purpose_use'] == '7' ? ' selected' : '') ?>>дорожные и специальные транспортные средства</option>
+					      		<option value="8" <?php echo ($vehicle_data['purpose_use'] == '8' ? ' selected' : '') ?>>экстренные и коммунальные службы</option>
+					      		<option value="9" <?php echo ($vehicle_data['purpose_use'] == '9' ? ' selected' : '') ?>>прочее</option>
 					      		</select>
 					    	</div>
 					  	</div>
@@ -508,22 +511,22 @@ $category_code = array(
 						    	<div id="auto_used">
 							    	<div class="col-sm-8" style="padding-top:2%">
 							    		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_1" id="auto_used_start_1" placeholder="c" required>
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_1" value='<?php echo (isset($step_2_data['auto_used_start_1']) ? $step_2_data['auto_used_start_1'] : '') ?>' id="auto_used_start_1" placeholder="c" required>
 							      		</div>
 							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" id="auto_used_end_1" placeholder="по" required>
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" value='<?php echo (isset($step_2_data['auto_used_end_1']) ? $step_2_data['auto_used_end_1'] : '') ?>' id="auto_used_end_1" placeholder="по" required>
 							      		</div>
 							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_2" id="auto_used_start_2" placeholder="c">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_2" value='<?php echo (isset($step_2_data['auto_used_start_2']) ? $step_2_data['auto_used_start_2'] : '') ?>' id="auto_used_start_2" placeholder="c">
 							      		</div>
 							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" id="auto_used_end_2" placeholder="по">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" value='<?php echo (isset($step_2_data['auto_used_end_2']) ? $step_2_data['auto_used_end_2'] : '') ?>' id="auto_used_end_2" placeholder="по">
 							      		</div>
 							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" id="auto_used_start_3" placeholder="c">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" value='<?php echo (isset($step_2_data['auto_used_end_3']) ? $step_2_data['auto_used_end_3'] : '') ?>' id="auto_used_start_3" placeholder="c">
 							      		</div>
 							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" id="auto_used_end_3" placeholder="по">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" value='<?php echo (isset($step_2_data['auto_used_end_3']) ? $step_2_data['auto_used_end_3'] : '') ?>' id="auto_used_end_3" placeholder="по">
 							      		</div>
 							    	</div>
 <!-- 							    	<div class="col-sm-4" style="padding-top:2%">
@@ -540,9 +543,9 @@ $category_code = array(
 					    	<label for="osago_old" class="col-sm-4 control-label"><small>Предыдущий договор обязательного страхования гражданской ответственности владельцев транспортных средств в отношении указанного транспортного средства:</small></label>
 						    	<div id="osago_old">
 							    	<div class="col-sm-8" style="padding-top:2%">
-							      		<input type="text" class="form-control input-sm" name="osago_old_series" id="osago_old_series" placeholder="серия" maxlength="3">
-							      		<input type="text" class="form-control input-sm" name="osago_old_number" id="osago_old_number" placeholder="номер" maxlength="10">
-							      		<input type="text" class="form-control input-sm" name="osago_old_name" id="osago_old_name" placeholder="страховщик">
+							      		<input type="text" class="form-control input-sm" name="osago_old_series" value='<?php echo ($step_2_data['osago_old_series']) ?>' id="osago_old_series" placeholder="серия" maxlength="3">
+							      		<input type="text" class="form-control input-sm" name="osago_old_number" value='<?php echo ($step_2_data['osago_old_number']) ?>' id="osago_old_number" placeholder="номер" maxlength="10">
+							      		<input type="text" class="form-control input-sm" name="osago_old_name" value='<?php echo ($step_2_data['osago_old_name']) ?>' id="osago_old_name" placeholder="страховщик">
 							    	</div>
 							    </div>
 					  	</div>					  	
@@ -791,6 +794,55 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	  showOn: "focus"
 	});
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
+//Отображение адреса при загрузке договора на редактирование для страхователя
+		$('#message_0').html('');
+		$.ajax({
+		  type: "POST",
+		  url: '/ajax/fias.php',
+		  data: "subject="+<?php echo $insurer_data['subject'] ?>,
+		  success: function(data) {
+		  	$('#message_0').html(data);
+		  	$('#message_4').hide();
+		  	$('#aoid').val('<?php echo $insurer_data['aoid'] ?>');
+		  	change_aoid();
+		  	//change_street();  			  	
+		  }
+		});
+
+function change_aoid(){
+			var a = $('#aoid').val();
+			var b = $('#subject').val();
+			//$('#message_1').html(a);
+			$('#message_1').html('');
+				$.ajax({
+				  type: "POST",
+				  url: '/ajax/fias.php',
+				  data: {aoid: a, subject: b},
+				  success: function(data) {
+				  	$('#message_1').html(data);
+				  	$('#city').val('<?php echo $insurer_data['city'] ?>');
+				  	change_street(); 
+				  }
+				});
+				return false;	
+}
+function change_street(){
+			var a = $('#city').val();
+			$('#message_2').html('');
+				$.ajax({
+				  type: "POST",
+				  url: '/ajax/fias.php',
+				  data: {city: a},
+				  success: function(data) {
+				  	$('#message_2').html(data);
+				  	$('#street').val('<?php echo $insurer_data['street'] ?>');
+				  	$('#message_4').show();
+				  }
+				});
+				return false;
+}
+////////////////////////////////////////////////////////////
+
 	//отображение списка городов субъекта для страхователя
 		$(document).on("change", "#subject", function(){
 			var a = $(this).val();
@@ -807,18 +859,7 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				});
 				return false;
 		});
-	//Отображение списка городов для субъекта при редактирование договора
-		$('#message_0').html('');
-		$.ajax({
-		  type: "POST",
-		  url: '/ajax/fias.php',
-		  data: "subject="+<?php echo $insurer_data['subject'] ?>,
-		  success: function(data) {
-		  	$('#message_0').html(data);
-		  	$('#message_4').hide();
-		  	$('#aoid').val('<?php echo $insurer_data['aoid'] ?>');		  	
-		  }
-		});
+
 	//отображение списка населённых пунктов для страхователя
 		$(document).on("change", "#aoid", function(){
 			var a = $(this).val();
@@ -861,6 +902,54 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////СОБСТВЕННИК ДАННЫЕ РЕГИСТРАЦИИ//////////////////////////////////////////////		
+//Отображение адреса при загрузке договора на редактирование для страхователя
+		$('#owner_message_0').html('');
+		$.ajax({
+		  type: "POST",
+		  url: '/ajax/fias_owner.php',
+		  data: "owner_subject="+<?php echo $owner_data['subject'] ?>,
+		  success: function(data) {
+		  	$('#owner_message_0').html(data);
+		  	$('#owner_message_4').hide();
+		  	$('#owner_aoid').val('<?php echo $owner_data['aoid'] ?>');
+		  	owner_change_aoid();
+		  	//change_street();  			  	
+		  }
+		});
+
+function owner_change_aoid(){
+			var a = $('#owner_aoid').val();
+			var b = $('#owner_subject').val();
+			//$('#message_1').html(a);
+			$('#owner_message_1').html('');
+				$.ajax({
+				  type: "POST",
+				  url: '/ajax/fias_owner.php',
+				  data: {owner_aoid: a, owner_subject: b},
+				  success: function(data) {
+				  	$('#owner_message_1').html(data);
+				  	$('#owner_city').val('<?php echo $owner_data['city'] ?>');
+				  	owner_change_street(); 
+				  }
+				});
+				return false;	
+}
+function owner_change_street(){
+			var a = $('#owner_city').val();
+			$('#owner_message_2').html('');
+				$.ajax({
+				  type: "POST",
+				  url: '/ajax/fias_owner.php',
+				  data: {owner_city: a},
+				  success: function(data) {
+				  	$('#owner_message_2').html(data);
+				  	$('#owner_street').val('<?php echo $owner_data['street'] ?>');
+				  	$('#owner_message_4').show();
+				  }
+				});
+				return false;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////
 	//отображение списка городов субъекта для собственника
 		$(document).on("change", "#owner_subject", function(){
 			var a = $(this).val();
@@ -963,7 +1052,17 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				});
 				return false;
 		});
-
+//отображение списка моделей при загрузки страницы
+			$('#message_mark').html('');
+				$.ajax({
+				  type: "POST",
+				  url: '/ajax/model.php',
+				  data: "mark="+<?php echo $vehicle_data['mark']?>,
+				  success: function(data) {
+				  	$('#message_mark').html(data);
+				  	$('#model').val(<?php echo $vehicle_data['model']?>);
+				  }
+				});
 //Заполняем поле словом "Отсутствует" в случае отметки соответтсвующего чекбокса
 	$(document).on("change", ".empty_data", function(){
 		if($(this).prop("checked")){
