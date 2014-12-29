@@ -580,7 +580,7 @@ $category_code = array(
 						      				echo date('d.m.Y', strtotime("+1 months"));
 						      			}
 						      			if($_SESSION["step_1"]["term_insurance"] == 3){
-						      				echo date('d.m.Y', strtotime("+(2 months"));
+						      				echo date('d.m.Y', strtotime("+2 months"));
 						      			}
 						      			if($_SESSION["step_1"]["term_insurance"] == 4){
 						      				echo date('d.m.Y', strtotime("+3 months"));

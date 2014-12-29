@@ -69,33 +69,33 @@ function validateDateBirth_1(){
 		}
 }
 
-function add_policy(){
-			var a = $("#main_form").serialize();
-			$.ajax({
-			  type: "POST",
-			  url: 'ajax/add_policy.php',
-			  data: a,
-			  success: function(data) {
-			  	$("#block_0").slideUp(400);
-			  	$("#message_1").html(data);
-			  }
-			});
-			return false;
-}
+// function add_policy(){
+// 			var a = $("#main_form").serialize();
+// 			$.ajax({
+// 			  type: "POST",
+// 			  url: 'ajax/add_policy.php',
+// 			  data: a,
+// 			  success: function(data) {
+// 			  	$("#block_0").slideUp(400);
+// 			  	$("#message_1").html(data);
+// 			  }
+// 			});
+// 			return false;
+// }
 
-function edit_policy(){
-			var a = $("#main_form").serialize();
-			$.ajax({
-			  type: "POST",
-			  url: 'ajax/edit_policy.php',
-			  data: a,
-			  success: function(data) {
-			  	$("#block_0").slideUp(400);
-			  	$("#message_1").html(data);
-			  }
-			});
-			return false;
-}
+// function edit_policy(){
+// 			var a = $("#main_form").serialize();
+// 			$.ajax({
+// 			  type: "POST",
+// 			  url: 'ajax/edit_policy.php',
+// 			  data: a,
+// 			  success: function(data) {
+// 			  	$("#block_0").slideUp(400);
+// 			  	$("#message_1").html(data);
+// 			  }
+// 			});
+// 			return false;
+// }
 
 function add_user(){
 			var a = $("#main_form").serialize();
@@ -228,6 +228,20 @@ function add_polis(){
 			$.ajax({
 			  type: "POST",
 			  url: '/ajax/polis_add.php',
+			  data: a,
+			  success: function(data) {
+			  	$("#user_data").slideUp();
+			  	$("#message").html(data);
+			  }
+			});
+			return false;
+}
+
+function edit_polis(){
+			var a = $("#main_form").serialize();
+			$.ajax({
+			  type: "POST",
+			  url: '/ajax/polis_edit.php',
 			  data: a,
 			  success: function(data) {
 			  	$("#user_data").slideUp();

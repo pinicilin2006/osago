@@ -30,7 +30,6 @@ if(mysql_num_rows(mysql_query($query))<1){
 	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p>";
 	exit();
 }
-//echo $query;
 $contract_data = mysql_fetch_assoc(mysql_query($query));
 //Получаем данные страхователя
 $insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
@@ -41,9 +40,6 @@ $step_2_data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'
 $step_2_data = unserialize($step_2_data);
 //Данные по транспортному средству
 $vehicle_data = unserialize($contract_data['vehicle_data']);
-echo '<pre>';
-print_r($vehicle_data);
-echo '</pre>';
 $category_code = array(
 	'1' => 1,
 	'2' => 2,
@@ -608,7 +604,7 @@ $category_code = array(
 						      				echo date('d.m.Y', strtotime("+1 months"));
 						      			}
 						      			if($_SESSION["step_1"]["term_insurance"] == 3){
-						      				echo date('d.m.Y', strtotime("+(2 months"));
+						      				echo date('d.m.Y', strtotime("+2 months"));
 						      			}
 						      			if($_SESSION["step_1"]["term_insurance"] == 4){
 						      				echo date('d.m.Y', strtotime("+3 months"));
@@ -645,7 +641,7 @@ $category_code = array(
 						    	<label for="bso_number" class="col-sm-4 control-label"><small>Номер выдаваемого полиса</small></label>
 						    	<div class="col-sm-8">
 									<select class="form-control input-sm" name="bso_number">
-							  			<option value="" disabled>Выберите номер бланка</option>
+							  			<option value="">Выберите номер бланка</option>
 								  		<?php
 								  		$query=mysql_query("SELECT * FROM `bso` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");
 								  		while($row = mysql_fetch_assoc($query)){
@@ -661,7 +657,7 @@ $category_code = array(
 						    	<label for="a7_number" class="col-sm-4 control-label"><small>Номер выдаваемого бланка А7</small></label>
 						    	<div class="col-sm-8">
 									<select class="form-control input-sm" name="a7_number">
-							  			<option value="" disabled>Выберите номер бланка</option>
+							  			<option value="">Выберите номер бланка</option>
 								  		<?php
 								  		$query=mysql_query("SELECT * FROM `a7` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");
 								  		while($row = mysql_fetch_assoc($query)){
@@ -676,7 +672,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="special_notes" class="col-sm-4 control-label"><small>Особые отметки</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="special_notes" id="special_notes">
+						      		<input type="text" class="form-control input-sm" name="special_notes" value='<?php echo $step_2_data['special_notes'] ?>' id="special_notes">
 						    	</div>
 						  	</div>
 
@@ -684,7 +680,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="ais_request_identifier" class="col-sm-4 control-label"><small>Идентификатор запроса КБМ/ТО</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" id="ais_request_identifier" required>
+						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" value='<?php echo $contract_data['rsa_number'] ?>' id="ais_request_identifier" required>
 						    	</div>
 						  	</div>
 
@@ -1170,7 +1166,7 @@ function owner_change_street(){
 	$('#main_form').validate({ // initialize the plugin
     	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.
     	submitHandler: function(form) {
-    	add_polis();
+    	edit_polis();
     	return false; 
     	}
     }); 
