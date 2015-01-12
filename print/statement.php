@@ -278,6 +278,7 @@ $params['[OSAGO_OLD_SERIES]'] = (isset($step_2_data['osago_old_series']) ? $step
 $params['[OSAGO_OLD_NUMBER]'] = (isset($step_2_data['osago_old_number']) ? $step_2_data['osago_old_number'] : '------------');
 $params['[OSAGO_OLD_NAME]'] = (isset($step_2_data['osago_old_name']) ? $step_2_data['osago_old_name'] : '------------');
 $params['[BSO_NUMBER]'] = (isset($step_2_data['bso_number']) ? $step_2_data['bso_number'] : '------------');
+$params['[BSO_SERIES]'] = (isset($step_2_data['bso_number']) ? $contract_data['bso_series'] : '---');
 $params['[DATE_CREATE]'] = date('d.m.Y', strtotime($contract_data["time_create"]));
 $calc_result = unserialize($contract_data['calc_result']);
 $params['[TB]'] = $calc_result['tb'];

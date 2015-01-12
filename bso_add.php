@@ -45,12 +45,19 @@ require_once('template/header.html');
 					  		</select>
 					  </div>
 
-					  <div class="form-inline" id="message_1">
-					  
+					  <div class="form-inline" id="message_1">					 
+
  					  </div>
 					  
 					  <hr align="center" size="2" />
 
+					  <div class="form-group" id="message_2" style="display:none">
+					  		<select class="form-control" name="series" id="series" required>
+					  			<option value="" disabled>Выберите серию</option>
+					  			<option value='EEE' selected>EEE</option>
+					  		</select>
+					  </div>
+					  <hr align="center" size="2" />
 					  <div class="form-group">
 					      <button type="submit" class="btn btn-default">Присвоить БСО</button>
 					  </div>
@@ -83,6 +90,8 @@ $(document).ready(function(){
 			  	$('#blank_data').slideDown();
 			  	b = '<label class=\"control-label\" style=\"padding-top:0px\">Диапазон номеров</label> <input type=\"text\" name=\"bso_range_start\" class=\"range form-control input-sm\" placeholder=\"с\" style=\"height:25px\" required> <input type=\"text\" class=\"range form-control input-sm\" name=\"bso_range_end\" placeholder=\"по\" style=\"height:25px\" required>';
 			  	$('#message_1').html(b);
+			  	$('#message_2').show();
+			  	$('#range').val(1);
 			  }
 			});
 			return false;

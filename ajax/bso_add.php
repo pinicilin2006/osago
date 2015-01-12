@@ -46,6 +46,9 @@ if(isset($bso_range_start) && isset($bso_range_end)){
 if(isset($_POST["bso_number"]) && empty($_POST["bso_number"])){
 	$err_text .= "<li class=\"text-danger\">Не указан номер БСО</li>";
 }
+if(!$series){
+	$err_text .= "<li class=\"text-danger\">Не указана серия БСО</li>";
+}
 if(isset($_POST["bso_number"])){
 	foreach ($_POST["bso_number"] as $key => $value) {
 		if(mysql_num_rows(mysql_query("SELECT * FROM `bso` WHERE `number` = '".$value."'"))>0){
@@ -62,7 +65,7 @@ $n = 0;//количество успешно добавленных бсо
 //Если не диапазон
 if(isset($_POST["bso_number"])){
 	foreach ($_POST["bso_number"] as $key => $value) {
-		if(mysql_query("INSERT INTO `bso` (number,unit_id,user_id,who_add) VALUES('".$value."','".(isset($user_id) ? '' : $unit)."','".(isset($user_id) ? $user_id : '')."','".$_SESSION["user_id"]."')")){
+		if(mysql_query("INSERT INTO `bso` (number,series,unit_id,user_id,who_add) VALUES('".$value."','".$series."','".(isset($user_id) ? '' : $unit)."','".(isset($user_id) ? $user_id : '')."','".$_SESSION["user_id"]."')")){
 			echo "<p class=\"text-success text-center\">Бланк №".$value." успешно добавлен</p>";
 			$n++;
 		}else{
@@ -75,7 +78,7 @@ if(isset($_POST["bso_number"])){
 //для диапазона
 if(isset($bso_range_start) && isset($bso_range_end)){
 	for($x = $bso_range_start;$x<=$bso_range_end;$x++){
-		if(mysql_query("INSERT INTO `bso` (number,unit_id,user_id,who_add) VALUES('".$x."','".(isset($user_id) ? '' : $unit)."','".(isset($user_id) ? $user_id : '')."','".$_SESSION["user_id"]."')")){
+		if(mysql_query("INSERT INTO `bso` (number,series,unit_id,user_id,who_add) VALUES('".$x."','".$series."','".(isset($user_id) ? '' : $unit)."','".(isset($user_id) ? $user_id : '')."','".$_SESSION["user_id"]."')")){
 			echo "<p class=\"text-success text-center\">Бланк №".$x." успешно добавлен</p>";
 			$n++;
 		}else{
