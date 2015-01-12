@@ -37,13 +37,15 @@ require_once('fpdi/fpdi.php');
 //Вносим необходимые данные в полис и отдаём в формате pdf
 $pdf = new FPDI();
 $pdf->AddFont('ArialMT','','arial_cyr.php');
-$pdf->AddPage(); 
+$pdf->AddPage();
+
 // $pdf->setSourceFile('blank/bso.pdf'); 
 // // Указываем номер импортируемой страницы
 // $tplIdx = $pdf->importPage(1); 
 // //указываем размер страницы
 // //$pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
 // $pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
+
 //Ставим поля по нулям
 $pdf->SetMargins(0,0,0,0);
 $pdf->SetAutoPageBreak(false);
@@ -397,12 +399,25 @@ if($calc_data['drivers'] == 2){
 		}else{
 			$pdf->SetXY(3, 182+$y);
 			$pdf->Write(0, '------');
-			$pdf->SetXY(12, 182+$y);
+			$pdf->SetXY(52, 182+$y);
 			$pdf->Write(0, '-----------------------------------------');
 			$pdf->SetXY(150, 182+$y);
 			$pdf->Write(0, '---------------------------------------');			
 		}
 	$y=$y+5.8;	
+	}
+}
+//Прочерки в списке допущенных лиц при выборе неограниченного числа 
+if($calc_data['drivers'] == 1){
+	$y = 0;
+	for($x=1;$x<5;$x++){
+		$pdf->SetXY(3, 182+$y);
+		$pdf->Write(0, '------');
+		$pdf->SetXY(52, 182+$y);
+		$pdf->Write(0, '-----------------------------------------');
+		$pdf->SetXY(150, 182+$y);
+		$pdf->Write(0, '---------------------------------------');					
+		$y=$y+5.8;	
 	}
 }
 //Страховая премия

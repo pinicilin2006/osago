@@ -20,7 +20,7 @@ require_once('template/header.html');
 	    			<h3 class="panel-title">ОСАГО</h3>
 	  			</div>
 	  			<div class="panel-body" id="user_data">
-				Заглушка
+				Начальная страница
 	  			</div>
 			</div>
 			<div id="message"></div>
