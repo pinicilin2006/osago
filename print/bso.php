@@ -395,7 +395,7 @@ if($calc_data['drivers'] == 2){
 			$pdf->SetXY(12, 182+$y);
 			$pdf->Write(0, $second_name.' '.$first_name.' '.$third_name);
 			$pdf->SetXY(150, 182+$y);
-			$pdf->Write(0, $series.', '.$number);
+			$pdf->Write(0, $series.' '.$number);
 		}else{
 			$pdf->SetXY(3, 182+$y);
 			$pdf->Write(0, '------');
