@@ -564,13 +564,13 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="driver_<?php echo $x ?>" class="col-sm-4 control-label"><small>Данные водителя №<?php echo $x ?>:</small></label>
 					    	<div class="col-sm-8" id="driver_<?php echo $x ?>">
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_second_name" placeholder="Фамилия" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
-					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_experience" placeholder="Стаж управления ТС соответствующей категории, полных лет" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_second_name" value="<?php echo $step_2_data["driver_$x_second_name"] ?>" placeholder="Фамилия" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_first_name" value="<?php echo $step_2_data["driver_$x_first_name"] ?>" placeholder="Имя" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_third_name" value="<?php echo $step_2_data["driver_$x_third_name"] ?>" placeholder="Отчество" required>
+					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" value="<?php echo $step_2_data["driver_$x_date_birth"] ?>" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" value="<?php echo $step_2_data["driver_$x_series"] ?>" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" value="<?php echo $step_2_data["driver_$x_number"] ?>" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_experience" value="<?php echo $step_2_data["driver_$x_experience"] ?>" placeholder="Стаж управления ТС соответствующей категории, полных лет" required>
 					    	</div>
 					  	</div>
 					  	<hr>				  			
