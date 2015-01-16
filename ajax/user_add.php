@@ -83,6 +83,15 @@ if(mysql_query("INSERT INTO `user` (login,password,first_name,second_name,third_
 		mysql_query("INSERT INTO `user_rights` (user_id,rights) VALUES('".$user_id."','".mysql_real_escape_string($value)."')");
 	}
 	echo "<br><p class=\"text-success text-center\">Пользователь <strong>$second_name $first_name $third_name</strong> успешно добавлен. <br> Логин <strong>$login</strong><br>Пароль <strong>$password</strong></p>";
+	$header="Content-type: text/html; charset=\"utf-8\"";
+	$header.="From: ОСАГО <no-reply@osago.sngi.ru>";
+	$header.="Subject: Доступ в сервис ОСАГО";
+	$header.="Content-type: text/html; charset=\"utf-8\"";
+	$message = "<p>Пользователь <strong>$second_name $first_name $third_name</strong> успешно добавлен. <br> Логин <strong>$login</strong><br>Пароль <strong>$password</strong></p>";
+	$message = wordwrap($message, 70, "\r\n");
+	foreach ($send_message as $key => $value) {
+		mail($val, 'Доступ в сервис ОСАГО', $message, $header);
+	}
 } else {
 	echo "<p class=\"text-danger\">Произошла ошибка при добавление пользователя в базу данных!</p>";
 }
