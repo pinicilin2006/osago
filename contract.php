@@ -39,15 +39,15 @@ if(mysql_num_rows(mysql_query($query))<1){
 		    			<table class='table table-hover table-responsive table-condensed table-bordered' id='contract_table'>
 		    				<thead>
 		    					<tr>
-				    				<th>№ <span class="glyphicon glyphicon-sort"></span></th>
-				    				<th>Дата заключения договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th>Страхователь <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th>№ БСО <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th>Дата/время начала действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th>Дата/время окончания действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th>Страховой тариф <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th>Статус договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th>Действие <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>№ <span class="glyphicon glyphicon-sort"></span></th>
+				    				<th style = 'cursor: pointer;'>Дата заключения договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Страхователь <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>№ БСО <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Дата/время начала действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Дата/время окончания действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Страховой тариф <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Статус договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Действие <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    			</tr>
 			    			</thead>
 			    			<tbody>
