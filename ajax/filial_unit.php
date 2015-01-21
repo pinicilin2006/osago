@@ -12,6 +12,7 @@ require_once('../function.php');
 connect_to_base();
 $id = mysql_real_escape_string($_POST["id"]);
 $query = mysql_query("SELECT * FROM `unit` WHERE `unit_parent_id` ='".$id."'");
+$return = '';
 if(mysql_num_rows($query)>0){
 	$return .='<div><select class="form-control" name="unit" id="unit" required><option value="'.$id.'" selected>Сотрудник филиала</option>';
 	while ($row = mysql_fetch_assoc($query)) {

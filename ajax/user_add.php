@@ -89,7 +89,7 @@ if(mysql_query("INSERT INTO `user` (login,password,first_name,second_name,third_
 	$header.="Content-type: text/html; charset=\"utf-8\"";
 	$message = "<p>Пользователь <strong>$second_name $first_name $third_name</strong> успешно добавлен. <br> Логин <strong>$login</strong><br>Пароль <strong>$password</strong></p>";
 	$message = wordwrap($message, 70, "\r\n");
-	foreach ($send_message as $key => $value) {
+	foreach ($send_message as $key => $val) {
 		mail($val, 'Доступ в сервис ОСАГО', $message, $header);
 	}
 } else {
