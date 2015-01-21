@@ -36,18 +36,18 @@ if(mysql_num_rows(mysql_query($query))<1){
 	  			</div>
 	  			<div class="panel-body">
 		  			<div class="table-responsive">
-		    			<table class='table table-hover table-responsive table-condensed table-bordered'>
+		    			<table class='table table-hover table-responsive table-condensed table-bordered' id='contract_table'>
 		    				<thead>
 		    					<tr>
-				    				<th>№</th>
-				    				<th>Дата заключения договора</th>
-				    				<th>Страхователь</th>
-				    				<th>№ БСО</th>
-				    				<th>Дата/время начала действия договора</th>
-				    				<th>Дата/время окончания действия договора</th>
-				    				<th>Страховой тариф</th>
-				    				<th>Статус договора</th>
-				    				<th>Действие</th>
+				    				<th>№ <span class="glyphicon glyphicon-sort"></span></th>
+				    				<th>Дата заключения договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th>Страхователь <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th>№ БСО <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th>Дата/время начала действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th>Дата/время окончания действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th>Страховой тариф <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th>Статус договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th>Действие <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    			</tr>
 			    			</thead>
 			    			<tbody>
@@ -120,3 +120,8 @@ echo '</ul>
 </div>
 </body>
 </html>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#contract_table").tablesorter();
+});	
+</script>
