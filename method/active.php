@@ -14,12 +14,12 @@ connect_to_base();
 //массив с параметрами для замены в документе
 $id = mysql_escape_string($_GET["id"]);
 if(isset($_SESSION["access"][6])){
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `bso_number` > 0 AND `a7_number` > 0";
 }else{
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."' AND `bso_number` > 0 AND `a7_number` > 0";
 }
 if(mysql_num_rows(mysql_query($query))<1){
-	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p><meta http-equiv=\"Refresh\" content=\"5; url='/contract.php'\">";
+	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных <br>либо<br> у проекта договора не внесенны номер БСО и бланка А7</p><meta http-equiv=\"Refresh\" content=\"5; url='/contract.php'\">";
 	exit();
 } else {
 	$query = "UPDATE `contract` SET `project` = '0' WHERE `md5_id` = '".$id."'";
