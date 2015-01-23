@@ -87,7 +87,7 @@ function morph($n, $f1, $f2, $f5) {
 function check_browser(){
   $user_agent = $_SERVER['HTTP_USER_AGENT'];
   if(stristr($user_agent, 'MSIE 5.0') || stristr($user_agent, 'MSIE 6.0') || stristr($user_agent, 'MSIE 7.0') || stristr($user_agent, 'MSIE 8.0') || stristr($user_agent, 'Firefox/3.5.1')){
-    echo 'Исользование данной версии браузера не допускается. Используйте более новую версию браузера.';
+    echo '<center><span class="error">Использование данной версии браузера не допускается. Используйте более новую версию браузера.</span></senter>';
     exit();
   }
 }
