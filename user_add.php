@@ -62,8 +62,8 @@ require_once('template/header.html');
 					  </div>
 
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text" class="form-control input-sm" id="password" name="password" placeholder="Пароль *" required>
-					      <p class="help-block"><small>Английский язык, минимум одна большая и одна маленькая буква, одна цифра.</small></p>					    
+					      <input type="text" class="form-control input-sm" id="password" name="password" value='<?php echo generate_password(8)?>' placeholder="Пароль *" required>
+					      <p class="help-block"><small>Английский язык, минимум 6 символов, минимум одна буква и одна цифра.</small></p>					    
 					  </div>
 
 					  <div class="form-group">

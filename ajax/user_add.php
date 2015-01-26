@@ -44,8 +44,8 @@ if(!$login){
 if(!$password){
 	$err_text .= "<li class=\"text-danger\">Не указан пароль</li>";
 }
-if(isset($password) && (strlen($password) < 6 || !preg_match('#^[A-Za-z0-9]+$#', $password))){
-	$err_text .= "<li class=\"text-danger\">Пароль должен содержать минимум 6 символов, включающих в себя большую маленькую букву на английском языке и одну цифру<br>";
+if(isset($password) && (strlen($password) < 6 || !preg_match("/([0-9]+)/", $password) || !preg_match("/([a-zA-Z]+)/", $password))){
+	$err_text .= "<li class=\"text-danger\">Пароль должен содержать минимум 6 символов, включающих в себя букву на английском языке и одну цифру<br>";
 }
 if(!$filial){
 	$err_text .= "<li class=\"text-danger\">Не указан филиал</li>";
