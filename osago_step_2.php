@@ -164,7 +164,7 @@ $category_code = array(
 				  	<div class="form-group">
 				    	<label for="phone" class="col-sm-4 control-label"><small>Телефон</small></label>
 				    	<div class="col-sm-8">
-				      		<input type="text" class="form-control input-sm" name="phone" id="phone" required>
+				      		<input type="text" class="form-control input-sm" name="phone" id="phone">
 				    	</div>
 				  	</div>					  	
 				  	<hr class="hr_line">
@@ -293,7 +293,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="date_birth" class="col-sm-4 control-label"><small>Телефон</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="owner_phone" id="owner_phone" required>
+					      		<input type="text" class="form-control input-sm" name="owner_phone" id="owner_phone">
 					    	</div>
 					  	</div>					  					  	
 				  	</div>
