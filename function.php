@@ -120,6 +120,7 @@ function generate_password($number)
       $index = rand(0, count($arr) - 1);
       $pass .= $arr[$index];
     }
+    $pass .= rand(0, 100);
     return $pass;
   }
 
