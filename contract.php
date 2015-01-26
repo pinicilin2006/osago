@@ -14,13 +14,13 @@ require_once('function.php');
 connect_to_base();
 require_once('template/header.html');
 //Забираем данные 
-if(isset($_SESSION['access'][10])){
-	$query = "SELECT * FROM `contract`";
-}
 elseif(isset($_SESSION['access'][6])){
 	$query = "SELECT * FROM `contract` WHERE `unit_id` = '".$_SESSION['unit_id']."' ORDER BY `id`";
 } else {
 	$query = "SELECT * FROM `contract` WHERE `user_id` = '".$_SESSION['user_id']."' ORDER BY `id`";
+}
+if(isset($_SESSION['access'][10])){
+	$query = "SELECT * FROM `contract`";
 }
 if(mysql_num_rows(mysql_query($query))<1){
 	echo "<p class=\"text-danger text-center\">Отсутствуют договора в базе данных!</p>";
