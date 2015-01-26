@@ -29,14 +29,14 @@ require_once('template/header.html');
 					  <p class="help-block text-right"></span><small>* - поля обязательные для заполнения.</small></p>  
 
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text" class="form-control input-sm" id="second_name" name="second_name" placeholder="Фамилия *" required>					    
+					      <input type="text" class="form-control input-sm fio" id="second_name" name="second_name" placeholder="Фамилия *" required>					    
 					  </div>
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text" class="form-control input-sm" id="first_name" name="first_name" placeholder="Имя *" required>					    
+					      <input type="text" class="form-control input-sm fio" id="first_name" name="first_name" placeholder="Имя *" required>					    
 					  </div>
 
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text" class="form-control input-sm" id="third_name" name="third_name" placeholder="Отчество *" required>					    
+					      <input type="text" class="form-control input-sm fio" id="third_name" name="third_name" placeholder="Отчество *" required>					    
 					  </div>					  					  
 
 					  <div class="form-group has-feedback">					    					    
@@ -145,7 +145,43 @@ $(document).ready(function(){
 			  }
 			});
 			return false;
-	})	
+	})
+//Заполняем поле с логином при заполнение полей с фио
+	var rusChars = new Array('А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','\я',' ');
+	/* var transChars = new Array('A','B','V','G','D','E','YE','ZH','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','KH','TS','CH','SH','SHCH','\`','Y','\'','E','YU','YA','a','b','v','g','d','e','ye','zh','z','i','y','k','l','m','n','o','p','r','s','t','u','f','kh','ts','ch','sh','shch','\`','y','\'','e','yu','ya','_'); */
+	var transChars = new Array('a','b','v','g','d','e','ye','zh','z','i','y','k','l','m','n','o','p','r','s','t','u','f','kh','ts','ch','sh','shch','','y','','e','yu','ya','a','b','v','g','d','e','ye','zh','z','i','y','k','l','m','n','o','p','r','s','t','u','f','kh','ts','ch','sh','shch','','y','','e','yu','ya','_');
+	function convert(from){
+	var to = new String();
+	var len = from.length;
+	var character, isRus;
+	for(i=0; i < len; i++){
+		character = from.charAt(i,1);
+		isRus = false;
+		for(j=0; j < rusChars.length; j++){
+			if(character == rusChars[j]){
+				isRus = true;
+				break;
+			}
+		}
+		to += (isRus) ? transChars[j] : character;
+	}
+	return to;
+	//$('#login').val(to);
+}	
+$('.fio').change(function(){
+	if($('#first_name').val() === '' || $('#second_name').val() === '' || $('#third_name').val() === ''){
+		return false;
+	}
+	var a = convert($('#first_name').val()[0]);
+	var b = convert($('#second_name').val());
+	var c = convert($('#third_name').val()[0]);
+	// var a_tr = convert(a);
+	// var b_tr = convert(b);
+	// var c_tr = convert(c);
+	var login = b+'_'+a+c;
+	$('#login').val(login);
+	
+});	
 //проверка данных формы
     $('#main_form').submit(function( event ) {
     	add_user();
