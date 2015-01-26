@@ -14,7 +14,7 @@ require_once('function.php');
 connect_to_base();
 require_once('template/header.html');
 //Забираем данные 
-elseif(isset($_SESSION['access'][6])){
+if(isset($_SESSION['access'][6])){
 	$query = "SELECT * FROM `contract` WHERE `unit_id` = '".$_SESSION['unit_id']."' ORDER BY `id`";
 } else {
 	$query = "SELECT * FROM `contract` WHERE `user_id` = '".$_SESSION['user_id']."' ORDER BY `id`";
