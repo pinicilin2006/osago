@@ -92,6 +92,7 @@ if(mysql_query("INSERT INTO `user` (login,password,first_name,second_name,third_
 	foreach ($send_message as $key => $val) {
 		mail($val, 'Доступ в сервис ОСАГО', $message, $header);
 	}
+	
 } else {
 	echo "<p class=\"text-danger\">Произошла ошибка при добавление пользователя в базу данных!</p>";
 }

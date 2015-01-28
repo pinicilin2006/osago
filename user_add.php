@@ -44,8 +44,8 @@ require_once('template/header.html');
 					  </div>
 
 					  <div class="form-group">
-							<label class="radio-inline"><input type="radio" name="sex" value="m" checked>м</label>	    
-							<label class="radio-inline"><input type="radio" name="sex" value="f">ж</label>
+							<label class="radio-inline"><input type="radio" name="sex" value="m">м</label>	    
+							<label class="radio-inline"><input type="radio" name="sex" value="f" checked>ж</label>
 					  </div>
 
 					  <div class="form-group has-feedback">					    					    
