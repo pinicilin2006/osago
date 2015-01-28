@@ -64,6 +64,10 @@ if(mysql_num_rows(mysql_query("SELECT * FROM `user` WHERE `login` = '".$login."'
 	echo "<br><p class=\"text-danger text-center\">Логин занят!</p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 	exit();	
 }
+if(mysql_num_rows(mysql_query("SELECT * FROM `user` WHERE `phone` = '".$phone."'"))>0){
+	echo "<br><p class=\"text-danger text-center\">Пользователь с таким телефоном уже имеется в базе данных!</p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+	exit();	
+}
 if(mysql_num_rows(mysql_query("SELECT * FROM `user` WHERE `first_name` = '".$first_name."' AND `second_name` = '".$second_name."' AND `third_name` = '".$third_name."' AND `date_birth` = '".$date_birth."' AND `sex` = '".$sex."'"))>0){
 	echo "<br><p class=\"text-danger text-center\">Пользователь с такими данными уже имеется в базе данных пользователей.</p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 	exit();	
