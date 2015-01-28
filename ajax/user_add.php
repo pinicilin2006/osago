@@ -92,7 +92,16 @@ if(mysql_query("INSERT INTO `user` (login,password,first_name,second_name,third_
 	foreach ($send_message as $key => $val) {
 		mail($val, 'Доступ в сервис ОСАГО', $message, $header);
 	}
-	
+	//Отправка смс с данными для доступа
+	$header="Content-type:text/plain;charset=windows-1251\r\n";
+	$header.="From: it@sngi.ru\r\n";
+	$message = 'UserLogin=SURGUTNEFTEGAS2
+	Password=1q2w3e
+	SourceAddress=SNGI
+	PhoneNumber=+79678856663
+	Доступ в сервис ОСАГО https://osago.sngi.ru Логин: '.$login.' Пароль: '.$password.'';
+	$message = iconv('utf-8', 'windows-1251', $message);
+	mail('smsgate@sngi.ru','Sms',$message,$header);
 } else {
 	echo "<p class=\"text-danger\">Произошла ошибка при добавление пользователя в базу данных!</p>";
 }
