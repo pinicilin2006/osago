@@ -41,6 +41,7 @@ if(mysql_num_rows(mysql_query($query))<1){
 		    					<tr>
 				    				<th style = 'cursor: pointer;'>№ <span class="glyphicon glyphicon-sort"></span></th>
 				    				<th style = 'cursor: pointer;'>Дата заключения договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Ф.И.О. агента <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    				<th style = 'cursor: pointer;'>Страхователь <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    				<th style = 'cursor: pointer;'>№ БСО <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    				<th style = 'cursor: pointer;'>Дата/время начала действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
@@ -65,6 +66,8 @@ while($row = mysql_fetch_assoc($query)){
 	}	
 	echo "<td>".$row['id']."</td>";
 	echo "<td>".date('d.m.Y', strtotime($row["time_create"]))."</td>";
+	$user_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$row['user_id']."'"));
+	echo "<td>".$user_data['second_name']." ".$user_data['first_name']." ".$user_data['third_name']."</td>";
 	$insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($row["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$row["insurer_id"]."'"));
 	if($row["insurer_type"] == 1){
 		echo "<td>".$insurer_data['second_name']." ".$insurer_data['first_name']." ".$insurer_data['third_name']."</td>";
