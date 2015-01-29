@@ -42,12 +42,12 @@ $pdf = new FPDI();
 $pdf->AddFont('ArialMT','','arial_cyr.php');
 $pdf->AddPage();
 
-// $pdf->setSourceFile('blank/bso.pdf'); 
-// // Указываем номер импортируемой страницы
-// $tplIdx = $pdf->importPage(1); 
-// //указываем размер страницы
-// //$pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
-// $pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
+$pdf->setSourceFile('blank/bso3.pdf'); 
+// Указываем номер импортируемой страницы
+$tplIdx = $pdf->importPage(1); 
+//указываем размер страницы
+//$pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
+$pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
 
 //Ставим поля по нулям
 $pdf->SetMargins(0,0,0,0);
@@ -58,39 +58,39 @@ $pdf->SetFont('ArialMT', '', '13');
 $pdf->SetTextColor(0,0,0);
 ////////////////////////////////////////////////////////Добавляем данные в полис//////////////////////////////
 //Время начала действия договора
-$pdf->SetXY(123.8, 40.5);
+$pdf->SetXY(120.8, 42.5);
 $pdf->Write(0, $contract_data['start_time'][0]);
-$pdf->SetXY(128.8, 40.5);
+$pdf->SetXY(125.8, 42.5);
 $pdf->Write(0, $contract_data['start_time'][1]);
-$pdf->SetXY(140.3, 40.5);
+$pdf->SetXY(137.3, 42.5);
 $pdf->Write(0, $contract_data['start_time'][3]);
-$pdf->SetXY(145.3, 40.5);
+$pdf->SetXY(142.3, 42.5);
 $pdf->Write(0, $contract_data['start_time'][4]);
 //Дата начала
-$pdf->SetXY(161, 40.5);
+$pdf->SetXY(156, 42.5);
 $pdf->Write(0, $contract_data['start_date'][0]);
-$pdf->SetXY(166, 40.5);
+$pdf->SetXY(161, 42.5);
 $pdf->Write(0, $contract_data['start_date'][1]);
-$pdf->SetXY(173.7, 40.5);
+$pdf->SetXY(168.7, 42.5);
 $pdf->Write(0, $contract_data['start_date'][3]);
-$pdf->SetXY(178.9, 40.5);
+$pdf->SetXY(173.9, 42.5);
 $pdf->Write(0, $contract_data['start_date'][4]);
-$pdf->SetXY(193, 40.5);
+$pdf->SetXY(187, 42.5);
 $pdf->Write(0, $contract_data['start_date'][8]);
-$pdf->SetXY(198.3, 40.5);
+$pdf->SetXY(192.3, 42.5);
 $pdf->Write(0, $contract_data['start_date'][9]);
 //Дата окончания
-$pdf->SetXY(161, 48.1);
+$pdf->SetXY(156, 50.1);
 $pdf->Write(0, $contract_data['end_date'][0]);
-$pdf->SetXY(166, 48.1);
+$pdf->SetXY(161, 50.1);
 $pdf->Write(0, $contract_data['end_date'][1]);
-$pdf->SetXY(173.7, 48.1);
+$pdf->SetXY(168.7, 50.1);
 $pdf->Write(0, $contract_data['end_date'][3]);
-$pdf->SetXY(178.9, 48.1);
+$pdf->SetXY(173.9, 50.1);
 $pdf->Write(0, $contract_data['end_date'][4]);
-$pdf->SetXY(193, 48.1);
+$pdf->SetXY(187, 50.1);
 $pdf->Write(0, $contract_data['end_date'][8]);
-$pdf->SetXY(198.3, 48.1);
+$pdf->SetXY(192.3, 50.1);
 $pdf->Write(0, $contract_data['end_date'][9]);
 //Период использования
 //Первый период

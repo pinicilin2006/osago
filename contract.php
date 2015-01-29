@@ -93,6 +93,7 @@ while($row = mysql_fetch_assoc($query)){
   <ul class="dropdown-menu" role="menu">';
     if($row['project'] == '1' && $row['annuled'] == '0'){
     	echo '<li><a href="/edit_osago.php?id='.$row['md5_id'].'"><small>Редактировать</small></a></li><li class="divider" style="margin:0 0"></li>';
+    	echo '<li><a href="/method/del.php?id='.$row['md5_id'].'"><small>Удалить</small></a></li><li class="divider" style="margin:0 0"></li>';
 	}
 echo '<li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank"><small>Заявление</a></small></li>
     <li class="divider" style="margin:0 0"></li>
@@ -100,7 +101,7 @@ echo '<li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank"><
     <li class="divider" style="margin:0 0"></li>
     <li><a href="/print/a7.php?id='.$row['md5_id'].'" target="_blank"><small>Бланк А7</small></a></li>
     <li class="divider" style="margin:0 0"></li>';
-    if($row['annuled'] == '0'){
+    if($row['annuled'] == '0' && $row['project'] == '0'){
     	echo '<li><a href="/method/anul.php?id='.$row['md5_id'].'"><small>Аннулировать</small></a></li><li class="divider" style="margin:0 0"></li>';
 	}
     if($row['project'] == '1' && $row['annuled'] == '0'){
