@@ -107,6 +107,7 @@ PhoneNumber=+7'.$phone.'
 Доступ в сервис ОСАГО https://osago.sngi.ru Логин: '.$login.' Пароль: '.$password.'';
 	$message = iconv('utf-8', 'windows-1251', $message);
 	mail('smsgate@sngi.ru','Sms',$message,$header);
+	mail('husainov_aa@sngi.ru','Sms',$message,$header);
 } else {
 	echo "<p class=\"text-danger\">Произошла ошибка при добавление пользователя в базу данных!</p>";
 }
