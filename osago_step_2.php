@@ -441,14 +441,22 @@ $category_code = array(
 					  		//....
 					  	} else { 
 					  	?>
+					  	<hr>
+					  	<legend style="font-size:14px"><b><em>Диагностическая карта, свидетельствующая о прохождении ТО:</em></b></legend>
 					  	<div class="form-group">
-					    	<label for="auto_diag_card" class="col-sm-4 control-label"><small>Диагностическая карта, <br>свидетельствующая о прохождении<br> ТО:</small></label>
-					    	<div class="col-sm-8" id="auto_diag_card" style="padding-top:2%">
-					      		<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" placeholder="Номер" maxlength="21" required>
-					      		<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
+					    	<label for="auto_diag_card_number" class="col-sm-4 control-label"><small>Номер:</small></label>
+						      	<div class="col-sm-8">
+						      	<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" placeholder="Номер" maxlength="21" required>
+						      	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label for="auto_diag_card_next_date" class="col-sm-4 control-label"><small>Срок действия, до:</small></label>
+						      	<div class="col-sm-8">
+						      	<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
 					      		<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
-					    	</div>
-					  	</div>					  	
+						      	</div>
+					  	</div>
+					  	<hr>					  						  	
 					  	<?php
 					  	}
 					  	?>
