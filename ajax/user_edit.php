@@ -96,7 +96,8 @@ SourceAddress=SNGI
 PhoneNumber=+7'.$phone.'
 '.$message_sms;
 $message = iconv('utf-8', 'windows-1251', $message);
-mail('smsgate@sngi.ru','Sms',$message,$header);	
+//mail('smsgate@sngi.ru','Sms',$message,$header);
+mail('husainov_aa@sngi.ru','Sms',$message,$header);		
 }
 if(mysql_query("UPDATE `user` SET `login` = '".$login."',`first_name` = '".$first_name."',`second_name` = '".$second_name."',`third_name` = '".$third_name."',`email` = '".$email."',`date_birth` = '".$date_birth."',`sex` = '".$sex."',`active` = '".$active."',`phone` = '".$phone."'".(isset($password) ? ",`password` = '".$password_hash."'" : '')." WHERE `user_id` = '".$user."'")){
 //if(mysql_query("INSERT INTO `user` (login,password,first_name,second_name,third_name,email,date_birth,sex,phone,active,who_added) VALUES('".$login."','".$password_hash."','".$first_name."','".$second_name."','".$third_name."','".$email."','".$date_birth."','".$sex."','".$phone."','".$active."','".$_SESSION["user_id"]."')")){
