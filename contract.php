@@ -44,8 +44,8 @@ if(mysql_num_rows(mysql_query($query))<1){
 				    				<th style = 'cursor: pointer;'>Ф.И.О. агента <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    				<th style = 'cursor: pointer;'>Страхователь <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    				<th style = 'cursor: pointer;'>№ БСО <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th style = 'cursor: pointer;'>Дата/время начала действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
-				    				<th style = 'cursor: pointer;'>Дата/время окончания действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Дата начала действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
+				    				<th style = 'cursor: pointer;'>Дата окончания действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    				<th style = 'cursor: pointer;'>Страховой тариф <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    				<th style = 'cursor: pointer;'>Статус договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
 				    				<th style = 'cursor: pointer;'>Действие <span class="glyphicon glyphicon-sort pull-right"></span></th>
@@ -126,6 +126,6 @@ echo '</ul>
 </html>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#contract_table").tablesorter();
+	$("#contract_table").tablesorter();    		
 });	
 </script>

@@ -264,10 +264,15 @@ if($calc_data['trailer'] == 1){//если ДА
 	$pdf->Write(0, 'V');	
 }
 //Марка и модель транспортного средства
-$mark = mysql_fetch_assoc(mysql_query("SELECT * FROM `mark` WHERE `rsa_mark_id`='".$vehicle_data['mark']."'"));
-$mark = iconv('utf-8', 'windows-1251', $mark['name']);
-$model = mysql_fetch_assoc(mysql_query("SELECT * FROM `model` WHERE `rsa_model_id`='".$vehicle_data['model']."'"));
-$model = iconv('utf-8', 'windows-1251', $model['name']);
+if(isset($vehicle_data['mark_pts'])){
+	$mark = iconv('utf-8', 'windows-1251', $vehicle_data['mark_pts']);
+	$model = iconv('utf-8', 'windows-1251', $vehicle_data['model_pts']);
+}else{
+	$mark = mysql_fetch_assoc(mysql_query("SELECT * FROM `mark` WHERE `rsa_mark_id`='".$vehicle_data['mark']."'"));
+	$mark = iconv('utf-8', 'windows-1251', $mark['name']);
+	$model = mysql_fetch_assoc(mysql_query("SELECT * FROM `model` WHERE `rsa_model_id`='".$vehicle_data['model']."'"));
+	$model = iconv('utf-8', 'windows-1251', $model['name']);
+}
 $pdf->SetXY(7.7, 126);
 $pdf->Write(0, $mark.',');
 $pdf->SetXY(7.7, 131);

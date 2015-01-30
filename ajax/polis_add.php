@@ -241,6 +241,12 @@ if($max_weight){
 if(isset($number_seats)){
 	$vehicle_data['number_seats'] = $number_seats;
 }
+if(isset($mark_pts)){
+	$vehicle_data['mark_pts'] = $mark_pts;
+}
+if(isset($model_pts)){
+	$vehicle_data['model_pts'] = $model_pts;
+}
 $vehicle_data = serialize($vehicle_data);
 
 //Данные по водителям

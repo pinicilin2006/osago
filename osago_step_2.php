@@ -319,6 +319,35 @@ $category_code = array(
 					    	</div>
 					  	</div>
 
+						<div class="form-group">
+					    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Соответствует данным в ПТС</small></label>
+						    <div class="col-sm-7">															
+								<div class="radio-inline">
+									  	<label><input type="radio" name="auto_in_pts" class="auto_in_pts" value="1" checked><small>Да</small></label>
+								</div>
+								<div class="radio-inline">
+									  	<label><input type="radio" name="auto_in_pts" class="auto_in_pts" value="2"><small>Нет</small></label>
+								</div>
+						    </div>
+					  	</div>
+
+					  	<div style='display:none' id='block_pts'>
+						  	<div class="form-group">
+						    	<label for="power" class="col-sm-4 control-label"><small>Марка в ПТС</small></label>
+						    	<div class="col-sm-2">
+						      		<input type="text" class="form-control input-sm" name="mark_pts" id="mark_pts" required>
+						    	</div>
+						  	</div>
+						  	<div class="form-group">
+						    	<label for="power" class="col-sm-4 control-label"><small>Модель в ПТС</small></label>
+						    	<div class="col-sm-2">
+						      		<input type="text" class="form-control input-sm" name="model_pts" id="model_pts" required>
+						    	</div>
+						  	</div>
+					  	</div>
+
+
+
 						<div class="form-group ">
 					    	<label  class="col-sm-4 control-label" style="word-wrap:break-word;"><small>Категория ТС</small></label>
 					    	<div class="col-sm-8">							
@@ -333,8 +362,6 @@ $category_code = array(
 								<div id="message_mark"></div>
 					    	</div>
 					  	</div>
-
-
 					  	
 					  	<div class="form-group">
 					    	<label for="vin" class="col-sm-4 control-label"><small>Идентификационный номер ТС (VIN)</small></label>
@@ -950,7 +977,15 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 			$(this).nextAll('.empty_data:first').prop("checked", false)
 		}
 	});
-
+//Отображаем поля если марка и модель не соответвуют написанному в ПТС
+	$(document).on("change", ".auto_in_pts", function(){
+		var a = $(this).val();
+		if(a == '2'){
+			$("#block_pts").slideDown();
+		} else {
+			$("#block_pts").slideUp();
+		}
+	});
 //Заполняем дату окончания действия договора страхования
 	$(document).on("change", "#start_date", function(){
 		var a = $(this).val();//дата начала действия

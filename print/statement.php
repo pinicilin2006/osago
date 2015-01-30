@@ -221,10 +221,15 @@ if($contract_data["owner_type"] == 2){
 $vehicle_data = unserialize($contract_data['vehicle_data']);
 $calc_data = unserialize($contract_data['calc_data']);
 //Получаем марку и модель
-$mark = mysql_fetch_assoc(mysql_query("SELECT * FROM `mark` WHERE `rsa_mark_id`='".$vehicle_data['mark']."'"));
-$mark = $mark['name'];
-$model = mysql_fetch_assoc(mysql_query("SELECT * FROM `model` WHERE `rsa_model_id`='".$vehicle_data['model']."'"));
-$model = $model['name'];
+if(isset($vehicle_data['mark_pts'])){
+	$mark = iconv('utf-8', 'windows-1251', $vehicle_data['mark_pts']);
+	$model = iconv('utf-8', 'windows-1251', $vehicle_data['model_pts']);
+}else{
+	$mark = mysql_fetch_assoc(mysql_query("SELECT * FROM `mark` WHERE `rsa_mark_id`='".$vehicle_data['mark']."'"));
+	$mark = $mark['name'];
+	$model = mysql_fetch_assoc(mysql_query("SELECT * FROM `model` WHERE `rsa_model_id`='".$vehicle_data['model']."'"));
+	$model = $model['name'];
+}
 $category = mysql_fetch_assoc(mysql_query("SELECT * FROM `category_code` WHERE `id`='".$vehicle_data['category']."'"));
 $category = $category['name'];
 $params['[MARK]'] = $mark;
