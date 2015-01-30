@@ -76,8 +76,8 @@ while($row = mysql_fetch_assoc($query)){
 		echo "<td>".$insurer_data['jur_name']."</td>";
 	}
 	echo "<td>".$row['bso_number']."</td>"; 
-	echo "<td>".$row['start_date']." / ".$row['start_time']."</td>"; 
-	echo "<td>".$row['end_date']." / 23:59</td>";
+	echo "<td>".$row['start_date']."</td>"; 
+	echo "<td>".$row['end_date']."</td>";
 	$calc_result = unserialize($row['calc_result']);
 	echo "<td>".$calc_result['t']."</td>";
 	echo "<td>";
