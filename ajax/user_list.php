@@ -18,7 +18,7 @@ $i = 0;
 while($row = mysql_fetch_assoc($query)){
 	$i++;
 	$return .="<li class=\"list-group-item\">";
-	$return .= $i.". ".$row["second_name"].' '.$row["first_name"].' '.$row["third_name"];
+	$return .= $i.". ".$row["second_name"].' '.$row["first_name"].' '.$row["third_name"].' <form style="display:inline" method="post" action="/user_edit.php"><input type="hidden" name="user" value='.$row['user_id'].'><button type="submit" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></form>';
 	$return .="</li>";
 }
 $return .="</ol></div>";
