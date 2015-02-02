@@ -95,85 +95,85 @@ $pdf->Write(0, $contract_data['end_date'][9]);
 //Период использования
 //Первый период
 //старт
-$pdf->SetXY(8.7, 68);
+$pdf->SetXY(8.7, 69);
 $pdf->Write(0, $step_2_data['auto_used_start_1'][0]);
-$pdf->SetXY(13.7, 68);
+$pdf->SetXY(13.7, 69);
 $pdf->Write(0, $step_2_data['auto_used_start_1'][1]);
-$pdf->SetXY(21.2, 68);
+$pdf->SetXY(21.2, 69);
 $pdf->Write(0, $step_2_data['auto_used_start_1'][3]);
-$pdf->SetXY(26.4, 68);
+$pdf->SetXY(26.4, 69);
 $pdf->Write(0, $step_2_data['auto_used_start_1'][4]);
-$pdf->SetXY(38, 68);
+$pdf->SetXY(38, 69);
 $pdf->Write(0, $step_2_data['auto_used_start_1'][8]);
-$pdf->SetXY(43, 68);
+$pdf->SetXY(43, 69);
 $pdf->Write(0, $step_2_data['auto_used_start_1'][9]);
 //конец
-$pdf->SetXY(60.7, 68);
+$pdf->SetXY(59.7, 69);
 $pdf->Write(0, $step_2_data['auto_used_end_1'][0]);
-$pdf->SetXY(65.7, 68);
+$pdf->SetXY(64.7, 69);
 $pdf->Write(0, $step_2_data['auto_used_end_1'][1]);
-$pdf->SetXY(73.2, 68);
+$pdf->SetXY(72, 69);
 $pdf->Write(0, $step_2_data['auto_used_end_1'][3]);
-$pdf->SetXY(78.4, 68);
+$pdf->SetXY(77, 69);
 $pdf->Write(0, $step_2_data['auto_used_end_1'][4]);
-$pdf->SetXY(90, 68);
+$pdf->SetXY(88, 69);
 $pdf->Write(0, $step_2_data['auto_used_end_1'][8]);
-$pdf->SetXY(95, 68);
+$pdf->SetXY(93, 69);
 $pdf->Write(0, $step_2_data['auto_used_end_1'][9]);
 //Второй период
 if(isset($step_2_data['auto_used_start_2']) && isset($step_2_data['auto_used_end_2'])){
 	//старт
-	$pdf->SetXY(111.2, 68);
+	$pdf->SetXY(109.2, 69);
 	$pdf->Write(0, $step_2_data['auto_used_start_2'][0]);
-	$pdf->SetXY(116.2, 68);
+	$pdf->SetXY(114.2, 69);
 	$pdf->Write(0, $step_2_data['auto_used_start_2'][1]);
-	$pdf->SetXY(123.7, 68);
+	$pdf->SetXY(120.7, 69);
 	$pdf->Write(0, $step_2_data['auto_used_start_2'][3]);
-	$pdf->SetXY(128.9, 68);
+	$pdf->SetXY(126.3, 69);
 	$pdf->Write(0, $step_2_data['auto_used_start_2'][4]);
-	$pdf->SetXY(140.5, 68);
+	$pdf->SetXY(137.5, 69);
 	$pdf->Write(0, $step_2_data['auto_used_start_2'][8]);
-	$pdf->SetXY(145.5, 68);
+	$pdf->SetXY(142.5, 69);
 	$pdf->Write(0, $step_2_data['auto_used_start_2'][9]);
 	//конец
-	$pdf->SetXY(163.2, 68);
+	$pdf->SetXY(159.2, 69);
 	$pdf->Write(0, $step_2_data['auto_used_end_2'][0]);
-	$pdf->SetXY(168.2, 68);
+	$pdf->SetXY(164.2, 69);
 	$pdf->Write(0, $step_2_data['auto_used_end_2'][1]);
-	$pdf->SetXY(175.7, 68);
+	$pdf->SetXY(171.7, 69);
 	$pdf->Write(0, $step_2_data['auto_used_end_2'][3]);
-	$pdf->SetXY(180.9, 68);
+	$pdf->SetXY(175.9, 69);
 	$pdf->Write(0, $step_2_data['auto_used_end_2'][4]);
-	$pdf->SetXY(192.5, 68);
+	$pdf->SetXY(187, 69);
 	$pdf->Write(0, $step_2_data['auto_used_end_2'][8]);
-	$pdf->SetXY(197.5, 68);
+	$pdf->SetXY(192, 69);
 	$pdf->Write(0, $step_2_data['auto_used_end_2'][9]);	
 } else {
 	//старт
-	$pdf->SetXY(111.2, 67.4);
+	$pdf->SetXY(109.2, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(116.2, 67.4);
+	$pdf->SetXY(114.2, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(123.7, 67.4);
+	$pdf->SetXY(120.7, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(128.9, 67.4);
+	$pdf->SetXY(126.3, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(140.5, 67.4);
+	$pdf->SetXY(137.5, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(145.5, 67.4);
+	$pdf->SetXY(142.5, 68.4);
 	$pdf->Write(0, '-');
 	//конец
-	$pdf->SetXY(163.2, 67.4);
+	$pdf->SetXY(159.2, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(168.2, 67.4);
+	$pdf->SetXY(164.2, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(175.7, 67.4);
+	$pdf->SetXY(171.7, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(180.9, 67.4);
+	$pdf->SetXY(175.9, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(192.5, 67.4);
+	$pdf->SetXY(187, 68.4);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(197.5, 67.4);
+	$pdf->SetXY(192, 68.4);
 	$pdf->Write(0, '-');		
 }
 //Третий период
@@ -206,30 +206,30 @@ if(isset($step_2_data['auto_used_start_3']) && isset($step_2_data['auto_used_end
 	$pdf->Write(0, $step_2_data['auto_used_end_3'][9]);	
 } else {
 	//старт
-	$pdf->SetXY(8.7, 73.8);
+	$pdf->SetXY(8.7, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(13.7, 73.8);
+	$pdf->SetXY(13.7, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(21.2, 73.8);
+	$pdf->SetXY(21.2, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(26.4, 73.8);
+	$pdf->SetXY(26.4, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(38, 73.8);
+	$pdf->SetXY(38, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(43, 73.8);
+	$pdf->SetXY(43, 74.8);
 	$pdf->Write(0, '-');
 	//конец
-	$pdf->SetXY(60.7, 73.8);
+	$pdf->SetXY(60.7, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(65.7, 73.8);
+	$pdf->SetXY(65.7, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(73.2, 73.8);
+	$pdf->SetXY(73.2, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(78.4, 73.8);
+	$pdf->SetXY(78.4, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(90, 73.8);
+	$pdf->SetXY(90, 74.8);
 	$pdf->Write(0, '-');
-	$pdf->SetXY(95, 73.8);
+	$pdf->SetXY(95, 74.8);
 	$pdf->Write(0, '-');		
 }
 
@@ -260,7 +260,7 @@ if($calc_data['trailer'] == 2){//если ДА
 	$pdf->Write(0, 'V');	
 }
 if($calc_data['trailer'] == 1){//если ДА
-	$pdf->SetXY(108, 114.7);
+	$pdf->SetXY(106, 114.7);
 	$pdf->Write(0, 'V');	
 }
 //Марка и модель транспортного средства
@@ -279,39 +279,39 @@ $pdf->SetXY(7.7, 131);
 $pdf->Write(0, $model);
 //VIN
 $vin = iconv('utf-8', 'windows-1251', $step_2_data['vin']);
-$pdf->SetXY(71.5, 129);
+$pdf->SetXY(70.5, 129);
 $pdf->Write(0, $vin[0]);
-$pdf->SetXY(76.5, 129);
+$pdf->SetXY(75.5, 129);
 $pdf->Write(0, $vin[1]);
-$pdf->SetXY(81.8, 129);
+$pdf->SetXY(80, 129);
 $pdf->Write(0, $vin[2]);
-$pdf->SetXY(86.8, 129);
+$pdf->SetXY(85.2, 129);
 $pdf->Write(0, $vin[3]);
-$pdf->SetXY(91.8, 129);
+$pdf->SetXY(89.8, 129);
 $pdf->Write(0, $vin[4]);
-$pdf->SetXY(97.2, 129);
+$pdf->SetXY(95.2, 129);
 $pdf->Write(0, $vin[5]);
-$pdf->SetXY(102.5, 129);
+$pdf->SetXY(100.5, 129);
 $pdf->Write(0, $vin[6]);
-$pdf->SetXY(107.7, 129);
+$pdf->SetXY(105.7, 129);
 $pdf->Write(0, $vin[7]);
-$pdf->SetXY(113, 129);
+$pdf->SetXY(110, 129);
 $pdf->Write(0, $vin[8]);
-$pdf->SetXY(118.2, 129);
+$pdf->SetXY(115.2, 129);
 $pdf->Write(0, $vin[9]);
-$pdf->SetXY(123.5, 129);
+$pdf->SetXY(120.5, 129);
 $pdf->Write(0, $vin[10]);
-$pdf->SetXY(129, 129);
+$pdf->SetXY(125.5, 129);
 $pdf->Write(0, $vin[11]);
-$pdf->SetXY(134.3, 129);
+$pdf->SetXY(130.3, 129);
 $pdf->Write(0, $vin[12]);
-$pdf->SetXY(139.3, 129);
+$pdf->SetXY(135.3, 129);
 $pdf->Write(0, $vin[13]);
-$pdf->SetXY(144.5, 129);
+$pdf->SetXY(140.5, 129);
 $pdf->Write(0, $vin[14]);
-$pdf->SetXY(149.5, 129);
+$pdf->SetXY(145.5, 129);
 $pdf->Write(0, $vin[15]);
-$pdf->SetXY(154.7, 129);
+$pdf->SetXY(150.7, 129);
 $pdf->Write(0, $vin[16]);
 //Государственный регистрационный номер
 $auto_reg_number = iconv('utf-8', 'windows-1251', $vehicle_data['auto_reg_number']);
@@ -373,17 +373,17 @@ if($step_2_data['purpose_use'] == 8){
 	$pdf->Write(0, 'V');	
 }
 //прочее
-if($step_2_data['purpose_use'] == 1){
+if($step_2_data['purpose_use'] == 9){
 	$pdf->SetXY(57.3, 156.1);
 	$pdf->Write(0, 'V');	
 }
 //ограниченное или не ограниченное число водителей
 $pdf->SetFont('ArialMT', '', '13');
 if($calc_data['drivers'] == 1){
-	$pdf->SetXY(163, 164.5);
+	$pdf->SetXY(158, 164.5);
 	$pdf->Write(0, 'V');	
 }else{
-	$pdf->SetXY(163, 169.5);
+	$pdf->SetXY(158, 169.5);
 	$pdf->Write(0, 'V');	
 }
 //Список водителей допущенных к управлению
@@ -405,7 +405,7 @@ if($calc_data['drivers'] == 2){
 			$pdf->SetXY(150, 182+$y);
 			$pdf->Write(0, $series.' '.$number);
 		}else{
-			$pdf->SetXY(3, 182+$y);
+			$pdf->SetXY(4, 182+$y);
 			$pdf->Write(0, '------');
 			$pdf->SetXY(52, 182+$y);
 			$pdf->Write(0, '-----------------------------------------');
@@ -419,8 +419,8 @@ if($calc_data['drivers'] == 2){
 if($calc_data['drivers'] == 1){
 	$y = 0;
 	for($x=1;$x<5;$x++){
-		$pdf->SetXY(3, 182+$y);
-		$pdf->Write(0, '------');
+		$pdf->SetXY(5, 182+$y);
+		$pdf->Write(0, '-----');
 		$pdf->SetXY(52, 182+$y);
 		$pdf->Write(0, '-----------------------------------------');
 		$pdf->SetXY(150, 182+$y);
