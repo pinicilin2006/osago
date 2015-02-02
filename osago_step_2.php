@@ -70,28 +70,28 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="second_name" id="second_name" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm phiz_name" name="second_name" id="second_name" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="first_name" id="first_name" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm phiz_name" name="first_name" id="first_name" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="third_name" id="third_name" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm phiz_name" name="third_name" id="third_name" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="date_birth" class="col-sm-4 control-label"><small>Дата рождения</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm date_birth" name="date_birth" id="date_birth" placeholder="Дата рождения" required>
+						      		<input type="text" class="form-control input-sm date_birth phiz_name" name="date_birth" id="date_birth" placeholder="Дата рождения" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -513,38 +513,6 @@ $category_code = array(
 					      		</select>
 					    	</div>
 					  	</div>
-						<div class="form-group">
-					    	<label for="auto_used" class="col-sm-4 control-label"><small>Транспортное средство будет использоваться:</small></label>
-						    	<div id="auto_used">
-							    	<div class="col-sm-8" style="padding-top:2%">
-							    		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_1" id="auto_used_start_1" placeholder="c" required>
-							      		</div>
-							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" id="auto_used_end_1" placeholder="по" required>
-							      		</div>
-							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_2" id="auto_used_start_2" placeholder="c">
-							      		</div>
-							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" id="auto_used_end_2" placeholder="по">
-							      		</div>
-							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" id="auto_used_start_3" placeholder="c">
-							      		</div>
-							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" id="auto_used_end_3" placeholder="по">
-							      		</div>
-							    	</div>
-<!-- 							    	<div class="col-sm-4" style="padding-top:2%">
-							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" id="auto_used_end_1" placeholder="по" required>
-							      		<hr class="hr_line">
-							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" id="auto_used_end_2" placeholder="по">
-							      		<hr class="hr_line">
-							      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" id="auto_used_end_3" placeholder="по">
-							    	</div> -->
-							    </div>
-					  	</div>
 					  	<hr class="hr_line">					  	
 						<div class="form-group">
 					    	<label for="osago_old" class="col-sm-4 control-label"><small>Предыдущий договор обязательного страхования гражданской ответственности владельцев транспортных средств в отношении указанного транспортного средства:</small></label>
@@ -575,10 +543,10 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="driver_<?php echo $x ?>" class="col-sm-4 control-label"><small>Данные водителя №<?php echo $x ?>:</small></label>
 					    	<div class="col-sm-8" id="driver_<?php echo $x ?>">
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_second_name" placeholder="Фамилия" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
-					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_second_name" id="driver_<?php echo $x ?>_second_name" placeholder="Фамилия" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_first_name" id="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_third_name" id="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
+					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" id="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_experience" placeholder="Стаж управления ТС соответствующей категории, полных лет" required>
@@ -595,11 +563,11 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label class="col-sm-4 control-label"><small>Срок действия договора страхования</small></label>
 						    	<div class="col-sm-4" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="start_date" id="start_date" value="<?php echo date('d.m.Y', strtotime("+1 days"))?>" placeholder="Дата начала действия договора" required>
+						      		<input type="text" class="form-control input-sm period_data" name="start_date" id="start_date" value="<?php echo date('d.m.Y', strtotime("+1 days"))?>" placeholder="Дата начала действия договора" required>
 						      		<input type="text" class="form-control input-sm" name="start_time" id="start_time" value="00:00" placeholder="Время начала действия договора" disabled required>	
 						    	</div>	
 						    	<div class="col-sm-4" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="end_date" id="end_date" value="<?php 
+						      		<input type="text" class="form-control input-sm period_data" name="end_date" id="end_date" value="<?php 
 						      		//echo($_SESSION["step_1"]["place_reg"] == 1 ?  date('d.m.Y', strtotime("+1 years")) : '')
 						      		if($_SESSION["step_1"]["place_reg"] == 1) {
 						      			echo date('d.m.Y', strtotime("+1 years"));
@@ -646,7 +614,84 @@ $category_code = array(
 						      		?>" placeholder="Дата окончания действия договора" required readonly>
 						      		<input type="time" class="form-control input-sm" name="end_time" id="end_time" value="23:59" placeholder="Время окончания действия договора" required readonly>				      		
 						    	</div>							    					    	
-						  	</div>					  					  					  						  						  	
+						  	</div>
+						  	<hr class="hr_line">
+							<div class="form-group">
+						    	<label for="auto_used" class="col-sm-4 control-label"><small>Транспортное средство будет использоваться:</small></label>
+							    	<div id="auto_used">
+								    	<div class="col-sm-8" style="padding-top:2%">
+								    		<div class="col-sm-6">
+								      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_1" id="auto_used_start_1" value="<?php echo date('d.m.Y', strtotime("+1 days"))?>" placeholder="c" required>
+								      		</div>
+								      		<div class="col-sm-6">
+								      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" id="auto_used_end_1" value="<?php 
+									      		//echo($_SESSION["step_1"]["place_reg"] == 1 ?  date('d.m.Y', strtotime("+1 years")) : '')
+									      		if($_SESSION["step_1"]["place_reg"] == 1) {
+									      			echo date('d.m.Y', strtotime("+1 years"));
+									      		}
+									      		if($_SESSION["step_1"]["place_reg"] == 3){
+									      			echo date('d.m.Y', strtotime("+20 days"));
+									      		}
+									      		if($_SESSION["step_1"]["place_reg"] == 2){
+									      			if($_SESSION["step_1"]["term_insurance"] == 1){
+									      				echo date('d.m.Y', strtotime("+15 days"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 2){
+									      				echo date('d.m.Y', strtotime("+1 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 3){
+									      				echo date('d.m.Y', strtotime("+2 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 4){
+									      				echo date('d.m.Y', strtotime("+3 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 5){
+									      				echo date('d.m.Y', strtotime("+4 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 6){
+									      				echo date('d.m.Y', strtotime("+5 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 7){
+									      				echo date('d.m.Y', strtotime("+6 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 8){
+									      				echo date('d.m.Y', strtotime("+7 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 9){
+									      				echo date('d.m.Y', strtotime("+6 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 10){
+									      				echo date('d.m.Y', strtotime("+9 months"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 11){
+									      				echo date('d.m.Y', strtotime("+1 years"));
+									      			}						      									      									      									      									      									      									      			
+									      									      									      									      			
+									      		}						      		
+									      		?>"placeholder="по" required>
+								      		</div>
+								      		<div class="col-sm-6">
+								      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_2" id="auto_used_start_2" placeholder="c">
+								      		</div>
+								      		<div class="col-sm-6">
+								      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" id="auto_used_end_2" placeholder="по">
+								      		</div>
+								      		<div class="col-sm-6">
+								      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" id="auto_used_start_3" placeholder="c">
+								      		</div>
+								      		<div class="col-sm-6">
+								      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" id="auto_used_end_3" placeholder="по">
+								      		</div>
+								    	</div>
+	<!-- 							    	<div class="col-sm-4" style="padding-top:2%">
+								      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" id="auto_used_end_1" placeholder="по" required>
+								      		<hr class="hr_line">
+								      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" id="auto_used_end_2" placeholder="по">
+								      		<hr class="hr_line">
+								      		<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" id="auto_used_end_3" placeholder="по">
+								    	</div> -->
+								    </div>
+						  	</div>						  						  					  					  						  						  	
 					  	<hr class="hr_red">
 						  	<div class="form-group">
 						    	<label for="bso_number" class="col-sm-4 control-label"><small>Номер выдаваемого полиса</small></label>
@@ -1074,6 +1119,25 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 			$("#start_time").val(hhNow+':'+mmNow);
 		}
 	});
+//Копируем дату начала и окончания в период использования ТС
+$(document).on("change", ".period_data", function(){
+	$("#auto_used_start_1").val($("#start_date").val());
+	$("#auto_used_end_1").val($("#end_date").val());
+});
+
+<?php
+if($_SESSION["step_1"]["drivers"] == 2){
+?>
+//Автозаполнение водителя
+	$(document).on("change", ".phiz_name", function(){
+		$("#driver_1_first_name").val($("#first_name").val());
+		$("#driver_1_second_name").val($("#second_name").val());
+		$("#driver_1_third_name").val($("#third_name").val());
+		$("#driver_1_date_birth").val($("#date_birth").val());
+	});
+<?php
+}
+?>
 //проверка данных формы
 	$('#main_form').validate({ // initialize the plugin
     	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.
