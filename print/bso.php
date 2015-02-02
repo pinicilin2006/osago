@@ -255,13 +255,15 @@ if($contract_data["owner_type"] == 2){
 $pdf->SetXY(7.7, 107);
 $pdf->Write(0, $owner);
 //Есть ли прицеп
-if($calc_data['trailer'] == 2){//если ДА
-	$pdf->SetXY(94.5, 114.7);
-	$pdf->Write(0, 'V');	
-}
-if($calc_data['trailer'] == 1){//если ДА
-	$pdf->SetXY(106, 114.7);
-	$pdf->Write(0, 'V');	
+if($calc_data["category"] != '2' && $calc_data["category"] != '3'){
+	if($calc_data['trailer'] == 2){//если ДА
+		$pdf->SetXY(94.5, 114.7);
+		$pdf->Write(0, 'V');	
+	}
+	if($calc_data['trailer'] == 1){//если ДА
+		$pdf->SetXY(106, 114.7);
+		$pdf->Write(0, 'V');	
+	}
 }
 //Марка и модель транспортного средства
 if(isset($vehicle_data['mark_pts'])){

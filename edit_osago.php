@@ -272,9 +272,10 @@ $calc_data = unserialize($contract_data['calc_data']);
 							    </div>
 						  	</div>					  
 
-					  	<hr>
+					  	
 
-							<div class="form-group">
+							<div class="form-group" style="<?php echo ($calc_data['category'] == 2 || $calc_data['category'] == 3 ? 'display:none' : '')?>" id="trailer">
+							<hr>
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Имеется прицеп</small></label>
 							    <div class="col-sm-7">															
 									<div class="radio">

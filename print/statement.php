@@ -249,8 +249,13 @@ $params['[AUTO_DOC_DATE]'] = $vehicle_data['auto_doc_date'];
 $params['[AUTO_REG_NUMBER]'] = $vehicle_data['auto_reg_number'];
 $params['[AUTO_DIAG_CARD_NUMBER]'] = (isset($step_2_data['auto_diag_card_number']) ? $step_2_data['auto_diag_card_number'] : '------');
 $params['[AUTO_DIAG_CARD_NEXT_DATE]'] = (isset($step_2_data['auto_diag_card_next_date']) ? $step_2_data['auto_diag_card_next_date'] : '------');
-$params['[TRAILER_YES]'] = ($calc_data['trailer'] == 2 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
-$params['[TRAILER_NO]'] = ($calc_data['trailer'] == 1 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
+if($calc_data["category"] != '2' && $calc_data["category"] != '3'){
+	$params['[TRAILER_YES]'] = ($calc_data['trailer'] == 2 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
+	$params['[TRAILER_NO]'] = ($calc_data['trailer'] == 1 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
+}else{
+	$params['[TRAILER_YES]'] = '<w:sym w:font="Wingdings" w:char="F0A8"/>';
+	$params['[TRAILER_NO]'] = '<w:sym w:font="Wingdings" w:char="F0A8"/>';
+}
 for($x=1;$x<10;$x++){
 	if($vehicle_data["purpose_use"] == $x){
 		$params['['.$x.']'] = '<w:sym w:font="Wingdings" w:char="F0FE"/>';

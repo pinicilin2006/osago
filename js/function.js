@@ -297,8 +297,10 @@ function show_capacity(a){
 	var a = a;
 	if(a == '2' || a == '3'){
 		$(".capacity").slideDown();
+		$("#trailer").slideUp();
 	} else {
 		$(".capacity").slideUp();
+		$("#trailer").slideDown();
 	}
 }
 

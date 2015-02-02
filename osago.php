@@ -227,9 +227,10 @@ require_once('template/header.html');
 							    </div>
 						  	</div>					  
 
-					  	<hr>
+					  	
 
-							<div class="form-group">
+							<div class="form-group" id="trailer">
+							<hr>
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Имеется прицеп</small></label>
 							    <div class="col-sm-7">															
 									<div class="radio">
@@ -367,8 +368,10 @@ var a = $("#subject").val();
 		var a = $(this).val();
 		if(a == '2' || a == '3'){
 			$(".capacity").slideDown();
+			$("#trailer").slideUp();
 		} else {
 			$(".capacity").slideUp();
+			$("#trailer").slideDown();
 		}
 	});	
 
