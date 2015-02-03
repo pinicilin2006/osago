@@ -77,6 +77,7 @@ $(document).ready(function(){
 		  data: "id="+a,
 		  success: function(data) {
 		  	$("#user_data").html(data);
+		  	$('.rights').popover();
 		  }
 		});
 		return false;

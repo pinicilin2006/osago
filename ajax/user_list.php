@@ -18,9 +18,17 @@ $i = 0;
 while($row = mysql_fetch_assoc($query)){
 	$i++;
 	$return .="<li class=\"list-group-item\">";
-	$return .= $i.". ".$row["second_name"].' '.$row["first_name"].' '.$row["third_name"].' <form style="display:inline" method="post" action="/user_edit.php"><input type="hidden" name="user" value='.$row['user_id'].'><button type="submit" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></form>';
+	$return .='<span class="rights" data-toggle="popover" data-trigger="hover focus" data-placement="top" data-html="true" data-title="<center>Права пользователя:</center>" data-content="<ol>';
+	$query_rights = mysql_query("SELECT * FROM `rights`,`user_rights` WHERE user_rights.rights = rights.id AND user_id = '".$row['user_id']."'");
+	while ($rights = mysql_fetch_assoc($query_rights)) {
+		$return .="<li>".$rights['name']."</li>";
+	}
+	$return .= '</ol>">';
+	$return .= $i.". ".$row["second_name"].' '.$row["first_name"].' '.$row["third_name"].'</span> <form style="display:inline" method="post" action="/user_edit.php"><input type="hidden" name="user" value='.$row['user_id'].'><button type="submit" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></form>';
 	$return .="</li>";
 }
 $return .="</ol></div>";
 echo $return;
 ?>
+
+
