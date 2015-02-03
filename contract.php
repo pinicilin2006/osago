@@ -15,17 +15,28 @@ connect_to_base();
 require_once('template/header.html');
 //Забираем данные 
 if(isset($_SESSION['access'][6])){
-	$query = "SELECT * FROM `contract` WHERE `unit_id` = '".$_SESSION['unit_id']."' ORDER BY `id`";
+	$query = "SELECT * FROM `contract` WHERE `unit_id` = '".$_SESSION['unit_id']."'";
+	$query_unit = mysql_query("SELECT * FROM `unit` WHERE `unit_parent_id` = '".$_SESSION['unit_id']."'");
+	$data_for_query_agent = '';
+	while ($query_unit_data = mysql_fetch_assoc($query_unit)) {
+			$query .=' OR `unit_id` = '.$query_unit_data['unit_id'];
+			$data_for_query_agent .=' OR user_unit.unit_id = '.$query_unit_data['unit_id'];
+		}
+		$query .= ' ORDER BY `id`';
+	$query_agent = mysql_query("SELECT * FROM `user`, `user_unit` WHERE user.user_id = user_unit.user_id AND (user_unit.unit_id = '".$_SESSION['unit_id']."' ".$data_for_query_agent.") ORDER BY `second_name`");
 } else {
 	$query = "SELECT * FROM `contract` WHERE `user_id` = '".$_SESSION['user_id']."' ORDER BY `id`";
+	$query_agent = mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$_SESSION['user_id']."'");
 }
 if(isset($_SESSION['access'][10])){
 	$query = "SELECT * FROM `contract`";
+	$query_agent = mysql_query("SELECT * FROM `user` ORDER BY `second_name`");
 }
 if(mysql_num_rows(mysql_query($query))<1){
 	echo "<p class=\"text-danger text-center\">Отсутствуют договора в базе данных!</p>";
 	exit();
 }
+
 ?>
 <div class="container-fluid">
 	<div class="row-fluid">
@@ -35,6 +46,18 @@ if(mysql_num_rows(mysql_query($query))<1){
 	    			<h3 class="panel-title">Ранее заключённые договора</h3>
 	  			</div>
 	  			<div class="panel-body">
+	  			<hr class="hr_red">	
+								<label>Фильтр по агенту</label>						    							
+									<select name="agent" id="agent">
+							  		<option value="0">Все агенты</option>
+							  		<?php
+							  			//$query_agent = mysql_query("SELECT * FROM `user` ORDER BY `second_name`");
+							  			while ($agent = mysql_fetch_assoc($query_agent)) {
+							  				echo '<option value='.$agent["user_id"].'>'.$agent["second_name"].' '.$agent["first_name"].' '.$agent["third_name"].'</option>';
+							  			}
+							  		?>
+									</select>
+									<hr class="hr_red">															    	
 		  			<div class="table-responsive">
 		    			<table class='table table-hover table-responsive table-condensed table-bordered' id='contract_table'>
 		    				<thead>
@@ -56,13 +79,13 @@ if(mysql_num_rows(mysql_query($query))<1){
 $query = mysql_query($query);
 while($row = mysql_fetch_assoc($query)){
 	if($row['project'] == '1' && $row['annuled'] == '0'){
-		echo '<tr class="info">';	
+		echo '<tr class="info '.$row['user_id'].'">';	
 	}
 	if($row['project'] == '0' && $row['annuled'] == '0'){
-		echo '<tr class="success">';
+		echo '<tr class="success '.$row['user_id'].'">';
 	}
 	if($row['annuled'] == '1'){
-		echo '<tr class="danger">';	
+		echo '<tr class="danger '.$row['user_id'].'">';	
 	}	
 	echo "<td>".$row['id']."</td>";
 	echo "<td>".date('d.m.Y', strtotime($row["time_create"]))."</td>";
@@ -126,6 +149,17 @@ echo '</ul>
 </html>
 <script type="text/javascript">
 $(document).ready(function(){
+//Фильтр по агенту
+$(document).on("change", "#agent", function(){
+	var a = $(this).val();
+	if(a == '0'){
+		$('tbody tr').show();
+		return false;
+	}
+	$('tbody tr:not(.'+a+')').hide();
+	$('.'+a).show();
+});
+/////////////////////////////////////////	
 	$("#contract_table").tablesorter();    		
 });	
 </script>

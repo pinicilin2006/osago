@@ -11,7 +11,7 @@ require_once('../config.php');
 require_once('../function.php');
 connect_to_base();
 $id = mysql_real_escape_string($_POST["id"]);
-$query = mysql_query("SELECT * FROM user, user_unit WHERE user_unit.unit_id = '".$id."' AND user_unit.user_id = user.user_id");
+$query = mysql_query("SELECT * FROM user, user_unit WHERE user_unit.unit_id = '".$id."' AND user_unit.user_id = user.user_id ORDER BY `second_name`");
 $return = "<div class=\"panel panel-danger\"><div class=\"panel-heading\">Пользователи подразделения</div><div class=\"panel-body\">";
 $return .= "<ol class=\"list-group\">";
 $i = 0;

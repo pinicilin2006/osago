@@ -14,7 +14,7 @@ connect_to_base();
 //массив с параметрами для замены в документе
 $id = mysql_escape_string($_GET["id"]);
 if(isset($_SESSION["access"][6])){
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `bso_number` > 0 AND `a7_number` > 0";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `bso_number` > 0 AND `a7_number` > 0";
 }else{
 	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."' AND `bso_number` > 0 AND `a7_number` > 0";
 }
