@@ -109,6 +109,14 @@ $category_code = array(
 						      		<input type="text" class="form-control input-sm" name="doc_series" id="doc_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm" name="doc_number" id="doc_number" placeholder="Номер" required>
 						    	</div>
+						  	</div>
+						  	<div id="address_data">
+						  		<input type="hidden" name="aoid_data" id="aoid_data">
+						  		<input type="hidden" name="street_data" id="street_data">
+						  		<input type="hidden" name="city_data" id="city_data">
+						  		<input type="hidden" name="owner_aoid_data" id="owner_aoid_data">
+						  		<input type="hidden" name="owner_street_data" id="owner_street_data">
+						  		<input type="hidden" name="owner_city_data" id="owner_city_data">						  		
 						  	</div>						  	
 				  	</div>
 
@@ -857,7 +865,10 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				  success: function(data) {
 				  	$('#message_0').html(data);
 				  	$('#message_4').hide();
-				  	
+				  	if($('#aoid_data').val() != ''){
+					  	$('#aoid').val($('#aoid_data').val()).change();
+					  	$('#aoid_data').val('');
+					}
 				  }
 				});
 				return false;
@@ -874,6 +885,11 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				  data: {aoid: a, subject: b},
 				  success: function(data) {
 				  	$('#message_1').html(data);
+				  	//if($('#city_data').val() != ''){
+					  	$('#city').val($('#city_data').val()).change();
+					  	$('#street').val($('#street_data').val()).change();
+					  	$('#city_data').val('');
+					//}				  	
 				  	
 				  }
 				});
@@ -891,7 +907,10 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				  data: {city: a},
 				  success: function(data) {
 				  	$('#message_2').html(data);
-				  	
+				  	if($('#street_data').val() != ''){
+					  	$('#street').val($('#street_data').val()).change();
+					  	$('#street_data').val('');
+					}				  	
 				  }
 				});
 				return false;
@@ -916,7 +935,10 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				  success: function(data) {
 				  	$('#owner_message_0').html(data);
 				  	$('#owner_message_4').hide();
-				  	
+				  	if($('#owner_aoid_data').val() != ''){
+					  	$('#owner_aoid').val($('#owner_aoid_data').val()).change();
+					  	$('#owner_aoid_data').val('');
+					}				  	
 				  }
 				});
 				return false;
@@ -932,7 +954,9 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				  data: {owner_aoid: a, owner_subject: b},
 				  success: function(data) {
 				  	$('#owner_message_1').html(data);
-				  	
+					  	$('#owner_city').val($('#owner_city_data').val()).change();
+					  	$('#owner_street').val($('#owner_street_data').val()).change();
+					  	$('#owner_city_data').val('');				  	
 				  }
 				});
 				return false;
@@ -948,7 +972,10 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 				  data: {owner_city: a},
 				  success: function(data) {
 				  	$('#owner_message_2').html(data);
-				  	
+				  	if($('#owner_street_data').val() != ''){
+					  	$('#owner_street').val($('#owner_street_data').val()).change();
+					  	$('#owner_street_data').val('');
+					}				  	
 				  }
 				});
 				return false;
@@ -1138,6 +1165,46 @@ if($_SESSION["step_1"]["drivers"] == 2){
 <?php
 }
 ?>
+//автозаполнение ФИО собственника
+  	$('input#second_name').autocomplete({
+	    source: '/ajax/fio_autocomplete.php', // Страница для обработки запросов автозаполнения
+	    minLength: 2, // Минимальная длина запроса для срабатывания автозаполнения
+	    autoFocus: true,
+	    delay: 1000,
+	    selectFirst: false,
+	    search:function(event, ui) {
+	    	$('#aoid_data').val('');
+	    	$('#street_data').val('');
+	    	$('#city_data').val('');
+	    },
+	    select: function(event, ui) {
+	    	//alert(ui.item.value);
+	    	var a = ui.item.value;
+	    	var owner = 'no';
+	    	autocomplete_phiz(a,owner);
+	    	return false;
+	    }
+  	});
+//автозаполнение ФИО страхователя
+  	$('input#owner_second_name').autocomplete({
+	    source: '/ajax/fio_autocomplete.php', // Страница для обработки запросов автозаполнения
+	    minLength: 2, // Минимальная длина запроса для срабатывания автозаполнения
+	    autoFocus: true,
+	    delay: 1000,
+	    selectFirst: true,
+	    search:function(event, ui) {
+	    	$('#owner_aoid_data').val('');
+	    	$('#owner_street_data').val('');
+	    	$('#owner_city_data').val('');
+	    },	    
+	    select: function(event, ui) {
+	    	//alert(ui.item.value);
+	    	var a = ui.item.value;
+	    	var owner = 'yes';
+	    	autocomplete_phiz(a,owner);
+	    	return false;
+	    }
+  	});
 //проверка данных формы
 	$('#main_form').validate({ // initialize the plugin
     	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.

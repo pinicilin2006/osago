@@ -324,3 +324,29 @@ function type_ins(a){
 		$('#period_use').val(1);			
 	}	
 }
+
+function autocomplete_phiz(a,b){
+	var owner = b =='yes' ? 'owner_' : '';
+	$.ajax({
+		type: "GET",
+		url: '/ajax/autocomplete_phiz.php',
+		data: 'user_id='+a+'&owner='+b,
+		dataType: 'json',
+		success: function(data) {
+			$('#aoid_data').val('');
+			jQuery.each(data, function(i, val) {
+		      	$("#"+i).val(val).change();
+		    });
+		    if(b == 'no'){
+			    $('#'+owner+'aoid_data').val(data.aoid).change();
+			    $('#'+owner+'city_data').val(data.city);
+			    $('#'+owner+'street_data').val(data.street);
+			} else {
+			    $('#'+owner+'aoid_data').val(data.owner_aoid);
+			    $('#'+owner+'city_data').val(data.owner_city);
+			    $('#'+owner+'street_data').val(data.owner_street);				
+			}
+		}
+
+	});
+}
