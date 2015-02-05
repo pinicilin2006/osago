@@ -49,12 +49,12 @@ require_once('template/header.html');
 					  </div>
 
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text	" class="form-control input-sm" id="phone" name="phone" placeholder="Телефон *" required>					    
+					      <input type="text	" class="form-control input-sm" id="phone" name="phone" placeholder="Телефон">					    
 					  </div>
 
 					  <div class="form-group">					    					    
 					      <input type="email" class="form-control input-sm" id="email" name="email" placeholder="Email">
-					      <p class="help-block"><small>Восстановление пароля возможно только при указанном email.</small></p>					    
+					      <p class="help-block"><small>Восстановление пароля возможно только при указанном email либо номере телефона.</small></p>					    
 					  </div>
 
 					  <div class="form-group has-feedback">					    					    
