@@ -222,8 +222,8 @@ $vehicle_data = unserialize($contract_data['vehicle_data']);
 $calc_data = unserialize($contract_data['calc_data']);
 //Получаем марку и модель
 if(isset($vehicle_data['mark_pts'])){
-	$mark = iconv('utf-8', 'windows-1251', $vehicle_data['mark_pts']);
-	$model = iconv('utf-8', 'windows-1251', $vehicle_data['model_pts']);
+	$mark = $vehicle_data['mark_pts'];
+	$model = $vehicle_data['model_pts'];
 }else{
 	$mark = mysql_fetch_assoc(mysql_query("SELECT * FROM `mark` WHERE `rsa_mark_id`='".$vehicle_data['mark']."'"));
 	$mark = $mark['name'];
