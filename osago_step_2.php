@@ -1169,9 +1169,10 @@ if($_SESSION["step_1"]["drivers"] == 2){
   	$('input#second_name').autocomplete({
 	    source: '/ajax/fio_autocomplete.php', // Страница для обработки запросов автозаполнения
 	    minLength: 2, // Минимальная длина запроса для срабатывания автозаполнения
-	    autoFocus: true,
-	    delay: 1000,
+	    //autoFocus: true,
+	    delay: 500,
 	    selectFirst: false,
+	    html: true,
 	    search:function(event, ui) {
 	    	$('#aoid_data').val('');
 	    	$('#street_data').val('');
@@ -1179,7 +1180,7 @@ if($_SESSION["step_1"]["drivers"] == 2){
 	    },
 	    select: function(event, ui) {
 	    	//alert(ui.item.value);
-	    	var a = ui.item.value;
+	    	var a = ui.item.id;
 	    	var owner = 'no';
 	    	autocomplete_phiz(a,owner);
 	    	return false;
@@ -1189,8 +1190,8 @@ if($_SESSION["step_1"]["drivers"] == 2){
   	$('input#owner_second_name').autocomplete({
 	    source: '/ajax/fio_autocomplete.php', // Страница для обработки запросов автозаполнения
 	    minLength: 2, // Минимальная длина запроса для срабатывания автозаполнения
-	    autoFocus: true,
-	    delay: 1000,
+	    //autoFocus: true,
+	    delay: 500,
 	    selectFirst: true,
 	    search:function(event, ui) {
 	    	$('#owner_aoid_data').val('');
@@ -1199,12 +1200,20 @@ if($_SESSION["step_1"]["drivers"] == 2){
 	    },	    
 	    select: function(event, ui) {
 	    	//alert(ui.item.value);
-	    	var a = ui.item.value;
+	    	var a = ui.item.id;
 	    	var owner = 'yes';
 	    	autocomplete_phiz(a,owner);
 	    	return false;
 	    }
   	});
+//Изменяем внешний вид списка для автозаполнения  	
+    $["ui"]["autocomplete"].prototype["_renderItem"] = function( ul, item) {
+        return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+        .append( $( "<span></span>" ).html( item.label+' ' ) )
+        .append( $( "<em class='text-muted'></em>" ).html( item.first_name+' '+item.third_name ) )
+        .appendTo( ul );
+    };  	
 //проверка данных формы
 	$('#main_form').validate({ // initialize the plugin
     	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.

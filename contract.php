@@ -15,7 +15,7 @@ connect_to_base();
 require_once('template/header.html');
 //Забираем данные 
 if(isset($_SESSION['access'][6])){
-	$query = "SELECT * FROM `contract` WHERE `unit_id` = '".$_SESSION['unit_id']."'";
+	$query = "SELECT * FROM `contract` WHERE `unit_id` = '".$_SESSION['unit_id']."' ORDER BY `id`";
 	$query_unit = mysql_query("SELECT * FROM `unit` WHERE `unit_parent_id` = '".$_SESSION['unit_id']."'");
 	$data_for_query_agent = '';
 	while ($query_unit_data = mysql_fetch_assoc($query_unit)) {
@@ -29,7 +29,7 @@ if(isset($_SESSION['access'][6])){
 	$query_agent = mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$_SESSION['user_id']."'");
 }
 if(isset($_SESSION['access'][10])){
-	$query = "SELECT * FROM `contract`";
+	$query = "SELECT * FROM `contract` ORDER BY `id`";
 	$query_agent = mysql_query("SELECT * FROM `user` ORDER BY `second_name`");
 }
 if(mysql_num_rows(mysql_query($query))<1){

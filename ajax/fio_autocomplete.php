@@ -13,9 +13,10 @@ if(mysql_num_rows($query) == 0){
 }
 $result=array();
 while ($row = mysql_fetch_array($query, MYSQL_ASSOC)) {
-		$names["label"] = $row["second_name"].' '.$row["first_name"].' '.$row["third_name"];
-		$names["value"] = $row["id"];
-		//$names["value"] = $row["id"];
+		$names["label"] = $row["second_name"];//.' '.$row["first_name"].' '.$row["third_name"];
+		$names["id"] = $row["id"];
+		$names["first_name"] = $row["first_name"];
+		$names["third_name"] = $row["third_name"];
 		array_push($result, $names);
     }
 echo json_encode($result);
