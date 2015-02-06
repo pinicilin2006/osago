@@ -394,7 +394,7 @@ var a = $("#subject").val();
 		// 	return;
 		// }
     	var b = a + 1;
-    	if(a == 4){
+    	if(a == '4'){
 			var c = '<select class="form-control input-sm driver_age" id="driver_'+b+'" name="driver_'+b+'"><option value="1"><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option><option value="2"><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option><option value="3"><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option><option value="4"><small>Более 22 лет со стажем вождения свыше 3 лет</small></option></select><center><span id="minus_'+b+'" title="Удалить водителя" style="font-size:14px;top:0px" class="driver_minus glyphicon glyphicon-minus"></span></center>';
  		} else {
 			var c = '<select class="form-control input-sm driver_age" id="driver_'+b+'" name="driver_'+b+'"><option value="1"><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option><option value="2"><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option><option value="3"><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option><option value="4"><small>Более 22 лет со стажем вождения свыше 3 лет</small></option></select><center><span id="plus_'+b+'" title="Добавить водителя" style="font-size:14px;top:0px" class="driver_plus glyphicon glyphicon-plus"></span><span id="minus_'+b+'" title="Удалить водителя" style="font-size:14px;top:0px;margin:0px 0px 0px 10px" class="driver_minus glyphicon glyphicon-minus"></span></center>';
@@ -408,7 +408,7 @@ var a = $("#subject").val();
 	$(document).on("click", ".driver_minus", function(){
 		var a = $("select.driver_age").length;
 		var b = a - 1;
-		if(b != 1){
+		if(b != '1'){
 			var c = '<center><span id="plus_'+b+'" title="Добавить водителя" style="font-size:12px;top:0px" class="driver_plus glyphicon glyphicon-plus"></span><span id="minus_'+b+'" title="Удалить водителя" style="font-size:14px;top:0px;margin:0px 0px 0px 10px" class="driver_minus glyphicon glyphicon-minus"></span></center>';
  		}else{
 			var c = '<center><span id="plus_'+b+'" title="Добавить водителя" style="font-size:12px;top:0px" class="driver_plus glyphicon glyphicon-plus"></span>'; 			
