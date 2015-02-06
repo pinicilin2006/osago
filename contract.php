@@ -47,8 +47,8 @@ if(mysql_num_rows(mysql_query($query))<1){
 	  			</div>
 	  			<div class="panel-body">
 	  			<hr class="hr_red">	
-								<label>Фильтр по агенту</label>						    							
-									<select name="agent" id="agent">
+								<label>Фильтры: по агенту</label>						    							
+									<select name="agent" id="agent" class="filter" style="border-radius:4px">
 							  		<option value="0">Все агенты</option>
 							  		<?php
 							  			//$query_agent = mysql_query("SELECT * FROM `user` ORDER BY `second_name`");
@@ -57,6 +57,14 @@ if(mysql_num_rows(mysql_query($query))<1){
 							  			}
 							  		?>
 									</select>
+									<label>по дате заключения:</label><input type="text" id="date_create" style="border-radius:4px" class="filter">
+									<!-- <label>по статусу договора</label>
+									<select name='status' class='filter' id='status' style="border-radius:4px">
+										<option></option>
+										<option value='success'>оформлен</option>
+										<option value='info'>проект</option>
+										<option value='danger'>аннулирован</option>
+									</select> -->
 									<hr class="hr_red">															    	
 		  			<div class="table-responsive">
 		    			<table class='table table-hover table-responsive table-condensed table-bordered' id='contract_table'>
@@ -79,13 +87,13 @@ if(mysql_num_rows(mysql_query($query))<1){
 $query = mysql_query($query);
 while($row = mysql_fetch_assoc($query)){
 	if($row['project'] == '1' && $row['annuled'] == '0'){
-		echo '<tr class="info '.$row['user_id'].'">';	
+		echo '<tr class="info '.$row['user_id'].' '.date('d-m-Y', strtotime($row["time_create"])).'">';	
 	}
 	if($row['project'] == '0' && $row['annuled'] == '0'){
-		echo '<tr class="success '.$row['user_id'].'">';
+		echo '<tr class="success '.$row['user_id'].' '.date('d-m-Y', strtotime($row["time_create"])).'">';
 	}
 	if($row['annuled'] == '1'){
-		echo '<tr class="danger '.$row['user_id'].'">';	
+		echo '<tr class="danger '.$row['user_id'].' '.date('d-m-Y', strtotime($row["time_create"])).'">';	
 	}	
 	echo "<td>".$row['id']."</td>";
 	echo "<td>".date('d.m.Y', strtotime($row["time_create"]))."</td>";
@@ -148,16 +156,30 @@ echo '</ul>
 </body>
 </html>
 <script type="text/javascript">
+$('#date_create').mask('00-00-0000');
+$('#date_create').datepicker({
+	dateFormat: "dd-mm-yy",
+	  maxDate: "0d",
+	  changeYear: true,
+	  changeMonth: true,
+	  yearRange: "c-70:c"
+});
+//$('#doc_date').mask('00.00.0000');
 $(document).ready(function(){
 //Фильтр по агенту
-$(document).on("change", "#agent", function(){
-	var a = $(this).val();
+$(document).on("change", ".filter", function(){
+	var a = $('#agent').val();
+	var b = $('#date_create').val();
 	if(a == '0'){
 		$('tbody tr').show();
+		$('tbody tr:not(.'+b+')').hide();
+		$('.'+b).show();
 		return false;
 	}
+	$('tbody tr').show();
 	$('tbody tr:not(.'+a+')').hide();
-	$('.'+a).show();
+	$('tbody tr:not(.'+b+')').hide();
+
 });
 /////////////////////////////////////////	
 	$("#contract_table").tablesorter();    		
