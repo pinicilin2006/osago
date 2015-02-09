@@ -1218,6 +1218,7 @@ if($_SESSION["step_1"]["drivers"] == 2){
 	$('#main_form').validate({ // initialize the plugin
     	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.
     	submitHandler: function(form) {
+    	$('#address_data').html(' ');
     	add_polis();
     	return false; 
     	}
