@@ -380,7 +380,7 @@ var a = $("#subject").val();
 	$(document).on("change", ".drivers", function(){
 		var a = $(this).val();
 		if(a == '2'){
-			var b = '<select class="form-control input-sm driver_age" name="driver_1"><option value="1"><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option><option value="2"><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option><option value="3"><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option><option value="4"><small>Более 22 лет со стажем вождения свыше 3 лет</small></option></select><center><span id="plus_1" title="Добавить водителя" style="font-size:14px;top:0px" class="driver_plus glyphicon glyphicon-plus"></span></center>';
+			var b = '<select class="form-control input-sm driver_age" name="driver_1"><option value="1"><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option><option value="2"><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option><option value="3"><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option><option value="4"><small>Более 22 лет со стажем вождения свыше 3 лет</small></option></select><center><button type="button" class="btn btn-default btn-xs driver_plus" id="plus_1">Добавить водителя</button></center>';
 			$("#message_1").html(b);	
 		} else {
 			$("#message_1").html('');
@@ -395,9 +395,9 @@ var a = $("#subject").val();
 		// }
     	var b = a + 1;
     	if(a == '4'){
-			var c = '<select class="form-control input-sm driver_age" id="driver_'+b+'" name="driver_'+b+'"><option value="1"><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option><option value="2"><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option><option value="3"><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option><option value="4"><small>Более 22 лет со стажем вождения свыше 3 лет</small></option></select><center><span id="minus_'+b+'" title="Удалить водителя" style="font-size:14px;top:0px" class="driver_minus glyphicon glyphicon-minus"></span></center>';
+			var c = '<select class="form-control input-sm driver_age" id="driver_'+b+'" name="driver_'+b+'"><option value="1"><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option><option value="2"><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option><option value="3"><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option><option value="4"><small>Более 22 лет со стажем вождения свыше 3 лет</small></option></select><center><button type="button" class="btn btn-default btn-xs driver_minus" id="minus_'+b+'">Удалить водителя</button></center>';
  		} else {
-			var c = '<select class="form-control input-sm driver_age" id="driver_'+b+'" name="driver_'+b+'"><option value="1"><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option><option value="2"><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option><option value="3"><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option><option value="4"><small>Более 22 лет со стажем вождения свыше 3 лет</small></option></select><center><span id="plus_'+b+'" title="Добавить водителя" style="font-size:14px;top:0px" class="driver_plus glyphicon glyphicon-plus"></span><span id="minus_'+b+'" title="Удалить водителя" style="font-size:14px;top:0px;margin:0px 0px 0px 10px" class="driver_minus glyphicon glyphicon-minus"></span></center>';
+			var c = '<select class="form-control input-sm driver_age" id="driver_'+b+'" name="driver_'+b+'"><option value="1"><small>До 22 лет включительно со стажем вождения до 3 лет включительно</small></option><option value="2"><small>Более 22 лет со стажем вождения до 3 лет включительно</small></option><option value="3"><small>До 22 лет включительно со стажем вождения свыше 3 лет</small></option><option value="4"><small>Более 22 лет со стажем вождения свыше 3 лет</small></option></select><center><button type="button" class="btn btn-default btn-xs driver_plus" id="plus_'+b+'">Добавить водителя</button><button type="button" class="btn btn-default btn-xs driver_minus" id="minus_'+b+'">Удалить водителя</button></center>';
 
  		}
  		$("#plus_"+a).remove();
@@ -409,9 +409,9 @@ var a = $("#subject").val();
 		var a = $("select.driver_age").length;
 		var b = a - 1;
 		if(b != '1'){
-			var c = '<center><span id="plus_'+b+'" title="Добавить водителя" style="font-size:12px;top:0px" class="driver_plus glyphicon glyphicon-plus"></span><span id="minus_'+b+'" title="Удалить водителя" style="font-size:14px;top:0px;margin:0px 0px 0px 10px" class="driver_minus glyphicon glyphicon-minus"></span></center>';
+			var c = '<center><button type="button" class="btn btn-default btn-xs driver_plus" id="plus_'+b+'">Добавить водителя</button><button type="button" class="btn btn-default btn-xs driver_minus" id="minus_'+b+'">Удалить водителя</button></center>';
  		}else{
-			var c = '<center><span id="plus_'+b+'" title="Добавить водителя" style="font-size:12px;top:0px" class="driver_plus glyphicon glyphicon-plus"></span>'; 			
+			var c = '<center><button type="button" class="btn btn-default btn-xs driver_plus" id="plus_'+b+'">Добавить водителя</button></center>'; 			
  		}
  		$("#driver_"+a).remove();
  		$("#plus_"+a).remove();
