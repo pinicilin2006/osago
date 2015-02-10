@@ -65,18 +65,23 @@ require_once('template/header.html');
 					      <input type="text" class="form-control input-sm" id="password" name="password" value='<?php echo generate_password(8)?>' placeholder="Пароль *" required>
 					      <p class="help-block"><small>Английский язык, минимум 6 символов, минимум одна буква и одна цифра.</small></p>					    
 					  </div>
-
 					  <div class="form-group">
-					  		<select class="form-control" name="filial" id="filial" required>
-					  		<option value="" disabled selected>Выберите филиал</option>
+					  		<select class="form-control" name="unit" required>
+					  		<option value="" disabled selected>Выберите подразделение *</option>
 					  		<?php
-					  		$query=mysql_query("SELECT * FROM `unit` WHERE `active` = '1' AND `unit_parent_id` = '1' ORDER BY unit_full_name");
-					  		while($row = mysql_fetch_assoc($query)){
-								echo "<option value=\"$row[unit_id]\" >$row[unit_full_name]</option>";
+					  		//$unit=mysql_fetch_assoc(mysql_query("SELECT * FROM `user_unit` WHERE `user_id` = '".mysql_real_escape_string($_POST["user"])."'"));
+					  		$query=mysql_query("SELECT * FROM `unit` ORDER BY unit_full_name");
+					  		while($row1 = mysql_fetch_assoc($query)){
+								echo "<option value=\"$row1[unit_id]\" ";
+								echo ">$row1[unit_full_name]";
+								if($row1['unit_full_name'] == 'Физические лица'){
+									$filial_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$row1['unit_parent_id']."'"));
+									echo ' ('.$filial_data['unit_full_name'].')';
+								}
+								echo "</option>";
 							}
 							?>    
 							</select>
-							<div id="message_1"></div>
 					  </div>
 
 					  <hr align="center" size="2" />
