@@ -47,9 +47,9 @@ if(!$password){
 if(isset($password) && (strlen($password) < 6 || !preg_match("/([0-9]+)/", $password) || !preg_match("/([a-zA-Z]+)/", $password))){
 	$err_text .= "<li class=\"text-danger\">Пароль должен содержать минимум 6 символов, включающих в себя букву на английском языке и одну цифру<br>";
 }
-if(!$filial){
-	$err_text .= "<li class=\"text-danger\">Не указан филиал</li>";
-}
+// if(!$filial){
+// 	$err_text .= "<li class=\"text-danger\">Не указан филиал</li>";
+// }
 if(!$unit){
 	$err_text .= "<li class=\"text-danger\">Не указано подразделение</li>";
 }

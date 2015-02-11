@@ -69,8 +69,7 @@ require_once('template/header.html');
 					  		<select class="form-control" name="unit" required>
 					  		<option value="" disabled selected>Выберите подразделение *</option>
 					  		<?php
-					  		//$unit=mysql_fetch_assoc(mysql_query("SELECT * FROM `user_unit` WHERE `user_id` = '".mysql_real_escape_string($_POST["user"])."'"));
-					  		$query=mysql_query("SELECT * FROM `unit` ORDER BY unit_full_name");
+					  		$query=mysql_query("SELECT * FROM `unit` ORDER BY unit_parent_id");
 					  		while($row1 = mysql_fetch_assoc($query)){
 								echo "<option value=\"$row1[unit_id]\" ";
 								echo ">$row1[unit_full_name]";
