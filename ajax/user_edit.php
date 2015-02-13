@@ -39,8 +39,8 @@ if(!$date_birth){
 if(!$sex){
 	$err_text .= "<li class=\"text-danger\">Не указан пол</li>";
 }
-if(!$phone){
-	$err_text .= "<li class=\"text-danger\">Не указан номер телефона</li>";
+if(!$phone && !$email){
+	$err_text .= "<li class=\"text-danger\">Не указан номер телефона и электронный адрес</li>";
 }
 if(!$login){
 	$err_text .= "<li class=\"text-danger\">Не указан логин</li>";
@@ -83,32 +83,32 @@ if(!$email){
 if($password){
 	$password_hash = password_hash($password, PASSWORD_DEFAULT);
 }
-//Првоерка на изменение логина
-$user_old_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$user."'"));
-//Отправка смс с данными для доступа
-$message_sms = '';
-if($user_old_data["login"] != $login){
-	$message_sms .= ' Логин:'.$login;
-}
-if(isset($password)){
-	$message_sms .= ' Пароль:'.$password;
-}
-if(!empty($message_sms)){
-$message_sms = 'Изменились данные для доступа в сервис ОСАГО.'.$message_sms;	
-$header="Content-type:text/plain;charset=windows-1251\r\n";
-$header.="From: it@sngi.ru\r\n";
-$phone = str_replace(array(")","(","-"),'',$user_old_data['phone']);
-$message = 'UserLogin=SURGUTNEFTEGAS2
-Password=1q2w3e
-SourceAddress=SNGI
-PhoneNumber=+7'.$phone.'
-'.$message_sms;
-$message = iconv('utf-8', 'windows-1251', $message);
-mail('smsgate@sngi.ru','Sms',$message,$header);
-//mail('husainov_aa@sngi.ru','Sms',$message,$header);		
-}
 if(mysql_query("UPDATE `user` SET `login` = '".$login."',`first_name` = '".$first_name."',`second_name` = '".$second_name."',`third_name` = '".$third_name."',`email` = '".$email."',`date_birth` = '".$date_birth."',`sex` = '".$sex."',`active` = '".$active."',`phone` = '".$phone."'".(isset($password) ? ",`password` = '".$password_hash."'" : '')." WHERE `user_id` = '".$user."'")){
 //if(mysql_query("INSERT INTO `user` (login,password,first_name,second_name,third_name,email,date_birth,sex,phone,active,who_added) VALUES('".$login."','".$password_hash."','".$first_name."','".$second_name."','".$third_name."','".$email."','".$date_birth."','".$sex."','".$phone."','".$active."','".$_SESSION["user_id"]."')")){
+	//Првоерка на изменение логина
+	$user_old_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$user."'"));
+	//Отправка смс с данными для доступа
+	$message_sms = '';
+	if($user_old_data["login"] != $login){
+		$message_sms .= ' Логин:'.$login;
+	}
+	if(isset($password)){
+		$message_sms .= ' Пароль:'.$password;
+	}
+	if(!empty($message_sms)){
+	$message_sms = 'Изменились данные для доступа в сервис ОСАГО.'.$message_sms;	
+	$header="Content-type:text/plain;charset=windows-1251\r\n";
+	$header.="From: it@sngi.ru\r\n";
+	$phone = str_replace(array(")","(","-"),'',$user_old_data['phone']);
+	$message = 'UserLogin=SURGUTNEFTEGAS2
+	Password=1q2w3e
+	SourceAddress=SNGI
+	PhoneNumber=+7'.$phone.'
+	'.$message_sms;
+	$message = iconv('utf-8', 'windows-1251', $message);
+	mail('smsgate@sngi.ru','Sms',$message,$header);
+	//mail('husainov_aa@sngi.ru','Sms',$message,$header);		
+	}	
 	$user_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `login` = '".$login."'"));
 	$user_id = $user_data["user_id"];
 	mysql_query("DELETE FROM `user_rights` WHERE `user_id` = '".$user_id."'");
