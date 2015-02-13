@@ -54,6 +54,14 @@ if(!$unit){
 if(!$_POST["rights"]){
 	$err_text .= "<li class=\"text-danger\">Не указаны права пользователя</li>";	
 }
+if($phone && mysql_num_rows(mysql_query("SELECT * FROM `user` WHERE `phone` = '".$phone."' AND `user_id` <> '".$user."'"))>0){
+	echo "<br><p class=\"text-danger text-center\">Пользователь с таким телефоном уже имеется в базе данных!</p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+	exit();	
+}
+if($email && mysql_num_rows(mysql_query("SELECT * FROM `user` WHERE `email` = '".$email."'AND `user_id` <> '".$user."'"))>0){
+	echo "<br><p class=\"text-danger text-center\">Пользователь с таким email уже имеется в базе данных!</p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+	exit();	
+}
 if(!empty($err_text)){
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 	exit();

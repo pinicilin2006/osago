@@ -19,6 +19,8 @@ check_browser();
                 <input type="text" class="form-control input-sm" name="login" placeholder="Логин" required autofocus>
                 <input type="password" class="form-control input-sm" name="password" placeholder="Пароль" required>
                 <button class="btn  btn-primary btn-block" type="submit">Войти</button>
+                <br>
+                <p class='text-right'><a href='/recovery_password.php'><small>Восстановить пароль</small></a></p>
                 </form>
                 <br>
                 <div class="text-center"><p class="text-danger"><?php echo (isset($_SESSION["login_error_message"]) ? $_SESSION["login_error_message"] : '') ?></p></div>                       
