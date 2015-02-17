@@ -1,0 +1,2731 @@
+
+
+***********************************************************************
+Fatal NI connect error 12537, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 04-OCT-2013 16:03:01
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12537
+    TNS-12537: TNS:connection closed
+    ns secondary err code: 12560
+    nt main err code: 507
+    TNS-00507: Connection closed
+
+
+***********************************************************************
+Fatal NI connect error 12537, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 04-OCT-2013 16:03:58
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12537
+    TNS-12537: TNS:connection closed
+    ns secondary err code: 12560
+    nt main err code: 507
+    TNS-00507: Connection closed
+
+
+***********************************************************************
+Fatal NI connect error 12537, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 04-OCT-2013 16:04:12
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12537
+    TNS-12537: TNS:connection closed
+    ns secondary err code: 12560
+    nt main err code: 507
+    TNS-00507: Connection closed
+    nt secondary err code: 0
+    nt OS err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12537, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 11-OCT-2013 12:08:46
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12537
+    TNS-12537: TNS:connection closed
+    ns secondary err code: 12560
+    nt main err code: 507
+    TNS-00507: Connection closed
+
+
+***********************************************************************
+Fatal NI connect error 12537, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 11-OCT-2013 12:08:50
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12537
+    TNS-12537: TNS:connection closed
+    ns secondary err code: 12560
+    nt main err code: 507
+    TNS-00507: Connection closed
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 11-OCT-2013 12:10:28
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12170.
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 23-OCT-2013 09:02:15
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+
+
+***********************************************************************
+Fatal NI connect error 12170.
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 23-OCT-2013 09:03:16
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 145
+    nt OS err code: 0
+  Client address: <unknown>
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 23-OCT-2013 09:05:17
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 146
+    nt OS err code: 0
+    nt secondary err code: 145
+    nt OS err code: 0
+  Client address: <unknown>
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 22-DEC-2013 11:38:53
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 22-DEC-2013 13:26:40
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 29-DEC-2013 10:25:11
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 12-JAN-2014 09:23:39
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 03-FEB-2014 15:40:50
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 03-FEB-2014 15:41:04
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 03-FEB-2014 15:41:19
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 03-FEB-2014 15:41:19
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 08-APR-2014 12:28:59
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 08-APR-2014 12:29:02
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 14-APR-2014 15:06:56
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 14-APR-2014 15:06:58
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 10:59:02
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 11:19:58
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 11:53:51
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 11:57:02
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:00:41
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:01:18
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:02:02
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:02:17
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:10:24
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:10:39
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:12:40
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:18:52
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 12:41:43
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:12:54
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:24:09
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:27:12
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:27:37
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:31:10
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:41:17
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:41:45
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:41:50
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 13:48:11
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:00:10
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:05:20
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:07:55
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:10:44
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:17:38
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:45:10
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:57:12
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:59:13
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 14:59:23
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:00:29
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:10:02
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:23:10
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:31:27
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:32:04
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:39:10
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:39:59
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:40:32
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:41:47
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:41:54
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:41:57
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:44:13
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:44:44
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:45:14
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:46:38
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:47:08
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:51:54
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:59:53
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 15:59:56
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:00:28
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:12:17
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:16:57
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:17:53
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:17:56
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:17:56
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:18:56
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:19:00
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:19:00
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:27:56
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:29:05
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:37:09
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:48:54
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:49:14
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:53:58
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:54:00
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:54:02
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:58:18
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 16:58:20
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:02:40
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:08:39
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:08:41
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:08:41
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:09:46
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:09:46
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:11:07
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:17:03
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:22:00
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:22:04
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 10-SEP-2014 17:41:06
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 11-SEP-2014 07:25:01
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 11-SEP-2014 08:21:05
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12537, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 19-SEP-2014 10:26:28
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12537
+    TNS-12537: TNS:connection closed
+    ns secondary err code: 12560
+    nt main err code: 507
+    TNS-00507: Connection closed
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 19-SEP-2014 10:27:05
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 28-SEP-2014 09:37:28
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 28-SEP-2014 09:39:19
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-OCT-2014 09:15:41
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-OCT-2014 09:40:54
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 11-OCT-2014 16:32:00
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 11-OCT-2014 16:34:38
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 12-OCT-2014 09:33:36
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.74)(PORT=1521))(CONNECT_DATA=(SID=IBS_BSO.VITA.VITAINS.RU)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 00:06:13
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.74)(PORT=1521))(CONNECT_DATA=(SID=IBS_DMS.VITA.VITAINS.RU)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 00:08:15
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12537, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 12:53:09
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12537
+    TNS-12537: TNS:connection closed
+    ns secondary err code: 12560
+    nt main err code: 507
+    TNS-00507: Connection closed
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 12:54:56
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 12:59:13
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 12:59:34
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:00:13
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:02:24
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:04:32
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:06:55
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:07:18
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:08:30
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:09:06
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:11:03
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:11:32
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12528, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:12:07
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:14:23
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:20:55
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:21:33
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:21:51
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 13-OCT-2014 13:22:00
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 16-OCT-2014 09:39:41
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 16-OCT-2014 09:39:55
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 16-OCT-2014 09:40:28
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 16-OCT-2014 10:28:26
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 16-OCT-2014 10:31:06
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 16-OCT-2014 10:41:09
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 19-OCT-2014 09:10:15
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12528, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 23-OCT-2014 20:18:39
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12528, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 23-OCT-2014 20:24:11
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 26-OCT-2014 08:16:17
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd@appsrv)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 26-OCT-2014 08:16:41
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-NOV-2014 00:06:00
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-NOV-2014 08:19:39
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-NOV-2014 08:19:56
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-NOV-2014 08:20:16
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 146
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-NOV-2014 08:27:23
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-NOV-2014 08:36:36
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=sngi)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 05-NOV-2014 08:37:03
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    nt secondary err code: 146
+    nt OS err code: 0
+    nt secondary err code: 146
+    nt OS err code: 0
+    nt secondary err code: 146
+    nt OS err code: 0
+    nt secondary err code: 146
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12505, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.250.245.73)(PORT=1521))(CONNECT_DATA=(SID=uls)(CID=(PROGRAM=httpd)(HOST=appsrv)(USER=oracle))))
+
+  VERSION INFORMATION:
+	TNS for Solaris: Version 10.1.0.5.0 - Production
+	TCP/IP NT Protocol Adapter for Solaris: Version 10.1.0.5.0 - Production
+  Time: 30-JAN-2015 10:32:35
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0

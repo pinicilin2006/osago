@@ -1,0 +1,169 @@
+<FORM name=rsa_request action=result.php method=POST>
+  <SCRIPT type="text/javascript" src="Datepicker/datepicker.js"></SCRIPT>
+  <SCRIPT type="text/javascript" src="main.js"></SCRIPT>
+
+  <LINK type="text/css" href="Datepicker/datepicker.css" rel="stylesheet">
+  <LINK type="text/css" href="style.css" rel="stylesheet">
+
+  <TABLE id=Tbl cols=2 width=100% height=100% border=0 valign=top cellpadding=2px cellspacing=2px>
+    <TR height=40px>
+      <TD align=left valign=top width=200px> 
+	<B>Дата начала договора:* </B>
+	<INPUT type=test id="rep_date" name="rep_date" size=10 onkeyup="DateMask('rep_date', 'report')">
+	<INPUT type=button style="width: 30px" value="..." name="calendar" onclick="displayDatePicker('rep_date', false);">
+      </TD>
+      <TD align=left valign=top> 
+	<B>Тип запроса:</B><BR>
+	<INPUT type=radio id="kbm" name="rep_type" value="kbm" checked onclick="OnChange_Req();">КБМ&nbsp;&nbsp;&nbsp;
+	<INPUT type=radio id="to" name="rep_type" value="to" onclick="OnChange_Req();">ТО&nbsp;&nbsp;&nbsp;
+	<INPUT type=radio id="kbm_to" name="rep_type" value="kbm_to" onclick="OnChange_Req();">КБМ+TO
+      </TD>
+    </TR>
+    <TR height=40px>
+      <TD colspan=2 align=left valign=top>
+	<B>Лица, допущенные к управлению:</B><BR>
+	<INPUT type=radio id="lim" name="drivers" value="lim" checked onclick="OnChange_Lim();">Ограниченный список&nbsp;&nbsp;&nbsp;
+	<INPUT type=radio id="unlim" name="drivers" value="unlim" onclick="OnChange_Lim();">Неограниченный список
+	<INPUT type=hidden id="drv_count" name="drv_count" value=1>
+      </TD>
+    </TR>
+    <TR height=20px>
+      <TD colspan=2 align=left valign=top>
+	<B>Собственник ТС:&nbsp;&nbsp;&nbsp;</B>
+	<INPUT type=radio id="phy" name="own_type" value="phy" checked disabled onclick="OnChange_Own();">Физ.лицо&nbsp;&nbsp;&nbsp;
+	<INPUT type=radio id="jur" name="own_type" value="jur" disabled onclick="OnChange_Own();">Юр.лицо
+      </TD>
+    </TR>
+    <TR height=80px>
+      <TD colspan=2 align=left valign=top>
+	<TABLE cols=5 width=100% border=0 valign=top align=left cellpadding=0 cellspacing=0>
+	  <TR>
+	    <TD width=220px align=left valign=top>
+	      <LABEL>Фамилия Имя Отчество:*</LABEL><BR>
+	      <INPUT type=text id="own_name_p" name="own_name_p" size=10 style="width: 210px" disabled>
+	    </TD>
+	    <TD width=148px align=left valign=top>
+	      <LABEL>Дата рождения:*</LABEL><BR>
+	      <INPUT type=test id="own_birth_date" name="own_birth_date" size=10 disabled onkeyup="DateMask('own_birth_date', 'report')">
+	      <INPUT type=button id="own_birth_date_btn" style="width: 30px" value="..." name="calendar_0" disabled onclick="displayDatePicker('own_birth_date', false);">
+	    </TD>
+	    <TD width=130px align=left valign=top>
+	      <LABEL>Документ:*</LABEL><BR>
+	      <SELECT id="own_doc" name="own_doc" style="width: 120px" disabled>
+		<OPTION value="9">Вид на жительство</OPTION>
+		<OPTION value="22">Водительское удостоверение иностранного государства</OPTION>
+		<OPTION value="20">Водительское удостоверение РФ</OPTION>
+		<OPTION value="16">Военный билет офицера запаса</OPTION>
+		<OPTION value="5">Военный билет солдата (матроса, сержанта, старшины)</OPTION>
+		<OPTION value="11">Временное удостоверение личности гражданина РФ</OPTION>
+		<OPTION value="6">Дипломатический паспорт гражданина РФ</OPTION>
+		<OPTION value="23">Другие документы</OPTION>
+		<OPTION value="13">Загранпаспорт гражданина РФ</OPTION>
+		<OPTION value="7">Иностранный паспорт</OPTION>
+		<OPTION value="17">Иные документы, выдаваемые органами МВД</OPTION>
+		<OPTION selected value="12">Паспорт гражданина РФ</OPTION>
+		<OPTION value="18">Паспорт гражданина СССР</OPTION>
+		<OPTION value="4">Паспорт Минморфлота</OPTION>
+		<OPTION value="15">Паспорт моряка</OPTION>
+		<OPTION value="1">Свидетельство о рождении</OPTION>
+		<OPTION value="3">Справка об освобождении из места лишения свободы</OPTION>
+		<OPTION value="2">Удостоверение личности офицера</OPTION>
+	      </SELECT>
+	    </TD>
+	    <TD width=50px align=left valign=top>
+	      <LABEL>Серия:*</LABEL><BR>
+	      <INPUT type=text id="own_ser" name="own_ser" size=10 style="width: 40px" disabled>
+	    </TD>
+	    <TD align=left valign=top>
+	      <LABEL>Номер:*</LABEL><BR>
+	      <INPUT type=text id="own_num" name="own_num" size=10 style="width: 60px" disabled>
+	    </TD>
+	  </TR>
+	  <TR>
+	    <TD colspan=2 width=368px align=left valign=top>
+	      <LABEL>Наименование:*</LABEL><BR>
+	      <INPUT type=text id="own_name_j" name="own_name_j" size=10 style="width: 360px" disabled>
+	    </TD>
+	    <TD width=130px align=left valign=top>
+	      <LABEL>ИНН:*</LABEL><BR>
+	      <INPUT type=text id="own_inn" name="own_inn" size=10 style="width: 120px" disabled>
+	    </TD>
+	    <TD colspan=2 width=110px align=left valign=top>
+	      <LABEL>&nbsp;</LABEL><BR>
+	      <INPUT type=checkbox id="is_resident" name="is_resident" value="is_resident" checked disabled>&nbsp;Резидент РФ
+	    </TD>
+	  </TR>
+	</TABLE>
+      </TD>
+    </TR>
+    <TR height=50px>
+      <TD colspan=2 align=left valign=top> 
+	<TABLE id=TblDrv cols=3 width=100% border=0 valign=top cellpadding=0 cellspacing=0>
+	  <TR>
+	    <TD width=250px align=left valign=top>
+	      <B>Водитель №1</B><BR>
+	      <LABEL>Фамилия Имя Отчество:*</LABEL><BR>
+	      <INPUT type=text id="fio" name="fio" size=10 style="width: 240px">
+	    </TD>
+	    <TD width=148px align=left valign=top>
+	      <B>&nbsp;</B><BR>
+	      <LABEL>Дата рождения:*</LABEL><BR>
+	      <INPUT type=test id="birth_date" name="birth_date" size=10 onkeyup="DateMask('birth_date', 'report')">
+	      <INPUT type=button id="birth_date_btn" style="width: 30px" value="..." name="calendar_1" onclick="displayDatePicker('birth_date', false);">
+	    </TD>
+	    <TD align=left valign=top>
+	      <B>Водительское удостоверение</B><BR>
+	      <LABEL>Серия:*            Номер:*</LABEL><BR>
+	      <INPUT type=text id="ser" name="ser" size=10 style="width: 50px">
+	      <INPUT type=text id="num" name="num" size=10 style="width: 150px">
+	    </TD>
+	  </TR>
+	</TABLE>
+      </TD>
+    </TR>
+    <TR height=40px>
+      <TD align=center valign=top>
+	<CENTER>
+	  <INPUT type=button id="add_btn" style="width: 80px" value="Добавить" name="add_btn" onclick="AddRow();">
+	  <INPUT type=button id="del_btn" style="width: 80px" value="Удалить" name="del_btn" onclick="DelRow();">
+	</CENTER>
+      </TD>
+    </TR>
+    <TR>
+      <TD colspan=2 align=left valign=top>
+	<TABLE cols=3 border=0 valign=top cellpadding=0 cellspacing=0>
+	  <TR>
+	    <TD width=250px valign=top align=left>
+	      <B>Транспортное средство</B><BR>
+	      <LABEL>VIN:</LABEL><BR>
+	      <INPUT type=text id="vin" name="vin" size=10 style="width: 240px" disabled>
+	    </TD>
+	    <TD width=250px valign=top align=left>
+	      <B>&nbsp;</B><BR>
+	      <LABEL>Гос.номер:</LABEL><BR>
+	      <INPUT type=text id="lic_plate" name="lic_plate" size=10 style="width: 240px" value="<не действует в v.1.1>" disabled>
+	    </TD>
+	    <TD width=105px valign=bottom align=right>
+	      &nbsp;
+	    </TD>
+	  </TR>
+	  <TR>
+	    <TD width=250px valign=top align=left>
+	      <B>&nbsp;</B><BR>
+	      <LABEL>Номер кузова:</LABEL><BR>
+	      <INPUT type=text id="body_num" name="body_num" size=10 style="width: 240px" disabled>
+	    </TD>
+	    <TD width=250px valign=top align=left>
+	      <B>&nbsp;</B><BR>
+	      <LABEL>Номер шасси:</LABEL><BR>
+	      <INPUT type=text id="chassis_num" name="chassis_num" size=10 style="width: 240px" disabled>
+	    </TD>
+	    <TD width=105px valign=bottom align=right>
+	      <INPUT type=button id="submit" name=submit style="width: 100px" value="Запрос в РСА" onclick="Submit();">
+	    </TD>
+	  </TR>
+	</TABLE>
+      </TD>
+    </TR>
+  </TABLE>
+</FORM>
