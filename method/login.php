@@ -10,7 +10,15 @@ connect_to_base();
 $login = mysql_real_escape_string($_POST["login"]);
 $password = mysql_real_escape_string($_POST["password"]);
 $data_user = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `login` = '".$login."'"));
+$message = '';
 if((!$data_user) || (!password_verify($password, $data_user["password"]))){
+	if(!$data_user){
+		$message = 'Неверный логин '.$login;
+	}
+	if(!password_verify($password, $data_user["password"])){
+		$message = 'Неверный пароль '.$password;
+	}
+	mysql_query("INSERT INTO `log_bad_enter` (ip, browser, message) VALUES ('".$_SERVER['REMOTE_ADDR']."', '".$_SERVER['HTTP_USER_AGENT']."', '".$message."')");
 	$_SESSION["login_error_message"] = 'Неверный логин или пароль!';
 	header("Location: ../login.php");
 	exit;	
