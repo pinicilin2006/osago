@@ -5,33 +5,33 @@
   <LINK type="text/css" href="Datepicker/datepicker.css" rel="stylesheet">
   <LINK type="text/css" href="style.css" rel="stylesheet">
 
-  <TABLE id=Tbl cols=2 width=100% height=100% border=0 valign=top cellpadding=2px cellspacing=2px>
+  <TABLE id="Tbl" cols="2" width="100%" height="100%" border="0" valign="top" cellpadding="2px" cellspacing="2px">
     <TR height=40px>
       <TD align=left valign=top width=200px> 
-	<B>Дата начала договора:* </B>
+	<B>Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РґРѕРіРѕРІРѕСЂР°:* </B>
 	<INPUT type=test id="rep_date" name="rep_date" size=10 onkeyup="DateMask('rep_date', 'report')">
 	<INPUT type=button style="width: 30px" value="..." name="calendar" onclick="displayDatePicker('rep_date', false);">
       </TD>
       <TD align=left valign=top> 
-	<B>Тип запроса:</B><BR>
-	<INPUT type=radio id="kbm" name="rep_type" value="kbm" checked onclick="OnChange_Req();">КБМ&nbsp;&nbsp;&nbsp;
-	<INPUT type=radio id="to" name="rep_type" value="to" onclick="OnChange_Req();">ТО&nbsp;&nbsp;&nbsp;
-	<INPUT type=radio id="kbm_to" name="rep_type" value="kbm_to" onclick="OnChange_Req();">КБМ+TO
+	<B>РўРёРї Р·Р°РїСЂРѕСЃР°:</B><BR>
+	<INPUT type=radio id="kbm" name="rep_type" value="kbm" checked onclick="OnChange_Req();">РљР‘Рњ&nbsp;&nbsp;&nbsp;
+	<INPUT type=radio id="to" name="rep_type" value="to" onclick="OnChange_Req();">РўРћ&nbsp;&nbsp;&nbsp;
+	<INPUT type=radio id="kbm_to" name="rep_type" value="kbm_to" onclick="OnChange_Req();">РљР‘Рњ+TO
       </TD>
     </TR>
     <TR height=40px>
       <TD colspan=2 align=left valign=top>
-	<B>Лица, допущенные к управлению:</B><BR>
-	<INPUT type=radio id="lim" name="drivers" value="lim" checked onclick="OnChange_Lim();">Ограниченный список&nbsp;&nbsp;&nbsp;
-	<INPUT type=radio id="unlim" name="drivers" value="unlim" onclick="OnChange_Lim();">Неограниченный список
+	<B>Р›РёС†Р°, РґРѕРїСѓС‰РµРЅРЅС‹Рµ Рє СѓРїСЂР°РІР»РµРЅРёСЋ:</B><BR>
+	<INPUT type=radio id="lim" name="drivers" value="lim" checked onclick="OnChange_Lim();">РћРіСЂР°РЅРёС‡РµРЅРЅС‹Р№ СЃРїРёСЃРѕРє&nbsp;&nbsp;&nbsp;
+	<INPUT type=radio id="unlim" name="drivers" value="unlim" onclick="OnChange_Lim();">РќРµРѕРіСЂР°РЅРёС‡РµРЅРЅС‹Р№ СЃРїРёСЃРѕРє
 	<INPUT type=hidden id="drv_count" name="drv_count" value=1>
       </TD>
     </TR>
     <TR height=20px>
       <TD colspan=2 align=left valign=top>
-	<B>Собственник ТС:&nbsp;&nbsp;&nbsp;</B>
-	<INPUT type=radio id="phy" name="own_type" value="phy" checked disabled onclick="OnChange_Own();">Физ.лицо&nbsp;&nbsp;&nbsp;
-	<INPUT type=radio id="jur" name="own_type" value="jur" disabled onclick="OnChange_Own();">Юр.лицо
+	<B>РЎРѕР±СЃС‚РІРµРЅРЅРёРє РўРЎ:&nbsp;&nbsp;&nbsp;</B>
+	<INPUT type=radio id="phy" name="own_type" value="phy" checked disabled onclick="OnChange_Own();">Р¤РёР·.Р»РёС†Рѕ&nbsp;&nbsp;&nbsp;
+	<INPUT type=radio id="jur" name="own_type" value="jur" disabled onclick="OnChange_Own();">Р®СЂ.Р»РёС†Рѕ
       </TD>
     </TR>
     <TR height=80px>
@@ -39,58 +39,58 @@
 	<TABLE cols=5 width=100% border=0 valign=top align=left cellpadding=0 cellspacing=0>
 	  <TR>
 	    <TD width=220px align=left valign=top>
-	      <LABEL>Фамилия Имя Отчество:*</LABEL><BR>
+	      <LABEL>Р¤Р°РјРёР»РёСЏ РРјСЏ РћС‚С‡РµСЃС‚РІРѕ:*</LABEL><BR>
 	      <INPUT type=text id="own_name_p" name="own_name_p" size=10 style="width: 210px" disabled>
 	    </TD>
 	    <TD width=148px align=left valign=top>
-	      <LABEL>Дата рождения:*</LABEL><BR>
+	      <LABEL>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:*</LABEL><BR>
 	      <INPUT type=test id="own_birth_date" name="own_birth_date" size=10 disabled onkeyup="DateMask('own_birth_date', 'report')">
 	      <INPUT type=button id="own_birth_date_btn" style="width: 30px" value="..." name="calendar_0" disabled onclick="displayDatePicker('own_birth_date', false);">
 	    </TD>
 	    <TD width=230px align=left valign=top>
-	      <LABEL>Документ:*</LABEL><BR>
+	      <LABEL>Р”РѕРєСѓРјРµРЅС‚:*</LABEL><BR>
 	      <SELECT id="own_doc" name="own_doc" style="width: 220px" disabled>
-		<OPTION value="9">Вид на жительство</OPTION>
-		<OPTION value="22">Водительское удостоверение иностранного государства</OPTION>
-		<OPTION value="20">Водительское удостоверение РФ</OPTION>
-		<OPTION value="16">Военный билет офицера запаса</OPTION>
-		<OPTION value="5">Военный билет солдата (матроса, сержанта, старшины)</OPTION>
-		<OPTION value="11">Временное удостоверение личности гражданина РФ</OPTION>
-		<OPTION value="6">Дипломатический паспорт гражданина РФ</OPTION>
-		<OPTION value="23">Другие документы</OPTION>
-		<OPTION value="13">Загранпаспорт гражданина РФ</OPTION>
-		<OPTION value="7">Иностранный паспорт</OPTION>
-		<OPTION value="17">Иные документы, выдаваемые органами МВД</OPTION>
-		<OPTION selected value="12">Паспорт гражданина РФ</OPTION>
-		<OPTION value="18">Паспорт гражданина СССР</OPTION>
-		<OPTION value="4">Паспорт Минморфлота</OPTION>
-		<OPTION value="15">Паспорт моряка</OPTION>
-		<OPTION value="1">Свидетельство о рождении</OPTION>
-		<OPTION value="3">Справка об освобождении из места лишения свободы</OPTION>
-		<OPTION value="2">Удостоверение личности офицера</OPTION>
+		<OPTION value="9">Р’РёРґ РЅР° Р¶РёС‚РµР»СЊСЃС‚РІРѕ</OPTION>
+		<OPTION value="22">Р’РѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ РёРЅРѕСЃС‚СЂР°РЅРЅРѕРіРѕ РіРѕСЃСѓРґР°СЂСЃС‚РІР°</OPTION>
+		<OPTION value="20">Р’РѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ Р Р¤</OPTION>
+		<OPTION value="16">Р’РѕРµРЅРЅС‹Р№ Р±РёР»РµС‚ РѕС„РёС†РµСЂР° Р·Р°РїР°СЃР°</OPTION>
+		<OPTION value="5">Р’РѕРµРЅРЅС‹Р№ Р±РёР»РµС‚ СЃРѕР»РґР°С‚Р° (РјР°С‚СЂРѕСЃР°, СЃРµСЂР¶Р°РЅС‚Р°, СЃС‚Р°СЂС€РёРЅС‹)</OPTION>
+		<OPTION value="11">Р’СЂРµРјРµРЅРЅРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ Р»РёС‡РЅРѕСЃС‚Рё РіСЂР°Р¶РґР°РЅРёРЅР° Р Р¤</OPTION>
+		<OPTION value="6">Р”РёРїР»РѕРјР°С‚РёС‡РµСЃРєРёР№ РїР°СЃРїРѕСЂС‚ РіСЂР°Р¶РґР°РЅРёРЅР° Р Р¤</OPTION>
+		<OPTION value="23">Р”СЂСѓРіРёРµ РґРѕРєСѓРјРµРЅС‚С‹</OPTION>
+		<OPTION value="13">Р—Р°РіСЂР°РЅРїР°СЃРїРѕСЂС‚ РіСЂР°Р¶РґР°РЅРёРЅР° Р Р¤</OPTION>
+		<OPTION value="7">РРЅРѕСЃС‚СЂР°РЅРЅС‹Р№ РїР°СЃРїРѕСЂС‚</OPTION>
+		<OPTION value="17">РРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹, РІС‹РґР°РІР°РµРјС‹Рµ РѕСЂРіР°РЅР°РјРё РњР’Р”</OPTION>
+		<OPTION selected value="12">РџР°СЃРїРѕСЂС‚ РіСЂР°Р¶РґР°РЅРёРЅР° Р Р¤</OPTION>
+		<OPTION value="18">РџР°СЃРїРѕСЂС‚ РіСЂР°Р¶РґР°РЅРёРЅР° РЎРЎРЎР </OPTION>
+		<OPTION value="4">РџР°СЃРїРѕСЂС‚ РњРёРЅРјРѕСЂС„Р»РѕС‚Р°</OPTION>
+		<OPTION value="15">РџР°СЃРїРѕСЂС‚ РјРѕСЂСЏРєР°</OPTION>
+		<OPTION value="1">РЎРІРёРґРµС‚РµР»СЊСЃС‚РІРѕ Рѕ СЂРѕР¶РґРµРЅРёРё</OPTION>
+		<OPTION value="3">РЎРїСЂР°РІРєР° РѕР± РѕСЃРІРѕР±РѕР¶РґРµРЅРёРё РёР· РјРµСЃС‚Р° Р»РёС€РµРЅРёСЏ СЃРІРѕР±РѕРґС‹</OPTION>
+		<OPTION value="2">РЈРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ Р»РёС‡РЅРѕСЃС‚Рё РѕС„РёС†РµСЂР°</OPTION>
 	      </SELECT>
 	    </TD>
 	    <TD width=50px align=left valign=top>
-	      <LABEL>Серия:*</LABEL><BR>
+	      <LABEL>РЎРµСЂРёСЏ:*</LABEL><BR>
 	      <INPUT type=text id="own_ser" name="own_ser" size=10 style="width: 40px" disabled>
 	    </TD>
 	    <TD align=left valign=top>
-	      <LABEL>Номер:*</LABEL><BR>
+	      <LABEL>РќРѕРјРµСЂ:*</LABEL><BR>
 	      <INPUT type=text id="own_num" name="own_num" size=10 style="width: 60px" disabled>
 	    </TD>
 	  </TR>
 	  <TR>
 	    <TD colspan=2 width=368px align=left valign=top>
-	      <LABEL>Наименование:*</LABEL><BR>
+	      <LABEL>РќР°РёРјРµРЅРѕРІР°РЅРёРµ:*</LABEL><BR>
 	      <INPUT type=text id="own_name_j" name="own_name_j" size=10 style="width: 360px" disabled>
 	    </TD>
 	    <TD width=130px align=left valign=top>
-	      <LABEL>ИНН:*</LABEL><BR>
+	      <LABEL>РРќРќ:*</LABEL><BR>
 	      <INPUT type=text id="own_inn" name="own_inn" size=10 style="width: 120px" disabled>
 	    </TD>
 	    <TD colspan=2 width=110px align=left valign=top>
 	      <LABEL>&nbsp;</LABEL><BR>
-	      <INPUT type=checkbox id="is_resident" name="is_resident" value="is_resident" checked disabled>&nbsp;Резидент РФ
+	      <INPUT type=checkbox id="is_resident" name="is_resident" value="is_resident" checked disabled>&nbsp;Р РµР·РёРґРµРЅС‚ Р Р¤
 	    </TD>
 	  </TR>
 	</TABLE>
@@ -101,19 +101,19 @@
 	<TABLE id=TblDrv cols=3 width=100% border=0 valign=top cellpadding=0 cellspacing=0>
 	  <TR>
 	    <TD width=250px align=left valign=top>
-	      <B>Водитель №1</B><BR>
-	      <LABEL>Фамилия Имя Отчество:*</LABEL><BR>
+	      <B>Р’РѕРґРёС‚РµР»СЊ в„–1</B><BR>
+	      <LABEL>Р¤Р°РјРёР»РёСЏ РРјСЏ РћС‚С‡РµСЃС‚РІРѕ:*</LABEL><BR>
 	      <INPUT type=text id="fio" name="fio" size=10 style="width: 240px">
 	    </TD>
 	    <TD width=148px align=left valign=top>
 	      <B>&nbsp;</B><BR>
-	      <LABEL>Дата рождения:*</LABEL><BR>
+	      <LABEL>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:*</LABEL><BR>
 	      <INPUT type=test id="birth_date" name="birth_date" size=10 onkeyup="DateMask('birth_date', 'report')">
 	      <INPUT type=button id="birth_date_btn" style="width: 30px" value="..." name="calendar_1" onclick="displayDatePicker('birth_date', false);">
 	    </TD>
 	    <TD align=left valign=top>
-	      <B>Водительское удостоверение</B><BR>
-	      <LABEL>Серия:*            Номер:*</LABEL><BR>
+	      <B>Р’РѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ</B><BR>
+	      <LABEL>РЎРµСЂРёСЏ:*            РќРѕРјРµСЂ:*</LABEL><BR>
 	      <INPUT type=text id="ser" name="ser" size=10 style="width: 50px">
 	      <INPUT type=text id="num" name="num" size=10 style="width: 150px">
 	    </TD>
@@ -124,8 +124,8 @@
     <TR height=40px>
       <TD align=center valign=top>
 	<CENTER>
-	  <INPUT type=button id="add_btn" style="width: 80px" value="Добавить" name="add_btn" onclick="AddRow();">
-	  <INPUT type=button id="del_btn" style="width: 80px" value="Удалить" name="del_btn" onclick="DelRow();">
+	  <INPUT type=button id="add_btn" style="width: 80px" value="Р”РѕР±Р°РІРёС‚СЊ" name="add_btn" onclick="AddRow();">
+	  <INPUT type=button id="del_btn" style="width: 80px" value="РЈРґР°Р»РёС‚СЊ" name="del_btn" onclick="DelRow();">
 	</CENTER>
       </TD>
     </TR>
@@ -134,32 +134,32 @@
 	<TABLE cols=3 border=0 valign=top cellpadding=0 cellspacing=0>
 	  <TR>
 	    <TD width=250px valign=top align=left>
-	      <B>Транспортное средство</B><BR>
+	      <B>РўСЂР°РЅСЃРїРѕСЂС‚РЅРѕРµ СЃСЂРµРґСЃС‚РІРѕ</B><BR>
 	      <LABEL>VIN:</LABEL><BR>
 	      <INPUT type=text id="vin" name="vin" size=10 style="width: 240px" disabled>
 	    </TD>
 	    <TD width=250px valign=top align=left>
 	      <B>&nbsp;</B><BR>
-	      <LABEL>Гос.номер:</LABEL><BR>
+	      <LABEL>Р“РѕСЃ.РЅРѕРјРµСЂ:</LABEL><BR>
 	      <INPUT type=text id="lic_plate" name="lic_plate" size=10 style="width: 240px" disabled>
 	    </TD>
 	    <TD width=105px valign=bottom align=right>
-	      <INPUT type=button id="hist" name="hist" style="width: 100px" value="История" onclick="Submit1();">
+	      <INPUT type=button id="hist" name="hist" style="width: 100px" value="РСЃС‚РѕСЂРёСЏ" onclick="Submit1();">
 	    </TD>
 	  </TR>
 	  <TR>
 	    <TD width=250px valign=top align=left>
 	      <B>&nbsp;</B><BR>
-	      <LABEL>Номер кузова:</LABEL><BR>
+	      <LABEL>РќРѕРјРµСЂ РєСѓР·РѕРІР°:</LABEL><BR>
 	      <INPUT type=text id="body_num" name="body_num" size=10 style="width: 240px" disabled>
 	    </TD>
 	    <TD width=250px valign=top align=left>
 	      <B>&nbsp;</B><BR>
-	      <LABEL>Номер шасси:</LABEL><BR>
+	      <LABEL>РќРѕРјРµСЂ С€Р°СЃСЃРё:</LABEL><BR>
 	      <INPUT type=text id="chassis_num" name="chassis_num" size=10 style="width: 240px" disabled>
 	    </TD>
 	    <TD width=105px valign=bottom align=right>
-	      <INPUT type=button id="submit" name=submit style="width: 100px" value="Запрос в РСА" onclick="Submit();">
+	      <INPUT type=button id="submit" name=submit style="width: 100px" value="Р—Р°РїСЂРѕСЃ РІ Р РЎРђ" onclick="Submit();">
 	    </TD>
 	  </TR>
 	</TABLE>
@@ -167,3 +167,22 @@
     </TR>
   </TABLE>
 </FORM>
+<script type="text/javascript">
+var D = new Date();
+// СѓР·РЅР°РµРј РґР°С‚Сѓ
+var Day = D.getDate();
+// СѓР·РЅР°РµРј РјРµСЃСЏС†
+var Month = D.getMonth()+1;
+// СѓР·РЅР°РµРј РіРѕРґ
+var Year = D.getFullYear();
+if(Day<10){
+	Day = '0'+Day;
+}		
+if(Month<10){
+	Month = '0'+Month;
+}				
+// РїРѕРєР°Р¶РµРј
+temp = Day + "." + Month + "." + Year;
+document.getElementById('rep_date').value=temp;
+</script>
+

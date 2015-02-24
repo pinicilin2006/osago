@@ -350,3 +350,15 @@ function autocomplete_phiz(a,b){
 
 	});
 }
+
+function query_kbm(a){
+	$.ajax({
+		type: "POST",
+		url: "/dkbm/result.php",
+		data: a,
+		dataType: 'json',
+		success: function(data){
+		alert( "Прибыли данные: " + data );
+		}
+	});
+}

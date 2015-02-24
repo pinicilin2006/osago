@@ -5,7 +5,7 @@ function AddRow() {
   var j = c;
 
   if (c >= 10) {
-    alert("Максимальное кол-во водителей 10!");
+    alert("РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ РІРѕРґРёС‚РµР»РµР№ 10!");
     return;
   }
 
@@ -16,23 +16,23 @@ function AddRow() {
 
   c++;
 
-  cell1.innerHTML = '<B>Водитель №'+c+'</B><BR>';
-  cell1.innerHTML = cell1.innerHTML+'<LABEL>Фамилия Имя Отчество:*</LABEL><BR>';
+  cell1.innerHTML = '<B>Р’РѕРґРёС‚РµР»СЊ в„–'+c+'</B><BR>';
+  cell1.innerHTML = cell1.innerHTML+'<LABEL>Р¤Р°РјРёР»РёСЏ РРјСЏ РћС‚С‡РµСЃС‚РІРѕ:*</LABEL><BR>';
   cell1.innerHTML = cell1.innerHTML+'<INPUT type=text id="fio'+j+'" name="fio'+j+'" size=10 style="width: 240px">';
   cell1.setAttribute("width", "250px");
   cell1.setAttribute("align", "left");
   cell1.setAttribute("valign", "top");
 
   cell2.innerHTML = '<B>&nbsp;</B><BR>';
-  cell2.innerHTML = cell2.innerHTML+'<LABEL>Дата рождения:*</LABEL><BR>';
+  cell2.innerHTML = cell2.innerHTML+'<LABEL>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:*</LABEL><BR>';
   cell2.innerHTML = cell2.innerHTML+'<INPUT type=test id="birth_date'+j+'" name="birth_date'+j+'" size=10 onkeyup="DateMask(\'birth_date'+j+'\', \'report\')">&nbsp;';
   cell2.innerHTML = cell2.innerHTML+'<INPUT type=button style="width: 30px" value="..." name="calendar_'+c+'" onclick="displayDatePicker(\'birth_date'+j+'\', false);">';
   cell2.setAttribute("width", "148px");
   cell2.setAttribute("align", "left");
   cell2.setAttribute("valign", "top");
 
-  cell3.innerHTML = '<B>Водительское удостоверение</B><BR>';
-  cell3.innerHTML = cell3.innerHTML+'<LABEL>Серия:*            Номер:*</LABEL><BR>';
+  cell3.innerHTML = '<B>Р’РѕРґРёС‚РµР»СЊСЃРєРѕРµ СѓРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ</B><BR>';
+  cell3.innerHTML = cell3.innerHTML+'<LABEL>РЎРµСЂРёСЏ:*            РќРѕРјРµСЂ:*</LABEL><BR>';
   cell3.innerHTML = cell3.innerHTML+'<INPUT type=text id="ser'+j+'" name="ser'+j+'" size=10 style="width: 50px">&nbsp;';
   cell3.innerHTML = cell3.innerHTML+'<INPUT type=text id="num'+j+'" name="num'+j+'" size=10 style="width: 150px">';
   cell3.setAttribute("align", "left");
@@ -432,112 +432,112 @@ function Validate() {
  var own_inn = document.getElementById("own_inn");
 
  if (!IsValidDate(rep_d.value)) {
-  alert("Не указана дата начала действия договора или неверный формат даты!");
+  alert("РќРµ СѓРєР°Р·Р°РЅР° РґР°С‚Р° РЅР°С‡Р°Р»Р° РґРµР№СЃС‚РІРёСЏ РґРѕРіРѕРІРѕСЂР° РёР»Рё РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°С‚С‹!");
   Sel(rep_d);
   return false;
  }
 
  if ((own_phy.checked == true) && (own_name_p.disabled != true)) {
   if (own_name_p.value.length == 0) {
-   alert("Не указано Ф.И.О. собственника ТС!");
+   alert("РќРµ СѓРєР°Р·Р°РЅРѕ Р¤.Р.Рћ. СЃРѕР±СЃС‚РІРµРЅРЅРёРєР° РўРЎ!");
    Sel(own_name_p);
    return false;
   }
 
   if (own_name_p.value.length > 100) {
-   alert("Ф.И.О. собственника ТС не может быть длинее 100 символов (ограничение АИС РСА)!");
+   alert("Р¤.Р.Рћ. СЃРѕР±СЃС‚РІРµРЅРЅРёРєР° РўРЎ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РґР»РёРЅРµРµ 100 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
    Sel(own_name_p);
    return false;
   }
   
   if (!IsValidDate(own_birth_date.value))  {
-   alert("Не указана дата рождения собственника ТС или неверный формат даты!");
+   alert("РќРµ СѓРєР°Р·Р°РЅР° РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ СЃРѕР±СЃС‚РІРµРЅРЅРёРєР° РўРЎ РёР»Рё РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°С‚С‹!");
    Sel(own_birth_date);
    return false;
   }
 
   if ((own_doc.value == null) || (own_doc.value <= 0)) {
-   alert("Не выбран тип документа удостоверяющего личность!");
+   alert("РќРµ РІС‹Р±СЂР°РЅ С‚РёРї РґРѕРєСѓРјРµРЅС‚Р° СѓРґРѕСЃС‚РѕРІРµСЂСЏСЋС‰РµРіРѕ Р»РёС‡РЅРѕСЃС‚СЊ!");
    Sel(own_doc);
    return false;
   }
 
   if (own_num.value.length == 0) {
-   alert("Не указан номер документа удостоверяющего личность!");
+   alert("РќРµ СѓРєР°Р·Р°РЅ РЅРѕРјРµСЂ РґРѕРєСѓРјРµРЅС‚Р° СѓРґРѕСЃС‚РѕРІРµСЂСЏСЋС‰РµРіРѕ Р»РёС‡РЅРѕСЃС‚СЊ!");
    Sel(own_num);
    return false;
   }
 
   if (own_ser.value.length > 10) {
-   alert("Серия документа, удостоверяющего личность собственника ТС, не может быть больше 10 символов (ограничение АИС РСА)!");
+   alert("РЎРµСЂРёСЏ РґРѕРєСѓРјРµРЅС‚Р°, СѓРґРѕСЃС‚РѕРІРµСЂСЏСЋС‰РµРіРѕ Р»РёС‡РЅРѕСЃС‚СЊ СЃРѕР±СЃС‚РІРµРЅРЅРёРєР° РўРЎ, РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 10 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
    Sel(own_ser);
    return false;
   }
 
   if (own_num.value.length > 25) {
-   alert("Номер документа, удостоверяющего личность собственника ТС, не может быть больше 25 символов (ограничение АИС РСА)!");
+   alert("РќРѕРјРµСЂ РґРѕРєСѓРјРµРЅС‚Р°, СѓРґРѕСЃС‚РѕРІРµСЂСЏСЋС‰РµРіРѕ Р»РёС‡РЅРѕСЃС‚СЊ СЃРѕР±СЃС‚РІРµРЅРЅРёРєР° РўРЎ, РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 25 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
    Sel(own_num);
    return false;
   }
  }
  else if ((own_jur.checked == true) && (own_name_j.disabled != true)) {
   if (own_name_j.value.length == 0) {
-   alert("Не указано наименование собственника ТС!");
+   alert("РќРµ СѓРєР°Р·Р°РЅРѕ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ СЃРѕР±СЃС‚РІРµРЅРЅРёРєР° РўРЎ!");
    Sel(own_name_j);
    return false;
   }
 
   if (own_name_j.value.length > 100) {
-   alert("Наименование собственника ТС не может быть длинее 100 символов (ограничение АИС РСА)!");
+   alert("РќР°РёРјРµРЅРѕРІР°РЅРёРµ СЃРѕР±СЃС‚РІРµРЅРЅРёРєР° РўРЎ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РґР»РёРЅРµРµ 100 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
    Sel(own_name_j);
    return false;
   }
 
   if (own_inn.value.length == 0) {
-   alert("Не указан ИНН собственника ТС!");
+   alert("РќРµ СѓРєР°Р·Р°РЅ РРќРќ СЃРѕР±СЃС‚РІРµРЅРЅРёРєР° РўРЎ!");
    Sel(own_inn);
    return false;
   }
 
   if (own_inn.value.length != 10) {
-   alert("ИНН ЮЛ. состоит из 10 арабских чисел!");
+   alert("РРќРќ Р®Р›. СЃРѕСЃС‚РѕРёС‚ РёР· 10 Р°СЂР°Р±СЃРєРёС… С‡РёСЃРµР»!");
    Sel(own_inn);
    return false;
   }
 
   if (!IsValidINN(own_inn.value)) {
-   alert("Указанное значение не является ИНН или оно введено не корректно!");
+   alert("РЈРєР°Р·Р°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РРќРќ РёР»Рё РѕРЅРѕ РІРІРµРґРµРЅРѕ РЅРµ РєРѕСЂСЂРµРєС‚РЅРѕ!");
    Sel(own_inn);
    return false;
   }
  }
  
  if ((vin.value.length == 0) && (body.value.length == 0) && (chas.value.length == 0) && (vin.disabled != true) && (lic.value.length == 0)) {
-  alert("Не заполнен ниодин идентификатор ТС!");
+  alert("РќРµ Р·Р°РїРѕР»РЅРµРЅ РЅРёРѕРґРёРЅ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РўРЎ!");
   Sel(vin);
   return false;
  }
 
  if (vin.value.length > 20) {
-  alert("VIN код не может быть больше 20 символов (ограничение АИС РСА)!");
+  alert("VIN РєРѕРґ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 20 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
   Sel(vin);
   return false;
  }
 
  if (body.value.length > 30) {
-  alert("Номер кузова не может быть больше 30 символов (ограничение АИС РСА)!");
+  alert("РќРѕРјРµСЂ РєСѓР·РѕРІР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 30 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
   Sel(body);
   return false;
  }
 
  if (chas.value.length > 30) {
-  alert("Номер шасси не может быть больше 30 символов (ограничение АИС РСА)!");
+  alert("РќРѕРјРµСЂ С€Р°СЃСЃРё РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 30 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
   Sel(chas);
   return false;
  }
  
  if (lic.value.length > 30) {
-  alert("Гос.номер не может быть больше 30 символов (ограничение АИС РСА)!");
+  alert("Р“РѕСЃ.РЅРѕРјРµСЂ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 30 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
   Sel(lic);
   return false;
  }
@@ -549,7 +549,7 @@ function Validate() {
  var tbl = document.getElementById("TblDrv");
 
  if (tbl.rows.length == 0) {
-  alert("Не указан ниодин водитель!");
+  alert("РќРµ СѓРєР°Р·Р°РЅ РЅРё РѕРґРёРЅ РІРѕРґРёС‚РµР»СЊ!");
   return false;
  }
   
@@ -575,37 +575,37 @@ function Validate() {
   else
   {
    if (fio.value.length == 0) {
-    alert("Не указана фамилия водителя!");
+    alert("РќРµ СѓРєР°Р·Р°РЅР° С„Р°РјРёР»РёСЏ РІРѕРґРёС‚РµР»СЏ!");
     Sel(fio);
     return false;
    }
 
    if (fio.value.length > 100) {
-    alert("Ф.И.О. водителя не может быть больше 100 символов (ограничение АИС РСА)!");
+    alert("Р¤.Р.Рћ. РІРѕРґРёС‚РµР»СЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 100 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
     Sel(fio);
     return false;
    }
    
    if (!IsValidDate(birth.value)) {
-    alert("Не указана дата рождения водителя или неверный формат даты!");
+    alert("РќРµ СѓРєР°Р·Р°РЅР° РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ РІРѕРґРёС‚РµР»СЏ РёР»Рё РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°С‚С‹!");
     Sel(birth);
     return false;
    }
 
    if (ser.value.length > 20) {
-    alert("Серия ВУ не может быть больше 20 символов (ограничение АИС РСА)!");
+    alert("РЎРµСЂРёСЏ Р’РЈ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 20 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
     Sel(ser);
     return false;
    }
      
    if (num.value.length == 0) {
-    alert("Не указан номер ВУ!");
+    alert("РќРµ СѓРєР°Р·Р°РЅ РЅРѕРјРµСЂ Р’РЈ!");
     Sel(num);
     return false;
    }
 
    if (num.value.length > 25) {
-    alert("Номер ВУ не может быть больше 25 символов (ограничение АИС РСА)!");
+    alert("РќРѕРјРµСЂ Р’РЈ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 25 СЃРёРјРІРѕР»РѕРІ (РѕРіСЂР°РЅРёС‡РµРЅРёРµ РђРРЎ Р РЎРђ)!");
     Sel(num);
     return false;
    }
@@ -616,7 +616,7 @@ function Validate() {
  }
 
  if (f != true) {
-  alert("Не указан ниодин водитель!");
+  alert("РќРµ СѓРєР°Р·Р°РЅ РЅРёРѕРґРёРЅ РІРѕРґРёС‚РµР»СЊ!");
   return false;
  }
  
@@ -644,7 +644,7 @@ function CreateHTTP() {
 }
 
 function ShowResult(text) {
-//  var win = window.open("result.html", "Результат запроса КБМ/ТО", "width=610, height=400, menubar=no, toolbar=no, location=no, directories=no, status=no, resizable=no, scrollbars=yes", true);
+//  var win = window.open("result.html", "Р РµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РљР‘Рњ/РўРћ", "width=610, height=400, menubar=no, toolbar=no, location=no, directories=no, status=no, resizable=no, scrollbars=yes", true);
   var win = window.open("result.html", "", "width=610, height=400, menubar=no, toolbar=no, location=no, directories=no, status=no, resizable=no, scrollbars=yes");
 
   win.focus();
@@ -654,7 +654,7 @@ function ShowResult(text) {
 function Timer() {
  var btn = document.getElementById("submit");
 
- if (btn.value == "Запрос в РСА") {
+ if (btn.value == "Р—Р°РїСЂРѕСЃ РІ Р РЎРђ") {
    btn.value = 20;
  }
  else {
@@ -663,7 +663,7 @@ function Timer() {
 
  if (btn.value == 1) {
    btn.disabled = false;
-   btn.value = "Запрос в РСА";
+   btn.value = "Р—Р°РїСЂРѕСЃ РІ Р РЎРђ";
  }
  else {
    btn.disabled = true;
@@ -782,7 +782,7 @@ function Submit() {
  var http = CreateHTTP();
 
  if (!http) {
-  alert("Не удалось создать PROXY-объект для запроса данных!");
+  alert("РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ PROXY-РѕР±СЉРµРєС‚ РґР»СЏ Р·Р°РїСЂРѕСЃР° РґР°РЅРЅС‹С…!");
   return;
  }
  
@@ -797,7 +797,7 @@ function Submit() {
       ShowResult(http.responseText);
      }
      else {
-       alert("Ошибка сервера "+http.status+"!");
+       alert("РћС€РёР±РєР° СЃРµСЂРІРµСЂР° "+http.status+"!");
      }
    }
  };
@@ -808,7 +808,7 @@ function Submit() {
 function Timer1() {
  var btn = document.getElementById("hist");
 
- if (btn.value == "История") {
+ if (btn.value == "РСЃС‚РѕСЂРёСЏ") {
    btn.value = 20;
  }
  else {
@@ -817,7 +817,7 @@ function Timer1() {
 
  if (btn.value == 1) {
    btn.disabled = false;
-   btn.value = "История";
+   btn.value = "РСЃС‚РѕСЂРёСЏ";
  }
  else {
    btn.disabled = true;
@@ -828,10 +828,10 @@ function Timer1() {
 }
 
 function Submit1() {
- var RsaId = window.prompt("Идентификатор запроса КБМ/ТО:", "");
+ var RsaId = window.prompt("РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїСЂРѕСЃР° РљР‘Рњ/РўРћ:", "");
 
  if (RsaId.length == 0) {
-  alert("Не указан идентификатор запроса РСА!");
+  alert("РќРµ СѓРєР°Р·Р°РЅ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїСЂРѕСЃР° Р РЎРђ!");
   return;
  }
 
@@ -840,7 +840,7 @@ function Submit1() {
  var http = CreateHTTP();
 
  if (!http) {
-  alert("Не удалось создать PROXY-объект для запроса данных!");
+  alert("РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ PROXY-РѕР±СЉРµРєС‚ РґР»СЏ Р·Р°РїСЂРѕСЃР° РґР°РЅРЅС‹С…!");
   return;
  }
 
@@ -855,7 +855,7 @@ function Submit1() {
       ShowResult(http.responseText);
      }
      else {
-       alert("Ошибка сервера "+http.status+"!");
+       alert("РћС€РёР±РєР° СЃРµСЂРІРµСЂР° "+http.status+"!");
      }
    }
  };

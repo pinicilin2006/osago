@@ -1,5 +1,4 @@
 <?php
-
 putenv("NLS_LANG=RUSSIAN_CIS.CL8MSWIN1251");
 
 $host    = "10.250.245.73"; // Имя машины, где размещена СУБД Oracle

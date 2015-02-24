@@ -4,6 +4,9 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION["access"][2])){
 	header("Location: index.php");
 	exit;
 }
+if(isset($_SESSION['kbm'])){
+	unset($_SESSION['kbm']);
+}
 // echo "<pre>";
 // print_r($_SESSION);
 // echo "</pre>";
@@ -223,7 +226,7 @@ require_once('template/header.html');
 							  			}
 							  		?>
 									</select>
-									<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос КБМ в АИС РСА</small></a></span>
+									<span class="help-block"><a href="/dkbm/index.html" target="_blank"><small>Запрос ТО/КБМ в АИС РСА</small></a><br><small class="text-danger"> (для автоматического заполнения полей необходимо делать запрос ТО и КБМ на первом шаге)</small></span>
 							    </div>
 						  	</div>					  
 

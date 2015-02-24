@@ -9,7 +9,21 @@ if(!isset($_SESSION["calc"]) || !isset($_SESSION["step_1"])){
 	exit;	
 }
 // echo "<pre>";
-// print_r($_SESSION);
+// print_r($_SESSION['kbm']);
+// echo "</pre>";
+if(isset($_SESSION['kbm'])){
+	if($_SESSION["step_1"]['drivers'] == '1'){
+		$fio_data = explode(" ", $_SESSION['kbm']['own_name']);
+	} else {
+		for($x=1;$x<6;$x++){
+			if(isset($_SESSION["step_1"]["driver_$x"])){
+				${'fio_data_'.$x} = explode(" ", $_SESSION['kbm']['fio_'.$x]);
+			}
+		}
+	}
+}
+// echo "<pre>";
+// print_r($fio_data_1);
 // echo "</pre>";
 require_once('config.php');
 require_once('function.php');
@@ -70,28 +84,28 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name" name="second_name" id="second_name" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm phiz_name" name="second_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[0] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[0] : '') ?>' id="second_name" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name" name="first_name" id="first_name" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm phiz_name" name="first_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[1] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[1] : '') ?>' id="first_name" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name" name="third_name" id="third_name" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm phiz_name" name="third_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[2].($fio_data[3] ? ' '.$fio_data[3] : '') : '') ?><?php echo ($fio_data_1 ? $fio_data_1[2].($fio_data_1[3] ? ' '.$fio_data_1[3] : '') : '') ?>' id="third_name" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="date_birth" class="col-sm-4 control-label"><small>Дата рождения</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm date_birth phiz_name" name="date_birth" id="date_birth" placeholder="Дата рождения" required>
+						      		<input type="text" class="form-control input-sm date_birth phiz_name" name="date_birth" value='<?php echo ($fio_data ? $_SESSION['kbm']['own_birth'] : '') ?><?php echo ($fio_data_1 ? $_SESSION['kbm']['birth_1'] : '') ?>' id="date_birth" placeholder="Дата рождения" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -102,12 +116,13 @@ $category_code = array(
 						  		<?php
 						  		$query=mysql_query("SELECT * FROM `document` WHERE `active` = 1 ORDER BY `name`");
 						  		while($row = mysql_fetch_assoc($query)){
-									echo '<option value="'.$row["id"].'" '.($row["id"] == 10 ? 'selected' : '').' >'.$row["name"].'</option>';
+									//echo '<option value="'.$row["id"].'" '.($row["id"] == 10 ? 'selected' : '').' >'.$row["name"].'</option>';
+									echo '<option value="'.$row["id"].'" '.($row["id_in_kbm_query"] == ($_SESSION['kbm']['own_doc'] ? $_SESSION['kbm']['own_doc'] : 12) ? 'selected' : '').' >'.$row["name"].'</option>';
 								}
 								?>    
 								</select>
-						      		<input type="text" class="form-control input-sm" name="doc_series" id="doc_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="doc_number" id="doc_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="doc_series" id="doc_series" value='<?php echo ($fio_data ? $_SESSION['kbm']['own_ser'] : '') ?>' placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm" name="doc_number" id="doc_number" value='<?php echo ($fio_data ? $_SESSION['kbm']['own_num'] : '') ?>' placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<div id="address_data">
@@ -125,7 +140,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="jur_name" class="col-sm-4 control-label"><small>Наименования юр. лица (полностью)</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_name" id="jur_name" placeholder="Наименования юр. лица (полностью)" required>
+						      		<input type="text" class="form-control input-sm" name="jur_name" value='<?php echo ($_SESSION['step_1']['type_ins'] == 'jur' ? $_SESSION['kbm']['own_name'] : '') ?>' id="jur_name" placeholder="Наименования юр. лица (полностью)" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -140,7 +155,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="jur_inn" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_inn" id="jur_inn" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm" name="jur_inn" value='<?php echo ($_SESSION['step_1']['type_ins'] == 'jur' ? $_SESSION['kbm']['own_inn'] : '') ?>' id="jur_inn" placeholder="Номер" required>
 						    	</div>
 						  	</div>				  	
 				  					  					  					  	
@@ -374,7 +389,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="vin" class="col-sm-4 control-label"><small>Идентификационный номер ТС (VIN)</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="vin" id="vin" maxlength="17" required>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="vin" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['own_vin'] : '')?>' id="vin" maxlength="17" required>
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
 					    	</div>				    	
 					  	</div>						  	
@@ -390,7 +405,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="chassis" class="col-sm-4 control-label"><small>Шасси (рама) №</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="chassis" id="chassis" maxlength="17">
+					      		<input type="text" class="form-control input-sm empty_data_input" name="chassis" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['chassis_num'] : '')?>' id="chassis" maxlength="17">
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
 					    	</div>				    	
 					  	</div>
@@ -399,7 +414,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="trailer" class="col-sm-4 control-label"><small>Кузов (прицеп) №</small></label>
 					    	<div class="col-sm-4">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="trailer" id="trailer" maxlength="17">
+					      		<input type="text" class="form-control input-sm empty_data_input" name="trailer" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['body_num'] : '')?>' id="trailer" maxlength="17">
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      						      		
 					    	</div>					    	
 					  	</div>
@@ -481,13 +496,13 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_diag_card_number" class="col-sm-4 control-label"><small>Номер:</small></label>
 						      	<div class="col-sm-8">
-						      	<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" placeholder="Номер" maxlength="21" required>
+						      	<input type="text" class="form-control input-sm" name="auto_diag_card_number" value='<?php echo $_SESSION['kbm']['to_num']?>' id="auto_diag_card_number" placeholder="Номер" maxlength="21" required>
 						      	</div>
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="auto_diag_card_next_date" class="col-sm-4 control-label"><small>Срок действия, до:</small></label>
 						      	<div class="col-sm-8">
-						      	<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
+						      	<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" value='<?php echo $_SESSION['kbm']['to_next_date']?>' id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
 					      		<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
 						      	</div>
 					  	</div>
@@ -499,7 +514,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_reg_number" class="col-sm-4 control-label"><small>Государственный регистрационный знак</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" id="auto_reg_number" maxlength="11" required>
+					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['lic_plate'] : '')?>' id="auto_reg_number" maxlength="11" required>
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      		
 					    	</div>					    	
 					  	</div>
@@ -551,12 +566,12 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="driver_<?php echo $x ?>" class="col-sm-4 control-label"><small>Данные водителя №<?php echo $x ?>:</small></label>
 					    	<div class="col-sm-8" id="driver_<?php echo $x ?>">
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_second_name" id="driver_<?php echo $x ?>_second_name" placeholder="Фамилия" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_first_name" id="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_third_name" id="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
-					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" id="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_second_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[0] : '') ?>' id="driver_<?php echo $x ?>_second_name" placeholder="Фамилия" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_first_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[1] : '') ?>' id="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_third_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[2].${'fio_data_'.$x}[3] : '') ?>' id="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
+					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["birth_$x"] : '' ) ?>' id="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["ser_$x"] : '' ) ?>' placeholder="Серия водительского удостоврения" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["num_$x"] : '' ) ?>' placeholder="Номер водительского удостовренеия" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_experience" placeholder="Стаж управления ТС соответствующей категории, полных лет" required>
 					    	</div>
 					  	</div>
@@ -744,7 +759,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="ais_request_identifier" class="col-sm-4 control-label"><small>Идентификатор запроса КБМ/ТО</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" id="ais_request_identifier" required>
+						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" value='<?php echo $_SESSION['kbm']["kbm_id"].(!empty($_SESSION['kbm']["to_id"]) ? '/'.$_SESSION['kbm']["to_id"] : '')?>' id="ais_request_identifier" required>
 						    	</div>
 						  	</div>
 
