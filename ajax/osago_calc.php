@@ -237,6 +237,13 @@ if($category == '2' || $category == '3'){
 	}
 }
 $t = round($t, 2);
+//Ограничиваем максимальную сумму страхового тарифа
+$t_max = $tb * $kt * ($kn != 1 ? 5 : 3);
+$t_max = round($t_max, 2);
+if($t > $t_max){
+	$t = $t_max;
+}
+//Занаосим данные в сессию
 $_SESSION["calc"]["t"] = $t;
 $_SESSION["calc"]["tb"] = $tb;
 $_SESSION["calc"]["kt"] = $kt;
