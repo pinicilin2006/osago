@@ -52,7 +52,7 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".my
 					  </div>
 
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text	" class="form-control input-sm" id="phone" name="phone" value="<?php echo $row["phone"]?>" placeholder="Телефон" required>					    
+					      <input type="text	" class="form-control input-sm" id="phone" name="phone" value="<?php echo $row["phone"]?>" placeholder="Телефон">					    
 					  </div>
 
 					  <div class="form-group">					    					    
