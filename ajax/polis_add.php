@@ -120,6 +120,10 @@ if(!$auto_doc_date){
 if(!$start_date){
 	$err_text .= "<li class=\"text-danger\">Не указана дата начала действия договора страхования</li>";
 }
+if($auto_diag_card_next_date && !strtotime($auto_diag_card_next_date)){
+	$err_text .= "<li class=\"text-danger\">Не верно указана дата срока действия диагностической карты</li>";
+}
+
 // if(!$start_time){
 // 	$err_text .= "<li class=\"text-danger\">Не указано время начала действия договора страхования</li>";
 // }
