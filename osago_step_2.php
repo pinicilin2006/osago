@@ -356,13 +356,13 @@ $category_code = array(
 
 					  	<div style='display:none' id='block_pts'>
 						  	<div class="form-group">
-						    	<label for="power" class="col-sm-4 control-label"><small>Марка в ПТС</small></label>
+						    	<label for="mark_pts" class="col-sm-4 control-label"><small>Марка в ПТС</small></label>
 						    	<div class="col-sm-2">
 						      		<input type="text" class="form-control input-sm" name="mark_pts" id="mark_pts" required>
 						    	</div>
 						  	</div>
 						  	<div class="form-group">
-						    	<label for="power" class="col-sm-4 control-label"><small>Модель в ПТС</small></label>
+						    	<label for="model_pts" class="col-sm-4 control-label"><small>Модель в ПТС</small></label>
 						    	<div class="col-sm-2">
 						      		<input type="text" class="form-control input-sm" name="model_pts" id="model_pts" required>
 						    	</div>
@@ -503,7 +503,7 @@ $category_code = array(
 					    	<label for="auto_diag_card_next_date" class="col-sm-4 control-label"><small>Срок действия, до:</small></label>
 						      	<div class="col-sm-8">
 						      	<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" value='<?php echo $_SESSION['kbm']['to_next_date']?>' id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
-					      		<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
+					      		<span class="help-block"><a href="/dkbm/index.html" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
 						      	</div>
 					  	</div>
 					  	<hr>					  						  	

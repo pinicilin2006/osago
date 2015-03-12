@@ -318,7 +318,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="date_birth" class="col-sm-4 control-label"><small>Телефон</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="owner_phone" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] ? $owner_data['phone'] : '') ?>' id="owner_phone" required>
+					      		<input type="text" class="form-control input-sm" name="owner_phone" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] ? $owner_data['phone'] : '') ?>' id="owner_phone">
 					    	</div>
 					  	</div>					  					  	
 				  	</div>
@@ -358,13 +358,13 @@ $category_code = array(
 
 						<div <?php echo ((isset($step_2_data['auto_in_pts']) && $step_2_data['auto_in_pts'] == '1') || !isset($step_2_data['auto_in_pts']) ? 'style="display:none"' : '')?> id='block_pts'>
 						  	<div class="form-group">
-						    	<label for="power" class="col-sm-4 control-label"><small>Марка в ПТС</small></label>
+						    	<label for="mark_pts" class="col-sm-4 control-label"><small>Марка в ПТС</small></label>
 						    	<div class="col-sm-2">
 						      		<input type="text" class="form-control input-sm" name="mark_pts" value='<?php echo (isset($step_2_data['auto_in_pts']) && $step_2_data['auto_in_pts'] == '2' ? $vehicle_data['mark_pts'] : '')?>' id="mark_pts" required>
 						    	</div>
 						  	</div>
 						  	<div class="form-group">
-						    	<label for="power" class="col-sm-4 control-label"><small>Модель в ПТС</small></label>
+						    	<label for="model_pts" class="col-sm-4 control-label"><small>Модель в ПТС</small></label>
 						    	<div class="col-sm-2">
 						      		<input type="text" class="form-control input-sm" name="model_pts" value='<?php echo (isset($step_2_data['auto_in_pts']) && $step_2_data['auto_in_pts'] == '2' ? $vehicle_data['model_pts'] : '')?>' id="model_pts" required>
 						    	</div>
@@ -504,7 +504,7 @@ $category_code = array(
 					    	<label for="auto_diag_card_next_date" class="col-sm-4 control-label"><small>Срок действия, до:</small></label>
 						      	<div class="col-sm-8">
 						      	<input type="text" class="form-control input-sm" name="auto_diag_card_next_date" value='<?php echo (isset($step_2_data['auto_diag_card_next_date']) ? $step_2_data['auto_diag_card_next_date'] : '')?>' id="auto_diag_card_next_date" placeholder="Дата очередного технического осмотра" required>
-					      		<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
+					      		<span class="help-block"><a href="/dkbm/index.html" target="_blank"><small>Запрос ТО в АИС РСА</small></a></span>
 						      	</div>
 					  	</div>
 					  	<hr>				  	

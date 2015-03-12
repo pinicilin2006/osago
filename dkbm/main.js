@@ -645,7 +645,7 @@ function CreateHTTP() {
 
 function ShowResult(text) {
 //  var win = window.open("result.html", "Результат запроса КБМ/ТО", "width=610, height=400, menubar=no, toolbar=no, location=no, directories=no, status=no, resizable=no, scrollbars=yes", true);
-  var win = window.open("result.html", "", "width=610, height=400, menubar=no, toolbar=no, location=no, directories=no, status=no, resizable=no, scrollbars=yes");
+  var win = window.open("result.html", "", "width=850, height=400, menubar=no, toolbar=no, location=no, directories=no, status=no, resizable=no, scrollbars=yes");
 
   win.focus();
   win.document.write(text);

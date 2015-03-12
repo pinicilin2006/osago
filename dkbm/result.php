@@ -96,11 +96,11 @@ if(isset($_SESSION['kbm'])){
   </HEAD>
 
   <BODY>
-    <TABLE id=TblRes width=100% height=100% border=0 valign=top cellpadding=0 cellspacing=0>
+    <TABLE id=TblRes width=100% height=100% border=0 valign=top cellpadding=0 cellspacing=0 style="position: relative; left: 30px">
       <TR height=70px>
 	<TD align=left valign=middle width=280px><IMG src="images/logo.png" alt="Logo" height=70px width=274px></TD>
 	<TD align=right valign=middle>
-	  <A href="javascript:window.print()" title="Напечатать страницу"><IMG src="images/print_printer.png" alt="Print" height=20px width=20px></A>
+	  <!--<A href="javascript:window.print()" title="Напечатать страницу"><IMG src="images/print_printer.png" alt="Print" height=20px width=20px></A>-->
 	</TD>
       </TR>
       <TR>
@@ -478,7 +478,7 @@ if(isset($_SESSION['kbm'])){
     $html .= "
       <TABLE cols=3 width=610px border=0 valign=top align=left cellpadding=0 cellspacing=0>
 	<TR>
-	  <TD width=250px>&nbsp;</TD>
+	  <TD width=250px><A href=\"javascript:window.print()\" title=\"Напечатать страницу\"><IMG src=\"images/print_printer.png\" alt=\"Print\" height=20px width=20px></A></TD>
 	  <TD width=80px>&nbsp;</TD>
 	  <TD width=280px>&nbsp;</TD>
 	</TR>
