@@ -716,7 +716,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="ais_request_identifier" class="col-sm-4 control-label"><small>Идентификатор запроса КБМ/ТО</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" value='<?php echo $contract_data['rsa_number'] ?>' id="ais_request_identifier" required>
+						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" value='<?php echo $contract_data['rsa_number'] ?>' id="ais_request_identifier">
 						    	</div>
 						  	</div>
 
