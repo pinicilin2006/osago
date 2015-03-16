@@ -563,7 +563,7 @@ if(isset($_SESSION['kbm'])){
 	<TR>
 	  <TD colspan=3 align=left valign=top>
 	    <LABEL><B>Предыдущий полис: </B></LABEL>
-	    <LABEL>".iconv("cp1251","UTF-8", $prev_pol_info)."</LABEL>
+	    <LABEL>".$prev_pol_info."</LABEL>
 	  </TD>
 	</TR>
 	<TR>
@@ -576,7 +576,7 @@ if(isset($_SESSION['kbm'])){
 	<TR>
 	  <TD colspan=2 align=left valign=top>
 	    <LABEL><B>Предыдущий полис: </B></LABEL>
-	    <LABEL>".iconv("cp1251","UTF-8", $prev_pol_info)."</LABEL>
+	    <LABEL>".$prev_pol_info."</LABEL>
 	  </TD>
 	  <TD align=left valign=top>
 	    <LABEL><B>Кол-во убытков: </B>".$loss."</LABEL>
