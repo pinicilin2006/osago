@@ -40,6 +40,7 @@ require_once('fpdi/fpdi.php');
 //Вносим необходимые данные в полис и отдаём в формате pdf
 $pdf = new FPDI();
 $pdf->AddFont('ArialMT','','arial_cyr.php');
+$pdf->AddFont('Arial-BoldMT','','arialbold.php');
 $pdf->AddPage();
 
 // $pdf->setSourceFile('blank/bso3.pdf'); 
@@ -53,7 +54,7 @@ $pdf->AddPage();
 $pdf->SetMargins(0,0,0,0);
 $pdf->SetAutoPageBreak(false);
 //указываем шрифт и размер
-$pdf->SetFont('ArialMT', '', '13');
+$pdf->SetFont('Arial-BoldMT', '', '13');
 //указываем цвет текста 
 $pdf->SetTextColor(0,0,0);
 ////////////////////////////////////////////////////////Добавляем данные в полис//////////////////////////////
@@ -326,7 +327,7 @@ $pdf->Write(0, $auto_reg_number);
 //Вид документа
 $auto_doc_type = mysql_fetch_assoc(mysql_query("SELECT * FROM `document_auto` WHERE `id` = '".$vehicle_data['auto_doc_type']."'"));
 $auto_doc_type = iconv('utf-8', 'windows-1251', $auto_doc_type['name']);
-$pdf->SetFont('ArialMT', '', '10');
+$pdf->SetFont('Arial-BoldMT', '', '10');
 $pdf->SetXY(25, 141);
 $pdf->Write(0, $auto_doc_type);
 //Серия
@@ -384,7 +385,7 @@ if($step_2_data['purpose_use'] == 9){
 	$pdf->Write(0, 'V');	
 }
 //ограниченное или не ограниченное число водителей
-$pdf->SetFont('ArialMT', '', '13');
+$pdf->SetFont('Arial-BoldMT', '', '13');
 if($calc_data['drivers'] == 1){
 	$pdf->SetXY(158, 164.5);
 	$pdf->Write(0, 'V');	
@@ -393,7 +394,7 @@ if($calc_data['drivers'] == 1){
 	$pdf->Write(0, 'V');	
 }
 //Список водителей допущенных к управлению
-$pdf->SetFont('ArialMT', '', '10');
+$pdf->SetFont('Arial-BoldMT', '', '10');
 if($calc_data['drivers'] == 2){
 	$drivers_data = unserialize($contract_data['drivers_data']);
 	$y = 0;
