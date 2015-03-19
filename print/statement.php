@@ -165,7 +165,7 @@ if($contract_data["owner_type"] == 1){
 	$subject_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `kt_subject` WHERE `id_fias` = '".$owner_data["subject"]."'"));
 	$params['[OWNER_SUBJECT]'] = $subject_data['name'];
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	$params['[OWNER_HOUSE]'] = $insurer_data['house'];
+	$params['[OWNER_HOUSE]'] = $owner_data['house'];
 	$params['[OWNER_HOUSING]'] = (empty($owner_data['housing']) ? '------' : $owner_data['housing']);
 	$params['[OWNER_APARTMENT]'] = (empty($owner_data['apartment']) ? '------' : $owner_data['apartment']);
 	$params['[OWNER_PHONE]'] = $owner_data['phone'];
