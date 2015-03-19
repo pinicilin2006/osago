@@ -316,7 +316,11 @@ $pdf->Write(0, $vin[15]);
 $pdf->SetXY(150.7, 129);
 $pdf->Write(0, $vin[16]);
 //Государственный регистрационный номер
-$auto_reg_number = iconv('utf-8', 'windows-1251', $vehicle_data['auto_reg_number']);
+if($vehicle_data['auto_reg_number'] == 'Отсутствует'){
+	$auto_reg_number = '';	
+} else {
+	$auto_reg_number = iconv('utf-8', 'windows-1251', $vehicle_data['auto_reg_number']);
+}
 $pdf->SetXY(166, 129);
 $pdf->Write(0, $auto_reg_number);
 //Вид документа
