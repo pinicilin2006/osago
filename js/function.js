@@ -82,7 +82,7 @@ function validateDateBirth_1(){
 // 			});
 // 			return false;
 // }
-
+//
 // function edit_policy(){
 // 			var a = $("#main_form").serialize();
 // 			$.ajax({
