@@ -39,6 +39,10 @@
           <ul class="nav navbar-nav">
             <li <?php echo ($_SERVER['PHP_SELF'] == "/osago.php" ?  " class=\"active\"" : "") ?>> <a href="/osago.php">Заключить новый договор</a></li>
             <li <?php echo ($_SERVER['PHP_SELF'] == "/contract.php" ?  " class=\"active\"" : "") ?>> <a href="/contract.php">Раннее заключённые договора</a></li>
+             
+             <?php if(isset($_SESSION["access"][11])){ ?>
+            <li <?php echo ($_SERVER['PHP_SELF'] == "/news_add.php" ?  " class=\"active\"" : "") ?>> <a href="/news_add.php">Добавить новость</a></li>
+            <?php } ?>           
             
             <?php if(isset($_SESSION["access"][4])){ ?>
             <li <?php echo ($_SERVER['PHP_SELF'] == "/bso_add.php" || $_SERVER['PHP_SELF'] == "/bso_return.php" ?  " class=\"active\"" : "") ?>> <a class="dropdown-toggle" data-toggle="dropdown" href="#">БСО<span class="caret"></span></a>
