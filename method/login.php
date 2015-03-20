@@ -42,10 +42,10 @@ while($row = mysql_fetch_assoc($query)){
 $_SESSION["unit_name"] = $unit_data["unit_full_name"];
 $_SESSION["unit_id"] = $unit_data["unit_id"];	
 mysql_query("INSERT INTO `log_login` (ip, browser, login) VALUES ('".$_SERVER['REMOTE_ADDR']."', '".$_SERVER['HTTP_USER_AGENT']."', '".$data_user["user_id"]."')");
-if(isset($_SESSION["access"][2])){
-	header("Location: ../osago.php");
-	exit;
-}
+// if(isset($_SESSION["access"][2])){
+// 	header("Location: ../osago.php");
+// 	exit;
+// }
 header("Location: ../index.php");
 exit;		
 }

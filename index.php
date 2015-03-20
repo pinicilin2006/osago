@@ -17,10 +17,17 @@ require_once('template/header.html');
 		<div class="col-md-6 col-md-offset-3">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
-	    			<h3 class="panel-title">ОСАГО</h3>
+	    			<h3 class="panel-title">Список изменений внесённых в веб-сервис ОСАГО</h3>
 	  			</div>
 	  			<div class="panel-body" id="user_data">
-				Начальная страница
+	  			<ul style="padding:0px">
+				<?php
+		  			$query = mysql_query("SELECT * FROM `news` ORDER BY `id` DESC");
+		  			while ($row = mysql_fetch_assoc($query)) {
+		  				echo '<li class="thumbnail"><small><u>'.date('d.m.Y', strtotime($row["date_create"])).'.</u></small><br><p class="">'.$row['text'].'</p></li>';
+		  			}
+		  		?>
+		  		</ul>
 	  			</div>
 			</div>
 			<div id="message"></div>
