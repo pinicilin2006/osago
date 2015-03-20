@@ -43,12 +43,12 @@ require_once('fpdi/fpdi.php');
 $pdf = new FPDI();
 $pdf->AddFont('ArialMT','','arial_cyr.php');
 $pdf->AddPage(); 
-//$pdf->setSourceFile('blank/a7.pdf'); 
-// // Указываем номер импортируемой страницы
-//$tplIdx = $pdf->importPage(1); 
-// //указываем размер страницы
-// //$pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
+$pdf->setSourceFile('blank/a7.pdf'); 
+// Указываем номер импортируемой страницы
+$tplIdx = $pdf->importPage(1); 
+//указываем размер страницы
 //$pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
+$pdf->useTemplate($tplIdx, 0, 0, 210, 297, true);
 //Ставим поля по нулям
 $pdf->SetMargins(0,0,0,0);
 $pdf->SetAutoPageBreak(false);
@@ -89,10 +89,10 @@ $pdf->Write(0, $agent);
 //Страховая премия
 $tarif = num2str($calc_result['t'],2);
 $tarif = iconv('utf-8', 'windows-1251', $tarif);
-$pdf->SetXY(75, 78);
-$pdf->Write(0, $tarif);
-$pdf->SetXY(75, 92);
-$pdf->Write(0, $tarif);
+$pdf->SetXY(65, 78);
+$pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
+$pdf->SetXY(65, 92);
+$pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
 //Дата заключения договора
 $date_create = date('d.m.Y', strtotime($contract_data["time_create"]));
 $pdf->SetXY(13, 127);
