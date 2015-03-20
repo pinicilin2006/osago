@@ -49,7 +49,7 @@ $(document).ready(function(){
 
 //проверка данных формы
     $('#main_form').submit(function( event ) {
-    	add_news1();
+    	add_news();
     	return false;
     });
 });

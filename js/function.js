@@ -195,7 +195,7 @@ function add_a7(){
 			return false;
 }
 
-function add_news1(){
+function add_news(){
 			var a = $("#main_form").serialize();
 			$.ajax({
 			  type: "POST",
