@@ -1,6 +1,6 @@
 <?php
 include("../../config.php");
-include("../../function.php");
+//include("../../function.php");
 //connect_ibs();
 //global $oracle_host, $oracle_sid, $oracle_port, $oracle_db_user, $oracle_db_psw;
 	putenv("NLS_LANG=RUSSIAN_CIS.CL8MSWIN1251");
@@ -63,9 +63,9 @@ select  d.num, bht.name, bh.hist_date,bs.series_name, b.num, c.obj_name_orig
                    from ins.bso_hist bh1
                   where bh1.bso_id = b.bso_id)
    and bs.series_name='EEE' --Серия
-   and c.obj_name_orig='Яганцева Людмила Николаевна' --ФИО Агента
+   --and c.obj_name_orig='Яганцева Людмила Николаевна' --ФИО Агента
    --and b.num='0181990878' --НОмер бланка
-   --and c.contact_id = 93063 --AGENT_ID 
+   and c.contact_id = 93063 --AGENT_ID 
    ");
 echo $SQL;
 oci_execute($SQL);
