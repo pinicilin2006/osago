@@ -71,7 +71,8 @@ echo $SQL;
 oci_execute($SQL);
 //$CLAIM_ARRAY = oci_fetch_array($SQL, OCI_ASSOC+OCI_RETURN_NULLS);
 while($row = oci_fetch_array($SQL, OCI_BOTH)){
-	echo $row[0];
-	echo $row[1];
+echo '<pre>';
+print_r($row);
+echo '</pre>';
 }      
 ?>
