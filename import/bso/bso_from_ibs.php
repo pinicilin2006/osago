@@ -67,6 +67,7 @@ select  d.num, bht.name, bh.hist_date,bs.series_name, b.num, c.obj_name_orig
    --and b.num='0181990878' --НОмер бланка
    --and c.contact_id = 93063 --AGENT_ID 
    ");
+echo $SQL;
 oci_execute($SQL);
 //$CLAIM_ARRAY = oci_fetch_array($SQL, OCI_ASSOC+OCI_RETURN_NULLS);
 while($row = oci_fetch_array($SQL, OCI_ASSOC+OCI_RETURN_NULLS)){
