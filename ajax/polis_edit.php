@@ -35,7 +35,7 @@ foreach($_POST as $key => $val){
 	if(empty($val)){
 		continue;
 	}
-	if($key == 'owner_doc_name' && $_POST["insisown"] == 1){
+	if(($key == 'owner_doc_name' && $_POST["insisown"] == 1) || ($key == 'a7_number' && $_POST["a7_number"] == 'no')){
 		continue;
 	}
 	$$key = mysql_escape_string($val);
@@ -299,13 +299,13 @@ if(mysql_query($query)){
 	$contract_id = mysql_fetch_assoc(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5_id."'"));
 	$contract_id = $contract_id["md5_id"];
 	if($action == 'add'){
-		if(mysql_query("DELETE FROM `bso` WHERE `number`= '".$bso_number."'") && (isset($a7_number) ? mysql_query("DELETE FROM `a7` WHERE `number`= '".$a7_number."'") : '') ){
+		if(mysql_query("DELETE FROM `bso` WHERE `number`= '".$bso_number."'") && (isset($a7_number) ? mysql_query("DELETE FROM `a7` WHERE `number`= '".$a7_number."'") : (1 == 1)) ){
 			//..
 		} else {
 			echo 'Произошла ошибка при удаление бланка БСО или бланка а7 из базы доступных бланков';
 		}
 		echo '<div class="alert alert-success text-center">Данные успешно добавлены!</div>';
-		echo '<center><div class="btn-group btn-group-justified"><div class="btn-group"><a href="/print/statement.php?id='.$contract_id.'" target="_blank" class="btn btn-default" >Распечатать заявление</a></div><div class="btn-group"><a href="/print/bso.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать полис</a></div><div class="btn-group"><a href="/print/a7.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать бланк А7</a></div></div></center>';
+		echo '<center><div class="btn-group btn-group-justified"><div class="btn-group"><a href="/print/statement.php?id='.$contract_id.'" target="_blank" class="btn btn-default" >Распечатать заявление</a></div><div class="btn-group"><a href="/print/bso.php?id='.$contract_id.'" target="_blank" class="btn btn-default">Распечатать полис</a></div><div class="btn-group"><a href="/print/a7.php?id='.$contract_id.'" target="_blank" class="btn btn-default" '.(isset($a7_number) ? '' : 'disabled="disabled"').'>Распечатать бланк А7</a></div></div></center>';
 	}
 	if($action == 'project'){
 		echo '<div class="alert alert-success text-center">Проект договора сохранён!</div>';

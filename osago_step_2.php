@@ -736,7 +736,7 @@ $category_code = array(
 						    	<label for="a7_number" class="col-sm-4 control-label"><small>Номер выдаваемого бланка А7</small></label>
 						    	<div class="col-sm-8">
 									<select class="form-control input-sm" name="a7_number">
-							  			<option value="" disabled>Выберите номер бланка</option>
+							  			<option value="no">Бланк А7 не используется</option>
 								  		<?php
 								  		$query=mysql_query("SELECT * FROM `a7` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");
 								  		while($row = mysql_fetch_assoc($query)){
