@@ -63,7 +63,7 @@ select  d.num, bht.name, bh.hist_date,bs.series_name, b.num, c.obj_name_orig
    and bh.num = (select max(bh1.num)
                    from ins.bso_hist bh1
                   where bh1.bso_id = b.bso_id)
-   and bs.series_name='ВВВ' --Серия
+   and bs.series_name='ЕЕЕ' --Серия
    and c.obj_name_orig='Антипина Галина Михайловна' --ФИО Агента
    --and b.num='0181990878' --НОмер бланка
    --and c.contact_id = 93063 --AGENT_ID 
