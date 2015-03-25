@@ -52,7 +52,12 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".my
 								if($row1["unit_id"] != mysql_real_escape_string($_POST["unit_id"])){
 									echo "<option value=\"$row1[unit_id]\"";
 									echo ($row["unit_parent_id"] == $row1["unit_id"] ? " selected" : '');
-									echo ">$row1[unit_full_name]</option>";
+									echo ">$row1[unit_full_name]";
+								if($row1['unit_full_name'] == 'Физические лица'){
+									$filial_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$row1['unit_parent_id']."'"));
+									echo ' ('.$filial_data['unit_full_name'].')';
+								}									
+									echo "</option>";
 								}
 							}
 							?>    

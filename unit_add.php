@@ -46,7 +46,12 @@ require_once('template/header.html');
 					  		<?php
 					  		$query=mysql_query("SELECT * FROM `unit` WHERE active = 1 ORDER BY unit_full_name");
 					  		while($row = mysql_fetch_assoc($query)){
-								echo "<option value=\"$row[unit_id]\" >$row[unit_full_name]</option>";
+								echo "<option value=\"$row[unit_id]\" >$row[unit_full_name]";
+								if($row['unit_full_name'] == 'Физические лица'){
+									$filial_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$row['unit_parent_id']."'"));
+									echo ' ('.$filial_data['unit_full_name'].')';
+								}								
+								echo "</option>";
 							}
 							?>    
 							</select>
