@@ -3,6 +3,9 @@ session_start();
 if(isset($_SESSION['kbm'])){
 	unset($_SESSION['kbm']);
 }
+if(!isset($_SESSION['user_id'])){
+	exit();
+}
   function isnull($text, $if_null, $need_conv) {
     if (isset($text) && $text != null) {
       if (strlen($text) > 0) {
