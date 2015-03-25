@@ -42,6 +42,10 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".my
 					  <div class="form-group has-feedback">					    					    
 					      <input type="text" class="form-control input-sm" id="unit_address" name="unit_address" value="<?php echo $row["unit_address"]?>" placeholder="Адрес *" required>					      				    
 					  </div>
+					  
+					  <div class="form-group has-feedback">					    					    
+					      <input type="text" class="form-control input-sm" id="id_in_ibs" name="id_in_ibs" value="<?php echo ($row["id_in_ibs"] == 0 ? '' : $row["id_in_ibs"])?>" placeholder="ID в системе IBS">					      				    
+					  </div>
 
 					  <div class="form-group">
 					  		<select class="form-control" name="unit_parent_id" required>

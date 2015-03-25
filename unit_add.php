@@ -40,6 +40,10 @@ require_once('template/header.html');
 					      <input type="text" class="form-control input-sm" id="unit_address" name="unit_address" placeholder="Адрес *" required>					      				    
 					  </div>
 
+					  <div class="form-group has-feedback">					    					    
+					      <input type="text" class="form-control input-sm" id="id_in_ibs" name="id_in_ibs" placeholder="ID в системе IBS">					      				    
+					  </div>
+
 					  <div class="form-group">
 					  		<select class="form-control" name="unit_parent_id" required>
 					  		<option value="" disabled selected>Укажите родительское подразделение *</option>
@@ -56,7 +60,7 @@ require_once('template/header.html');
 							?>    
 							</select>
 					  </div>
-
+					  
 					  <hr align="center" size="2" />
 
 					  <div class="form-group">

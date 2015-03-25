@@ -52,7 +52,12 @@ if(!$active){
 if(!$unit_parent_id){
 	$unit_parent_id = 0;
 }
-if(mysql_query("UPDATE `unit` SET `unit_full_name` = '".$unit_full_name."',`unit_city` = '".$unit_city."',`unit_address` = '".$unit_address."',`unit_parent_id` = '".$unit_parent_id."',`active` = '".$active."' WHERE `unit_id` = '".$unit_id."'")){
+
+if(!$id_in_ibs){
+	$id_in_ibs = 0;
+}
+
+if(mysql_query("UPDATE `unit` SET `unit_full_name` = '".$unit_full_name."',`unit_city` = '".$unit_city."',`unit_address` = '".$unit_address."',`unit_parent_id` = '".$unit_parent_id."',`active` = '".$active."',`id_in_ibs` = '".$id_in_ibs."' WHERE `unit_id` = '".$unit_id."'")){
 	echo "<br><p class=\"text-success text-center\">Подразделение \"<b>$unit_full_name</b>\" успешно изменено.";
 } else {
 	echo "<p class=\"text-danger\">Произошла ошибка при изменение данных в базе данных!</p>";
