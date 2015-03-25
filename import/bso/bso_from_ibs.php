@@ -64,9 +64,9 @@ while($row = mysql_fetch_assoc($query_ibs_id_agent)){
   	// echo '<br>';
     if(mysql_num_rows(mysql_query("SELECT * FROM `bso` WHERE `series` = '".$series."' AND `number` = '".$number."'")) == 0 && mysql_num_rows(mysql_query("SELECT * FROM `contract` WHERE `bso_series` = '".$series."' AND `bso_number` = '".$number."'")) == 0 ){
       if(mysql_query("INSERT INTO `bso` (`series`, `number`, `user_id`) VALUES ('".$series."', '".$number."', '".$row['user_id']."')")){
-        echo 'Успешно добавлен';
+        //echo 'Успешно добавлен';
       } else {
-        echo 'Произошла ошибка';
+        //echo 'Произошла ошибка';
       }
       // echo 'Полис серии '.$series.' №'.$number.' не обнаружен';
       // echo '<br>';
