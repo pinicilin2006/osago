@@ -588,7 +588,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label class="col-sm-4 control-label"><small>Срок действия договора страхования</small></label>
 						    	<div class="col-sm-4" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm period_data" name="start_date" id="start_date" value="<?php echo date('d.m.Y', strtotime("+1 days"))?>" placeholder="Дата начала действия договора" required>
+						      		<input type="text" class="form-control input-sm period_data" name="start_date" id="start_date" value="<?php echo $contract_data['start_date'] ?>" placeholder="Дата начала действия договора" required>
 						      		<input type="text" class="form-control input-sm" name="start_time" id="start_time" value="00:00" placeholder="Время начала действия договора" disabled required>	
 						    	</div>	
 						    	<div class="col-sm-4" style="padding-top:2%">
