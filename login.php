@@ -1,4 +1,8 @@
 <?php
+//Часть закрывающая на ремонт сайт
+	header("Location: remont.php");
+	exit;
+/////////////////////////////////
 session_start();
 if(isset($_SESSION['user_id'])){
 	header("Location: index.php");
