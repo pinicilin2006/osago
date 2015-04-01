@@ -1,15 +1,19 @@
 <?php
+
+require_once('config.php');
+require_once('function.php');
+connect_to_base();
 //Часть закрывающая на ремонт сайт
-	// header("Location: remont.php");
-	// exit;
+	if(mysql_num_rows(mysql_query("SELECT * FROM `service_status` WHERE `id` = '2' AND `checked` = '1'")) == '1' && !$_GET['admin']=='admin'){
+		header("Location: remont.php");
+		exit;
+	}
 /////////////////////////////////
 session_start();
 if(isset($_SESSION['user_id'])){
 	header("Location: index.php");
 	exit;
 }
-require_once('config.php');
-require_once('function.php');
 require_once('template/header_login.html');
 check_browser();
 ?>

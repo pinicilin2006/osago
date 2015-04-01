@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<?php
+//Проверяем не отключили ли сайт и если отключили то убираем сессию
+//Часть  переправляющая на страницу с логином
+  if(mysql_num_rows(mysql_query("SELECT * FROM `service_status` WHERE `checked` = '1' AND `destroy_session` = '1'")) == '1' AND !$_SESSION["access"][5]){
+    // Unset все переменные сессии.
+    $_SESSION = array();
+    // Наконец, разрушить сессию.
+    session_destroy();
+    //Валим логинится
+    header("Location: /remont.php");
+    exit();
+  }
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -70,6 +83,7 @@
                 <li><a href="#" data-toggle="modal" data-target="#modal_1">Редактировать пользователя</a></li>
                 <li><a href="/unit_add.php">Добавить подразделение</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#modal_2">Редактировать подразделение</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modal_3">Выключить/включить сервис ОСАГО</a></li>
               </ul>
             </li>
             <?php } ?>
@@ -145,6 +159,36 @@
             </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Редактировать подразделение</button>
+        </div>            
+       </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Модаль по включению/выключению сервиса -->
+<div class="modal fade" id="modal_3">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Включить/выключить сервис</h4>
+      </div>
+      <div class="modal-body">
+       <form class="form-horizontal" role="form"  method="post" action="/service_status.php">
+            <div class="form-group">
+                <select class="form-control" name="status" required>
+                <option value="" disabled selected>Выберите статус</option>
+                <?php
+                $query=mysql_query("SELECT * FROM `service_status`");
+                  while($row = mysql_fetch_assoc($query)){
+                  echo "<option value=\"$row[id]\" >$row[name]</option>";
+                }
+                ?>    
+              </select>
+            </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Изменить статус работы сервиса</button>
         </div>            
        </form>
       </div>
