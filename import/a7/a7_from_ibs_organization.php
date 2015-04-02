@@ -48,8 +48,8 @@ while($row = mysql_fetch_assoc($query_ibs_id_agent)){
   while (oci_fetch($oracle_sql)){
     $number = oci_result($oracle_sql,"BSO_NUM");
   	// echo '<br>';
-    if(mysql_num_rows(mysql_query("SELECT * FROM `a7` WHERE `number` = '".$number."'")) == 0 && mysql_num_rows(mysql_query("SELECT * FROM `contract` WHERE `bso_number` = '".$number."'")) == 0 ){
-      if(mysql_query("INSERT INTO `bso` (`number`, `unit_id`) VALUES ('".$number."', '".$row['unit_id']."')")){
+    if(mysql_num_rows(mysql_query("SELECT * FROM `a7` WHERE `number` = '".$number."'")) == 0 && mysql_num_rows(mysql_query("SELECT * FROM `contract` WHERE `a7_number` = '".$number."'")) == 0 ){
+      if(mysql_query("INSERT INTO `a7` (`number`, `unit_id`) VALUES ('".$number."', '".$row['unit_id']."')")){
         //echo 'Успешно добавлен';
       } else {
         //echo 'Произошла ошибка';
