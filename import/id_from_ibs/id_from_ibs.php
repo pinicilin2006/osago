@@ -11,8 +11,9 @@ if(mysql_num_rows($query) == 0){
 while($row = mysql_fetch_assoc($query)){
   $oracle_sql = oci_parse($conn, "
     select distinct c.contact_id, c.obj_name_orig
-    from ag_contract_header h, contact c
-    where c.contact_id = h.agent_id 
+ 	from contact c
+	where c.contact_id in (select h.agent_id from ag_contract_header h)
+  	and c.contact_type_id = 3
     and c.obj_name_orig = '".iconv('utf-8', 'windows-1251', trim($row['second_name']).' '.trim($row['first_name']).' '.trim($row['third_name']))."'  
   ");
   oci_execute($oracle_sql);
