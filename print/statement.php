@@ -303,6 +303,7 @@ $params['[KP]'] = $calc_result['kp'];
 $params['[KM]'] = $calc_result['km'];
 $params['[KPR]'] = $calc_result['kpr'];
 $params['[KN]'] = $calc_result['kn'];
+$params['[KO]'] = $calc_result['ko'];
 $params['[TARIF]'] = $calc_result['t'];
 $params['[AIS_REQUEST]'] = $contract_data['rsa_number'];
 $params['[SPECIAL_NOTES]'] = $contract_data['special_notes'];
