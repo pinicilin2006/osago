@@ -347,7 +347,7 @@ if(!isset($_SESSION['user_id'])){
 	if (oci_fetch($sql)) {
 	 $kbm = oci_result($sql, "POLICY_KBM");
 	 $kbm_val = oci_result($sql, "POLICY_KBM_VALUE");
-	 $prev_pol_info = "№".oci_result($sql, "POL_SER")." ".oci_result($sql, "POL_NUM").", СК ".oci_result($sql, "INSURER_NAME");
+	 $prev_pol_info = iconv("UTF-8","cp1251", "№ ").oci_result($sql, "POL_SER")." ".oci_result($sql, "POL_NUM").",".iconv("UTF-8","cp1251", " СК ").oci_result($sql, "INSURER_NAME");
 	 $kbm_id = oci_result($sql, "KBM_ID");
 	 $loss = oci_result($sql, "POLICY_LOSS");
 	}
@@ -566,7 +566,7 @@ if(!isset($_SESSION['user_id'])){
 	<TR>
 	  <TD colspan=3 align=left valign=top>
 	    <LABEL><B>Предыдущий полис: </B></LABEL>
-	    <LABEL>".$prev_pol_info."</LABEL>
+	    <LABEL>".iconv("cp1251","UTF-8", $prev_pol_info)."</LABEL>
 	  </TD>
 	</TR>
 	<TR>
@@ -579,7 +579,7 @@ if(!isset($_SESSION['user_id'])){
 	<TR>
 	  <TD colspan=2 align=left valign=top>
 	    <LABEL><B>Предыдущий полис: </B></LABEL>
-	    <LABEL>".$prev_pol_info."</LABEL>
+	    <LABEL>".iconv("cp1251","UTF-8", $prev_pol_info)."</LABEL>
 	  </TD>
 	  <TD align=left valign=top>
 	    <LABEL><B>Кол-во убытков: </B>".$loss."</LABEL>
