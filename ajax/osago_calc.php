@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION['user_id'])){
-	header("Location: login.php");
-	exit;
-}
+// if(!isset($_SESSION['user_id'])){
+// 	header("Location: login.php");
+// 	exit;
+// }
 // echo "<pre>";
 // print_r($_POST);
 // echo "</pre>";
@@ -29,6 +29,9 @@ foreach($_POST as $key => $val){
 //exit();
 //проверяем на наличие переданных данных
 $err_text = '';
+if(!isset($_SESSION['user_id'])){
+	$err_text .= "<li class=\"text-danger\">Отсутствуют данные сессии. Вам необходимо выйти из программы и снова в неё войти.</li>";
+}
 if(!$type_ins){
 	$err_text .= "<li class=\"text-danger\">Не указан собственника ТС</li>";
 }

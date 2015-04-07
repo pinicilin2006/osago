@@ -16,6 +16,9 @@ require_once('../function.php');
 //require_once('../template/header.html');
 connect_to_base();
 $err_text='';
+if(!isset($_SESSION['user_id'])){
+	$err_text .= "<li class=\"text-danger\">Отсутствуют данные сессии. Вам необходимо выйти из программы и снова в неё войти.</li>";
+}
 if(!$_SESSION["step_1"]){
 	$err_text .= "<li class=\"text-danger\">Отсутствуют данные для расчёта страховой премии</li>";
 }
