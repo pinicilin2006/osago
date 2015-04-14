@@ -43,6 +43,7 @@ require_once('fpdi/fpdi.php');
 $pdf = new FPDI();
 $pdf->AddFont('ArialMT','','arial_cyr.php');
 $pdf->AddPage(); 
+////////////////////////////////////////////////////
 // $pdf->setSourceFile('blank/a7.pdf'); 
 // // Указываем номер импортируемой страницы
 // $tplIdx = $pdf->importPage(1); 
@@ -52,6 +53,7 @@ $pdf->AddPage();
 // //Ставим поля по нулям
 // $pdf->SetMargins(0,0,0,0);
 // $pdf->SetAutoPageBreak(false);
+////////////////////////////////////////////////////
 //указываем шрифт и размер
 $pdf->SetFont('ArialMT', '', '10');
 //указываем цвет текста 
