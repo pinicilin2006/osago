@@ -107,7 +107,7 @@ if(!$model){
 if($vin && $vin != 'Отсутствует' && strlen($vin) <> 17){
 	$err_text .= "<li class=\"text-danger\">Номер VIN должен содержать 17 символов</li>";
 }
-if($auto_reg_number && $auto_reg_number != 'Отсутствует' && (strlen($auto_reg_number) < 8 || strlen($auto_reg_number) > 9)){
+if($auto_reg_number && $auto_reg_number != 'Отсутствует' && (iconv_strlen($auto_reg_number,'UTF-8') < 8 || iconv_strlen($auto_reg_number,'UTF-8') > 9)){
 	$err_text .= "<li class=\"text-danger\">Государственный регистрационный знак должен содержать 8 или 9 символов</li>";
 }
 if(!$auto_doc_type){
@@ -116,13 +116,13 @@ if(!$auto_doc_type){
 if(!$auto_doc_series){
 	$err_text .= "<li class=\"text-danger\">Не указана серия документа о регистрации ТС</li>";
 }
-if($auto_doc_series && strlen($auto_doc_series) > 4){
+if($auto_doc_series && iconv_strlen($auto_doc_series,'UTF-8') > 4){
 	$err_text .= "<li class=\"text-danger\">Не верно указана серия документа о регистрации ТС</li>";
 }
 if(!$auto_doc_number){
 	$err_text .= "<li class=\"text-danger\">Не указан номер документа о регистрации ТС</li>";
 }
-if($auto_doc_number && strlen($auto_doc_number) > 6){
+if($auto_doc_number && iconv_strlen($auto_doc_number,'UTF-8') > 6){
 	$err_text .= "<li class=\"text-danger\">Не верно указан номер документа о регистрации ТС</li>";
 }
 if(!$auto_doc_date){
