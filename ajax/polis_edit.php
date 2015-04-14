@@ -116,8 +116,14 @@ if(!$auto_doc_type){
 if(!$auto_doc_series){
 	$err_text .= "<li class=\"text-danger\">Не указана серия документа о регистрации ТС</li>";
 }
+if($auto_doc_series && strlen($auto_doc_series) > 4){
+	$err_text .= "<li class=\"text-danger\">Не верно указана серия документа о регистрации ТС</li>";
+}
 if(!$auto_doc_number){
 	$err_text .= "<li class=\"text-danger\">Не указан номер документа о регистрации ТС</li>";
+}
+if($auto_doc_number && strlen($auto_doc_number) > 6){
+	$err_text .= "<li class=\"text-danger\">Не верно указан номер документа о регистрации ТС</li>";
 }
 if(!$auto_doc_date){
 	$err_text .= "<li class=\"text-danger\">Не указана дата выдачи документа о регистрации ТС</li>";
