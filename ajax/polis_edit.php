@@ -104,6 +104,12 @@ if(!$mark){
 if(!$model){
 	$err_text .= "<li class=\"text-danger\">Не указана модель ТС</li>";
 }
+if($vin && $vin != 'Отсутствует' && strlen($vin) <> 17){
+	$err_text .= "<li class=\"text-danger\">Номер VIN должен содержать 17 символов</li>";
+}
+if($auto_reg_number && $auto_reg_number != 'Отсутствует' && (strlen($auto_reg_number) < 8 || strlen($auto_reg_number) > 9)){
+	$err_text .= "<li class=\"text-danger\">Государственный регистрационный знак должен содержать 8 или 9 символов</li>";
+}
 if(!$auto_doc_type){
 	$err_text .= "<li class=\"text-danger\">Не указано название документа о регистрации ТС</li>";
 }
@@ -121,6 +127,26 @@ if(!$start_date){
 }
 if($auto_diag_card_next_date && !strtotime($auto_diag_card_next_date)){
 	$err_text .= "<li class=\"text-danger\">Не верно указана дата срока действия диагностической карты</li>";
+}
+if($_SESSION['step_1']['category'] == (2 || 3)){
+	if($_SESSION['step_1']['capacity'] == 1 && $power > 50){
+		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
+	}
+	if($_SESSION['step_1']['capacity'] == 2 && ($power < 51 || $power > 70)){
+		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
+	}	
+	if($_SESSION['step_1']['capacity'] == 3 && ($power < 71 || $power > 100)){
+		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
+	}
+	if($_SESSION['step_1']['capacity'] == 4 && ($power < 101 || $power > 120)){
+		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
+	}
+	if($_SESSION['step_1']['capacity'] == 5 && ($power < 121 || $power > 150)){
+		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
+	}
+	if($_SESSION['step_1']['capacity'] == 6 && $power >151){
+		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
+	}			
 }
 // if(!$start_time){
 // 	$err_text .= "<li class=\"text-danger\">Не указано время начала действия договора страхования</li>";

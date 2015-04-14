@@ -389,7 +389,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="vin" class="col-sm-4 control-label"><small>Идентификационный номер ТС (VIN)</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="vin" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['own_vin'] : '')?>' id="vin" maxlength="17" required>
+					      		<input type="text" class="form-control input-sm empty_data_input engonly" name="vin" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['own_vin'] : '')?>' id="vin" maxlength="17" required>
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
 					    	</div>				    	
 					  	</div>						  	
@@ -405,7 +405,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="chassis" class="col-sm-4 control-label"><small>Шасси (рама) №</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="chassis" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['chassis_num'] : '')?>' id="chassis" maxlength="17">
+					      		<input type="text" class="form-control input-sm empty_data_input engonly" name="chassis" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['chassis_num'] : '')?>' id="chassis" maxlength="17">
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>
 					    	</div>				    	
 					  	</div>
@@ -414,7 +414,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="trailer" class="col-sm-4 control-label"><small>Кузов (прицеп) №</small></label>
 					    	<div class="col-sm-4">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="trailer" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['body_num'] : '')?>' id="trailer" maxlength="17">
+					      		<input type="text" class="form-control input-sm empty_data_input engonly" name="trailer" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['body_num'] : '')?>' id="trailer" maxlength="17">
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      						      		
 					    	</div>					    	
 					  	</div>
@@ -467,7 +467,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_doc_series" class="col-sm-4 control-label"><small>Серия</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="auto_doc_series" id="auto_doc_series" required>
+					      		<input type="text" class="form-control input-sm rusonly" name="auto_doc_series" id="auto_doc_series" required>
 					    	</div>
 					  	</div>
 
@@ -475,7 +475,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_doc_number" class="col-sm-4 control-label"><small>Номер</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="auto_doc_number" id="auto_doc_number" required>
+					      		<input type="text" class="form-control input-sm rusonly" name="auto_doc_number" id="auto_doc_number" required>
 					    	</div>
 					  	</div>					  	
 
@@ -514,7 +514,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_reg_number" class="col-sm-4 control-label"><small>Государственный регистрационный знак</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm empty_data_input" name="auto_reg_number" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['lic_plate'] : '')?>' id="auto_reg_number" maxlength="11" required>
+					      		<input type="text" class="form-control input-sm empty_data_input rusonly" name="auto_reg_number" value='<?php echo ($_SESSION['kbm'] ? $_SESSION['kbm']['lic_plate'] : '')?>' id="auto_reg_number" maxlength="11" required>
 					      		<input type="checkbox" class="empty_data"><label><small>Отсутствует</small></label>					      		
 					    	</div>					    	
 					  	</div>
@@ -921,6 +921,21 @@ $(window).scroll(function () { // При прокрутке попадаем в 
       }, delay);
     });
 
+	//ввод только английского
+	$('.engonly').bind('keyup blur',function(){
+		if($(this).val() != 'Отсутствует'){ 
+    			$(this).val( $(this).val().replace(/[А-Яа-я]/g,'') );
+    		}
+    	}
+	);
+
+	//ввод только русского
+	$('.rusonly').bind('keyup blur',function(){ 
+    		if($(this).val() != 'Отсутствует'){ 
+    			$(this).val( $(this).val().replace(/[A-Za-z]/g,'') );
+    		}
+    	}
+	);	
 /////////////////////////////////////////////////////////
 	$('.date_birth').mask('00.00.0000');
 	$('#doc_date').mask('00.00.0000');
