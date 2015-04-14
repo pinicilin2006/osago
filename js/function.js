@@ -376,3 +376,48 @@ function query_kbm(a){
 		}
 	});
 }
+
+function period_use_end(period){
+	var a = $('#auto_used_start_1').val();//дата начала действия
+	var b = "14.04.2015";//дата сегодня
+	var c = period;
+	var d = $("#start_date").val();
+	var timeNow = new Date();
+	var arrStartDate = a.split('.');
+	var arrTodayDate = b.split('.');
+	var arrStartDateSrok = d.split('.');
+	var startDate = new Date(arrStartDate[2], arrStartDate[1]-1, arrStartDate[0]);
+	var todayDate = new Date(arrTodayDate[2], arrTodayDate[1]-1, arrTodayDate[0]);
+	var StartDateSrok = new Date(arrStartDateSrok[2], arrStartDateSrok[1]-1, arrStartDateSrok[0]); 				
+	//alert(startDate+'-'+todayDate);
+	//если дата меньше текущей
+	if(startDate < todayDate || startDate < StartDateSrok){
+		$('#auto_used_start_1').val('');
+		return false;
+	}
+	//если дата больше либо равна текущей
+	if(startDate > todayDate || a == b){
+		//alert(startDate);
+		var endDate = startDate;
+		var arr = [0,3,4,5,6,7,8,9,12,20];
+		var srok = arr[c];
+		//alert(srok);
+		if(srok == 20){//прибавляем дни
+			endDate.setDate(endDate.getDate()+srok);
+		} else {//прибавляем месяцы
+			endDate.setMonth(endDate.getMonth()+srok);
+		}
+		endDate.setDate(endDate.getDate()-1);
+		var dd = endDate.getDate();
+		if(dd<10){
+			dd = '0'+dd;
+		}		
+		var mm = endDate.getMonth()+1;
+		if(mm<10){
+			mm = '0'+mm;
+		}				
+		var yyyy = endDate.getFullYear();
+		var end_date = dd+'.'+mm+'.'+yyyy;
+		$("#auto_used_end_1").val(end_date);
+	}
+}

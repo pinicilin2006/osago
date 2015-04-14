@@ -593,49 +593,166 @@ $category_code = array(
 						    	</div>	
 						    	<div class="col-sm-4" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm period_data" name="end_date" id="end_date" value="<?php 
-						      		//echo($_SESSION["step_1"]["place_reg"] == 1 ?  date('d.m.Y', strtotime("+1 years")) : '')
-						      		if($_SESSION["step_1"]["place_reg"] == 1) {
-						      			echo date('d.m.Y', strtotime("$contract_data[start_date] +1 years -1 days"));
-						      		}
-						      		if($_SESSION["step_1"]["place_reg"] == 3){
-						      			echo date('d.m.Y', strtotime("$contract_data[start_date] +20 days"));
-						      		}
-						      		if($_SESSION["step_1"]["place_reg"] == 2){
-						      			if($_SESSION["step_1"]["term_insurance"] == 1){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +15 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 2){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +1 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 3){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +2 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 4){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +3 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 5){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +4 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 6){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +5 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 7){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +6 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 8){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +7 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 9){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +6 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 10){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +9 months -1 days"));
-						      			}
-						      			if($_SESSION["step_1"]["term_insurance"] == 11){
-						      				echo date('d.m.Y', strtotime("$contract_data[start_date] +1 years -1 days"));
-						      			}						      									      									      									      									      									      									      			
-						      									      									      									      			
-						      		}						      		
+						      					if($_SESSION["step_1"]["place_reg"] == 3){
+									      			echo date('d.m.Y', strtotime("$contract_data[start_date] + 20 days"));
+									      		} elseif ($_SESSION["step_1"]["place_reg"] == 1) {
+									      			if($_SESSION["step_1"]["period_use"] == 1){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["period_use"] == 2){
+									      				echo date('d.m.Y', strtotime(" $contract_data[start_date] + 4 months - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["period_use"] == 3){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 5 months - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["period_use"] == 4){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["period_use"] == 5){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 7 months - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["period_use"] == 6){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["period_use"] == 7){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 9 months - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["period_use"] == 8){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 1 years - 1 day"));
+									      			}						      									      									      									      									      									      									      			
+									      		} elseif ($_SESSION["step_1"]["place_reg"] == 2){
+									      			if($_SESSION["step_1"]["term_insurance"] == 1){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 15 days - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 2){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 1 month - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 3){
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 2 months - 1 day"));
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 4){		
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months - 1 day"));										      				
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 5){
+									      				if($_SESSION["step_1"]["period_use"] == 1){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 2){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 4 months - 1 day"));
+									      				}									      				
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 6){
+									      				if($_SESSION["step_1"]["period_use"] == 1){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 2){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 4 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 3){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date]+ 5 months - 1 day"));
+									      				}									      													      				
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 7){
+									      				if($_SESSION["step_1"]["period_use"] == 1){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 2){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 4 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 3){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 5 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 4){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months - 1 day"));
+									      				}									      													      													      				
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 8){
+									      				if($_SESSION["step_1"]["period_use"] == 1){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 2){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 4 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 3){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 5 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 4){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months - 1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 5){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 7 months -1 day"));
+									      				}									      													      													      													      				
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 9){
+									      				if($_SESSION["step_1"]["period_use"] == 1){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 2){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 4 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 3){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 5 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 4){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 5){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 7 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 6){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 8 months -1 day"));
+									      				}									      													      													      													      													      				
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 10){
+									      				if($_SESSION["step_1"]["period_use"] == 1){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 2){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 4 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 3){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 5 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 4){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 5){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 7 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 6){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 8 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 7){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 9 months -1 day"));
+									      				}									      													      													      													      													      													      				
+									      			}
+									      			if($_SESSION["step_1"]["term_insurance"] == 11){
+									      				if($_SESSION["step_1"]["period_use"] == 1){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 2){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 4 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 3){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 5 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 4){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 5){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 7 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 6){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 8 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 7){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 9 months -1 day"));
+									      				}
+									      				if($_SESSION["step_1"]["period_use"] == 8){
+									      					echo date('d.m.Y', strtotime("$contract_data[start_date] + 12 months -1 day"));
+									      				}									      													      													      													      													      													      													      				
+									      			}									      												      												      												      												      												      												      												      												      												      			
+									      		}						      		      		
 						      		?>" placeholder="Дата окончания действия договора" required readonly>
 						      		<input type="time" class="form-control input-sm" name="end_time" id="end_time" value="23:59" placeholder="Время окончания действия договора" required readonly>				      		
 						    	</div>							    					    	
@@ -1210,8 +1327,15 @@ function owner_change_street(){
 //Копируем дату начала и окончания в период использования ТС
 $(document).on("change", ".period_data", function(){
 	$("#auto_used_start_1").val($("#start_date").val());
-	$("#auto_used_end_1").val($("#end_date").val());
-});	
+	//$("#auto_used_end_1").val($("#end_date").val());
+	period_use_end(<?php echo ($_SESSION["step_1"]["place_reg"] == 3 ? '9' : $_SESSION["step_1"]["period_use"]) ?>);
+});
+
+$(document).on("change", "#auto_used_start_1", function(){
+//Смена даты окончания периода использования при смене даты начала периода использования
+	period_use_end(<?php echo ($_SESSION["step_1"]["place_reg"] == 3 ? '9' : $_SESSION["step_1"]["period_use"]) ?>);
+});
+
 <?php
 if($_SESSION["step_1"]["drivers"] == 2){
 ?>
