@@ -150,7 +150,7 @@ if($_SESSION['step_1']['category'] == (2 || 3)){
 	if($_SESSION['step_1']['capacity'] == 5 && ($power < 121 || $power > 150)){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}
-	if($_SESSION['step_1']['capacity'] == 6 && $power >151){
+	if($_SESSION['step_1']['capacity'] == 6 && $power < 150){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}			
 }
