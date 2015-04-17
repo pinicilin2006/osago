@@ -42,6 +42,7 @@ require_once('fpdi/fpdi.php');
 //Вносим необходимые данные в полис и отдаём в формате pdf
 $pdf = new FPDI();
 $pdf->AddFont('ArialMT','','arial_cyr.php');
+$pdf->AddFont('Arial-BoldMT','','arialbold.php');
 $pdf->AddPage(); 
 ////////////////////////////////////////////////////
 // $pdf->setSourceFile('blank/a7.pdf'); 
@@ -55,7 +56,7 @@ $pdf->AddPage();
 // $pdf->SetAutoPageBreak(false);
 ////////////////////////////////////////////////////
 //указываем шрифт и размер
-$pdf->SetFont('ArialMT', '', '10');
+$pdf->SetFont('Arial-BoldMT', '', '10');
 //указываем цвет текста 
 $pdf->SetTextColor(0,0,0);
 ////////////////////////////////////////////////////////Добавляем данные в полис//////////////////////////////
@@ -67,17 +68,17 @@ if($contract_data["insurer_type"] == 2){
 //Страхователь
 $insurer = $insurer_data['second_name']." ".$insurer_data['first_name']." ".$insurer_data['third_name'];
 $insurer = iconv('utf-8', 'windows-1251', "$insurer");
-$pdf->SetXY(40, 43);
+$pdf->SetXY(40, 41);
 $pdf->Write(0, $insurer);
 //Номер и серия страхового полиса
-$pdf->SetXY(70, 50);
+$pdf->SetXY(70, 48);
 $pdf->Write(0, 'EEE '.$contract_data['bso_number']);
 //Вид страхования
 $name_osago_text_1 = iconv('utf-8', 'windows-1251', "Правила обязательного страхования гражданской ответственности");
 $name_osago_text_2 = iconv('utf-8', 'windows-1251', "владельцев транспортных средств");
-$pdf->SetXY(50, 57);
+$pdf->SetXY(50, 55);
 $pdf->Write(0, $name_osago_text_1);
-$pdf->SetXY(50, 64);
+$pdf->SetXY(50, 62);
 $pdf->Write(0, $name_osago_text_2);
 //Представитель страховщика
 if($unit_data['unit_full_name'] == 'Физические лица'){
@@ -86,22 +87,22 @@ if($unit_data['unit_full_name'] == 'Физические лица'){
 	$agent = $unit_data['unit_full_name'];
 }
 $agent = iconv('utf-8', 'windows-1251', "$agent");
-$pdf->SetXY(100, 71);
+$pdf->SetXY(100, 69);
 $pdf->Write(0, $agent);
 //Страховая премия
 $tarif = num2str($calc_result['t'],2);
 $tarif = iconv('utf-8', 'windows-1251', $tarif);
-$pdf->SetXY(65, 78);
+$pdf->SetXY(65, 76);
 $pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
-$pdf->SetXY(65, 92);
+$pdf->SetXY(65, 90);
 $pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
 //Дата заключения договора
 $date_create = date('d.m.Y', strtotime($contract_data["time_create"]));
-$pdf->SetXY(13, 127);
+$pdf->SetXY(13, 125);
 $pdf->Write(0, $date_create[0].$date_create[1]);
 $month = get_month($date_create[3].$date_create[4]);
 $month = iconv('utf-8', 'windows-1251', $month);
-$pdf->SetXY(35, 127);
+$pdf->SetXY(35, 125);
 $pdf->Write(0, $month.'       20'.$date_create[8].$date_create[9]);
 // $pdf->SetXY(98, 127);
 // $pdf->Write(0, $date_create[8].$date_create[9]);
