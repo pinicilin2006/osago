@@ -134,7 +134,7 @@ if(!$start_date){
 if($auto_diag_card_next_date && !strtotime($auto_diag_card_next_date)){
 	$err_text .= "<li class=\"text-danger\">Не верно указана дата срока действия диагностической карты</li>";
 }
-if($_SESSION['step_1']['category'] == (2 || 3)){
+if($_SESSION['step_1']['category'] == 2 || $_SESSION['step_1']['category'] == 3){
 	if($_SESSION['step_1']['capacity'] == 1 && $power > 50){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}
