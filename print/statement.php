@@ -306,7 +306,7 @@ $params['[KN]'] = $calc_result['kn'];
 $params['[KO]'] = $calc_result['ko'];
 $params['[TARIF]'] = $calc_result['t'];
 $params['[AIS_REQUEST]'] = $contract_data['rsa_number'];
-$params['[SPECIAL_NOTES]'] = $contract_data['special_notes'];
+$params['[SPECIAL_NOTES]'] = $contract_data['special_notes'].(!empty($contract_data['a7_number']) ? ' Квитанция А7 №:'.$contract_data['a7_number'] : '');
 //определяем вид страхователя
 $unit_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".$contract_data['unit_id']."'"));
 if($unit_data['unit_full_name'] == 'Физические лица'){

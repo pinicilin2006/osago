@@ -442,6 +442,9 @@ if($calc_data['drivers'] == 1){
 	$pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
 //Особые отметки
 	$special_notes = iconv('utf-8', 'windows-1251', $contract_data['special_notes']);
+	if(!empty($contract_data['a7_number'])){
+		$special_notes .= iconv('utf-8', 'windows-1251', ' Квитанция А7 № '.$contract_data['a7_number']);
+	}
 	$pdf->SetXY(5, 250);
 	$pdf->Write(0, $special_notes);
 //Дата заключения договора
