@@ -487,7 +487,7 @@ $category_code = array(
 					    	</div>
 					  	</div>
 					  	<?php
-					  	if((((date("Y")-$_SESSION["step_1"]["year_manufacture"])<3) && ($_SESSION["step_1"]["category"] == 1 || $_SESSION["step_1"]["category"] == 2)) || ($_SESSION["step_1"]["category"] == 3 || $_SESSION["step_1"]["category"] == 6 || $_SESSION["step_1"]["category"] == 7 || $_SESSION["step_1"]["category"] == 8 || $_SESSION["step_1"]["category"] == 9 || $_SESSION["step_1"]["category"] == 10) || ((date("Y")-$_SESSION["step_1"]["year_manufacture"]) == 0 && ($_SESSION["step_1"]["category"] == 4 || $_SESSION["step_1"]["category"] == 5)) || $_SESSION["step_1"]["place_reg"] == 3){
+					  	if((((date("Y")-$_SESSION["step_1"]["year_manufacture"])<3) && ($_SESSION["step_1"]["category"] == 1 || $_SESSION["step_1"]["category"] == 2)) || ($_SESSION["step_1"]["category"] == 3 || $_SESSION["step_1"]["category"] == 6 || $_SESSION["step_1"]["category"] == 7 || $_SESSION["step_1"]["category"] == 8 || $_SESSION["step_1"]["category"] == 9 || $_SESSION["step_1"]["category"] == 10) || ((date("Y")-$_SESSION["step_1"]["year_manufacture"]) == 0 && ($_SESSION["step_1"]["category"] == 4 || $_SESSION["step_1"]["category"] == 5)) || $_SESSION["step_1"]["place_reg"] == 3 || $_SESSION["step_1"]["category"] == 11){
 					  		//....
 					  	} else { 
 					  	?>
