@@ -218,11 +218,11 @@ if($insisown == 1){
 	$owner_type = $insurer;
 }else{
 	if($_SESSION["step_1"]["type_ins"] != 'jur'){
-	$query_owner_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$owner_first_name."' AND `second_name` = '".$owner_second_name."' AND `third_name` = '".$owner_third_name."' AND `date_birth` = '".$owner_date_birth."' AND `doc_name` = '".$owner_doc_name."' AND `doc_series` = '".$owner_doc_series."' AND `doc_number` = '".$owner_doc_number."' AND `aoid` = '".$owner_aoid."' AND `city` = '".$owner_city."' AND `street` = '".$owner_street."' AND `house` = '".$owner_house."' AND `housing` = '".$owner_housing."' AND `apartment` = '".$owner_apartment."' AND `phone` = '".$owner_phone."'";
+	$query_owner_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$owner_first_name."' AND `second_name` = '".$owner_second_name."' AND `third_name` = '".$owner_third_name."' AND `date_birth` = '".$owner_date_birth."' AND `doc_name` = '".$owner_doc_name."' AND `doc_series` = '".$owner_doc_series."' AND `doc_number` = '".$owner_doc_number."' AND `aoid` = '".$owner_aoid."' AND `city` = '".$owner_city."' AND `street` = '".$owner_street."' AND `house` = '".$owner_house."' AND `housing` = '".$owner_housing."' AND `apartment` = '".$owner_apartment."' AND `phone` = '".$owner_phone."'";	
 		if(mysql_num_rows(mysql_query($query_owner_data))>0){
 			//.....//
 		} else {
-			$query = "INSERT INTO `contact_phiz` (first_name,second_name,third_name,date_birth,doc_name,doc_series,doc_number,subject,aoid,city,street,house,housing,apartment,phone,user_id,unit_id) VALUES ('".$owner_first_name."','".$owner_second_name."','".$owner_third_name."','".$owner_date_birth."','".$owner_doc_name."','".$owner_doc_series."','".$owner_doc_number."','".$owner_subject."','".$owner_aoid."','".(isset($city) ? $city : '')."','".$owner_street."','".$owner_house."','".(isset($owner_housing) ? $owner_housing : '')."','".(isset($owner_apartment) ? $owner_apartment : '')."','".$owner_phone."','".$_SESSION["user_id"]."','".$_SESSION["unit_id"]."')";
+			$query = "INSERT INTO `contact_phiz` (first_name,second_name,third_name,date_birth,doc_name,doc_series,doc_number,subject,aoid,city,street,house,housing,apartment,phone,user_id,unit_id) VALUES ('".$owner_first_name."','".$owner_second_name."','".$owner_third_name."','".$owner_date_birth."','".$owner_doc_name."','".$owner_doc_series."','".$owner_doc_number."','".$owner_subject."','".$owner_aoid."','".(isset($owner_city) ? $owner_city : '')."','".$owner_street."','".$owner_house."','".(isset($owner_housing) ? $owner_housing : '')."','".(isset($owner_apartment) ? $owner_apartment : '')."','".$owner_phone."','".$_SESSION["user_id"]."','".$_SESSION["unit_id"]."')";
 			if(mysql_query($query)){
 				//...//
 			}else{
@@ -250,6 +250,11 @@ if($insisown == 1){
 		$owner_id = $owner_data["id"];
 		$owner_type = 2;
 	}
+}
+//проверка на пустой значение собственника
+if(empty($owner_id) || $owner_id == 0){
+	echo "<p class=\"text-danger\">Произошла ошибка. Не верно получен id собственника. Обратитесь к администратору системы</p>";
+	exit();	
 }
 //анные по ТС
 $vehicle_data = array(

@@ -31,6 +31,10 @@ if(mysql_num_rows(mysql_query($query))<1){
 	exit();
 }
 $contract_data = mysql_fetch_assoc(mysql_query($query));
+if($contract_data['owner_id'] == 0 || empty($contract_data['owner_id']) || $contract_data['insurer_id'] == 0 || empty($contract_data['insurer_id'])){
+	echo "<p class=\"text-danger text-center\">Отсутствует id собственника или страхователя. Обратитесь к администратору системы</p>";
+	exit();
+}
 //Получаем данные страхователя
 $insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
 //Получаем данные собственника

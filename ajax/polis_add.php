@@ -226,7 +226,7 @@ if($insisown == 1){
 		if(mysql_num_rows(mysql_query($query_owner_data))>0){
 			//.....//
 		} else {
-			$query = "INSERT INTO `contact_phiz` (first_name,second_name,third_name,date_birth,doc_name,doc_series,doc_number,subject,aoid,city,street,house,housing,apartment,phone,user_id,unit_id) VALUES ('".$owner_first_name."','".$owner_second_name."','".$owner_third_name."','".$owner_date_birth."','".$owner_doc_name."','".$owner_doc_series."','".$owner_doc_number."','".$owner_subject."','".$owner_aoid."','".(isset($city) ? $city : '')."','".$owner_street."','".$owner_house."','".(isset($owner_housing) ? $owner_housing : '')."','".(isset($owner_apartment) ? $owner_apartment : '')."','".$owner_phone."','".$_SESSION["user_id"]."','".$_SESSION["unit_id"]."')";
+			$query = "INSERT INTO `contact_phiz` (first_name,second_name,third_name,date_birth,doc_name,doc_series,doc_number,subject,aoid,city,street,house,housing,apartment,phone,user_id,unit_id) VALUES ('".$owner_first_name."','".$owner_second_name."','".$owner_third_name."','".$owner_date_birth."','".$owner_doc_name."','".$owner_doc_series."','".$owner_doc_number."','".$owner_subject."','".$owner_aoid."','".(isset($owner_city) ? $owner_city : '')."','".$owner_street."','".$owner_house."','".(isset($owner_housing) ? $owner_housing : '')."','".(isset($owner_apartment) ? $owner_apartment : '')."','".$owner_phone."','".$_SESSION["user_id"]."','".$_SESSION["unit_id"]."')";
 			if(mysql_query($query)){
 				//...//
 			}else{
