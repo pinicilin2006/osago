@@ -903,7 +903,6 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	$('#owner_doc_date').mask('00.00.0000');
 	$('#owner_phone').mask('(000)000-00-00',{placeholder: "(___)___-__-__"} );
 	$('#year_manufacture').mask('0000');
-	$('#power').mask('0000');
 	$('.auto_used').mask('00.00.0000');	
 	$('#auto_doc_date').mask('00.00.0000');	
 	$('#auto_diag_card_next_date').mask('00.00.0000');	
@@ -960,6 +959,10 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	  yearRange: "c:c+10",
 	  showOn: "focus"
 	});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$(document).on("keyup", "#power", function(){
+	onlyDigits(this);
+});
 //////////////////////////////Делаем первую букву заглавной а остальные маленькими в ФИО/////////////////////
 $(document).on("change", ".register", function(){
 	var a = $(this).val();

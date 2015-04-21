@@ -943,7 +943,6 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	$('#owner_doc_date').mask('00.00.0000');
 	$('#owner_phone').mask('(000)000-00-00',{placeholder: "(___)___-__-__"} );
 	$('#year_manufacture').mask('0000');
-	$('#power').mask('0000');
 	$('.auto_used').mask('00.00.0000');	
 	$('#auto_doc_date').mask('00.00.0000');	
 	$('#auto_diag_card_next_date').mask('00.00.0000');	
@@ -1008,6 +1007,9 @@ $(document).on("change", ".register", function(){
 	$(this).val(b);
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$(document).on("keyup", "#power", function(){
+	onlyDigits(this);
+});
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 	//отображение списка городов субъекта для страхователя
 		$(document).on("change", "#subject", function(){
