@@ -84,21 +84,21 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name" name="second_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[0] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[0] : '') ?>' id="second_name" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm phiz_name register" name="second_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[0] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[0] : '') ?>' id="second_name" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name" name="first_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[1] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[1] : '') ?>' id="first_name" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm phiz_name register" name="first_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[1] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[1] : '') ?>' id="first_name" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name" name="third_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[2].($fio_data[3] ? ' '.$fio_data[3] : '') : '') ?><?php echo ($fio_data_1 ? $fio_data_1[2].($fio_data_1[3] ? ' '.$fio_data_1[3] : '') : '') ?>' id="third_name" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm phiz_name register" name="third_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[2].($fio_data[3] ? ' '.$fio_data[3] : '') : '') ?><?php echo ($fio_data_1 ? $fio_data_1[2].($fio_data_1[3] ? ' '.$fio_data_1[3] : '') : '') ?>' id="third_name" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
@@ -217,21 +217,21 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="owner_second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="owner_second_name" id="owner_second_name" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm register" name="owner_second_name" id="owner_second_name" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="owner_first_name" id="owner_first_name" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm register" name="owner_first_name" id="owner_first_name" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="owner_third_name" id="owner_third_name" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm register" name="owner_third_name" id="owner_third_name" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
@@ -1000,6 +1000,14 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	  yearRange: "c:c+10",
 	  showOn: "focus"
 	});
+//////////////////////////////Делаем первую букву заглавной а остальные маленькими в ФИО/////////////////////
+$(document).on("change", ".register", function(){
+	var a = $(this).val();
+    var first = a.charAt(0).toUpperCase();
+    var b = first + a.substr(1).toLowerCase();	
+	$(this).val(b);
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 	//отображение списка городов субъекта для страхователя
 		$(document).on("change", "#subject", function(){
