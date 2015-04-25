@@ -126,7 +126,6 @@ while($row = mysql_fetch_assoc($query)){
     	echo '<li><a href="/edit_osago.php?id='.$row['md5_id'].'"><small>Редактировать</small></a></li><li class="divider" style="margin:0 0"></li>';
     	echo '<li><a href="/method/del.php?id='.$row['md5_id'].'"><small>Удалить</small></a></li><li class="divider" style="margin:0 0"></li>';
 	}
-echo '<li><a href="/edit_osago.php?id='.$row['md5_id'].'&prolongation=1"><small>Пролонгация</small></a></li><li class="divider" style="margin:0 0"></li>';	
 echo '<li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank"><small>Заявление</a></small></li>
     <li class="divider" style="margin:0 0"></li>
     <li><a href="/print/bso.php?id='.$row['md5_id'].'" target="_blank"><small>БСО</small></a></li>
@@ -139,7 +138,7 @@ echo '<li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank"><
     if($row['project'] == '1' && $row['annuled'] == '0'){
     	echo '<li><a href="/method/active.php?id='.$row['md5_id'].'"><small>Перевести в статус <br> "Оформлен"</small></a></li><li class="divider" style="margin:0 0"></li>';
 	}		
-
+echo '<li><a href="/edit_osago.php?id='.$row['md5_id'].'&prolongation=1"><small>Пролонгация</small></a></li><li class="divider" style="margin:0 0"></li>';	
 echo '</ul>
 </div>
 	</td>';
