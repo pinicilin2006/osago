@@ -16,8 +16,11 @@ if(!isset($_SESSION['user_id']) || !isset($_GET["id"]) || empty($_GET["id"])){
 	exit();
 }
 $id = mysql_real_escape_string($_GET['id']);
+if(isset($_GET['prolongation'])){
+	$prolongation = 1;
+}
 if(isset($_SESSION["access"][3])){
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."'".(isset($prolongation) ? '' : " AND `project` = '1' AND `annuled` = '0'")."";
 }else{
 	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
 }
@@ -48,7 +51,12 @@ $calc_data = unserialize($contract_data['calc_data']);
 	  			</div>
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
-					<input type="hidden" name="md5_id" value="<?php echo $id ?>">  	
+					<?php if(isset($prolongation)){?>
+					<input type="hidden" name="prolongation" value="1">	
+					<?php
+					}
+					?>
+					<input type="hidden" name="md5_id" value="<?php echo $id ?>">  							
 					  	<hr class="hr_line">
 						  	
 						  	<div class="form-group ">

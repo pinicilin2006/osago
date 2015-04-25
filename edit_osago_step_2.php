@@ -21,7 +21,7 @@ connect_to_base();
 require_once('template/header.html');
 $id = mysql_real_escape_string($_GET['id']);
 if(isset($_SESSION["access"][3])){
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."'".(isset($_SESSION['step_1']['prolongation']) ? '' : " AND `project` = '1' AND `annuled` = '0'")."";
 }else{
 	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
 }
@@ -79,7 +79,7 @@ $category_code = array(
 	  			</div>
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
-					 <input type="hidden" name="md5_id" value="<?php echo $id ?>">
+					 <input type="hidden" name="md5_id" value="<?php echo (isset($_SESSION['step_1']['prolongation']) ? md5(date("F j, Y, g:i:s ")) : $id) ?>">
 					 <h4><b>Данные страхователя</b></h4>
 						<div class="form-group" id="owner">
 							<hr class="hr_red">
@@ -1382,7 +1382,7 @@ if($_SESSION["step_1"]["drivers"] == 2){
 	$('#main_form').validate({ // initialize the plugin
     	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.
     	submitHandler: function(form) {
-    	edit_polis();
+    	<?php echo (isset($_SESSION["step_1"]["prolongation"]) ? 'add_polis();' : 'edit_polis();') ?>
     	return false; 
     	}
     }); 
