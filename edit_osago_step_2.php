@@ -895,7 +895,21 @@ $(window).scroll(function () { // При прокрутке попадаем в 
     			$(this).val( $(this).val().replace(/[A-Za-z]/g,'') );
     		}
     	}
-	);	
+	);
+	//Запрет на ввод I,О,Q в поле VIN
+	$('#vin').bind('keyup blur',function(){ 
+    		if($(this).val() != 'Отсутствует'){ 
+    			$(this).val( $(this).val().replace(/[IOQ]/g,'') );
+    		}
+    	}
+	);
+	//Запрет на ввод I,О,Q в поле Мощность
+	$('#trailer').bind('keyup blur',function(){ 
+    		if($(this).val() != 'Отсутствует'){ 
+    			$(this).val( $(this).val().replace(/[IOQ]/g,'') );
+    		}
+    	}
+	);			
 /////////////////////////////////////////////////////////
 	$('.date_birth').mask('00.00.0000');
 	$('#doc_date').mask('00.00.0000');
