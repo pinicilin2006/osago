@@ -23,7 +23,7 @@ $id = mysql_real_escape_string($_GET['id']);
 if(isset($_SESSION["access"][3])){
 	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."'".(isset($_SESSION['step_1']['prolongation']) ? '' : " AND `project` = '1' AND `annuled` = '0'")."";
 }else{
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."'".(isset($_SESSION['step_1']['prolongation']) ? '' : " AND `project` = '1' AND `annuled` = '0'")." AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
 }
 //echo $query;
 if(mysql_num_rows(mysql_query($query))<1){
