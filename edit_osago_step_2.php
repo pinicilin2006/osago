@@ -824,6 +824,19 @@ $category_code = array(
 									</select>	      		
 						    	</div>
 						  	</div>
+							<div class="form-group" style="padding-top:2%">
+						    	<label for="a7_type_paid" class="col-sm-4 control-label"><small>Получена страховая премия</small></label>
+						    	<div class="col-sm-8">
+									<select class="form-control input-sm" name="a7_type_paid">
+								  		<?php
+								  		$query=mysql_query("SELECT * FROM `a7_type_paid` WHERE active = 1");
+								  		while($row = mysql_fetch_assoc($query)){
+											echo '<option value="'.$row["id"].'" '.($row['id'] == $step_2_data['a7_type_paid'] ? ' selected' : '').'>'.$row["name"].'</option>';
+										}
+										?>    
+									</select>	      		
+						    	</div>
+						  	</div>						  	
 					  	<hr class="hr_red">
 
 						  	<div class="form-group">

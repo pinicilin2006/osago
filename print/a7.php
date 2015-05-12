@@ -92,10 +92,16 @@ $pdf->Write(0, $agent);
 //Страховая премия
 $tarif = num2str($calc_result['t'],2);
 $tarif = iconv('utf-8', 'windows-1251', $tarif);
-$pdf->SetXY(65, 78);
+$pdf->SetXY(67, 78);
 $pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
-$pdf->SetXY(65, 92);
-$pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
+if($step_2_data['a7_type_paid'] == 1 || !isset($step_2_data['a7_type_paid'])){
+	$pdf->SetXY(67, 92);
+	$pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
+}
+if($step_2_data['a7_type_paid'] == 2){
+	$pdf->SetXY(67, 106);
+	$pdf->Write(0, $calc_result['t'].' ('.$tarif.')');
+}
 //Дата заключения договора
 $date_create = date('d.m.Y', strtotime($contract_data["time_create"]));
 $pdf->SetXY(13, 127);

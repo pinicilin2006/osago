@@ -378,8 +378,20 @@ function query_kbm(a){
 }
 
 function period_use_end(period){
+	var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+    var today = dd+'.'+mm+'.'+yyyy;
 	var a = $('#auto_used_start_1').val();//дата начала действия
-	var b = "14.04.2015";//дата сегодня
+	var b = today;//дата сегодня
 	var c = period;
 	var d = $("#start_date").val();
 	var timeNow = new Date();
