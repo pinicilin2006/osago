@@ -20,9 +20,12 @@ if(isset($_GET['prolongation'])){
 	$prolongation = 1;
 }
 if(isset($_SESSION["access"][3])){
-	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."'".(isset($prolongation) ? '' : " AND `project` = '1' AND `annuled` = '0'")."";
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0'";
 }else{
 	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."' AND `project` = '1' AND `annuled` = '0' AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
+}
+if(isset($prolongation)){
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."'";
 }
 if(mysql_num_rows(mysql_query($query))<1){
 	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p>";
@@ -276,7 +279,7 @@ $calc_data = unserialize($contract_data['calc_data']);
 							  			}
 							  		?>
 									</select>
-									<span class="help-block"><a href="https://start.sngi.ru/kbm/osago_query.php" target="_blank"><small>Запрос КБМ в АИС РСА</small></a></span>
+									<span class="help-block"><a href="/dkbm/index.html" target="_blank"><small>Запрос КБМ в АИС РСА</small></a></span>
 							    </div>
 						  	</div>					  
 

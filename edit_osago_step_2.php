@@ -25,6 +25,9 @@ if(isset($_SESSION["access"][3])){
 }else{
 	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."'".(isset($_SESSION['step_1']['prolongation']) ? '' : " AND `project` = '1' AND `annuled` = '0'")." AND `unit_id` = '".$_SESSION["unit_id"]."' AND `user_id` = '".$_SESSION["user_id"]."'";
 }
+if(isset($_SESSION['step_1']['prolongation'])){
+	$query = "SELECT * FROM `contract` WHERE `md5_id` = '".$id."'";
+}
 //echo $query;
 if(mysql_num_rows(mysql_query($query))<1){
 	echo "<p class=\"text-danger text-center\">Договор с запрашиваемым id не найден в базе данных</p>";
@@ -850,7 +853,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="ais_request_identifier" class="col-sm-4 control-label"><small>Идентификатор запроса КБМ/ТО</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" value='<?php echo $contract_data['rsa_number'] ?>' id="ais_request_identifier">
+						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" value='<?php echo ($_SESSION['step_1']['prolongation'] ? $_SESSION['kbm']["kbm_id"].(!empty($_SESSION['kbm']["to_id"]) ? '/'.$_SESSION['kbm']["to_id"] : '') : $contract_data['rsa_number']) ?>' id="ais_request_identifier">
 						    	</div>
 						  	</div>
 
@@ -1402,6 +1405,15 @@ if($_SESSION["step_1"]["drivers"] == 2){
 		$("#driver_1_third_name").val($("#third_name").val());
 		$("#driver_1_date_birth").val($("#date_birth").val());
 	});
+<?php
+}
+?>	
+//Очищаю поля при дублирование полиса
+<?php
+if($_SESSION['step_1']['prolongation']){
+?>
+$('.period_data').val('');
+$('.auto_used').val('');
 <?php
 }
 ?>	
