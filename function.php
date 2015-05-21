@@ -124,4 +124,19 @@ function generate_password($number)
     return $pass;
   }
 
+//Рожаем из массива запрос
+function create_sql_insert($massive){
+  if(is_array($massive)){
+    $k = '';//наименование полей
+    $v = '';//значение полей
+    foreach ($massive as $key => $value) {
+      $k .= $key.',';
+      $v .= "'".$value."',";
+    }
+    $k = substr($k, 0, -1);
+    $v = substr($v, 0, -1);
+    return '('.$k.') VALUES('.$v.')'; 
+  }
+}
+
 ?>
