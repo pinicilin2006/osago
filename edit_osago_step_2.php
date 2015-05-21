@@ -1414,6 +1414,9 @@ if($_SESSION['step_1']['prolongation']){
 ?>
 $('.period_data').val('');
 $('.auto_used').val('');
+$('#special_notes').val('');
+$('#auto_diag_card_number').val('');
+$('#auto_diag_card_next_date').val('');
 <?php
 }
 ?>	
