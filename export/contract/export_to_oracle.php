@@ -1,13 +1,16 @@
 <?php
 require_once('../../config.php');
 require_once('../../function.php');
-include("../../ibs_connector.php");
+include("../../ibs_connector_2.php");
 connect_to_base();
 //массив с параметрами для замены в документе
-$params = array();
-$query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0' AND `annuled` = '0'");
-	while($rows = mysql_fetch_assoc($query_all_contract)){
 
+$query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0' AND `annuled` = '0' AND `export_to_ibs` = '0'");
+	while($rows = mysql_fetch_assoc($query_all_contract)){
+		if(isset($params)){
+			unset($params);
+		}
+		$params = array();
 		$contract_data = $rows;
 		//Получаем данные страхователя
 		$insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["insurer_id"]."'"));
@@ -222,6 +225,8 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		$params['VEHICLE_NUMBER_SEATS'] = (isset($vehicle_data['number_seats']) ? $vehicle_data['number_seats'] : '');
 		$params['VEHICLE_CHASSIS'] = $vehicle_data['chassis'];
 		$params['VEHICLE_TRAILER'] = $vehicle_data['trailer'];
+		$doc_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `document_auto` WHERE `id` = ".$vehicle_data['auto_doc_type']));
+		$params['VEHICLE_DOC_TYPE'] = $doc_data['name'];
 		$params['VEHICLE_DOC_SERIES'] = $vehicle_data['auto_doc_series'];
 		$params['VEHICLE_DOC_NUMBER'] = $vehicle_data['auto_doc_number'];
 		$params['VEHICLE_DOC_DATE'] = $vehicle_data['auto_doc_date'];
@@ -311,6 +316,8 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		$params['AGENT_SEX'] = $agent_data['sex'];
 		$params['UNIT_NAME'] = $unit_data['unit_full_name'];
 		$params['UNIT_CITY'] = $unit_data['unit_city'];
+		$unit_parent = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = ".$unit_data['unit_parent_id']));
+		$params['FILIAL_NAME'] = $unit_parent['unit_full_name'];
 		$params['TIME_CREATE_CONTRACT'] = $contract_data['time_create'];
 		if(isset($oracle_query)){
 			unset($oracle_query);
@@ -326,30 +333,37 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 				$params_drivers['DATE_BIRTH'] = $drivers_data['driver_'.$x.'_date_birth'];
 				$params_drivers['SERIES'] =  $drivers_data['driver_'.$x.'_series'];
 				$params_drivers['NUM'] =  $drivers_data['driver_'.$x.'_number'];
-				$params_drivers['EXPERIENCE'] = $drivers_data['driver_'.$x.'_experience'];
-				$params_drivers['MD5_ID'] = $contract_data['md5_id'];
-				//$oracle_query[] = "INSERT INTO export_table_drivers ".create_sql_insert($params_drivers);
+				$params_drivers['EXPERIENCE'] = ''.$drivers_data['driver_'.$x.'_experience'].'';
+				$params_drivers['MD5_ID'] = ''.$contract_data['md5_id'].'';
+				$oracle_query[] = "INSERT INTO export_table_drivers ".create_sql_insert($params_drivers);
 			}
 		}		
 		// echo '<pre>';
 		// print_r($oracle_query);
 		// echo '</pre>';
+		// exit();
 	//Запихиваем данные в IBS
 		foreach ($oracle_query as $key => $val) {
 			$query_in_oracle = oci_parse($conn, $val);
 			if(!$query_in_oracle){
-				echo 'asdasasd';
+				//echo 'asdasasd';
 			}
 			if(oci_execute($query_in_oracle)){
-				echo 'OK';
+				//echo 'OK';
+				if(!mysql_query("UPDATE `contract` SET `export_to_ibs` = 1")){
+					//echo 'Не получилось изменить статус отправки данных договора в систему IBS  в базе mysql';
+				}
 			} else {
-			    $e = oci_error($query_in_oracle);  // Для обработки ошибок oci_execute
-			    print htmlentities($e['message']);
-			    print "\n<pre>\n";
-			    print htmlentities($e['sqltext']);
-			    printf("\n%".($e['offset']+1)."s", "^");
-			    print  "\n</pre>\n";
-			    exit;				
+				// echo $contract_data['id'];
+			 //    $e = oci_error($query_in_oracle);  // Для обработки ошибок oci_execute
+			 //    print htmlentities($e['message']);
+			 //    echo "<br>";
+			    // print "\n<pre>\n";
+			    // print htmlentities($e['sqltext']);
+			    // printf("\n%".($e['offset']+1)."s", "^");
+			    // print  "\n</pre>\n";
+			    // echo htmlentities($e['message']);
+			    // exit;				
 			}
 		}
 	}
