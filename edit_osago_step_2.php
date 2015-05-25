@@ -532,15 +532,12 @@ $category_code = array(
 					    	<label for="purpose_use" class="col-sm-4 control-label"><small>Цель использования ТС</small></label>
 					    	<div class="col-sm-8">
 					      		<select class="form-control input-sm" id="purpose_use" name="purpose_use">
-					      		<option value="1" <?php echo ($vehicle_data['purpose_use'] == '1' ? ' selected' : '') ?>>личная</option>
-					      		<option value="2" <?php echo ($vehicle_data['purpose_use'] == '2' ? ' selected' : '') ?>>учебная езда</option>
-					      		<option value="3" <?php echo ($vehicle_data['purpose_use'] == '3' ? ' selected' : '') ?>>такси</option>
-					      		<option value="4" <?php echo ($vehicle_data['purpose_use'] == '4' ? ' selected' : '') ?>>перевозка опасных и легко воспламеняющихся грузов</option>
-					      		<option value="5" <?php echo ($vehicle_data['purpose_use'] == '5' ? ' selected' : '') ?>>прокат/краткосрочная аренда</option>
-					      		<option value="6" <?php echo ($vehicle_data['purpose_use'] == '6' ? ' selected' : '') ?>>регулярные пассажирские перевозки/ перевозки пассажиров по заказам</option>
-					      		<option value="7" <?php echo ($vehicle_data['purpose_use'] == '7' ? ' selected' : '') ?>>дорожные и специальные транспортные средства</option>
-					      		<option value="8" <?php echo ($vehicle_data['purpose_use'] == '8' ? ' selected' : '') ?>>экстренные и коммунальные службы</option>
-					      		<option value="9" <?php echo ($vehicle_data['purpose_use'] == '9' ? ' selected' : '') ?>>прочее</option>
+						  		<?php
+						  			$query = mysql_query("SELECT * FROM `purpose_use` ORDER BY `id`");
+						  			while ($row = mysql_fetch_assoc($query)) {
+						  				echo '<option value='.$row["id"].' '.($vehicle_data['purpose_use'] == $row['id'] ? ' selected' : '').' >'.$row["name"].'</option>';
+						  			}
+						  		?>					      		
 					      		</select>
 					    	</div>
 					  	</div>

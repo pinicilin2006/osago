@@ -524,15 +524,12 @@ $category_code = array(
 					    	<label for="purpose_use" class="col-sm-4 control-label"><small>Цель использования ТС</small></label>
 					    	<div class="col-sm-8">
 					      		<select class="form-control input-sm" id="purpose_use" name="purpose_use">
-					      		<option value="1">личная</option>
-					      		<option value="2">учебная езда</option>
-					      		<option value="3">такси</option>
-					      		<option value="4">перевозка опасных и легко воспламеняющихся грузов</option>
-					      		<option value="5">прокат/краткосрочная аренда</option>
-					      		<option value="6">регулярные пассажирские перевозки/ перевозки пассажиров по заказам</option>
-					      		<option value="7">дорожные и специальные транспортные средства</option>
-					      		<option value="8">экстренные и коммунальные службы</option>
-					      		<option value="9">прочее</option>
+						  		<?php
+						  			$query = mysql_query("SELECT * FROM `purpose_use` ORDER BY `id`");
+						  			while ($row = mysql_fetch_assoc($query)) {
+						  				echo '<option value='.$row["id"].'>'.$row["name"].'</option>';
+						  			}
+						  		?>
 					      		</select>
 					    	</div>
 					  	</div>

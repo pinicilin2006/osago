@@ -34,6 +34,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			// $street_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `d_fias_addrobj_7` WHERE `aoguid` = '".$insurer_data["street"]."'"));
 			// $params['[INDEX]'] = $street_data['postalcode'];;
 			$params['INSURER_PHIZ_STREET'] = $street_data['shortname']." ".$street_data['formalname'];
+			$params['INSURER_KLADR_ID'] = $street_data['code'];
 			//////////////////////////////////
 			
 			//Получаем населённый пункт и район
@@ -60,6 +61,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			$params['INSURER_PHIZ_APARTMENT'] = (empty($insurer_data['apartment']) ? '' : $insurer_data['apartment']);
 			$params['INSURER_PHIZ_PHONE'] = $insurer_data['phone'];
 
+
 		}
 
 
@@ -77,6 +79,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			$street_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `d_fias_addrobj_7` WHERE `aoguid` = '".$insurer_data["street"]."'"));
 			//$params['[INDEX]'] = $street_data['postalcode'];;
 			$params['INSURER_JUR_STREET'] = $street_data['shortname']." ".$street_data['formalname'];
+			$params['INSURER_KLADR_ID'] = $street_data['code'];
 			//////////////////////////////////
 			
 			//Получаем населённый пункт и район
@@ -129,6 +132,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			$street_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `d_fias_addrobj_7` WHERE `aoguid` = '".$owner_data["street"]."'"));
 			//$params['[OWNER_INDEX]'] = $street_data['postalcode'];;
 			$params['OWNER_PHIZ_STREET'] = $street_data['shortname'].". ".$street_data['formalname'];
+			$params['OWNER_KLADR_ID'] = $street_data['code'];
 			//////////////////////////////////
 			
 			//Получаем населённый пункт и район
@@ -172,6 +176,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			$street_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `d_fias_addrobj_7` WHERE `aoguid` = '".$owner_data["street"]."'"));
 			//$params['[OWNER_INDEX]'] = $street_data['postalcode'];;
 			$params['OWNER_JUR_STREET'] = $street_data['shortname']." ".$street_data['formalname'];
+			$params['OWNER_KLADR_ID'] = $street_data['code'];
 			//////////////////////////////////
 			
 			//Получаем населённый пункт и район
@@ -247,7 +252,8 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		// 		$params['['.$x.']'] = '<w:sym w:font="Wingdings" w:char="F0A8"/>';
 		// 	}
 		// }
-		$params['VEHICLE_PURPOSE_USE'] = $vehicle_data["purpose_use"];
+		$purpose_use = mysql_fetch_assoc(mysql_query("SELECT * FROM `purpose_use` WHERE `id` = ".$vehicle_data["purpose_use"]));
+		$params['VEHICLE_PURPOSE_USE'] = $purpose_use['name'];
 		// $params['[NO_LIMIT]'] = ($calc_data['drivers'] == 1 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
 		// $params['[LIMIT]'] = ($calc_data['drivers'] == 2 ? '<w:sym w:font="Wingdings" w:char="F0FE"/>' : '<w:sym w:font="Wingdings" w:char="F0A8"/>');
 		if($calc_data['drivers'] == 2){
