@@ -306,6 +306,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			$params['CALC_DATA_SUBJECT'] = $subject_name['name'];
 			$city_name = mysql_fetch_assoc(mysql_query("SELECT * FROM `kt_city` WHERE `id` = ".$calc_data['city']));
 			$params['CALC_DATA_CITY'] = $city_name['name'];
+			$params['SUBJECT_KLADR_ID'] = $city_name['kladr'];
 		}
 
 		$term_insurance = mysql_fetch_assoc(mysql_query("SELECT * FROM `term_insurance` WHERE `id` = ".$calc_data['term_insurance']));
@@ -322,6 +323,11 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		$params['AGENT_SEX'] = $agent_data['sex'];
 		$params['UNIT_NAME'] = $unit_data['unit_full_name'];
 		$params['UNIT_CITY'] = $unit_data['unit_city'];
+		if(!empty($agent_data['id_in_ibs'])){
+			$params['IBS_AGENT_ID'] = $agent_data['id_in_ibs'];
+		} else {
+			$params['IBS_AGENT_ID'] = $unit_data['id_in_ibs'];
+		}
 		$unit_parent = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = ".$unit_data['unit_parent_id']));
 		$params['FILIAL_NAME'] = $unit_parent['unit_full_name'];
 		$params['TIME_CREATE_CONTRACT'] = $contract_data['time_create'];

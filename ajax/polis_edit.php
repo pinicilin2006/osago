@@ -138,16 +138,16 @@ if($_SESSION['step_1']['category'] == 2 || $_SESSION['step_1']['category'] == 3)
 	if($_SESSION['step_1']['capacity'] == 1 && $power > 50){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}
-	if($_SESSION['step_1']['capacity'] == 2 && ($power < 51 || $power > 70)){
+	if($_SESSION['step_1']['capacity'] == 2 && ($power <= 50 || $power > 70)){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}	
-	if($_SESSION['step_1']['capacity'] == 3 && ($power < 71 || $power > 100)){
+	if($_SESSION['step_1']['capacity'] == 3 && ($power <= 70 || $power > 100)){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}
-	if($_SESSION['step_1']['capacity'] == 4 && ($power < 101 || $power > 120)){
+	if($_SESSION['step_1']['capacity'] == 4 && ($power <= 100 || $power > 120)){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}
-	if($_SESSION['step_1']['capacity'] == 5 && ($power < 121 || $power > 150)){
+	if($_SESSION['step_1']['capacity'] == 5 && ($power <= 120 || $power > 150)){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}
 	if($_SESSION['step_1']['capacity'] == 6 && $power < 150){
