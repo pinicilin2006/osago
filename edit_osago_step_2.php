@@ -578,7 +578,14 @@ $category_code = array(
 					      		<input type="text" class="form-control input-sm date_birth" id="driver_<?php echo $x ?>_date_birth" name="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" value="<?php echo $step_2_data["driver_".$x."_date_birth"] ?>" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" value="<?php echo $step_2_data["driver_".$x."_series"] ?>" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" value="<?php echo $step_2_data["driver_".$x."_number"] ?>" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_experience" value="<?php echo $step_2_data["driver_".$x."_experience"] ?>" placeholder="Стаж управления ТС соответствующей категории, полных лет" required>
+								<select class="form-control input-sm" name="driver_<?php echo $x ?>_experience"  required>
+						  		<option value="" disabled>Стаж управления ТС соответствующей категории, полных лет</option>
+						  		<?php
+						  			for($k=0;$k<100;$k++) {
+						  				echo '<option value='.$k.' '.($k == $step_2_data["driver_".$x."_experience"] ? ' selected' : '').'>'.$k.'</option>';
+						  			}
+						  		?>
+								</select>						      		
 					    	</div>
 					  	</div>
 					  	<hr>				  			
