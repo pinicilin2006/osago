@@ -90,9 +90,15 @@ $kn = 1;//Коэфф КН (грубые нарушения)
 $tb_query = mysql_fetch_assoc(mysql_query("SELECT * FROM `category` WHERE `id` = '".$category."'"));
 if($place_reg !=2){
 	//Получаем группу к которой относится регион
+	$group = '';
 	$subject_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `kt_subject` WHERE `id` = '".$subject."'"));
+	$group = $subject_data['group'];
+	if(isset($city) && mysql_num_rows(mysql_query("SELECT * FROM `kt_city` WHERE `id` = '".$city."' AND `group` > 0"))){
+		$city_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `kt_city` WHERE `id` = '".$city."'"));
+		$group = $city_data['group'];
+	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-	$tb = $tb_query['tb_'.($type_ins == 'phiz' || $type_ins == 'ip' ? 'phiz' : 'jur').'_'.$subject_data['group']];
+	$tb = $tb_query['tb_'.($type_ins == 'phiz' || $type_ins == 'ip' ? 'phiz' : 'jur').'_'.$group];
 } else {
 	$tb = $tb_query['tb_'.($type_ins == 'phiz' || $type_ins == 'ip' ? 'phiz' : 'jur').'_4'];	
 }
