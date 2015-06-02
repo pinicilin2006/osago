@@ -32,15 +32,15 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".my
 					  <p class="help-block text-right"></span><small>* - поля обязательные для заполнения.</small></p>  
 
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text" class="form-control input-sm" id="unit_full_name" name="unit_full_name" value="<?php echo $row["unit_full_name"]?>" placeholder="Название подразделения *" required>					     					    
+					      <input type="text" class="form-control input-sm" id="unit_full_name" name="unit_full_name" value='<?php echo $row["unit_full_name"]?>' placeholder="Название подразделения *" required>					     					    
 					  </div>				  					  
 
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text" class="form-control input-sm" id="unit_city" name="unit_city" value="<?php echo $row["unit_city"]?>" placeholder="Город *" required>					     					    
+					      <input type="text" class="form-control input-sm" id="unit_city" name="unit_city" value='<?php echo $row["unit_city"]?>' placeholder="Город *" required>					     					    
 					  </div>
 
 					  <div class="form-group has-feedback">					    					    
-					      <input type="text" class="form-control input-sm" id="unit_address" name="unit_address" value="<?php echo $row["unit_address"]?>" placeholder="Адрес *" required>					      				    
+					      <input type="text" class="form-control input-sm" id="unit_address" name="unit_address" value='<?php echo $row["unit_address"]?>' placeholder="Адрес *" required>					      				    
 					  </div>
 					  
 					  <div class="form-group has-feedback">					    					    
