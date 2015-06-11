@@ -5,10 +5,13 @@ include("../../ibs_connector_2.php");
 connect_to_base();
 //массив с параметрами для замены в документе
 
-$query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0' AND `annuled` = '0' AND `export_to_ibs` = '0'");
+$query_all_contract = mysql_query("SELECT * FROM `contract`, WHERE `project` = '0' AND `annuled` = '0'");
 	while($rows = mysql_fetch_assoc($query_all_contract)){
 		if(isset($params)){
 			unset($params);
+		}
+		if(mysql_num_rows(mysql_query("SELECT * FROM `export_to_ibs` WHERE `md5_id` = '".$rows['md5_id']."'"))){
+			continue;
 		}
 		$params = array();
 		$contract_data = $rows;
@@ -311,6 +314,9 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 
 		$term_insurance = mysql_fetch_assoc(mysql_query("SELECT * FROM `term_insurance` WHERE `id` = ".$calc_data['term_insurance']));
 		$params['CALC_DATA_TERM_INSURANCE'] = $term_insurance['name'];
+		$period_use = mysql_fetch_assoc(mysql_query("SELECT * FROM `period_use` WHERE `id` = ".$calc_data['period_use']));
+		$params['CALC_DATA_PERIOD_USE'] = $period_use['name'];
+		
 		$params['MD5_ID'] = $contract_data['md5_id'];
 
 		//определяем вид страхователя
@@ -361,10 +367,13 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 				//echo 'asdasasd';
 			}
 			if(oci_execute($query_in_oracle)){
-				//echo 'OK';
-				if(!mysql_query("UPDATE `contract` SET `export_to_ibs` = 1")){
-					//echo 'Не получилось изменить статус отправки данных договора в систему IBS  в базе mysql';
+				if($key == 0){
+					mysql_query("INSERT INTO `export_to_ibs` (md5_id) VALUES('".$contract_data['md5_id']."')");
 				}
+				//echo 'OK';
+				// if(!mysql_query("UPDATE `contract` SET `export_to_ibs` = 1")){
+				// 	//echo 'Не получилось изменить статус отправки данных договора в систему IBS  в базе mysql';
+				// }
 			} else {
 				// echo $contract_data['id'];
 			 //    $e = oci_error($query_in_oracle);  // Для обработки ошибок oci_execute
