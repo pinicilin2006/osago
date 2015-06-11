@@ -3,8 +3,6 @@ require_once('../../config.php');
 require_once('../../function.php');
 include("../../ibs_connector_2.php");
 connect_to_base();
-//массив с параметрами для замены в документе
-
 $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0' AND `annuled` = '0'");
 	while($rows = mysql_fetch_assoc($query_all_contract)){
 		if(isset($params)){
@@ -13,6 +11,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		if(mysql_num_rows(mysql_query("SELECT * FROM `export_to_ibs` WHERE `md5_id` = '".$rows['md5_id']."'")) > 0){
 			continue;
 		}
+		//массив с параметрами для замены в документе.
 		$params = array();
 		$contract_data = $rows;
 		//Получаем данные страхователя
