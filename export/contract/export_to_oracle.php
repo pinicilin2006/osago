@@ -10,7 +10,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract`, WHERE `project` = '
 		if(isset($params)){
 			unset($params);
 		}
-		if(mysql_num_rows(mysql_query("SELECT * FROM `export_to_ibs` WHERE `md5_id` = '".$rows['md5_id']."'"))){
+		if(mysql_num_rows(mysql_query("SELECT * FROM `export_to_ibs` WHERE `md5_id` = '".$rows['md5_id']."'")) > 0){
 			continue;
 		}
 		$params = array();
