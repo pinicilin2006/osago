@@ -5,7 +5,7 @@ include("../../ibs_connector_2.php");
 connect_to_base();
 //массив с параметрами для замены в документе
 
-$query_all_contract = mysql_query("SELECT * FROM `contract`, WHERE `project` = '0' AND `annuled` = '0'");
+$query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0' AND `annuled` = '0'");
 	while($rows = mysql_fetch_assoc($query_all_contract)){
 		if(isset($params)){
 			unset($params);
