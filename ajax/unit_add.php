@@ -53,7 +53,7 @@ if(!$unit_parent_id){
 if(!$id_in_ibs){
 	$id_in_ibs = 0;
 }
-if(mysql_query("INSERT INTO `unit` (unit_full_name,unit_city,unit_address,unit_parent_id,id_in_ibs,active) VALUES('".$unit_full_name."','".$unit_city."','".$unit_address."','".$unit_parent_id."','".$id_in_ibs."','".$active."')")){
+if(mysql_query("INSERT INTO `unit` (unit_full_name,unit_city,unit_address,unit_parent_id,id_in_ibs,active,ibs_department_id,ibs_sales_channel_id,ibs_sales_point_id) VALUES('".$unit_full_name."','".$unit_city."','".$unit_address."','".$unit_parent_id."','".$id_in_ibs."','".$active."','".$ibs_department_id."','".$ibs_sales_channel_id."','".$ibs_sales_point_id."')")){
 	//if($unit_parent_id == '1'){
 		$id = mysql_insert_id();
 		if(!mysql_query("INSERT INTO `unit` (unit_full_name,unit_city,unit_parent_id,active) VALUES('Физические лица','".$unit_city."','".$id."','1')")){

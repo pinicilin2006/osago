@@ -71,6 +71,52 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".my
 					  <hr align="center" size="2" />
 
 					  <div class="form-group">
+					  	<select class="form-control" name="ibs_department_id" style="background-color:#CCCCCC;" required>
+					  		<option value="" disabled>Наименование подразделения в системе IBS</option>
+					  		<option <?php echo($row["ibs_department_id"] == 0 ? 'selected' : '')?> >Отсутствует</option>
+					  		<?php
+					  		$query=mysql_query("SELECT * FROM `ibs_department` ORDER BY name");
+					  		while($row1 = mysql_fetch_assoc($query)){
+								echo "<option value=\"$row1[id_in_ibs]\"]";
+								echo ($row["ibs_department_id"] == $row1["id_in_ibs"] ? " selected" : '');								
+								echo " >$row1[name]</option>";
+							}
+							?>					  		
+					  	</select>
+					  </div>
+
+					  <div class="form-group">
+					  	<select class="form-control" name="ibs_sales_channel_id" style="background-color:#CCCCCC;" required>
+					  		<option value="" disabled>Наименование канала продаж в системе IBS</option>
+					  		<option <?php echo($row["ibs_sales_channel_id"] == 0 ? 'selected' : '')?> >Отсутствует</option>
+					  		<?php
+					  		$query=mysql_query("SELECT * FROM `ibs_sales_channel` ORDER BY name");
+					  		while($row1 = mysql_fetch_assoc($query)){
+								echo "<option value=\"$row1[id_in_ibs]\"";
+								echo ($row["ibs_sales_channel_id"] == $row1["id_in_ibs"] ? " selected" : '');	
+								echo ">$row1[name]</option>";
+							}
+							?>					  		
+					  	</select>
+					  </div>
+
+					  <div class="form-group">
+					  	<select class="form-control" name="ibs_sales_point_id" style="background-color:#CCCCCC;" required>
+					  		<option value="" disabled >Наименование точки продаж в системе IBS</option>
+					  		<option <?php echo($row["ibs_sales_point_id"] == 0 ? 'selected' : '')?> >Отсутствует</option>
+					  		<?php
+					  		$query=mysql_query("SELECT * FROM `ibs_sales_point` ORDER BY name");
+					  		while($row1 = mysql_fetch_assoc($query)){
+								echo "<option value=\"$row1[id_in_ibs]\"";
+								echo ($row["ibs_sales_point_id"] == $row1["id_in_ibs"] ? " selected" : '');									
+								echo ">$row1[name]</option>";
+							}
+							?>					  		
+					  	</select>
+					  </div>
+
+					  <hr align="center" size="2" />
+					  <div class="form-group">
 							<label class="checkbox-inline"><input type="checkbox" name="active" value="1" <?php echo($row["active"] == '1' ? ' checked' : '')?> >Подразделение активно</label>	    
 					  </div>
 

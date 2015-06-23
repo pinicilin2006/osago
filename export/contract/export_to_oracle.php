@@ -330,6 +330,9 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		$params['AGENT_SEX'] = $agent_data['sex'];
 		$params['UNIT_NAME'] = $unit_data['unit_full_name'];
 		$params['UNIT_CITY'] = $unit_data['unit_city'];
+		$params['IBS_DEPARTMENT_ID'] = $unit_data['ibs_department_id'];
+		$params['IBS_SALES_CHANNEL_ID'] = $unit_data['ibs_sales_channel_id'];
+		$params['IBS_SALES_POINT_ID'] = $unit_data['ibs_sales_point_id'];
 		if(!empty($agent_data['id_in_ibs'])){
 			$params['IBS_AGENT_ID'] = $agent_data['id_in_ibs'];
 		} else {
