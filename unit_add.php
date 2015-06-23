@@ -64,8 +64,22 @@ require_once('template/header.html');
 					  </div>
 
 					  <div class="form-group">
-					  	<select class="form-control" name="ibs_department_id" style="background-color:#CCCCCC;" required>
-					  		<option value="" disabled selected>Наименование подразделения в системе IBS</option>
+					  	<select class="form-control" name="ibs_department_phiz_id" style="background-color:#CCCCCC;" required>
+					  		<option value="" disabled selected>Наименование подразделения в системе IBS для физических лиц</option>
+					  		<option>Отсутствует</option>
+					  		<?php
+					  		$query=mysql_query("SELECT * FROM `ibs_department` ORDER BY name");
+					  		while($row = mysql_fetch_assoc($query)){
+								echo "<option value=\"$row[id_in_ibs]\" >$row[name]";								
+								echo "</option>";
+							}
+							?>					  		
+					  	</select>
+					  </div>
+
+					  <div class="form-group">
+					  	<select class="form-control" name="ibs_department_jur_id" style="background-color:#CCCCCC;" required>
+					  		<option value="" disabled selected>Наименование подразделения в системе IBS для юридических лиц</option>
 					  		<option>Отсутствует</option>
 					  		<?php
 					  		$query=mysql_query("SELECT * FROM `ibs_department` ORDER BY name");

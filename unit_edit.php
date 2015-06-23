@@ -42,10 +42,6 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".my
 					  <div class="form-group has-feedback">					    					    
 					      <input type="text" class="form-control input-sm" id="unit_address" name="unit_address" value='<?php echo $row["unit_address"]?>' placeholder="Адрес *" required>					      				    
 					  </div>
-					  
-					  <div class="form-group has-feedback">					    					    
-					      <input type="text" class="form-control input-sm" id="id_in_ibs" name="id_in_ibs" value="<?php echo ($row["id_in_ibs"] == 0 ? '' : $row["id_in_ibs"])?>" placeholder="ID в системе IBS">					      				    
-					  </div>
 
 					  <div class="form-group">
 					  		<select class="form-control" name="unit_parent_id" required>
@@ -69,16 +65,35 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id` = '".my
 					  </div>
 
 					  <hr align="center" size="2" />
+					  
+					  <div class="form-group has-feedback">					    					    
+					      <input type="text" class="form-control input-sm" id="id_in_ibs" style="background-color:#CCCCCC;" name="id_in_ibs" value="<?php echo ($row["id_in_ibs"] == 0 ? '' : $row["id_in_ibs"])?>" placeholder="ID в системе IBS">					      				    
+					  </div>
 
 					  <div class="form-group">
-					  	<select class="form-control" name="ibs_department_id" style="background-color:#CCCCCC;" required>
-					  		<option value="" disabled>Наименование подразделения в системе IBS</option>
-					  		<option <?php echo($row["ibs_department_id"] == 0 ? 'selected' : '')?> >Отсутствует</option>
+					  	<select class="form-control" name="ibs_department_phiz_id" style="background-color:#CCCCCC;" required>
+					  		<option value="" disabled>Наименование подразделения в системе IBS для физических диц</option>
+					  		<option <?php echo($row["ibs_department_phiz_id"] == 0 ? 'selected' : '')?> >Отсутствует</option>
 					  		<?php
 					  		$query=mysql_query("SELECT * FROM `ibs_department` ORDER BY name");
 					  		while($row1 = mysql_fetch_assoc($query)){
 								echo "<option value=\"$row1[id_in_ibs]\"]";
-								echo ($row["ibs_department_id"] == $row1["id_in_ibs"] ? " selected" : '');								
+								echo ($row["ibs_department_phiz_id"] == $row1["id_in_ibs"] ? " selected" : '');								
+								echo " >$row1[name]</option>";
+							}
+							?>					  		
+					  	</select>
+					  </div>
+
+					  <div class="form-group">
+					  	<select class="form-control" name="ibs_department_jur_id" style="background-color:#CCCCCC;" required>
+					  		<option value="" disabled>Наименование подразделения в системе IBS для юридических диц</option>
+					  		<option <?php echo($row["ibs_department_jur_id"] == 0 ? 'selected' : '')?> >Отсутствует</option>
+					  		<?php
+					  		$query=mysql_query("SELECT * FROM `ibs_department` ORDER BY name");
+					  		while($row1 = mysql_fetch_assoc($query)){
+								echo "<option value=\"$row1[id_in_ibs]\"]";
+								echo ($row["ibs_department_jur_id"] == $row1["id_in_ibs"] ? " selected" : '');								
 								echo " >$row1[name]</option>";
 							}
 							?>					  		
