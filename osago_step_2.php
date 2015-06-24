@@ -167,7 +167,7 @@ $category_code = array(
 				    	<label class="col-sm-4 control-label"><small>Место жительства (регистрации)</small></label>
 				    	<div class="col-sm-8" style="padding-top:2%">
 							<select class="form-control input-sm" name="subject" id="subject" required>
-					  			<option value="" disabled>Субъект РФ</option>
+					  			<option value="" selected disabled>Субъект РФ</option>
 						  		<?php
 						  		$query=mysql_query("SELECT * FROM `kt_subject` ORDER BY `name`");
 						  		while($row = mysql_fetch_assoc($query)){
@@ -296,7 +296,7 @@ $category_code = array(
 					    	<label class="col-sm-4 control-label"><small>Место жительства (регистрации)</small></label>
 					    	<div class="col-sm-8" style="padding-top:2%">
 								<select class="form-control input-sm" name="owner_subject" id="owner_subject" required>
-						  			<option value="" disabled>Субъект РФ</option>
+						  			<option value="" disabled selected>Субъект РФ</option>
 							  		<?php
 							  		$query=mysql_query("SELECT * FROM `kt_subject` ORDER BY `name`");
 							  		while($row = mysql_fetch_assoc($query)){

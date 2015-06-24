@@ -59,6 +59,9 @@ if($insurer == 1){
 	if(!$date_birth){
 		$err_text .= "<li class=\"text-danger\">Не указана дата рождения страхователя</li>";
 	}
+	if($first_name && $second_name && $third_name && $date_birth && mysql_num_rows(mysql_query("SELECT * FROM `bad_people` WHERE first_name = '".trim($first_name)."' AND second_name = '".trim($second_name)."' AND third_name = '".trim($third_name)."' AND date_of_birth = '".$date_birth."'"))>0){
+		$err_text .= "<li class=\"text-danger\">Страхователь находится в списке людей, страхование которых запрещено!</li>";
+	}	
 	if(!$doc_name){
 		$err_text .= "<li class=\"text-danger\">Не указано наименование документа удостоверяющего личность страхователя</li>";
 	}
