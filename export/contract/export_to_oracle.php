@@ -219,9 +219,9 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			$mark = $mark['name'];
 			$model = mysql_fetch_assoc(mysql_query("SELECT * FROM `model` WHERE `rsa_model_id`='".$vehicle_data['model']."'"));
 			$model = $model['name'];
-			$params['RSA_MARK_ID'] = $vehicle_data['mark'];
-			$params['RSA_MODEL_ID'] = $vehicle_data['model'];
 		}
+		$params['RSA_MARK_ID'] = $vehicle_data['mark'];
+		$params['RSA_MODEL_ID'] = $vehicle_data['model'];		
 		$category = mysql_fetch_assoc(mysql_query("SELECT * FROM `category_code` WHERE `id`='".$vehicle_data['category']."'"));
 		$category = $category['name'];
 		$params['VEHICLE_MARK'] = $mark;
