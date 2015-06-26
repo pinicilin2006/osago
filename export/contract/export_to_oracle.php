@@ -333,6 +333,11 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		$params['IBS_DEPARTMENT_ID'] = ($contract_data["insurer_type"] == 1 ? $unit_data['ibs_department_phiz_id'] : $unit_data['ibs_department_jur_id']);
 		$params['IBS_SALES_CHANNEL_ID'] = $unit_data['ibs_sales_channel_id'];
 		$params['IBS_SALES_POINT_ID'] = $unit_data['ibs_sales_point_id'];
+		if($contract_data["insurer_type"] == 1 && mysql_num_rows(mysql_query("SELECT * FROM `vip_people` WHERE first_name = '".$insurer_data['first_name']."' AND second_name = '".$insurer_data['second_name']."' AND third_name = '".$insurer_data['third_name']."' AND date_of_birth = '".$insurer_data['date_birth']."'"))>0){
+			$params['IBS_DEPARTMENT_ID'] = 8523;
+			$params['IBS_SALES_CHANNEL_ID'] = 14;
+			$params['IBS_SALES_POINT_ID'] = 0;			
+		}
 		if(!empty($agent_data['id_in_ibs'])){
 			$params['IBS_AGENT_ID'] = $agent_data['id_in_ibs'];
 		} else {
