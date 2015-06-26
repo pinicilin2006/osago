@@ -212,13 +212,8 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		$calc_data = unserialize($contract_data['calc_data']);
 		//Получаем марку и модель
 		if(isset($vehicle_data['mark_pts'])){
-			$mark = $vehicle_data['mark_pts'];
-			$model = $vehicle_data['model_pts'];
-		}else{
-			$mark = mysql_fetch_assoc(mysql_query("SELECT * FROM `mark` WHERE `rsa_mark_id`='".$vehicle_data['mark']."'"));
-			$mark = $mark['name'];
-			$model = mysql_fetch_assoc(mysql_query("SELECT * FROM `model` WHERE `rsa_model_id`='".$vehicle_data['model']."'"));
-			$model = $model['name'];
+			$params['RSA_MARK_PTS'] = $vehicle_data['mark_pts'];
+			$params['RSA_MODEL_PTS'] = $vehicle_data['model_pts'];
 		}
 		$params['RSA_MARK_ID'] = $vehicle_data['mark'];
 		$params['RSA_MODEL_ID'] = $vehicle_data['model'];		
