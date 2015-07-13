@@ -58,6 +58,9 @@ if(!$period_use && $place_reg != 2){
 if(!$drivers && $place_reg != 2){
 	$err_text .= "<li class=\"text-danger\">Не указано количество водителей, допущенных к управлению ТС</li>";
 }
+if($drivers && $drivers == 2 && !$driver_1 && $place_reg != 2){
+	$err_text .= "<li class=\"text-danger\">Не выбран ни один водитель, допущенный к управлению ТС</li>";
+}
 if(!$trailer){
 	$err_text .= "<li class=\"text-danger\">Отсутствует информация о прицепе</li>";
 }
@@ -282,6 +285,10 @@ echo '
 <b>Итоговый страховой тариф:</b> <span class="text-danger"><b>'.$t.'</b></span>
 <hr>
 ';
+if($t == 0){
+	echo "<br><ol class='text-danger text-center'>Произошла ошибка при расчёте страховой премии. Страховая премия не может быть равна нулю!</ol><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
+	exit();
+}
 //echo "<ul><li><h4>Коэффициенты:</h4>$koef</li><li><h4>Формула расчёта:</h4> $formula</li><li><h4>Итоговый страховой тариф:</h4> $t</li></ul><hr>";
 //echo "<p class=\"text-center\"><button type=\"button\" class=\"btn btn-success\" >Оформить полис</button></p>";
 if(isset($md5_id)){
