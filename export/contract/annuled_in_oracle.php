@@ -8,7 +8,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		$query_in_oracle = "UPDATE export_table SET annuled = 1 WHERE md5_id = '".$row['md5_id']."'";
 		$query_in_oracle = oci_parse($conn, $query_in_oracle);
 		if(oci_execute($query_in_oracle)){
-			echo 'Изменён статус договора '.$row['md5_id'];
+			//echo 'Изменён статус договора '.$row['md5_id'];
 		}	
 	}
 ?>
