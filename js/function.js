@@ -433,3 +433,18 @@ function period_use_end(period){
 		$("#auto_used_end_1").val(end_date);
 	}
 }
+
+function contract_table(){
+			$('#message').html('<center><b>Ожидайте. Производится загрузка договоров.</b> <br> <img src=\"/images/download.gif\"></center>');
+			var a = $("#filter_form").serialize();
+			$.ajax({
+			  type: "POST",
+			  url: '/ajax/contract_table.php',
+			  data: a,
+			  success: function(data) {
+			  	$("#message").html(data);
+			  	$("#contract_table").tablesorter(); 
+			  }
+			});
+			return false;
+}

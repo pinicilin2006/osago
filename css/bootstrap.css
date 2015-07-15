@@ -6187,3 +6187,9 @@ button.close {
     display: none !important;
   }
 }
+.block { 
+    background: #ffffff; 
+    padding: 5px; 
+    border: solid 1px #CCCCCC; 
+    border-radius: 4px;
+   }
