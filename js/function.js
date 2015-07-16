@@ -442,6 +442,7 @@ function contract_table(){
 			  url: '/ajax/contract_table.php',
 			  data: a,
 			  success: function(data) {
+			  	$("#message").html('');
 			  	$("#message").html(data);
 			  	$("#contract_table").tablesorter(); 
 			  }
