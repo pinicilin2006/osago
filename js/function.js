@@ -434,18 +434,31 @@ function period_use_end(period){
 	}
 }
 
-function contract_table(){
-			$('#message').html('<center><b>Ожидайте. Производится загрузка договоров.</b> <br> <img src=\"/images/download.gif\"></center>');
-			var a = $("#filter_form").serialize();
-			$.ajax({
-			  type: "POST",
-			  url: '/ajax/contract_table.php',
-			  data: a,
-			  success: function(data) {
-			  	$("#message").html('');
-			  	$("#message").html(data);
-			  	$("#contract_table").tablesorter(); 
-			  }
-			});
-			return false;
+// function contract_table(){
+// 			$('#message').html('<center><b>Ожидайте. Производится загрузка договоров.</b> <br> <img src=\"/images/download.gif\"></center>');
+// 			var a = $("#filter_form").serialize();
+// 			$.ajax({
+// 			  type: "POST",
+// 			  url: '/ajax/contract_table.php',
+// 			  data: a,
+// 			  success: function(data) {
+// 			  	$("#message").html('');
+// 			  	$("#message").html(data);
+// 			  	$("#contract_table").tablesorter(); 
+// 			  }
+// 			});
+// 			return false;
+// }
+function format_doc_series(a,b){
+	//a - вид документа
+	//b - для кого документ 1 - страхователь, 2 - собственник
+	var series = (b == '1'? 'doc_series' : 'owner_doc_series');
+	var number = (b == '1'? 'doc_number' : 'owner_doc_number');
+	if(a != '10'){
+		$('#'+series).unmask();
+		$('#'+number).unmask();
+		return false;
+	}
+		$('#'+series).mask('0000');
+		$('#'+number).mask('000000');
 }

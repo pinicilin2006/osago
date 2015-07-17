@@ -942,6 +942,21 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	$('#auto_diag_card_next_date').mask('00.00.0000');	
 	$('#start_date').mask('00.00.0000');
 	$('#start_time').mask('00:00');
+<?php
+if($insurer_data['doc_name'] == 10){
+?>	
+	$('#doc_series').mask('0000');
+	$('#doc_number').mask('000000');
+	
+<?php
+}
+if($contract_data['insurer_id'] != $contract_data['owner_id'] && $owner_data['doc_name'] == 10){
+?>
+	$('#owner_doc_series').mask('0000');
+	$('#owner_doc_number').mask('000000');		
+<?php
+}
+?>
 //Календарик	
 	$( ".date_birth" ).datepicker({
 	  dateFormat: "dd.mm.yy",
@@ -1004,7 +1019,16 @@ $(document).on("change", ".register", function(){
     var b = first + a.substr(1).toLowerCase();	
 	$(this).val(b);
 });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////Меняем формат полей при выборе документоа удостоверяющего личность
+$(document).on("change", "#doc_name", function(){
+	var a = $(this).val();
+	format_doc_series(a,'1');
+});
+$(document).on("change", "#owner_doc_name", function(){
+	var a = $(this).val();
+	format_doc_series(a,'2');
+});	
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 //Отображение адреса при загрузке договора на редактирование для страхователя
 		$('#message_0').html('');

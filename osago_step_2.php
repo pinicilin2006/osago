@@ -979,6 +979,10 @@ $(document).ready(function(){
 	$('#auto_diag_card_next_date').mask('00.00.0000');	
 	$('#start_date').mask('00.00.0000');
 	$('#start_time').mask('00:00');
+	$('#doc_series').mask('0000');
+	$('#owner_doc_series').mask('0000');
+	$('#doc_number').mask('000000');
+	$('#owner_doc_number').mask('000000');	
 //Календарик	
 	$( ".date_birth" ).datepicker({
 	  dateFormat: "dd.mm.yy",
@@ -1040,6 +1044,15 @@ $(document).on("change", ".register", function(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).on("keyup", "#power", function(){
 	onlyDigits(this);
+});
+//////////////////////////////Меняем формат полей при выборе документоа удостоверяющего личность
+$(document).on("change", "#doc_name", function(){
+	var a = $(this).val();
+	format_doc_series(a,'1');
+});
+$(document).on("change", "#owner_doc_name", function(){
+	var a = $(this).val();
+	format_doc_series(a,'2');
 });
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 	//отображение списка городов субъекта для страхователя
