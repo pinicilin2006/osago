@@ -348,7 +348,7 @@ echo '</ul>
 <script type="text/javascript">
 
 $(document).ready(function(){
-  
+ $("#contract_table").tablesorter();  
 //     $('#filter_form').submit(function( event ) {
 //     	$("#message").html('');
 //     	contract_table();
