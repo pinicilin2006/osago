@@ -207,7 +207,7 @@ if($contract_data["owner_type"] == 2){
 		$params['[OWNER_DISTRICT]'] = '------';
 	}
 	//Получаем область
-	$subject_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `kt_subject` WHERE `id_fias` = '".$insurer_data["subject"]."'"));
+	$subject_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `kt_subject` WHERE `id_fias` = '".$owner_data["subject"]."'"));
 	$params['[OWNER_SUBJECT]'] = $subject_data['name'];
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	$params['[OWNER_HOUSE]'] = $owner_data['house'];

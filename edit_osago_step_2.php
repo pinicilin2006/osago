@@ -139,7 +139,7 @@ $category_code = array(
 								?>    
 								</select>
 						      		<input type="text" class="form-control input-sm" name="doc_series" id="doc_series" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['doc_series'] : '') ?>" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="doc_number" id="doc_number" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['doc_number'] : '') ?>" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm only-number" name="doc_number" id="doc_number" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['doc_number'] : '') ?>" placeholder="Номер" required>
 						    	</div>
 						  	</div>						  	
 				  	</div>
@@ -157,14 +157,14 @@ $category_code = array(
 						    	<label class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm" name="jur_series" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_series'] : '') ?>' id="jur_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="jur_number" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_number'] : '') ?>' id="jur_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm only-number" name="jur_number" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_number'] : '') ?>' id="jur_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label for="jur_inn" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_inn" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_inn'] : '') ?>' id="jur_inn" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm only-number inn" name="jur_inn" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_inn'] : '') ?>' id="jur_inn" placeholder="Номер" required>
 						    	</div>
 						  	</div>				  	
 				  					  					  					  	
@@ -263,7 +263,7 @@ $category_code = array(
 								?>    
 								</select>
 						      		<input type="text" class="form-control input-sm" name="owner_doc_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['doc_series'] : '') ?>' id="owner_doc_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="owner_doc_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['doc_number'] : '') ?>' id="owner_doc_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm only-number" name="owner_doc_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['doc_number'] : '') ?>' id="owner_doc_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
 					  	<?php
@@ -283,16 +283,16 @@ $category_code = array(
 						  	<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label for="jur_name" class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
-						    	<div class="col-sm-8" style="padding-top:2%" id="jur_name">
-						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_series'] : '') ?>' placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm" name="owner_jur_name" id="owner_jur_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_number'] : '') ?>' placeholder="Номер" required>
+						    	<div class="col-sm-8" style="padding-top:2%">
+						      		<input type="text" class="form-control input-sm" name="owner_jur_series" id="owner_jur_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_series'] : '') ?>' placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm only-number" name="owner_jur_number" id="owner_jur_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_number'] : '') ?>' placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
 						  	<div class="form-group">
 						    	<label for="owner_jur_inn" class="col-sm-4 control-label"><small>ИНН юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="owner_jur_inn" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_inn'] : '') ?>' id="owner_jur_inn" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm only-number inn" name="owner_jur_inn" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_inn'] : '') ?>' id="owner_jur_inn" placeholder="Номер" required>
 						    	</div>
 						  	</div>				  	
 					  					  					  					  	
@@ -405,7 +405,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="power" class="col-sm-4 control-label"><small>Мощность двигателя ТС (л.с.)</small></label>
 					    	<div class="col-sm-2">
-					      		<input type="text" class="form-control input-sm" name="power" value='<?php echo $vehicle_data['power']?>' id="power" required>
+					      		<input type="text" class="form-control input-sm only-number" name="power" value='<?php echo $vehicle_data['power']?>' id="power" <?php echo ($_SESSION["step_1"]["category"] == 2 || $_SESSION["step_1"]["category"] == 3) ? ' required' : '' ?>>
 					    	</div>
 					  	</div>
 
@@ -434,7 +434,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="max_weight" class="col-sm-4 control-label"><small>Разрешенная максимальная масса</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="max_weight" id="max_weight" value='<?php echo (isset($vehicle_data['max_weight']) ? $vehicle_data['max_weight'] : '') ?>' placeholder="кг" required>
+					      		<input type="text" class="form-control input-sm only-number" name="max_weight" id="max_weight" value='<?php echo (isset($vehicle_data['max_weight']) ? $vehicle_data['max_weight'] : '') ?>' placeholder="кг" required>
 					    	</div>
 					  	</div>
 					  	
@@ -450,7 +450,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="number_seats" class="col-sm-4 control-label"><small>Количество пассажирских мест</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="number_seats" value='<?php echo (isset($vehicle_data['number_seats']) ? $vehicle_data['number_seats'] : '') ?>' id="number_seats" required>
+					      		<input type="text" class="form-control input-sm only-number" name="number_seats" value='<?php echo (isset($vehicle_data['number_seats']) ? $vehicle_data['number_seats'] : '') ?>' id="number_seats" required>
 					    	</div>
 					  	</div>
 					  	
@@ -483,7 +483,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_doc_number" class="col-sm-4 control-label rusonly"><small>Номер</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm" name="auto_doc_number" value='<?php echo $vehicle_data['auto_doc_number'] ?>' id="auto_doc_number" required>
+					      		<input type="text" class="form-control input-sm only-number" name="auto_doc_number" value='<?php echo $vehicle_data['auto_doc_number'] ?>' id="auto_doc_number" required>
 					    	</div>
 					  	</div>					  	
 
@@ -504,7 +504,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_diag_card_number" class="col-sm-4 control-label"><small>Номер:</small></label>
 						      	<div class="col-sm-8">
-						      	<input type="text" class="form-control input-sm" name="auto_diag_card_number" id="auto_diag_card_number" value='<?php echo (isset($step_2_data['auto_diag_card_number']) ? $step_2_data['auto_diag_card_number'] : '')?>' placeholder="Номер" maxlength="21" required>
+						      	<input type="text" class="form-control input-sm only-number" name="auto_diag_card_number" id="auto_diag_card_number" value='<?php echo (isset($step_2_data['auto_diag_card_number']) ? $step_2_data['auto_diag_card_number'] : '')?>' placeholder="Номер" maxlength="21" required>
 						      	</div>
 					  	</div>
 					  	<div class="form-group">
@@ -547,8 +547,15 @@ $category_code = array(
 					    	<label for="osago_old" class="col-sm-4 control-label"><small>Предыдущий договор обязательного страхования гражданской ответственности владельцев транспортных средств в отношении указанного транспортного средства:</small></label>
 						    	<div id="osago_old">
 							    	<div class="col-sm-8" style="padding-top:2%">
-							      		<input type="text" class="form-control input-sm" name="osago_old_series" value='<?php echo ($step_2_data['osago_old_series']) ?>' id="osago_old_series" placeholder="серия" maxlength="3">
-							      		<input type="text" class="form-control input-sm" name="osago_old_number" value='<?php echo ($step_2_data['osago_old_number']) ?>' id="osago_old_number" placeholder="номер" maxlength="10">
+							      		<select class="form-control input-sm" id="osago_old_series" name="osago_old_series">
+								  		<?php
+								  			$query = mysql_query("SELECT * FROM `bso_series` ORDER BY `id`");
+								  			while ($row = mysql_fetch_assoc($query)) {
+								  				echo '<option value='.$row["name"].' '.($row['name'] == $step_2_data['osago_old_series'] ? ' selected' : '').'>'.$row["name"].'</option>';
+								  			}
+								  		?>
+							      		</select>							      		
+							      		<input type="text" class="form-control input-sm only-number" name="osago_old_number" value='<?php echo ($step_2_data['osago_old_number']) ?>' id="osago_old_number" placeholder="номер" maxlength="10">
 							      		<input type="text" class="form-control input-sm" name="osago_old_name" value='<?php echo ($step_2_data['osago_old_name']) ?>' id="osago_old_name" placeholder="страховщик">
 							    	</div>
 							    </div>
@@ -577,7 +584,7 @@ $category_code = array(
 					      		<input type="text" class="form-control input-sm" id="driver_<?php echo $x ?>_third_name" name="driver_<?php echo $x ?>_third_name" value="<?php echo $step_2_data["driver_".$x."_third_name"] ?>" placeholder="Отчество" required>
 					      		<input type="text" class="form-control input-sm date_birth" id="driver_<?php echo $x ?>_date_birth" name="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" value="<?php echo $step_2_data["driver_".$x."_date_birth"] ?>" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" value="<?php echo $step_2_data["driver_".$x."_series"] ?>" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" value="<?php echo $step_2_data["driver_".$x."_number"] ?>" required>
+					      		<input type="text" class="form-control input-sm only-number" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" value="<?php echo $step_2_data["driver_".$x."_number"] ?>" required>
 								<select class="form-control input-sm" name="driver_<?php echo $x ?>_experience"  required>
 						  		<option value="" disabled>Стаж управления ТС соответствующей категории, полных лет</option>
 						  		<?php
@@ -882,6 +889,24 @@ $category_code = array(
 <div class="footer text-center">
 	<small>©<?php echo date("Y") ?>. <a href="https://www.sngi.ru">Страховое общество «Сургутнефтегаз».</a> Все права защищены.</small>
 </div>
+<!-- Модаль для отображения ошибок -->
+	<div class="modal fade" id="modal_error">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">Ошибка!</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p class="text-danger"><span id="modal_error_text"></span></p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+<!------------------------------------------------------------------------------------>
 </body>
 </html>
 <script type="text/javascript">
@@ -1009,7 +1034,7 @@ if($contract_data['insurer_id'] != $contract_data['owner_id'] && $owner_data['do
 	  showOn: "focus"
 	});
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$(document).on("keyup", "#power", function(){
+$(document).on("keyup", ".only-number", function(){
 	onlyDigits(this);
 });
 //////////////////////////////Делаем первую букву заглавной а остальные маленькими в ФИО/////////////////////
@@ -1028,6 +1053,19 @@ $(document).on("change", "#doc_name", function(){
 $(document).on("change", "#owner_doc_name", function(){
 	var a = $(this).val();
 	format_doc_series(a,'2');
+});
+//////////////////////////////Проверка на правильность ИНН///////////////////////////////////////////////////
+$(document).on("change", ".inn", function(){
+	var a = $(this).val();
+	var id = $(this).attr('id');
+	if(!is_valid_inn(a)){
+		$('#modal_error_text').html('Неверно указан номер ИНН!');
+		$('#modal_error').modal();
+		$('#modal_error').on('hidden.bs.modal', function (e) {
+			$('#'+id).focus();
+		})		
+		$(this).val('');
+	}
 });	
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 //Отображение адреса при загрузке договора на редактирование для страхователя

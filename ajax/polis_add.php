@@ -88,6 +88,9 @@ if($insurer == 2){
 	}
 	if(!$jur_inn){
 		$err_text .= "<li class=\"text-danger\">Не указан ИНН юр. лица </li>";
+	}
+	if($jur_inn && !is_valid_inn($jur_inn)){
+		$err_text .= "<li class=\"text-danger\">Не верно указан ИНН</li>";
 	}		
 }
 //проверкра на адрес

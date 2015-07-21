@@ -50,6 +50,12 @@ function onlyDigits(input) {//разрешаем воода только циф�
     } 
 }
 
+function onlykyreng(input) {//разрешаем воода только цифр и точки
+	var value = input.value; 
+    value = value.replace(/[0-9*/\\,.\?@\!#]+$/, '');
+    input.value = value; 
+}
+
 function validateDateBirth_1(){
 		var date_birth = $("#date_birth").val();
 		var date = new Date(date_birth.replace(/(\d+).(\d+).(\d+)/, '$2/$1/$3'));
@@ -69,33 +75,34 @@ function validateDateBirth_1(){
 		}
 }
 
-// function add_policy(){
-// 			var a = $("#main_form").serialize();
-// 			$.ajax({
-// 			  type: "POST",
-// 			  url: 'ajax/add_policy.php',
-// 			  data: a,
-// 			  success: function(data) {
-// 			  	$("#block_0").slideUp(400);
-// 			  	$("#message_1").html(data);
-// 			  }
-// 			});
-// 			return false;
-// }
-//
-// function edit_policy(){
-// 			var a = $("#main_form").serialize();
-// 			$.ajax({
-// 			  type: "POST",
-// 			  url: 'ajax/edit_policy.php',
-// 			  data: a,
-// 			  success: function(data) {
-// 			  	$("#block_0").slideUp(400);
-// 			  	$("#message_1").html(data);
-// 			  }
-// 			});
-// 			return false;
-// }
+// Функция для проверки правильности ИНН
+function is_valid_inn(i){
+	    if ( i.match(/\D/) ) return false;	    
+	    var inn = i.match(/(\d)/g);
+	    if ( inn.length == 10 )
+	    {
+	        return inn[9] == String(((
+	            2*inn[0] + 4*inn[1] + 10*inn[2] + 
+	            3*inn[3] + 5*inn[4] +  9*inn[5] + 
+	            4*inn[6] + 6*inn[7] +  8*inn[8]
+	        ) % 11) % 10);
+	    }
+	    else if ( inn.length == 12 )
+	    {
+	        return inn[10] == String(((
+	             7*inn[0] + 2*inn[1] + 4*inn[2] +
+	            10*inn[3] + 3*inn[4] + 5*inn[5] +
+	             9*inn[6] + 4*inn[7] + 6*inn[8] +
+	             8*inn[9]
+	        ) % 11) % 10) && inn[11] == String(((
+	            3*inn[0] +  7*inn[1] + 2*inn[2] +
+	            4*inn[3] + 10*inn[4] + 3*inn[5] +
+	            5*inn[6] +  9*inn[7] + 4*inn[8] +
+	            6*inn[9] +  8*inn[10]
+	        ) % 11) % 10);
+	    }    
+	    return false;
+}
 
 function add_user(){
 			var a = $("#main_form").serialize();
