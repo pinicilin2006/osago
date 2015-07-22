@@ -84,21 +84,21 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name register" name="second_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[0] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[0] : '') ?>' id="second_name" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm phiz_name register phiz_name_format" name="second_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[0] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[0] : '') ?>' id="second_name" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name register" name="first_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[1] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[1] : '') ?>' id="first_name" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm phiz_name register phiz_name_format" name="first_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[1] : '') ?><?php echo ($fio_data_1 ? $fio_data_1[1] : '') ?>' id="first_name" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name register" name="third_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[2].($fio_data[3] ? ' '.$fio_data[3] : '') : '') ?><?php echo ($fio_data_1 ? $fio_data_1[2].($fio_data_1[3] ? ' '.$fio_data_1[3] : '') : '') ?>' id="third_name" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm phiz_name register phiz_name_format" name="third_name" value='<?php echo ($fio_data && $_SESSION['step_1']['type_ins'] != 'jur' ? $fio_data[2].($fio_data[3] ? ' '.$fio_data[3] : '') : '') ?><?php echo ($fio_data_1 ? $fio_data_1[2].($fio_data_1[3] ? ' '.$fio_data_1[3] : '') : '') ?>' id="third_name" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
@@ -147,7 +147,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_series" id="jur_series" placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm only-number" name="jur_series" id="jur_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm only-number" name="jur_number" id="jur_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
@@ -217,21 +217,21 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="owner_second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm register" name="owner_second_name" id="owner_second_name" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm register phiz_name_format" name="owner_second_name" id="owner_second_name" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm register" name="owner_first_name" id="owner_first_name" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm register phiz_name_format" name="owner_first_name" id="owner_first_name" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm register" name="owner_third_name" id="owner_third_name" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm register phiz_name_format" name="owner_third_name" id="owner_third_name" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
@@ -275,7 +275,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="jur_name" class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%" id="jur_name">
-						      		<input type="text" class="form-control input-sm" name="owner_jur_series" id="owner_jur_series" placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm only-number" name="owner_jur_series" id="owner_jur_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm only-number" name="owner_jur_number" id="owner_jur_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
@@ -570,9 +570,9 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="driver_<?php echo $x ?>" class="col-sm-4 control-label"><small>Данные водителя №<?php echo $x ?>:</small></label>
 					    	<div class="col-sm-8" id="driver_<?php echo $x ?>">
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_second_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[0] : '') ?>' id="driver_<?php echo $x ?>_second_name" placeholder="Фамилия" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_first_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[1] : '') ?>' id="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_third_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[2].${'fio_data_'.$x}[3] : '') ?>' id="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
+					      		<input type="text" class="form-control input-sm drivers_name" name="driver_<?php echo $x ?>_second_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[0] : '') ?>' id="driver_<?php echo $x ?>_second_name" placeholder="Фамилия" required>
+					      		<input type="text" class="form-control input-sm drivers_name" name="driver_<?php echo $x ?>_first_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[1] : '') ?>' id="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
+					      		<input type="text" class="form-control input-sm drivers_name" name="driver_<?php echo $x ?>_third_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[2].${'fio_data_'.$x}[3] : '') ?>' id="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
 					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["birth_$x"] : '' ) ?>' id="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["ser_$x"] : '' ) ?>' placeholder="Серия водительского удостоврения" required>
 					      		<input type="text" class="form-control input-sm only-number" name="driver_<?php echo $x ?>_number" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["num_$x"] : '' ) ?>' placeholder="Номер водительского удостовренеия" required>
@@ -1070,7 +1070,10 @@ $(document).on("change", ".register", function(){
 $(document).on("keyup", ".only-number", function(){
 	onlyDigits(this);
 });
-$(document).on("keyup", ".phiz_name", function(){
+$(document).on("keyup", ".phiz_name_format", function(){
+	onlykyreng(this);
+});
+$(document).on("keyup", ".drivers_name", function(){
 	onlykyreng(this);
 });
 //////////////////////////////Меняем формат полей при выборе документоа удостоверяющего личность

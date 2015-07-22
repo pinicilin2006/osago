@@ -102,28 +102,28 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm phiz_name register" name="second_name" id="second_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['second_name'] : '') ?>" placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm phiz_name phiz_name_format register" name="second_name" id="second_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['second_name'] : '') ?>" placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
-						    	<label for="first_name" class="col-sm-4 control-label phiz_name"><small>Имя</small></label>
+						    	<label for="first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm register" name="first_name" id="first_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['first_name'] : '') ?>" placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm register phiz phiz_name_format" name="first_name" id="first_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['first_name'] : '') ?>" placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
-						    	<label for="third_name" class="col-sm-4 control-label phiz_name"><small>Отчество</small></label>
+						    	<label for="third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm register" name="third_name" id="third_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['third_name'] : '') ?>" placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm register phiz_name phiz_name_format" name="third_name" id="third_name" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['third_name'] : '') ?>" placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
-						    	<label for="date_birth" class="col-sm-4 control-label phiz_name"><small>Дата рождения</small></label>
+						    	<label for="date_birth" class="col-sm-4 control-label"><small>Дата рождения</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm date_birth" name="date_birth" id="date_birth" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['date_birth'] : '') ?>" placeholder="Дата рождения" required>
+						      		<input type="text" class="form-control input-sm date_birth phiz_name" name="date_birth" id="date_birth" value="<?php echo ($contract_data["insurer_type"] == '1' ? $insurer_data['date_birth'] : '') ?>" placeholder="Дата рождения" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -156,7 +156,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="jur_series" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_series'] : '') ?>' id="jur_series" placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm only-number" name="jur_series" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_series'] : '') ?>' id="jur_series" placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm only-number" name="jur_number" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_number'] : '') ?>' id="jur_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
@@ -226,21 +226,21 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="owner_second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm register" name="owner_second_name" id="owner_second_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['second_name'] : '') ?>' placeholder="Фамилия" required>
+						      		<input type="text" class="form-control input-sm register phiz_name_format" name="owner_second_name" id="owner_second_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['second_name'] : '') ?>' placeholder="Фамилия" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_first_name" class="col-sm-4 control-label"><small>Имя</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm register" name="owner_first_name" id="owner_first_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['first_name'] : '') ?>' placeholder="Имя" required>
+						      		<input type="text" class="form-control input-sm register phiz_name_format" name="owner_first_name" id="owner_first_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['first_name'] : '') ?>' placeholder="Имя" required>
 						    	</div>
 						  	</div>
 
 						  	<div class="form-group">
 						    	<label for="owner_third_name" class="col-sm-4 control-label"><small>Отчество</small></label>
 						    	<div class="col-sm-8">
-						      		<input type="text" class="form-control input-sm register" name="owner_third_name" id="owner_third_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['third_name'] : '') ?>' placeholder="Отчество" required>
+						      		<input type="text" class="form-control input-sm register phiz_name_format" name="owner_third_name" id="owner_third_name" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '1' ? $owner_data['third_name'] : '') ?>' placeholder="Отчество" required>
 						    	</div>
 						  	</div>
 
@@ -284,7 +284,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="jur_name" class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm" name="owner_jur_series" id="owner_jur_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_series'] : '') ?>' placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm only-number" name="owner_jur_series" id="owner_jur_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_series'] : '') ?>' placeholder="Серия" required>
 						      		<input type="text" class="form-control input-sm only-number" name="owner_jur_number" id="owner_jur_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_number'] : '') ?>' placeholder="Номер" required>
 						    	</div>
 						  	</div>
@@ -579,9 +579,9 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="driver_<?php echo $x ?>" class="col-sm-4 control-label"><small>Данные водителя №<?php echo $x ?>:</small></label>
 					    	<div class="col-sm-8" id="driver_<?php echo $x ?>">
-					      		<input type="text" class="form-control input-sm" id="driver_<?php echo $x ?>_second_name" name="driver_<?php echo $x ?>_second_name" value="<?php echo $step_2_data["driver_".$x."_second_name"] ?>" placeholder="Фамилия" required>
-					      		<input type="text" class="form-control input-sm" id="driver_<?php echo $x ?>_first_name" name="driver_<?php echo $x ?>_first_name" value="<?php echo $step_2_data["driver_".$x."_first_name"] ?>" placeholder="Имя" required>
-					      		<input type="text" class="form-control input-sm" id="driver_<?php echo $x ?>_third_name" name="driver_<?php echo $x ?>_third_name" value="<?php echo $step_2_data["driver_".$x."_third_name"] ?>" placeholder="Отчество" required>
+					      		<input type="text" class="form-control input-sm drivers_name" id="driver_<?php echo $x ?>_second_name" name="driver_<?php echo $x ?>_second_name" value="<?php echo $step_2_data["driver_".$x."_second_name"] ?>" placeholder="Фамилия" required>
+					      		<input type="text" class="form-control input-sm drivers_name" id="driver_<?php echo $x ?>_first_name" name="driver_<?php echo $x ?>_first_name" value="<?php echo $step_2_data["driver_".$x."_first_name"] ?>" placeholder="Имя" required>
+					      		<input type="text" class="form-control input-sm drivers_name" id="driver_<?php echo $x ?>_third_name" name="driver_<?php echo $x ?>_third_name" value="<?php echo $step_2_data["driver_".$x."_third_name"] ?>" placeholder="Отчество" required>
 					      		<input type="text" class="form-control input-sm date_birth" id="driver_<?php echo $x ?>_date_birth" name="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" value="<?php echo $step_2_data["driver_".$x."_date_birth"] ?>" required>
 					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" placeholder="Серия водительского удостоврения" value="<?php echo $step_2_data["driver_".$x."_series"] ?>" required>
 					      		<input type="text" class="form-control input-sm only-number" name="driver_<?php echo $x ?>_number" placeholder="Номер водительского удостовренеия" value="<?php echo $step_2_data["driver_".$x."_number"] ?>" required>
@@ -1036,6 +1036,12 @@ if($contract_data['insurer_id'] != $contract_data['owner_id'] && $owner_data['do
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).on("keyup", ".only-number", function(){
 	onlyDigits(this);
+});
+$(document).on("keyup", ".phiz_name_format", function(){
+	onlykyreng(this);
+});
+$(document).on("keyup", ".drivers_name", function(){
+	onlykyreng(this);
 });
 //////////////////////////////Делаем первую букву заглавной а остальные маленькими в ФИО/////////////////////
 $(document).on("change", ".register", function(){
