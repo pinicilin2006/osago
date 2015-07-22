@@ -478,7 +478,7 @@ function format_auto_doc(){//смена формата полей докумен
 		$('#auto_doc_number').mask('000000');
 	}
 	if(a == '2'){
-		$('#auto_doc_series').mask('00RR');
+		$('#auto_doc_series').mask('00KK');
 		$('#auto_doc_number').mask('000000');
 	}	
 	if(a == '4'){
