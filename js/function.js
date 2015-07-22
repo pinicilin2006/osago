@@ -469,3 +469,19 @@ function format_doc_series(a,b){
 		$('#'+series).mask('0000');
 		$('#'+number).mask('000000');
 }
+
+function format_auto_doc(){//смена формата полей документа о регистрации ТС
+	var a = $('#auto_doc_type').val();
+	if(a == '1'){
+		$('#auto_doc_series').mask('00RR');
+		$('#auto_doc_number').mask('000000');
+	}
+	if(a == '2'){
+		$('#auto_doc_series').mask('0000');
+		$('#auto_doc_number').mask('000000');
+	}	
+	if(a == '4'){
+		$('#auto_doc_series').mask('RR');
+		$('#auto_doc_number').mask('000000');
+	}		
+}
