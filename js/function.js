@@ -50,7 +50,8 @@ function onlyDigits(input) {//разрешаем воода только циф�
     } 
 }
 
-function onlykyreng(input) {//разрешаем воода только цифр и точки
+
+function onlykyreng(input) {
 	var value = input.value; 
     value = value.replace(/[0-9*/\\,.\?@\!#]+$/, '');
     input.value = value; 
