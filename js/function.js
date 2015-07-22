@@ -473,15 +473,15 @@ function format_doc_series(a,b){
 
 function format_auto_doc(){//смена формата полей документа о регистрации ТС
 	var a = $('#auto_doc_type').val();
-	if(a == '1'){
+	if(a == '1'){//ПТС
 		$('#auto_doc_series').mask('00RR');
 		$('#auto_doc_number').mask('000000');
 	}
-	if(a == '2'){
+	if(a == '2'){//Свидетельство о регистрации
 		$('#auto_doc_series').mask('00KK');
 		$('#auto_doc_number').mask('000000');
 	}	
-	if(a == '4'){
+	if(a == '4'){//ПСМ
 		$('#auto_doc_series').mask('RR');
 		$('#auto_doc_number').mask('000000');
 	}		
