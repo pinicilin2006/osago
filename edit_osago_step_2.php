@@ -475,7 +475,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_doc_series" class="col-sm-4 control-label"><small>Серия</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm rusonly" style="text-transform:uppercase;" name="auto_doc_series" value='<?php echo $vehicle_data['auto_doc_series'] ?>' id="auto_doc_series" required>
+					      		<input type="text" class="form-control input-sm rusonly" name="auto_doc_series" value='<?php echo $vehicle_data['auto_doc_series'] ?>' id="auto_doc_series" required>
 					    	</div>
 					  	</div>
 
@@ -783,7 +783,7 @@ $category_code = array(
 							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_1" value='<?php echo (isset($step_2_data['auto_used_start_1']) ? $step_2_data['auto_used_start_1'] : '') ?>' id="auto_used_start_1" placeholder="c" required>
 							      		</div>
 							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_1" value='<?php echo (isset($step_2_data['auto_used_end_1']) ? $step_2_data['auto_used_end_1'] : '') ?>' id="auto_used_end_1" placeholder="по" required>
+							      			<input type="text" class="form-control input-sm auto_used <?php echo ($_SESSION["step_1"]['place_reg'] == 3 ? '' : 'auto_used')?>" name="auto_used_end_1" <?php echo ($_SESSION["step_1"]['place_reg'] == 3 ? 'readonly' : '')?> value='<?php echo (isset($step_2_data['auto_used_end_1']) ? $step_2_data['auto_used_end_1'] : '') ?>' id="auto_used_end_1" placeholder="по" required>
 							      		</div>
 							      		<div class="col-sm-6">
 							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_2" value='<?php echo (isset($step_2_data['auto_used_start_2']) ? $step_2_data['auto_used_start_2'] : '') ?>' id="auto_used_start_2" placeholder="c">

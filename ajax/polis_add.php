@@ -175,6 +175,26 @@ if($_SESSION['step_1']['category'] == 2 || $_SESSION['step_1']['category'] == 3)
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}			
 }
+////////////////////////////////Проверка периодов страхования//////////////////////////////////////////////
+if($auto_used_start_1 && $auto_used_end_1){
+	if(strtotime($auto_used_start_1) > strtotime($auto_used_end_1)){
+		$err_text .= "<li class=\"text-danger\">Дата <b>окончания</b> первого периода использования ТС не может быть меньше даты <b>начала</b> первого периода ТС!</li>";
+	}
+	if($_SESSION['step_1']['place_reg'] == 3 && date('d.m.Y', strtotime($auto_used_end_1 . "-19 days")) != $auto_used_start_1){
+		$err_text .= "<li class=\"text-danger\">Неверно указан период №1 использования ТС! </li>";
+	}
+}
+if($auto_used_start_2 && $auto_used_end_2){
+	if(strtotime($auto_used_start_2) > strtotime($auto_used_end_2)){
+		$err_text .= "<li class=\"text-danger\">Дата <b>окончания</b> второго периода использования ТС не может быть меньше даты <b>начала</b> второго периода ТС!</li>";
+	}
+}
+if($auto_used_start_3 && $auto_used_end_3){
+	if(strtotime($auto_used_start_3) > strtotime($auto_used_end_3)){
+		$err_text .= "<li class=\"text-danger\">Дата <b>окончания</b> третьего периода использования ТС не может быть меньше даты <b>начала</b> третьего периода ТС!</li>";
+	}
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // if(!$start_time){
 // 	$err_text .= "<li class=\"text-danger\">Не указано время начала действия договора страхования</li>";
 // }
