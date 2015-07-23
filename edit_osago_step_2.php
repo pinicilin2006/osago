@@ -156,8 +156,8 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm only-number" name="jur_series" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_series'] : '') ?>' id="jur_series" placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm only-number" name="jur_number" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_number'] : '') ?>' id="jur_number" placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm only-number-2" name="jur_series" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_series'] : '') ?>' id="jur_series" placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm only-number-2" name="jur_number" value='<?php echo ($contract_data["insurer_type"] == '2' ? $insurer_data['jur_number'] : '') ?>' id="jur_number" placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -284,8 +284,8 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label for="jur_name" class="col-sm-4 control-label"><small>Свидетельство о регистрации юридического лица</small></label>
 						    	<div class="col-sm-8" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm only-number" name="owner_jur_series" id="owner_jur_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_series'] : '') ?>' placeholder="Серия" required>
-						      		<input type="text" class="form-control input-sm only-number" name="owner_jur_number" id="owner_jur_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_number'] : '') ?>' placeholder="Номер" required>
+						      		<input type="text" class="form-control input-sm only-number-2" name="owner_jur_series" id="owner_jur_series" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_series'] : '') ?>' placeholder="Серия" required>
+						      		<input type="text" class="form-control input-sm only-number-2" name="owner_jur_number" id="owner_jur_number" value='<?php echo ($contract_data['insurer_id'] != $contract_data['owner_id'] && $contract_data["owner_type"] == '2' ? $owner_data['jur_number'] : '') ?>' placeholder="Номер" required>
 						    	</div>
 						  	</div>
 						  	<hr class="hr_line">
@@ -1036,6 +1036,9 @@ if($contract_data['insurer_id'] != $contract_data['owner_id'] && $owner_data['do
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).on("keyup", ".only-number", function(){
 	onlyDigits(this);
+});
+$(document).on("keyup", ".only-number-2", function(){
+	onlyDigits_2(this);
 });
 $(document).on("keyup", ".phiz_name_format", function(){
 	onlykyreng(this);

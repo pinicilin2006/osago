@@ -50,6 +50,14 @@ function onlyDigits(input) {//разрешаем воода только циф�
     } 
 }
 
+function onlyDigits_2(input) {//разрешаем воода только цифр и точки
+	var value = input.value; 
+    var rep = /[^0-9]/; 
+    if (rep.test(value)) { 
+        value = value.replace(rep, ''); 
+        input.value = value; 
+    } 
+}
 
 function onlykyreng(input) {
 	var value = input.value; 

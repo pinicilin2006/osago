@@ -93,6 +93,17 @@ if($insurer == 2){
 		$err_text .= "<li class=\"text-danger\">Не верно указан ИНН</li>";
 	}		
 }
+//Проверка на присутствие допущенных людей в списке лец страховать которых нельзя
+//Данные по водителям
+if($_SESSION["step_1"]["drivers"] == 2){
+	for($x=1;$x<6;$x++){
+		if(isset($_SESSION["step_1"]["driver_$x"])){
+			if(mysql_num_rows(mysql_query("SELECT * FROM `bad_people` WHERE first_name = '".trim(${"driver_".$x."_first_name"})."' AND second_name = '".trim(${"driver_".$x."_second_name"})."' AND third_name = '".trim(${"driver_".$x."_third_name"})."' AND date_of_birth = '".${"driver_".$x."_date_birth"}."'"))>0){
+				$err_text .= '<li class="text-danger">Страхование '.${"driver_".$x."_second_name"}.' '.${"driver_".$x."_first_name"}.' '.${"driver_".$x."_third_name"}.' запрещенно!</li>';
+			}
+		}
+	}
+}
 //проверкра на адрес
 if(!$subject){
 	$err_text .= "<li class=\"text-danger\">Не указан субъект РФ</li>";
@@ -294,7 +305,7 @@ if(isset($model_pts)){
 $vehicle_data = serialize($vehicle_data);
 
 //Данные по водителям
-if($_SESSION["step_1"]["driver"] == 1){
+if($_SESSION["step_1"]["drivers"] == 1){
 	$drivers_data = '';
 } else {
 	$number_of_drivers = 0;
