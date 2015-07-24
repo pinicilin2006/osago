@@ -370,9 +370,9 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		// exit();
 	//Запихиваем данные в IBS
 		foreach ($oracle_query as $key => $val) {
-			if($contract_data['id'] == 9743){
-				echo $val.'____________';			
-			}
+			// if($contract_data['id'] == 9743){
+			// 	echo $val.'____________';			
+			// }
 			$query_in_oracle = oci_parse($conn, $val);
 			if(!$query_in_oracle){
 				//echo 'asdasasd';
@@ -386,10 +386,10 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 				// 	//echo 'Не получилось изменить статус отправки данных договора в систему IBS  в базе mysql';
 				// }
 			} else {
-				// echo $contract_data['id'];
-			 //    $e = oci_error($query_in_oracle);  // Для обработки ошибок oci_execute
-			 //    print htmlentities($e['message']);
-			 //    echo "<br>";
+				echo $contract_data['id'];
+			    $e = oci_error($query_in_oracle);  // Для обработки ошибок oci_execute
+			    print htmlentities($e['message']);
+			    echo "<br>";
 			    // print "\n<pre>\n";
 			    // print htmlentities($e['sqltext']);
 			    // printf("\n%".($e['offset']+1)."s", "^");
