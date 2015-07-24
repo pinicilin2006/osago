@@ -370,6 +370,9 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		// exit();
 	//Запихиваем данные в IBS
 		foreach ($oracle_query as $key => $val) {
+			if($contract_data == 9743){
+				echo $val.'____________';			
+			}
 			$query_in_oracle = oci_parse($conn, $val);
 			if(!$query_in_oracle){
 				//echo 'asdasasd';
