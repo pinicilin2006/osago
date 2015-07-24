@@ -388,6 +388,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			} else {
 				echo $contract_data['id'];
 			    $e = oci_error($query_in_oracle);  // Для обработки ошибок oci_execute
+			    echo '<br>';
 			    print htmlentities($e['message']);
 			    echo "<br>";
 			    // print "\n<pre>\n";
