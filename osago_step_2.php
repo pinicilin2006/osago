@@ -574,8 +574,8 @@ $category_code = array(
 					      		<input type="text" class="form-control input-sm drivers_name" name="driver_<?php echo $x ?>_first_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[1] : '') ?>' id="driver_<?php echo $x ?>_first_name" placeholder="Имя" required>
 					      		<input type="text" class="form-control input-sm drivers_name" name="driver_<?php echo $x ?>_third_name" value='<?php echo (${'fio_data_'.$x} ? ${'fio_data_'.$x}[2].${'fio_data_'.$x}[3] : '') ?>' id="driver_<?php echo $x ?>_third_name" placeholder="Отчество" required>
 					      		<input type="text" class="form-control input-sm date_birth" name="driver_<?php echo $x ?>_date_birth" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["birth_$x"] : '' ) ?>' id="driver_<?php echo $x ?>_date_birth" placeholder="Дата рождения" required>
-					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["ser_$x"] : '' ) ?>' placeholder="Серия водительского удостоврения" required>
-					      		<input type="text" class="form-control input-sm only-number" name="driver_<?php echo $x ?>_number" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["num_$x"] : '' ) ?>' placeholder="Номер водительского удостовренеия" required>
+					      		<input type="text" class="form-control input-sm" name="driver_<?php echo $x ?>_series" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["ser_$x"] : '' ) ?>' placeholder="Серия водительского удостоверения" required>
+					      		<input type="text" class="form-control input-sm only-number" name="driver_<?php echo $x ?>_number" value='<?php echo (${'fio_data_'.$x} ? $_SESSION['kbm']["num_$x"] : '' ) ?>' placeholder="Номер водительского удостоверения" required>
 								<select class="form-control input-sm" name="driver_<?php echo $x ?>_experience"  required>
 						  		<option value="" disabled selected>Стаж управления ТС соответствующей категории, полных лет</option>
 						  		<?php

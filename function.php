@@ -181,4 +181,9 @@ function is_valid_inn( $inn )
     return false;
 }
 
+//Проверка на корректность даты
+function valid_date($date) {
+    return preg_match('/^(\\d{2})\\.(\\d{2})\\.(\\d{4})$/', $date, $m)
+        && checkdate($m[2], $m[1], $m[3]);
+}
 ?>

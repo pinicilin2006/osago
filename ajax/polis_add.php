@@ -174,6 +174,97 @@ if($_SESSION['step_1']['category'] == 2 || $_SESSION['step_1']['category'] == 3)
 	if($_SESSION['step_1']['capacity'] == 6 && $power <150){
 		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства</li>";
 	}			
+	if($power < 23 || $power > 2719){
+		$err_text .= "<li class=\"text-danger\">Неверно указана мощность транспортного средства. Минимально допустимое занчение 23, максимальное 2719</li>";
+	}
+}
+//Ограничения по весу для категорий С
+if($_SESSION['step_1']['category'] == 4){
+	if($max_weight < 3500){
+		$err_text .= "<li class=\"text-danger\">Разрешённая максимальная масса не может быть меньше 3500 кг</li>";
+	}
+	if($max_weight > 16000){
+		$err_text .= "<li class=\"text-danger\">Разрешённая максимальная масса не может быть более 16000 кг</li>";
+	}	
+}
+if($_SESSION['step_1']['category'] == 5){
+	if($max_weight < 16000){
+		$err_text .= "<li class=\"text-danger\">Разрешённая максимальная масса не может быть меньше 16000 кг</li>";
+	}
+	if($max_weight > 100000){
+		$err_text .= "<li class=\"text-danger\">Разрешённая максимальная масса не может быть более 100000 кг</li>";
+	}	
+}
+//Ограничение по количеству пассажирских мест для категории D
+if($_SESSION['step_1']['category'] == 6){
+	if($max_weight < 8){
+		$err_text .= "<li class=\"text-danger\">Минимальное число пассажиров не может быть меньше 6</li>";
+	}
+	if($max_weight > 16){
+		$err_text .= "<li class=\"text-danger\">Максимальное число пассажиров не может быть более 16</li>";
+	}	
+}
+if($_SESSION['step_1']['category'] == 7){
+	if($max_weight < 16){
+		$err_text .= "<li class=\"text-danger\">Максимальное число пассажиров не может быть меньше 16</li>";
+	}
+	if($max_weight > 200){
+		$err_text .= "<li class=\"text-danger\">Максимальное число пассажиров не может быть более 200</li>";
+	}	
+}
+//Проверка на возраст водителя
+//Данные по водителям
+if($_SESSION["step_1"]["drivers"] == 2){
+	for($x=1;$x<6;$x++){
+		if(isset($_SESSION["step_1"]["driver_$x"])){
+			if(empty(${"driver_".$x."_first_name"})){
+				$err_text .= "<li class=\"text-danger\">Не указано имя водителя №".$x."</li>";
+			}
+			if(empty(${"driver_".$x."_second_name"})){
+				$err_text .= "<li class=\"text-danger\">Не указана фамилия водителя №".$x."</li>";
+			}
+			if(empty(${"driver_".$x."_third_name"})){
+				$err_text .= "<li class=\"text-danger\">Не указано отчество водителя №".$x."</li>";
+			}
+			if(empty(${"driver_".$x."_date_birth"})){
+				$err_text .= "<li class=\"text-danger\">Не указана дата рождения водителя №".$x."</li>";
+			}
+			if(empty(${"driver_".$x."_series"})){
+				$err_text .= "<li class=\"text-danger\">Не указана серия водительского удостоверения водителя №".$x."</li>";
+			}
+			if(empty(${"driver_".$x."_number"})){
+				$err_text .= "<li class=\"text-danger\">Не указан номер водительского удостоверения водителя №".$x."</li>";
+			}
+			if(empty(${"driver_".$x."_experience"}) && ${"driver_".$x."_experience"} != 0){
+				$err_text .= "<li class=\"text-danger\">Не указан стаж водителя №".$x."</li>";
+			}
+			if(valid_date(${"driver_".$x."_date_birth"})){
+				if(age(${"driver_".$x."_date_birth"}) < 14){
+					$err_text .= "<li class=\"text-danger\">Возраст водителя №".$x." не может быть меньше 14 лет</li>";
+				}
+				if(age(${"driver_".$x."_date_birth"}) > 150){
+					$err_text .= "<li class=\"text-danger\">Возраст водителя №".$x." не может быть больше 150 лет</li>";
+				}
+			} else {
+				$err_text .= "<li class=\"text-danger\">Дата рождения водителя №".$x." указанна неверно</li>";
+			}
+			if((age(${"driver_".$x."_date_birth"}) - ${"driver_".$x."_experience"}) < 18 && $_SESSION['step_1']['category'] > 1){
+				$err_text .= "<li class=\"text-danger\">Неверно указан стаж либо дата рождения, водителя №".$x."</li>";
+			}
+			if($_SESSION['step_1']['driver_'.$x] == 1 && (age(${"driver_".$x."_date_birth"}) > 22) || ${"driver_".$x."_experience"} > 3){
+				$err_text .= "<li class=\"text-danger\">Неверно указан стаж, либо дата рождения, либо данные по водителю  №".$x." на этапе расчёта или оформления</li>";
+			}
+			if($_SESSION['step_1']['driver_'.$x] == 2 && (age(${"driver_".$x."_date_birth"}) < 23) || ${"driver_".$x."_experience"} > 3){
+				$err_text .= "<li class=\"text-danger\">Неверно указан стаж, либо дата рождения, либо данные по водителю  №".$x." на этапе расчёта или оформления</li>";
+			}
+			if($_SESSION['step_1']['driver_'.$x] == 3 && (age(${"driver_".$x."_date_birth"}) > 22) || ${"driver_".$x."_experience"} < 3){
+				$err_text .= "<li class=\"text-danger\">Неверно указан стаж, либо дата рождения, либо данные по водителю  №".$x." на этапе расчёта или оформления</li>";
+			}
+			if($_SESSION['step_1']['driver_'.$x] == 4 && (age(${"driver_".$x."_date_birth"}) < 23) || ${"driver_".$x."_experience"} < 3){
+				$err_text .= "<li class=\"text-danger\">Неверно указан стаж, либо дата рождения, либо данные по водителю  №".$x." на этапе расчёта или оформления</li>";
+			}																											
+		}
+	}
 }
 ////////////////////////////////Проверка периодов страхования//////////////////////////////////////////////
 if($auto_used_start_1 && $auto_used_end_1){

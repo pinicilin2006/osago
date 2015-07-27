@@ -168,7 +168,7 @@ $calc_data = unserialize($contract_data['calc_data']);
 						      		<select class="form-control input-sm" name="year_manufacture" id="year_manufacture" required>
 						      		<?php
 						      		$a = date("Y");
-						      		for($x=$a;$x>=$a-120;$x--){
+						      		for($x=$a;$x>=$a-115;$x--){
 						      			echo '<option value='.$x.' '.($calc_data['year_manufacture'] == $x ? 'selected' : '').'>'.$x.'</option>';
 						      		}
 						      		?>
