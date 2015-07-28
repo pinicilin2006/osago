@@ -100,9 +100,9 @@ if(!$street){
 if(!$house){
 	$err_text .= "<li class=\"text-danger\">Не указан номер дома</li>";
 }
-if(!$phone){
-	$err_text .= "<li class=\"text-danger\">Не указан номер телефона</li>";
-}
+// if(!$phone){
+// 	$err_text .= "<li class=\"text-danger\">Не указан номер телефона</li>";
+// }
 //Проверка на присутствие допущенных людей в списке лец страховать которых нельзя
 //Данные по водителям
 if($_SESSION["step_1"]["drivers"] == 2){
