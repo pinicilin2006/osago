@@ -196,7 +196,7 @@ $category_code = array(
 				  	<div class="form-group">
 				    	<label for="phone" class="col-sm-4 control-label"><small>Телефон</small></label>
 				    	<div class="col-sm-8">
-				      		<input type="text" class="form-control input-sm" name="phone" value='<?php echo $insurer_data['phone'] ?>' id="phone" required>
+				      		<input type="text" class="form-control input-sm" name="phone" value='<?php echo $insurer_data['phone'] ?>' id="phone">
 				    	</div>
 				  	</div>					  	
 				  	<hr class="hr_line">
