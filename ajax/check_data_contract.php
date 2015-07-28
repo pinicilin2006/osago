@@ -218,18 +218,18 @@ if($_SESSION['step_1']['category'] == 5){
 }
 //Ограничение по количеству пассажирских мест для категории D
 if($_SESSION['step_1']['category'] == 6){
-	if($max_weight < 8){
+	if($number_seats < 8){
 		$err_text .= "<li class=\"text-danger\">Минимальное число пассажиров не может быть меньше 6</li>";
 	}
-	if($max_weight > 16){
+	if($number_seats > 16){
 		$err_text .= "<li class=\"text-danger\">Максимальное число пассажиров не может быть более 16</li>";
 	}	
 }
 if($_SESSION['step_1']['category'] == 7){
-	if($max_weight < 16){
+	if($number_seats < 16){
 		$err_text .= "<li class=\"text-danger\">Максимальное число пассажиров не может быть меньше 16</li>";
 	}
-	if($max_weight > 200){
+	if($number_seats > 200){
 		$err_text .= "<li class=\"text-danger\">Максимальное число пассажиров не может быть более 200</li>";
 	}	
 }
