@@ -62,6 +62,9 @@ if($insurer == 1){
 	if(!$date_birth){
 		$err_text .= "<li class=\"text-danger\">Не указана дата рождения страхователя</li>";
 	}
+	if(!valid_date($date_birth)){
+		$err_text .= "<li class=\"text-danger\">Дата рождения страхователя указанна не верно</li>";
+	}	
 	if($first_name && $second_name && $third_name && $date_birth && mysql_num_rows(mysql_query("SELECT * FROM `bad_people` WHERE first_name = '".trim($first_name)."' AND second_name = '".trim($second_name)."' AND third_name = '".trim($third_name)."' AND date_of_birth = '".$date_birth."'"))>0){
 		$err_text .= "<li class=\"text-danger\">Страхователь находится в списке людей, страхование которых запрещено!</li>";
 	}
@@ -92,6 +95,39 @@ if($insurer == 2){
 	if($jur_inn && !is_valid_inn($jur_inn)){
 		$err_text .= "<li class=\"text-danger\">Не верно указан ИНН</li>";
 	}		
+}
+//Проверка собственника если он отличается от страхователя
+if($insisown == 2){
+	//Если собственник физ лицо
+	if($insurer == 1){
+		if(!$owner_second_name){
+			$err_text .= "<li class=\"text-danger\">Не указана фамилия собственника</li>";
+		}
+		if(!$owner_first_name){
+			$err_text .= "<li class=\"text-danger\">Не указано имя собственника</li>";
+		}
+		if(!$owner_third_name){
+			$err_text .= "<li class=\"text-danger\">Не указано отчество собственника</li>";
+		}
+		if(!$owner_date_birth){
+			$err_text .= "<li class=\"text-danger\">Не указана дата рождения собственника</li>";
+		}
+		if(!valid_date($owner_date_birth)){
+			$err_text .= "<li class=\"text-danger\">Дата рождения собственника указанна не верно</li>";
+		}	
+		if($owner_first_name && $owner_second_name && $owner_third_name && $owner_date_birth && mysql_num_rows(mysql_query("SELECT * FROM `bad_people` WHERE first_name = '".trim($owner_first_name)."' AND second_name = '".trim($owner_second_name)."' AND third_name = '".trim($owner_third_name)."' AND date_of_birth = '".$owner_date_birth."'"))>0){
+			$err_text .= "<li class=\"text-danger\">Страхователь находится в списке людей, страхование которых запрещено!</li>";
+		}
+		if(!$owner_doc_name){
+			$err_text .= "<li class=\"text-danger\">Не указано наименование документа удостоверяющего личность собственника</li>";
+		}
+		if(!$owner_doc_series){
+			$err_text .= "<li class=\"text-danger\">Не указана серия документа удостоверяющего личность собственника</li>";
+		}
+		if(!$owner_doc_number){
+			$err_text .= "<li class=\"text-danger\">Не указан номер документа удостоверяющего личность собственника</li>";
+		}			
+	}
 }
 //Проверка на присутствие допущенных людей в списке лец страховать которых нельзя
 //Данные по водителям
