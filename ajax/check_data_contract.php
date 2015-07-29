@@ -173,7 +173,7 @@ if(!valid_date($auto_doc_date)){
 if(!$start_date){
 	$err_text .= "<li class=\"text-danger\">Не указана дата начала действия договора страхования</li>";
 }
-if(!$valid_date($start_date)){
+if(!valid_date($start_date)){
 	$err_text .= "<li class=\"text-danger\">Дата начала действия договора страхования указана неверно</li>";
 }
 if($auto_diag_card_next_date && !strtotime($auto_diag_card_next_date)){
