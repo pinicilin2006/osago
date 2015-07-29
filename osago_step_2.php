@@ -723,166 +723,166 @@ $category_code = array(
 								      		</div>
 								      		<div class="col-sm-6">
 								      			<input type="text" class="form-control input-sm <?php echo ($_SESSION["step_1"]['place_reg'] == 3 ? '' : 'auto_used')?>" name="auto_used_end_1" id="auto_used_end_1" <?php echo ($_SESSION["step_1"]['place_reg'] == 3 ? 'readonly' : '')?> value="<?php 
-									      		if($_SESSION["step_1"]["place_reg"] == 3){
-									      			echo date('d.m.Y', strtotime("+20 days"));
-									      		} elseif ($_SESSION["step_1"]["place_reg"] == 1) {
-									      			if($_SESSION["step_1"]["period_use"] == 1){
-									      				echo date('d.m.Y', strtotime("+3 months"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 2){
-									      				echo date('d.m.Y', strtotime("+4 months"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 3){
-									      				echo date('d.m.Y', strtotime("+5 months"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 4){
-									      				echo date('d.m.Y', strtotime("+6 months"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 5){
-									      				echo date('d.m.Y', strtotime("+7 months"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 6){
-									      				echo date('d.m.Y', strtotime("+6 months"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 7){
-									      				echo date('d.m.Y', strtotime("+9 months"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 8){
-									      				echo date('d.m.Y', strtotime("+1 years"));
-									      			}						      									      									      									      									      									      									      			
-									      		} elseif ($_SESSION["step_1"]["place_reg"] == 2){
-									      			if($_SESSION["step_1"]["term_insurance"] == 1){
-									      				echo date('d.m.Y', strtotime("+15 days"));
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 2){
-									      				echo date('d.m.Y', strtotime("+1 month"));
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 3){
-									      				echo date('d.m.Y', strtotime("+2 months"));
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 4){		
-									      				echo date('d.m.Y', strtotime("+3 months"));										      				
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 5){
-									      				if($_SESSION["step_1"]["period_use"] == 1){
-									      					echo date('d.m.Y', strtotime("+3 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 2){
-									      					echo date('d.m.Y', strtotime("+4 months"));
-									      				}									      				
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 6){
-									      				if($_SESSION["step_1"]["period_use"] == 1){
-									      					echo date('d.m.Y', strtotime("+3 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 2){
-									      					echo date('d.m.Y', strtotime("+4 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 3){
-									      					echo date('d.m.Y', strtotime("+5 months"));
-									      				}									      													      				
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 7){
-									      				if($_SESSION["step_1"]["period_use"] == 1){
-									      					echo date('d.m.Y', strtotime("+3 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 2){
-									      					echo date('d.m.Y', strtotime("+4 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 3){
-									      					echo date('d.m.Y', strtotime("+5 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 4){
-									      					echo date('d.m.Y', strtotime("+6 months"));
-									      				}									      													      													      				
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 8){
-									      				if($_SESSION["step_1"]["period_use"] == 1){
-									      					echo date('d.m.Y', strtotime("+3 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 2){
-									      					echo date('d.m.Y', strtotime("+4 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 3){
-									      					echo date('d.m.Y', strtotime("+5 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 4){
-									      					echo date('d.m.Y', strtotime("+6 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 5){
-									      					echo date('d.m.Y', strtotime("+7 months"));
-									      				}									      													      													      													      				
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 9){
-									      				if($_SESSION["step_1"]["period_use"] == 1){
-									      					echo date('d.m.Y', strtotime("+3 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 2){
-									      					echo date('d.m.Y', strtotime("+4 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 3){
-									      					echo date('d.m.Y', strtotime("+5 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 4){
-									      					echo date('d.m.Y', strtotime("+6 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 5){
-									      					echo date('d.m.Y', strtotime("+7 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 6){
-									      					echo date('d.m.Y', strtotime("+8 months"));
-									      				}									      													      													      													      													      				
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 10){
-									      				if($_SESSION["step_1"]["period_use"] == 1){
-									      					echo date('d.m.Y', strtotime("+3 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 2){
-									      					echo date('d.m.Y', strtotime("+4 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 3){
-									      					echo date('d.m.Y', strtotime("+5 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 4){
-									      					echo date('d.m.Y', strtotime("+6 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 5){
-									      					echo date('d.m.Y', strtotime("+7 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 6){
-									      					echo date('d.m.Y', strtotime("+8 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 7){
-									      					echo date('d.m.Y', strtotime("+9 months"));
-									      				}									      													      													      													      													      													      				
-									      			}
-									      			if($_SESSION["step_1"]["term_insurance"] == 11){
-									      				if($_SESSION["step_1"]["period_use"] == 1){
-									      					echo date('d.m.Y', strtotime("+3 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 2){
-									      					echo date('d.m.Y', strtotime("+4 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 3){
-									      					echo date('d.m.Y', strtotime("+5 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 4){
-									      					echo date('d.m.Y', strtotime("+6 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 5){
-									      					echo date('d.m.Y', strtotime("+7 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 6){
-									      					echo date('d.m.Y', strtotime("+8 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 7){
-									      					echo date('d.m.Y', strtotime("+9 months"));
-									      				}
-									      				if($_SESSION["step_1"]["period_use"] == 8){
-									      					echo date('d.m.Y', strtotime("+12 months"));
-									      				}									      													      													      													      													      													      													      				
-									      			}									      												      												      												      												      												      												      												      												      												      			
-									      		}						      		
+									      		// if($_SESSION["step_1"]["place_reg"] == 3){
+									      		// 	echo date('d.m.Y', strtotime("+20 days"));
+									      		// } elseif ($_SESSION["step_1"]["place_reg"] == 1) {
+									      		// 	if($_SESSION["step_1"]["period_use"] == 1){
+									      		// 		echo date('d.m.Y', strtotime("+3 months"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["period_use"] == 2){
+									      		// 		echo date('d.m.Y', strtotime("+4 months"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["period_use"] == 3){
+									      		// 		echo date('d.m.Y', strtotime("+5 months"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["period_use"] == 4){
+									      		// 		echo date('d.m.Y', strtotime("+6 months"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["period_use"] == 5){
+									      		// 		echo date('d.m.Y', strtotime("+7 months"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["period_use"] == 6){
+									      		// 		echo date('d.m.Y', strtotime("+6 months"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["period_use"] == 7){
+									      		// 		echo date('d.m.Y', strtotime("+9 months"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["period_use"] == 8){
+									      		// 		echo date('d.m.Y', strtotime("+1 years"));
+									      		// 	}						      									      									      									      									      									      									      			
+									      		// } elseif ($_SESSION["step_1"]["place_reg"] == 2){
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 1){
+									      		// 		echo date('d.m.Y', strtotime("+15 days"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 2){
+									      		// 		echo date('d.m.Y', strtotime("+1 month"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 3){
+									      		// 		echo date('d.m.Y', strtotime("+2 months"));
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 4){		
+									      		// 		echo date('d.m.Y', strtotime("+3 months"));										      				
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 5){
+									      		// 		if($_SESSION["step_1"]["period_use"] == 1){
+									      		// 			echo date('d.m.Y', strtotime("+3 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 2){
+									      		// 			echo date('d.m.Y', strtotime("+4 months"));
+									      		// 		}									      				
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 6){
+									      		// 		if($_SESSION["step_1"]["period_use"] == 1){
+									      		// 			echo date('d.m.Y', strtotime("+3 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 2){
+									      		// 			echo date('d.m.Y', strtotime("+4 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 3){
+									      		// 			echo date('d.m.Y', strtotime("+5 months"));
+									      		// 		}									      													      				
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 7){
+									      		// 		if($_SESSION["step_1"]["period_use"] == 1){
+									      		// 			echo date('d.m.Y', strtotime("+3 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 2){
+									      		// 			echo date('d.m.Y', strtotime("+4 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 3){
+									      		// 			echo date('d.m.Y', strtotime("+5 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 4){
+									      		// 			echo date('d.m.Y', strtotime("+6 months"));
+									      		// 		}									      													      													      				
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 8){
+									      		// 		if($_SESSION["step_1"]["period_use"] == 1){
+									      		// 			echo date('d.m.Y', strtotime("+3 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 2){
+									      		// 			echo date('d.m.Y', strtotime("+4 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 3){
+									      		// 			echo date('d.m.Y', strtotime("+5 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 4){
+									      		// 			echo date('d.m.Y', strtotime("+6 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 5){
+									      		// 			echo date('d.m.Y', strtotime("+7 months"));
+									      		// 		}									      													      													      													      				
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 9){
+									      		// 		if($_SESSION["step_1"]["period_use"] == 1){
+									      		// 			echo date('d.m.Y', strtotime("+3 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 2){
+									      		// 			echo date('d.m.Y', strtotime("+4 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 3){
+									      		// 			echo date('d.m.Y', strtotime("+5 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 4){
+									      		// 			echo date('d.m.Y', strtotime("+6 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 5){
+									      		// 			echo date('d.m.Y', strtotime("+7 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 6){
+									      		// 			echo date('d.m.Y', strtotime("+8 months"));
+									      		// 		}									      													      													      													      													      				
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 10){
+									      		// 		if($_SESSION["step_1"]["period_use"] == 1){
+									      		// 			echo date('d.m.Y', strtotime("+3 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 2){
+									      		// 			echo date('d.m.Y', strtotime("+4 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 3){
+									      		// 			echo date('d.m.Y', strtotime("+5 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 4){
+									      		// 			echo date('d.m.Y', strtotime("+6 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 5){
+									      		// 			echo date('d.m.Y', strtotime("+7 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 6){
+									      		// 			echo date('d.m.Y', strtotime("+8 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 7){
+									      		// 			echo date('d.m.Y', strtotime("+9 months"));
+									      		// 		}									      													      													      													      													      													      				
+									      		// 	}
+									      		// 	if($_SESSION["step_1"]["term_insurance"] == 11){
+									      		// 		if($_SESSION["step_1"]["period_use"] == 1){
+									      		// 			echo date('d.m.Y', strtotime("+3 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 2){
+									      		// 			echo date('d.m.Y', strtotime("+4 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 3){
+									      		// 			echo date('d.m.Y', strtotime("+5 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 4){
+									      		// 			echo date('d.m.Y', strtotime("+6 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 5){
+									      		// 			echo date('d.m.Y', strtotime("+7 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 6){
+									      		// 			echo date('d.m.Y', strtotime("+8 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 7){
+									      		// 			echo date('d.m.Y', strtotime("+9 months"));
+									      		// 		}
+									      		// 		if($_SESSION["step_1"]["period_use"] == 8){
+									      		// 			echo date('d.m.Y', strtotime("+12 months"));
+									      		// 		}									      													      													      													      													      													      													      				
+									      		// 	}									      												      												      												      												      												      												      												      												      												      			
+									      		// }						      		
 									      		?>"placeholder="по" required>
 								      		</div>
 								      		<div class="col-sm-6">
@@ -1174,6 +1174,9 @@ $(document).on("change", ".inn", function(){
 		$(this).val('');
 	}
 });
+//Копируем дату начала страхового периода в дату начала периода использования и тоже самое с датой окончания (делается разово при загрузке страницы)
+$('#auto_used_start_1').val($('#start_date').val());
+$('#auto_used_end_1').val($('#end_date').val());
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 	//отображение списка городов субъекта для страхователя
 		$(document).on("change", "#subject", function(){
