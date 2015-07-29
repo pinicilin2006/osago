@@ -24,14 +24,6 @@ if($md5_id){
 		$err_text .= "<li class=\"text-danger\">Данные уже внесенны в базу данных</li>";
 	}
 }
-if($action == 'add'){
-	if(!$bso_number){
-		$err_text .= "<li class=\"text-danger\">Не указан номер БСО</li>";
-	}
-	if(!$ais_request_identifier){
-		$err_text .= "<li class=\"text-danger\">Не указан номер запроса в АИС РСА</li>";
-	}		
-}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if(!empty($err_text)){
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";

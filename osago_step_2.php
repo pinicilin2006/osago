@@ -895,7 +895,9 @@ $category_code = array(
 						      		<input type="text" class="form-control input-sm" name="special_notes" id="special_notes">
 						    	</div>
 						  	</div>
-
+						<?php
+						if($_SESSION['step_1']['place_reg']!= 3){
+						?>  	
 						<hr class="hr_red">
 						  	<div class="form-group">
 						    	<label for="ais_request_identifier" class="col-sm-4 control-label"><small>Идентификатор запроса КБМ/ТО</small></label>
@@ -903,7 +905,9 @@ $category_code = array(
 						      		<input type="text" class="form-control input-sm" name="ais_request_identifier" value='<?php echo $_SESSION['kbm']["kbm_id"].(!empty($_SESSION['kbm']["to_id"]) ? '/'.$_SESSION['kbm']["to_id"] : '')?>' id="ais_request_identifier">
 						    	</div>
 						  	</div>
-
+						<?php
+						}
+						?>  	
 						<hr class="hr_red">
 					  	<div class="form-group">
 					      	<div class="col-sm-6">

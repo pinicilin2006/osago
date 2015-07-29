@@ -10,7 +10,7 @@ if(!isset($_SESSION['user_id'])){
 // print_r($_SESSION);
 // echo "</pre>";
 // echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
-//exit();
+// exit();
 require_once('../config.php');
 require_once('../function.php');
 //require_once('../template/header.html');
@@ -23,14 +23,6 @@ if($md5_id){
 	if(mysql_num_rows(mysql_query("SELECT * FROM `contract` WHERE `md5_id` = '".$md5_id."'"))<1){
 		$err_text .= "<li class=\"text-danger\">Редактируемый договор не обнаружен в базе данных</li>";
 	}
-}
-if($action == 'add'){
-	if(!$bso_number){
-		$err_text .= "<li class=\"text-danger\">Не указан номер БСО</li>";
-	}
-	if(!$ais_request_identifier){
-		$err_text .= "<li class=\"text-danger\">Не указан номер запроса в АИС РСА</li>";
-	}		
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if(!empty($err_text)){
