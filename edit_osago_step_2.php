@@ -630,7 +630,7 @@ $category_code = array(
 									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 7 months - 1 day"));
 									      			}
 									      			if($_SESSION["step_1"]["period_use"] == 6){
-									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months - 1 day"));
+									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 8 months - 1 day"));
 									      			}
 									      			if($_SESSION["step_1"]["period_use"] == 7){
 									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 9 months - 1 day"));
