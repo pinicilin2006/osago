@@ -173,6 +173,9 @@ if(!valid_date($auto_doc_date)){
 if(!$start_date){
 	$err_text .= "<li class=\"text-danger\">Не указана дата начала действия договора страхования</li>";
 }
+if(!$valid_date($start_date)){
+	$err_text .= "<li class=\"text-danger\">Дата начала действия договора страхования указана неверно</li>";
+}
 if($auto_diag_card_next_date && !strtotime($auto_diag_card_next_date)){
 	$err_text .= "<li class=\"text-danger\">Не верно указана дата срока действия диагностической карты</li>";
 }
@@ -302,6 +305,11 @@ if($action == 'add'){
 	}
 	if(!$ais_request_identifier && $_SESSION['step_1']['place_reg'] == 3){
 		$ais_request_identifier = '';
-	}		
+	}
+	//Защита от перевода в статус оформленно договора если у него дата начала страхового периода меньше чем нынешняя дата - 1 день
+	//Задел на будущее
+	// if(strtotime($start_date) < strtotime(date(d.m.Y), "-1 days")){
+	// 	$err_text .= "<li class=\"text-danger\"Дата начала действия страхового периода не указана неверно</li>";
+	// }	
 }
 ?>

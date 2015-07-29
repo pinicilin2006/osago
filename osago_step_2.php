@@ -597,7 +597,7 @@ $category_code = array(
 						  	<div class="form-group">
 						    	<label class="col-sm-4 control-label"><small>Срок действия договора страхования</small></label>
 						    	<div class="col-sm-4" style="padding-top:2%">
-						      		<input type="text" class="form-control input-sm period_data" name="start_date" id="start_date" value="<?php echo date('d.m.Y', strtotime("+1 days"))?>" placeholder="Дата начала действия договора" required>
+						      		<input type="text" class="form-control input-sm period_data" name="start_date" id="start_date" value="<?php echo ($_SESSION['kbm']['rep_date'] ? $_SESSION['kbm']['rep_date'] : date('d.m.Y', strtotime("+1 days"))) ?>" placeholder="Дата начала действия договора" required>
 						      		<input type="text" class="form-control input-sm" name="start_time" id="start_time" value="00:00" placeholder="Время начала действия договора" disabled required>	
 						    	</div>	
 						    	<div class="col-sm-4" style="padding-top:2%">
@@ -1359,23 +1359,20 @@ $(document).on("change", ".inn", function(){
 		}
 		//работа с полем времени начала действия договора если дата равна сегодняшней
 		if(a == b){
-			timeNow.setMinutes(timeNow.getMinutes() + 5);
-			var hours = timeNow.getHours();
-			if(hours < 10){
-				hours = '0'+hours;
-			}
-			var minutes = timeNow.getMinutes();
-			if(minutes < 10){
-				minutes = '0'+minutes;
-			}
-			var hhmm = hours+':'+minutes;
-			$("#start_time").prop("disabled", false)
-			$("#start_time").val(hhmm);
+			time_start_today();
 		} else {
 			$("#start_time").prop("disabled", true)
 			$("#start_time").val('00:00');
 		}		 
 	});
+//Если рпи запросе КБМ выбранна текущая дата то работаем с полем время начала действия
+<?php
+if($_SESSION['kbm']['rep_date'] == date('d.m.Y')){
+?>
+time_start_today();
+<?php
+}
+?>
 //Отслеживаем изменение время старта
 	$(document).on("change", "#start_time", function(){
 		var timeNow = new Date();

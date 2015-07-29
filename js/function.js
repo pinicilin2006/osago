@@ -494,3 +494,19 @@ function format_auto_doc(){//смена формата полей докумен
 		$('#auto_doc_number').mask('000000');
 	}		
 }
+
+function time_start_today(){
+		var timeNow = new Date();	
+		timeNow.setMinutes(timeNow.getMinutes() + 5);
+		var hours = timeNow.getHours();
+		if(hours < 10){
+			hours = '0'+hours;
+		}
+		var minutes = timeNow.getMinutes();
+		if(minutes < 10){
+			minutes = '0'+minutes;
+		}
+		var hhmm = hours+':'+minutes;
+		$("#start_time").prop("disabled", false)
+		$("#start_time").val(hhmm);	
+}

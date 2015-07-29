@@ -744,6 +744,7 @@ $_SESSION['kbm']['kbm_id'] = trim($kbm_id);
 $_SESSION['kbm']['to_id'] = trim($to_id);
 $_SESSION['kbm']['to_num'] = trim($ticket_num);
 $_SESSION['kbm']['to_next_date'] = trim($date_next_to);
+$_SESSION['kbm']['rep_date'] = ($_POST["rep_date"] ? trim($_POST["rep_date"]) : '');
 //////////////////////////////////////////////////////////////////
 //Output result code
 print <<<HERE

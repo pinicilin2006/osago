@@ -1423,18 +1423,7 @@ function owner_change_street(){
 		}
 		//работа сполем времени начала действия договора если дата равна сегодняшней
 		if(a == b){
-			timeNow.setMinutes(timeNow.getMinutes() + 5);
-			var hours = timeNow.getHours();
-			if(hours < 10){
-				hours = '0'+hours;
-			}
-			var minutes = timeNow.getMinutes();
-			if(minutes < 10){
-				minutes = '0'+minutes;
-			}
-			var hhmm = hours+':'+minutes;
-			$("#start_time").prop("disabled", false)
-			$("#start_time").val(hhmm);
+			time_start_today();
 		} else {
 			$("#start_time").prop("disabled", true)
 			$("#start_time").val('00:00');
