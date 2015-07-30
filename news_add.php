@@ -27,9 +27,16 @@ require_once('template/header.html');
 					      		<textarea class="form-control" rows="3" name="news" id="news" required></textarea>
 					    	</div>
 					  	</div>
-					  <div class="form-group">
-					      <button type="submit" class="btn btn-default">Добавить новость</button>
-					  </div>
+					  	<div class="checkbox form-group">
+					      	<label><input type="checkbox" id="alert" name="alert" value="1"><span class="text-danger">Выделить новость красным</span></label>
+					  	</div>
+					  	<div class="checkbox form-group">
+					      	<label><input type="checkbox" id="b" name="b" value="1"><b>Выделить новость жирным текстом</b></label>
+					  	</div>					  	
+					  	<hr>					  	
+						<div class="form-group">
+						    <button type="submit" class="btn btn-default">Добавить новость</button>
+						</div>
 
 					</form>
 	  			</div>

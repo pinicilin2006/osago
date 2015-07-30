@@ -25,6 +25,12 @@ if(!empty($err_text)){
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 	exit();
 }
+if($b){
+	$news = '<b>'.$news.'</b>';
+}
+if($alert){
+	$news = '<span class="text-danger">'.$news.'</span>';
+}
 //Добавляем в базу данных
 if(mysql_query("INSERT INTO `news` (text,who_add) VALUES('".$news."','".$_SESSION["user_id"]."')")){
 	echo "<p class=\"text-success text-center\">Новость успешно добавленна</p>";
