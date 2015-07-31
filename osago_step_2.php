@@ -1455,6 +1455,10 @@ time_start_today();
 		var timeStart = $(this).val().split(':');
 		var hhStart = timeStart[0];
 		var mmStart = timeStart[1];
+		if(hhStart > 23 || mmStart > 59){
+			$("#start_time").val('');
+			return false;
+		}
 		if(hhNow < hhStart){
 			return false;
 		}else if(hhNow == hhStart){
