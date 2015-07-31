@@ -113,7 +113,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 
 		$params['START_DATE'] = $contract_data['start_date'];
 		$params['END_DATE'] = $contract_data['end_date'];
-
+		$params['START_TIME'] = $contract_data['start_time'];
 
 		//Данные по собственнику
 		$owner_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["owner_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$contract_data["owner_id"]."'"));
