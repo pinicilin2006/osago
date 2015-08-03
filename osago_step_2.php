@@ -1383,7 +1383,7 @@ $('#auto_used_end_1').val($('#end_date').val());
 		}
 	});
 //Заполняем дату окончания действия договора страхования
-	$(document).on("change", "#start_date", function(){
+	$(document).on("change focusout", "#start_date", function(){
 		var a = $(this).val();//дата начала действия
 		var b = "<?php echo date("d.m.Y") ?>";//дата сегодня
 		var c = "<?php echo $_SESSION["step_1"]["term_insurance"]?>";
@@ -1472,7 +1472,7 @@ time_start_today();
 		}
 	});
 //Копируем дату начала и окончания в период использования ТС
-$(document).on("change", ".period_data", function(){
+$(document).on("change focusout", ".period_data", function(){
 	$("#auto_used_start_1").val($("#start_date").val());
 	//$("#auto_used_end_1").val($("#end_date").val());
 	period_use_end(<?php echo ($_SESSION["step_1"]["place_reg"] == 3 ? '9' : $_SESSION["step_1"]["period_use"]) ?>);

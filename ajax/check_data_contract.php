@@ -293,6 +293,25 @@ if($_SESSION["step_1"]["drivers"] == 2){
 // if(!$start_time){
 // 	$err_text .= "<li class=\"text-danger\">Не указано время начала действия договора страхования</li>";
 // }
+//Проверка на минимальный период ипользования ТС для физ лиц
+if($_SESSION['step_1']['type_ins'] == 'phiz' && $_SESSION['step_1']['place_reg'] != 3){
+	if($_SESSION['step_1']['auto_used_start_1'] && $_SESSION['step_1']['auto_used_end_1']){		
+		if(!valid_date($_SESSION['step_1']['auto_used_start_1'])){
+				$err_text .= "<li class=\"text-danger\">Дата начала периода использования ТС №1 указанна неверно</li>";			
+		}		
+		if(!valid_date($_SESSION['step_1']['auto_used_end_1'])){
+				$err_text .= "<li class=\"text-danger\">Дата окончания периода использования ТС №1 указанна неверно</li>";			
+		}		
+		if(strtotime($_SESSION['step_1']['auto_used_start_1']) > strtotime($_SESSION['step_1']['auto_used_end_1'])){
+			$err_text .= "<li class=\"text-danger\">Дата окончания периода использования ТС №1 не может быть меньше даты начала периода использования ТС №1</li>";
+		}
+		// $d1_start = date_create($_SESSION['step_1']['auto_used_start_1']);
+		// $d2_end = date_create($_SESSION['step_1']['auto_used_end_1']);
+		// $interval_1 = date_diff($d1_start, $d2_end);
+		// $interval_1_m = $interval_1->format('%m');
+		// $interval_1_d = $interval_1->format('%d');
+	}
+}
 if(!$md5_id){
 	$err_text .= "<li class=\"text-danger\">Не указан уникальный идентификатор полиса</li>";
 }
