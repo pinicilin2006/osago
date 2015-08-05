@@ -295,22 +295,60 @@ if($_SESSION["step_1"]["drivers"] == 2){
 // }
 //Проверка на минимальный период ипользования ТС для физ лиц
 if($_SESSION['step_1']['type_ins'] == 'phiz' && $_SESSION['step_1']['place_reg'] != 3){
-	if($_SESSION['step_1']['auto_used_start_1'] && $_SESSION['step_1']['auto_used_end_1']){		
-		if(!valid_date($_SESSION['step_1']['auto_used_start_1'])){
-				$err_text .= "<li class=\"text-danger\">Дата начала периода использования ТС №1 указанна неверно</li>";			
+	//Первый период использования
+	if($auto_used_start_1 && $auto_used_end_1){		
+		if(!valid_date($auto_used_start_1)){
+				$err_text .= "<li class=\"text-danger\">Дата начала периода использования №1 ТС указанна неверно</li>";			
 		}		
-		if(!valid_date($_SESSION['step_1']['auto_used_end_1'])){
-				$err_text .= "<li class=\"text-danger\">Дата окончания периода использования ТС №1 указанна неверно</li>";			
+		if(!valid_date($auto_used_end_1)){
+				$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №1 ТС указанна неверно</li>";			
 		}		
-		if(strtotime($_SESSION['step_1']['auto_used_start_1']) > strtotime($_SESSION['step_1']['auto_used_end_1'])){
-			$err_text .= "<li class=\"text-danger\">Дата окончания периода использования ТС №1 не может быть меньше даты начала периода использования ТС №1</li>";
+		if(strtotime($auto_used_start_1) > strtotime($auto_used_end_1)){
+			$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №1 ТС не может быть меньше даты начала периода использования ТС №1</li>";
 		}
-		// $d1_start = date_create($_SESSION['step_1']['auto_used_start_1']);
-		// $d2_end = date_create($_SESSION['step_1']['auto_used_end_1']);
-		// $interval_1 = date_diff($d1_start, $d2_end);
-		// $interval_1_m = $interval_1->format('%m');
-		// $interval_1_d = $interval_1->format('%d');
+		//Првоеряем на соблюдения условия минимального периода
+		if(strtotime(date('d.m.Y', strtotime($auto_used_start_1 . "+3 months"))) > strtotime($auto_used_end_1)){
+			$err_text .= "<li class=\"text-danger\">Минимальный период использования №1 ТС не может быть меньше трёх месяцев</li>";
+		}
 	}
+	//Второй период использования
+	if($auto_used_start_2 && $auto_used_end_2){		
+		if(!valid_date($auto_used_start_2)){
+				$err_text .= "<li class=\"text-danger\">Дата начала периода использования №2 ТС указанна неверно</li>";			
+		}
+		if(strtotime($auto_used_start_2) < strtotime($auto_used_end_1)){
+				$err_text .= "<li class=\"text-danger\">Дата начала периода использования №2 ТС не может быть меньше даты окончания периода использования №1 ТС</li>";
+		}		
+		if(!valid_date($auto_used_end_2)){
+				$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №2 ТС указанна неверно</li>";			
+		}		
+		if(strtotime($auto_used_start_2) > strtotime($auto_used_end_2)){
+			$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №2 ТС не может быть меньше даты начала периода использования ТС №2</li>";
+		}
+		//Првоеряем на соблюдения условия минимального периода
+		if(strtotime(date('d.m.Y', strtotime($auto_used_start_2 . "+3 months"))) > strtotime($auto_used_end_2)){
+			$err_text .= "<li class=\"text-danger\">Минимальный период использования №2 ТС не может быть меньше трёх месяцев</li>";
+		}
+	}
+	//Третий период использования
+	if($auto_used_start_3 && $auto_used_end_3){		
+		if(!valid_date($auto_used_start_3)){
+				$err_text .= "<li class=\"text-danger\">Дата начала периода использования №3 ТС указанна неверно</li>";			
+		}
+		if(strtotime($auto_used_start_3) < strtotime($auto_used_end_2)){
+				$err_text .= "<li class=\"text-danger\">Дата начала периода использования №3 ТС не может быть меньше даты окончания периода использования №2 ТС</li>";
+		}				
+		if(!valid_date($auto_used_end_3)){
+				$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №3 ТС указанна неверно</li>";			
+		}		
+		if(strtotime($auto_used_start_3) > strtotime($auto_used_end_3)){
+			$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №3 ТС не может быть меньше даты начала периода использования ТС №3</li>";
+		}
+		//Првоеряем на соблюдения условия минимального периода
+		if(strtotime(date('d.m.Y', strtotime($auto_used_start_3 . "+3 months"))) > strtotime($auto_used_end_3)){
+			$err_text .= "<li class=\"text-danger\">Минимальный период использования №3 ТС не может быть меньше трёх месяцев</li>";
+		}
+	}		
 }
 if(!$md5_id){
 	$err_text .= "<li class=\"text-danger\">Не указан уникальный идентификатор полиса</li>";
