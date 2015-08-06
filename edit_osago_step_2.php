@@ -792,7 +792,7 @@ $category_code = array(
 							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_2" value='<?php echo (isset($step_2_data['auto_used_end_2']) ? $step_2_data['auto_used_end_2'] : '') ?>' id="auto_used_end_2" placeholder="по">
 							      		</div>
 							      		<div class="col-sm-6">
-							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" value='<?php echo (isset($step_2_data['auto_used_end_3']) ? $step_2_data['auto_used_end_3'] : '') ?>' id="auto_used_start_3" placeholder="c">
+							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_start_3" value='<?php echo (isset($step_2_data['auto_used_start_3']) ? $step_2_data['auto_used_start_3'] : '') ?>' id="auto_used_start_3" placeholder="c">
 							      		</div>
 							      		<div class="col-sm-6">
 							      			<input type="text" class="form-control input-sm auto_used" name="auto_used_end_3" value='<?php echo (isset($step_2_data['auto_used_end_3']) ? $step_2_data['auto_used_end_3'] : '') ?>' id="auto_used_end_3" placeholder="по">

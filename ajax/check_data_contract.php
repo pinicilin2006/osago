@@ -146,8 +146,8 @@ if(!$model){
 if($vin && $vin != 'Отсутствует' && strlen($vin) <> 17){
 	$err_text .= "<li class=\"text-danger\">Номер VIN должен содержать 17 символов</li>";
 }
-if($auto_reg_number && $auto_reg_number != 'Отсутствует' && (iconv_strlen($auto_reg_number,'UTF-8') < 8 || iconv_strlen($auto_reg_number,'UTF-8') > 9)){
-	$err_text .= "<li class=\"text-danger\">Государственный регистрационный знак должен содержать 8 или 9 символов</li>";
+if(!$auto_reg_number){
+	$err_text .= "<li class=\"text-danger\">Не указан номер государственного регистрационного знака</li>";
 }
 if(!$auto_doc_type){
 	$err_text .= "<li class=\"text-danger\">Не указано название документа о регистрации ТС</li>";
