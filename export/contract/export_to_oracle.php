@@ -301,6 +301,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 		}
 		if($calc_data['place_reg'] == '3'){
 			$params['CALC_DATA_PLACE_REG'] = 'ТС следует к месту регистрации';
+			$params['IS_TO_REG'] = '1';
 		}
 		$params['CALC_DATA_YEAR_MANUFACTURE'] = $calc_data['year_manufacture'];
 
