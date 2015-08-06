@@ -971,6 +971,7 @@ $(window).scroll(function () { // При прокрутке попадаем в 
 	$('#auto_diag_card_next_date').mask('00.00.0000');	
 	$('#start_date').mask('00.00.0000');
 	$('#start_time').mask('00:00');
+	$('#osago_old_number').mask('0000000000');
 <?php
 if($insurer_data['doc_name'] == 10){
 ?>	

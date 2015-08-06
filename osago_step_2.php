@@ -1076,6 +1076,7 @@ $(document).ready(function(){
 	$('#owner_doc_series').mask('0000');
 	$('#doc_number').mask('000000');
 	$('#owner_doc_number').mask('000000');	
+	$('#osago_old_number').mask('0000000000');	
 //Календарик	
 	$( ".date_birth" ).datepicker({
 	  dateFormat: "dd.mm.yy",
