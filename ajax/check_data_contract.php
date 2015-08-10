@@ -307,7 +307,7 @@ if($_SESSION['step_1']['type_ins'] == 'phiz' && $_SESSION['step_1']['place_reg']
 			$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №1 ТС не может быть меньше даты начала периода использования ТС №1</li>";
 		}
 		//Првоеряем на соблюдения условия минимального периода
-		if(strtotime(date('d.m.Y', strtotime($auto_used_start_1 . "+3 months"))) > strtotime($auto_used_end_1)){
+		if(strtotime(date('d.m.Y', strtotime($auto_used_start_1 . "+3 months -1 day"))) > strtotime($auto_used_end_1)){
 			$err_text .= "<li class=\"text-danger\">Минимальный период использования №1 ТС не может быть меньше трёх месяцев</li>";
 		}
 	}
@@ -326,7 +326,7 @@ if($_SESSION['step_1']['type_ins'] == 'phiz' && $_SESSION['step_1']['place_reg']
 			$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №2 ТС не может быть меньше даты начала периода использования ТС №2</li>";
 		}
 		//Првоеряем на соблюдения условия минимального периода
-		if(strtotime(date('d.m.Y', strtotime($auto_used_start_2 . "+3 months"))) > strtotime($auto_used_end_2)){
+		if(strtotime(date('d.m.Y', strtotime($auto_used_start_2 . "+3 months -1 day"))) > strtotime($auto_used_end_2)){
 			$err_text .= "<li class=\"text-danger\">Минимальный период использования №2 ТС не может быть меньше трёх месяцев</li>";
 		}
 	}
@@ -345,7 +345,7 @@ if($_SESSION['step_1']['type_ins'] == 'phiz' && $_SESSION['step_1']['place_reg']
 			$err_text .= "<li class=\"text-danger\">Дата окончания периода использования №3 ТС не может быть меньше даты начала периода использования ТС №3</li>";
 		}
 		//Првоеряем на соблюдения условия минимального периода
-		if(strtotime(date('d.m.Y', strtotime($auto_used_start_3 . "+3 months"))) > strtotime($auto_used_end_3)){
+		if(strtotime(date('d.m.Y', strtotime($auto_used_start_3 . "+3 months -1 day"))) > strtotime($auto_used_end_3)){
 			$err_text .= "<li class=\"text-danger\">Минимальный период использования №3 ТС не может быть меньше трёх месяцев</li>";
 		}
 	}		
