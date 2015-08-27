@@ -1177,7 +1177,7 @@ $(document).on("change", ".inn", function(){
 });
 //Копируем дату начала страхового периода в дату начала периода использования и тоже самое с датой окончания (делается разово при загрузке страницы)
 $('#auto_used_start_1').val($('#start_date').val());
-$('#auto_used_end_1').val($('#end_date').val());
+//$('#auto_used_end_1').val($('#end_date').val());
 //////////////////////////////СТРАХОВАТЕЛЬ ДАННЫЕ РЕГИСТРАЦИИ////////////////////////////////////////////////		
 	//отображение списка городов субъекта для страхователя
 		$(document).on("change", "#subject", function(){
@@ -1478,6 +1478,8 @@ $(document).on("change focusout", ".period_data", function(){
 	//$("#auto_used_end_1").val($("#end_date").val());
 	period_use_end(<?php echo ($_SESSION["step_1"]["place_reg"] == 3 ? '9' : $_SESSION["step_1"]["period_use"]) ?>);
 });
+//Просчитываем дату окончания первого периода при загрузке
+period_use_end(<?php echo ($_SESSION["step_1"]["place_reg"] == 3 ? '9' : $_SESSION["step_1"]["period_use"]) ?>);
 $(document).on("change", "#auto_used_start_1", function(){
 //Смена даты окончания периода использования при смене даты начала периода использования
 	period_use_end(<?php echo ($_SESSION["step_1"]["place_reg"] == 3 ? '9' : $_SESSION["step_1"]["period_use"]) ?>);
