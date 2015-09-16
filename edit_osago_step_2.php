@@ -45,6 +45,9 @@ $owner_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($contract_data["o
 //Данные по второму шагу оформления полиса
 $step_2_data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $contract_data['step_2_data']);//боримся с проблемой unserialize если есть кавычки
 $step_2_data = unserialize($step_2_data);
+//Данные по банковскому документу
+$bank_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `bank_document` WHERE `contract_md5_id`='".$id."' LIMIT 1"));
+
 //Данные по транспортному средству
 $vehicle_data = unserialize($contract_data['vehicle_data']);
 $category_code = array(
@@ -82,7 +85,10 @@ $category_code = array(
 	  			</div>
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
-					 <input type="hidden" name="md5_id" value="<?php echo (isset($_SESSION['step_1']['prolongation']) ? md5(date("F j, Y, g:i:s ")) : $id) ?>">
+					<input type="hidden" name="md5_id" value="<?php echo (isset($_SESSION['step_1']['prolongation']) ? md5(date("F j, Y, g:i:s ")) : $id) ?>">
+					
+					
+					 
 					 <h4><b>Данные страхователя</b></h4>
 						<div class="form-group" id="owner">
 							<hr class="hr_red">
@@ -98,7 +104,7 @@ $category_code = array(
 						    </div>
 					  	</div>
 						<hr>
-					<div id="phiz" <?php echo ($step_2_data['insurer'] == '2' ? 'style="display:none"' : '')?>>				  	
+							<div id="phiz" <?php echo ($step_2_data['insurer'] == '2' ? 'style="display:none"' : '')?>>				  	
 						  	<div class="form-group">
 						    	<label for="second_name" class="col-sm-4 control-label"><small>Фамилия</small></label>
 						    	<div class="col-sm-8">
@@ -603,12 +609,21 @@ $category_code = array(
 				  	}
 				  	?>	
 						<hr class="hr_red">
+							<div class="form-group">
+								<label class="col-sm-4 control-label"><small>Дата подписания договора</small></label>
+								 <div class="col-sm-4" style="padding-top:2%">
+									<input type="text" class="form-control input-sm period_data" name="time_create" id="time_create" value="<?php   $date = date_create($contract_data['time_create']); echo date_format($date, 'd.m.Y H:i:s');  ?>" placeholder="Дата подписания договора"  disabled="disabled">
+								 		
+								</div>
+							</div>
 						  	<div class="form-group">
+								
 						    	<label class="col-sm-4 control-label"><small>Срок действия договора страхования</small></label>
 						    	<div class="col-sm-4" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm period_data" name="start_date" id="start_date" value="<?php echo $contract_data['start_date'] ?>" placeholder="Дата начала действия договора" required>
 						      		<input type="text" class="form-control input-sm" name="start_time" id="start_time" value="00:00" placeholder="Время начала действия договора" disabled required>	
 						    	</div>	
+								
 						    	<div class="col-sm-4" style="padding-top:2%">
 						      		<input type="text" class="form-control input-sm period_data" name="end_date" id="end_date" value="<?php 
 						      					if($_SESSION["step_1"]["place_reg"] == 3){
@@ -827,9 +842,9 @@ $category_code = array(
 							<div class="form-group" style="padding-top:2%">
 						    	<label for="a7_number" class="col-sm-4 control-label"><small>Номер выдаваемого бланка А7</small></label>
 						    	<div class="col-sm-8">
-									<select class="form-control input-sm" name="a7_number">
+									<select id="a7_number" class="form-control input-sm" name="a7_number">
 							  			<option value="no">Бланк А7 не используется</option>
-								  		<?php
+										<?php
 								  		$query=mysql_query("SELECT * FROM `a7` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");
 								  		while($row = mysql_fetch_assoc($query)){
 											echo '<option value="'.$row["number"].'" >'.$row["number"].'</option>';
@@ -839,9 +854,9 @@ $category_code = array(
 						    	</div>
 						  	</div>
 							<div class="form-group" style="padding-top:2%">
-						    	<label for="a7_type_paid" class="col-sm-4 control-label"><small>Получена страховая премия</small></label>
+						    	<label  for="a7_type_paid" class="col-sm-4 control-label"><small>Получена страховая премия</small></label>
 						    	<div class="col-sm-8">
-									<select class="form-control input-sm" name="a7_type_paid">
+									<select id="paymentMethod_id" class="form-control input-sm" name="a7_type_paid">
 								  		<?php
 								  		$query=mysql_query("SELECT * FROM `a7_type_paid` WHERE active = 1");
 								  		while($row = mysql_fetch_assoc($query)){
@@ -850,7 +865,29 @@ $category_code = array(
 										?>    
 									</select>	      		
 						    	</div>
-						  	</div>						  	
+						  	</div>		
+							
+						<div id="bankDocument" style="display : none">
+							<div class="form-group">
+									<label for="bank_number" class="col-sm-4 control-label"><small>Номер банковского документа</small></label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control input-sm" name="bank_number" value='<?php echo $bank_data['bank_number'] ?>' id="bank_number">
+									</div>
+							</div>
+							<div class="form-group">
+									<label for="bank_date" class="col-sm-4 control-label"><small>Дата банковского документа</small></label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control input-sm" name="bank_date" value='<?php echo $bank_data['bank_date'] ?>' id="bank_date">
+									</div>
+							</div>
+							<div class="form-group">
+									<label for="bank_amount" class="col-sm-4 control-label"><small>Сумма банковского документа</small></label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control input-sm" name="bank_amount" value='<?php echo $bank_data['bank_amount'] ?>' id="bank_amount">
+									</div>
+							</div>
+						</div>
+						
 					  	<hr class="hr_red">
 
 						  	<div class="form-group">
@@ -1472,6 +1509,63 @@ $(document).on("change", "#auto_used_start_1", function(){
 //Смена даты окончания периода использования при смене даты начала периода использования
 	period_use_end(<?php echo ($_SESSION["step_1"]["place_reg"] == 3 ? '9' : $_SESSION["step_1"]["period_use"]) ?>);
 });
+
+
+//Если Способ оплаты банковским документом
+function onpaymentMethod(id){
+	if (id == 3){
+	  $('#bankDocument').slideDown();
+	  $('#a7_number').val('no');
+	  //Разрешим редактирование даты подписания
+	  $('#time_create').removeAttr('disabled');
+  } else{
+	  $('#bankDocument').slideUp();
+	  $('div#bankDocument input').val('');
+	  $('#time_create').attr('disabled', 'disabled');
+	}
+}
+
+$(function() {
+    onpaymentMethod($("#paymentMethod_id option:selected" ).val());
+});
+
+$('#paymentMethod_id').on('change', function() {
+	onpaymentMethod($(this).val());
+});
+
+$( "#time_create" ).datepicker({
+	  dateFormat: "dd.mm.yy",
+	  minDate: "-1m",
+	  changeYear: true,
+	  changeMonth: true,
+	  yearRange: "c:c+10",
+	  onSelect: function(d,i) {
+		   var mes='';
+			$.each( $('div#bankDocument input'), function( key, value ) {
+			  if ($(this).val().length==0){
+				 mes = mes +','+$(this).attr('name'); 
+				}		
+			 });
+			 if (mes !==''){
+				 alert('Не заполнены поля: '+ mes)
+				 $("#time_create").datepicker().val(i.lastVal);
+				 
+			 }
+			 
+		} 
+	  
+	
+	  
+});
+
+
+
+
+
+
+
+
+
 
 <?php
 if($_SESSION["step_1"]["drivers"] == 2){

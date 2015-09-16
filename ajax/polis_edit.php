@@ -29,6 +29,7 @@ if(!empty($err_text)){
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 	exit();
 }
+
 //проверяем есть ли данные по страхователю
 if($insurer == 1){
 	$query_insurer_data = "SELECT * FROM `contact_phiz` WHERE `first_name` = '".$first_name."' AND `second_name` = '".$second_name."' AND `third_name` = '".$third_name."' AND `date_birth` = '".$date_birth."' AND `doc_name` = '".$doc_name."' AND `doc_series` = '".$doc_series."' AND `doc_number` = '".$doc_number."' AND `aoid` = '".$aoid."' AND `city` = '".$city."' AND `street` = '".$street."' AND `house` = '".$house."' AND `housing` = '".$housing."' AND `apartment` = '".$apartment."' AND `phone` = '".$phone."'";
@@ -163,6 +164,7 @@ if($_SESSION["step_1"]["drivers"] == 1){
 $calc_data = serialize($_SESSION['step_1']);
 $calc_result = serialize($_SESSION['calc']);
 $step_2_data = serialize($step_2);
+//var_dump($step_2)
 // echo $insurer_id.' '.$insurer_type."<br>".$owner_id." ".$owner_type;
 // echo "<br>";
 // echo "<pre>";
@@ -179,7 +181,39 @@ if($action == 'add'){
 } else {
 	$bso_series = '';
 }
-$query = "UPDATE `contract` SET `insurer_id` = '".$insurer_id."',`insurer_type`='".$insurer_type."',`owner_id` = '".$owner_id."',`owner_type` = '".$owner_type."',`vehicle_data` = '".$vehicle_data."',`drivers_data` = '".$drivers_data."',`calc_data` = '".$calc_data."',`calc_result` = '".$calc_result."',`start_date` = '".$start_date."',`start_time` = '".(isset($start_time) ? $start_time : '00:00')."',`end_date` = '".$end_date."',`step_2_data` = '".$step_2_data."',`bso_number` = '".($action=='project' ? '' : $bso_number)."',`bso_series` = '".($action=='project' ? '' : $bso_series)."',`a7_number` = '".($action=='project' ? '' : $a7_number)."',`rsa_number` = '".$ais_request_identifier."',`project` = '".($action == 'project' ? '1' : '0')."' WHERE `md5_id` = '".$md5_id."'";
+
+#Дата подписания договора	
+	if (!$time_create){
+		$add_query ='';
+	}else {
+		$date = date_create($time_create);
+		$add_query = "`time_create` = '".date_format($date, 'Y-m-d H:i:s')."',";
+	}
+$query = "UPDATE `contract` SET  ".$add_query." `insurer_id` = '".$insurer_id."',`insurer_type`='".$insurer_type."',`owner_id` = '".$owner_id."',`owner_type` = '".$owner_type."',`vehicle_data` = '".$vehicle_data."',`drivers_data` = '".$drivers_data."',`calc_data` = '".$calc_data."',`calc_result` = '".$calc_result."',`start_date` = '".$start_date."',`start_time` = '".(isset($start_time) ? $start_time : '00:00')."',`end_date` = '".$end_date."',`step_2_data` = '".$step_2_data."',`bso_number` = '".($action=='project' ? '' : $bso_number)."',`bso_series` = '".($action=='project' ? '' : $bso_series)."',`a7_number` = '".($action=='project' ? '' : $a7_number)."',`rsa_number` = '".$ais_request_identifier."',`project` = '".($action == 'project' ? '1' : '0')."' WHERE `md5_id` = '".$md5_id."'";
+/* echo $query;
+exit; */
+
+#Обновим информацию о банковском документе
+	if ($a7_type_paid == 3){
+		$row = mysql_query ("SELECT bank_number FROM `bank_document` WHERE `bank_number`='".$bank_number."'AND `contract_md5_id`='".$md5_id."'");
+		if(mysql_num_rows($row) > 0) {
+
+			$q = "UPDATE `bank_document` SET `bank_number`='".$bank_number."',`bank_date`='".$bank_date."',`doc_templ_id`='0',`bank_amount`='".$bank_amount."'
+				 WHERE `contract_md5_id`='".$md5_id."' AND `bank_number`='".$bank_number."' ";
+		
+		} else {
+			$q = "INSERT INTO `bank_document`( `contract_md5_id`, `bank_number`, `bank_date`, `doc_templ_id`, `bank_amount`) 
+						VALUES ('".$md5_id."','".$bank_number."','".$bank_date."','0','".$bank_amount."')";
+		}
+	} else {
+			$q = "DELETE FROM `bank_document` WHERE `contract_md5_id`='".$md5_id."'";
+	}
+	if(mysql_query($q)){
+					//--//
+	}else{ echo "<p class=\"text-danger\">Ошибка при добавление/обновлении данных банковского платежного документ ".mysql_error()."</p>";
+				   exit();
+	}	
+	
 //echo $query;
 //echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 //exit();
@@ -203,7 +237,8 @@ if(mysql_query($query)){
 	unset($_SESSION["step_1"]);
 	unset($_SESSION["calc"]);
 }else{
-	echo "<p class=\"text-danger\">Произошла ошибка при добавление договора в базу данных!</p>";
+	
+	echo "<p class=\"text-danger\">Произошла ошибка при добавление договора в базу данных! ".mysql_error()."</p>";
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 }
 //echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";

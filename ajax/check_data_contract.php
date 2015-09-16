@@ -24,13 +24,31 @@ foreach($_POST as $key => $val){
 	if(($key == 'owner_doc_name' && $_POST["insisown"] == 1) || ($key == 'a7_number' && $_POST["a7_number"] == 'no')){
 		continue;
 	}
+	
 	$$key = mysql_escape_string($val);
-	$step_2[$key] = $$key;
+	if(($key == 'bank_number') || ($key == 'bank_date') || ($key == 'bank_amount')||$key=='time_create'){
+	} else {
+		$step_2[$key] = $$key;
+	}	
 }
 
 if(!$insurer){
 	$err_text .= "<li class=\"text-danger\">Не указан тип страхователя</li>";
 }
+
+# Если указали способ оплаты банковский документ 
+if ($a7_type_paid == 3){
+	if (!$bank_number){
+		$err_text .= "<li class=\"text-danger\">Не указан Номер банковского документа</li>";
+	}
+	if (!$bank_date){
+		$err_text .= "<li class=\"text-danger\">Не указана Дата банковского документа</li>";
+	}
+	if (!$bank_amount){
+		$err_text .= "<li class=\"text-danger\">Не указана Сумма банковского документа</li>";
+	}
+}
+
 //Если страхователь физическое лицо или ИП
 if($insurer == 1){
 	if(!$second_name){
@@ -363,7 +381,7 @@ if(!$md5_id){
 }
 if($action == 'add'){
 	if(!$bso_number){
-		$err_text .= "<li class=\"text-danger\">Не указан номер БСО</li>";
+		//$err_text .= "<li class=\"text-danger\">Не указан номер БСО</li>";
 	}
 	if(!$ais_request_identifier && $_SESSION['step_1']['place_reg'] != 3){
 		$err_text .= "<li class=\"text-danger\">Не указан номер запроса в АИС РСА</li>";

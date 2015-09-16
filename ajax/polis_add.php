@@ -174,6 +174,17 @@ if($action == 'add'){
 	$bso_series = '';
 }
 $query = "INSERT INTO `contract` (user_id,unit_id,insurer_id,insurer_type,owner_id,owner_type,vehicle_data,drivers_data,calc_data,calc_result,start_date,start_time,end_date,step_2_data,bso_number,bso_series,a7_number,rsa_number,project,md5_id) VALUES ('".$_SESSION['user_id']."','".$_SESSION['unit_id']."','".$insurer_id."','".$insurer_type."','".$owner_id."','".$owner_type."','".$vehicle_data."','".$drivers_data."','".$calc_data."','".$calc_result."','".$start_date."','".(isset($start_time) ? $start_time : '00:00')."','".$end_date."','".$step_2_data."','".($action=='project' ? '' : $bso_number)."','".($action=='project' ? '' : $bso_series)."','".($action=='project' ? '' : $a7_number)."','".$ais_request_identifier."','".($action == 'project' ? '1' : '0')."','".$md5_id."')";
+
+#Банковский платежный документ
+	if ($a7_type_paid == 3){
+		$q = "INSERT INTO `bank_document`( `contract_md5_id`, `bank_number`, `bank_date`, `doc_templ_id`, `bank_amount`) 
+						VALUES ('".$md5_id."','".$bank_number."','".$bank_date."','0','".$bank_amount."')";
+		if(mysql_query($q)){
+						//--//
+		} else{ echo "<p class=\"text-danger\">Ошибка при добавление/обновлении данных банковского платежного документ ".mysql_error()."</p>";
+		  exit();
+		}
+	} 	
 //echo $query;
 //echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\"><button type=\"button\" class=\"btn btn-danger\" id=\"button_return\" onclick=\"button_return();\">Назад</button></p>";
 //exit();

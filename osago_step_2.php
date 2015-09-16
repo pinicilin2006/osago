@@ -65,6 +65,7 @@ $category_code = array(
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
 					 <input type="hidden" name="md5_id" value="<?php echo md5(date("F j, Y, g:i:s "))?>">
+								
 					 <h4><b>Данные страхователя</b></h4>
 						<div class="form-group" id="owner">
 							<hr class="hr_red">
@@ -927,7 +928,7 @@ $category_code = array(
 							<div class="form-group" style="padding-top:2%">
 						    	<label for="a7_number" class="col-sm-4 control-label"><small>Номер выдаваемого бланка А7</small></label>
 						    	<div class="col-sm-8">
-									<select class="form-control input-sm" name="a7_number">
+									<select id="a7_number" class="form-control input-sm" name="a7_number">
 							  			<option value="no">Бланк А7 не используется</option>
 								  		<?php
 								  		$query=mysql_query("SELECT * FROM `a7` WHERE ".(isset($_SESSION["access"][8]) ? "`user_id` = $_SESSION[user_id]" : "`unit_id` = $_SESSION[unit_id]")." ORDER BY `number`");
@@ -941,7 +942,7 @@ $category_code = array(
 							<div class="form-group" style="padding-top:2%">
 						    	<label for="a7_type_paid" class="col-sm-4 control-label"><small>Получена страховая премия</small></label>
 						    	<div class="col-sm-8">
-									<select class="form-control input-sm" name="a7_type_paid">
+									<select id="paymentMethod_id" class="form-control input-sm" name="a7_type_paid">
 								  		<?php
 								  		$query=mysql_query("SELECT * FROM `a7_type_paid` WHERE active = 1");
 								  		while($row = mysql_fetch_assoc($query)){
@@ -950,7 +951,27 @@ $category_code = array(
 										?>    
 									</select>	      		
 						    	</div>
-						  	</div>						  	
+						  	</div>		
+						<div id="bankDocument" style="display : none">
+							<div class="form-group">
+									<label for="bank_number" class="col-sm-4 control-label"><small>Номер банковского документа</small></label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control input-sm" name="bank_number" value='<?php echo $bank_data['bank_number'] ?>' id="bank_number">
+									</div>
+							</div>
+							<div class="form-group">
+									<label for="bank_date" class="col-sm-4 control-label"><small>Дата банковского документа</small></label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control input-sm" name="bank_date" value='<?php echo $bank_data['bank_date'] ?>' id="bank_date">
+									</div>
+							</div>
+							<div class="form-group">
+									<label for="bank_amount" class="col-sm-4 control-label"><small>Сумма банковского документа</small></label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control input-sm" name="bank_amount" value='<?php echo $bank_data['bank_amount'] ?>' id="bank_amount">
+									</div>
+							</div>
+						</div>							
 					  	<hr class="hr_red">
 
 						  	<div class="form-group">
@@ -1560,9 +1581,28 @@ if($_SESSION["step_1"]["drivers"] == 2){
     // 	add_polis();
     // 	return false;    	
     // });
+	//Если Способ оплаты банковским документом
+	function onpaymentMethod(id){
+		if (id == 3){
+		  $('#bankDocument').slideDown();
+		  $('#a7_number').val('no');
+	  } else{
+		  $('#bankDocument').slideUp();
+		  $('div#bankDocument input').val('');
+		}
+	}
+	$('#paymentMethod_id').on('change', function() {
+		onpaymentMethod($(this).val());
+	});
+	$(function() {
+		onpaymentMethod($("#paymentMethod_id option:selected" ).val());
+	});
+	
+
 
 ///////////////////////////////////////////////////////////
 });
+
 
 </script>
 

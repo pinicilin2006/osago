@@ -97,6 +97,7 @@ if($_POST['email']){
 		$status = 'Произошла ошибка при обновление данных';
 	}
 }
+
 mysql_query("INSERT INTO `log_recovery` (ip, browser, login, status) VALUES ('".$_SERVER['REMOTE_ADDR']."', '".$_SERVER['HTTP_USER_AGENT']."', '".$user_data["user_id"]."', '".$status."')");
 //echo 'OK';
 exit();
