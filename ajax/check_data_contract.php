@@ -381,7 +381,7 @@ if(!$md5_id){
 }
 if($action == 'add'){
 	if(!$bso_number){
-		//$err_text .= "<li class=\"text-danger\">Не указан номер БСО</li>";
+		$err_text .= "<li class=\"text-danger\">Не указан номер БСО</li>";
 	}
 	if(!$ais_request_identifier && $_SESSION['step_1']['place_reg'] != 3){
 		$err_text .= "<li class=\"text-danger\">Не указан номер запроса в АИС РСА</li>";

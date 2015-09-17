@@ -8,9 +8,9 @@ if(!isset($_SESSION["calc"]) || !isset($_SESSION["step_1"])){
 	header("Location: osago.php");
 	exit;	
 }
-// echo "<pre>";
-// print_r($_SESSION['kbm']);
-// echo "</pre>";
+/*  echo "<pre>";
+ print_r($_SESSION);
+ echo "</pre>"; */
 if(isset($_SESSION['kbm'])){
 	if($_SESSION["step_1"]['drivers'] == '1'){
 		$fio_data = explode(" ", $_SESSION['kbm']['own_name']);
@@ -1196,6 +1196,8 @@ $(document).on("change", ".inn", function(){
 		$(this).val('');
 	}
 });
+
+
 //Копируем дату начала страхового периода в дату начала периода использования и тоже самое с датой окончания (делается разово при загрузке страницы)
 $('#auto_used_start_1').val($('#start_date').val());
 //$('#auto_used_end_1').val($('#end_date').val());
@@ -1581,6 +1583,7 @@ if($_SESSION["step_1"]["drivers"] == 2){
     // 	add_polis();
     // 	return false;    	
     // });
+	
 	//Если Способ оплаты банковским документом
 	function onpaymentMethod(id){
 		if (id == 3){
@@ -1597,8 +1600,17 @@ if($_SESSION["step_1"]["drivers"] == 2){
 	$(function() {
 		onpaymentMethod($("#paymentMethod_id option:selected" ).val());
 	});
-	
 
+	//Если водителей больше 4 уведомляем
+	$( document ).ready(function() {
+	   $('#driver_4:visible').show( function(){
+		   $('#modal_error_text').html('Водителей больше 4, Оформление только в офисе компании, т.к.необходимо ставить печати на оборотной стороне полиса');
+			$('#modal_error').modal();
+			
+	   });
+
+	});
+ 
 
 ///////////////////////////////////////////////////////////
 });

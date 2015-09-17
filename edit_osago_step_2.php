@@ -1558,6 +1558,15 @@ $( "#time_create" ).datepicker({
 	  
 });
 
+$( document ).ready(function() {
+	
+   $('#driver_4:visible').show( function(){
+	   $('#modal_error_text').html('Водителей больше 4, Оформление только в офисе компании, т.к.необходимо ставить печати на оборотной стороне полиса');
+		$('#modal_error').modal();
+		
+   });
+
+});
 
 
 
