@@ -17,7 +17,25 @@ include("../../config.php");
 include("../../function.php");
 include("../../ibs_connector.php");
 connect_to_base();
-$query_bso = mysql_query("SELECT `bso`.*, `user`.`id_in_ibs` FROM `user`, `bso` WHERE `unit_id` = 0 AND `bso`.`user_id` > 0 AND `user`.`user_id` = `bso`.`user_id` AND `user`.`id_in_ibs` > 0");
+# Было до 28.09
+//$query_bso = mysql_query("SELECT `bso`.*, `user`.`id_in_ibs` FROM `user`, `bso` WHERE `unit_id` = 0 AND `bso`.`user_id` > 0 AND `user`.`user_id` = `bso`.`user_id` AND `user`.`id_in_ibs` > 0");
+
+# Исключае нефтеюганский филиал
+$query_bso = mysql_query("
+	SELECT `bso`.*, `user`.`id_in_ibs` 
+	FROM `user`, `bso` 
+	WHERE `unit_id` = 0 
+	AND `bso`.`user_id` > 0 
+	AND `user`.`user_id` = `bso`.`user_id` 
+	AND `user`.`id_in_ibs` > 0
+	AND NOT EXISTS  
+	(SELECT 1 
+	FROM user_unit uu, unit u
+	WHERE uu.unit_id = u.unit_id
+	AND u.unit_id = 44
+	AND uu.user_id =`user`.`id_in_ibs` )
+");
+
 if(mysql_num_rows($query_bso) == 0){
   echo 'Не обнаруженно бланков БСО';
   exit();
