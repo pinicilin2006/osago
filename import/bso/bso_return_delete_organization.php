@@ -17,7 +17,14 @@ include("../../config.php");
 include("../../function.php");
 include("../../ibs_connector.php");
 connect_to_base();
-$query_bso = mysql_query("SELECT `bso`.*, `unit`.`id_in_ibs` FROM `unit`, `bso` WHERE `bso`.`user_id` = 0 AND `bso`.`unit_id` > 0 AND `unit`.`unit_id` = `bso`.`unit_id` AND `unit`.`id_in_ibs` > 0");
+$query_bso = mysql_query("SELECT `bso`.*, `unit`.`id_in_ibs` 
+						  FROM `unit`, `bso` 
+						  WHERE `bso`.`user_id` = 0 
+						  AND `bso`.`unit_id` > 0 
+						  AND `unit`.`unit_id` = `bso`.`unit_id` 
+						  AND `unit`.`id_in_ibs` > 0
+						  
+						");
 if(mysql_num_rows($query_bso) == 0){
   echo 'Не обнаруженно бланков БСО';
   exit();

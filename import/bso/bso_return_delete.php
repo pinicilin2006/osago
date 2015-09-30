@@ -33,7 +33,7 @@ $query_bso = mysql_query("
 	FROM user_unit uu, unit u
 	WHERE uu.unit_id = u.unit_id
 	AND u.unit_id = 44
-	AND uu.user_id =`user`.`id_in_ibs` )
+	AND uu.user_id =`bso`.`user_id` )
 ");
 
 if(mysql_num_rows($query_bso) == 0){

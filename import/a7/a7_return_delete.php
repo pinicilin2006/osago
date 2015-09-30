@@ -32,7 +32,7 @@ $query_a7 = mysql_query("
 	FROM user_unit uu, unit u
 	WHERE uu.unit_id = u.unit_id
 	AND u.unit_id = 44
-	AND uu.user_id =`user`.`user_id` )
+	AND uu.user_id =`a7`.`user_id`  )
 ");
 
 if(mysql_num_rows($query_a7) == 0){
