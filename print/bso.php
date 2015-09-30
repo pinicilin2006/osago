@@ -463,7 +463,11 @@ if($calc_data['drivers'] == 1){
 		$agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
 		$agent = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
 		$agent = iconv('utf-8', 'windows-1251', $agent);
-	} else {
+	}elseif ($unit_data['unit_id'] == '44'){
+			#Для нефтеюганска выходило наименование филиала.. просисили убрать 
+			$agent ='';
+		
+	}else {
 		$agent = iconv('utf-8', 'windows-1251', $unit_data['unit_full_name']);
 	}
 	$pdf->SetXY(135, 283);
