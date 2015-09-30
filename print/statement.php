@@ -312,7 +312,10 @@ $unit_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `unit` WHERE `unit_id`
 if($unit_data['unit_full_name'] == 'Физические лица'){
 	$agent_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$contract_data['user_id']."'"));
 	$params['[AGENT_NAME]'] = $agent_data['second_name'].' '.$agent_data['first_name'].' '.$agent_data['third_name'];
-} else {
+}elseif ($unit_data['unit_id'] == '44'){
+			#Для нефтеюганска выходило наименование филиала.. просисили убрать 
+			$params['[AGENT_NAME]'] ='';
+}else {
 	$params['[AGENT_NAME]'] = $unit_data['unit_full_name'];
 }
 
