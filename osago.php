@@ -76,7 +76,7 @@ require_once('template/header.html');
 					  	<hr class="hr_line">
 
 					  		<div class="form-group ">
-					    		<label for="citizenship" class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Гражданство собственника ТС</small></label>
+					    		<label for="citizenship" class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Место жительства (регистрации) собственника ТС - физического лица</small></label>
 					    		<div class="col-sm-7" id="citizenship">
 								
 									<div class="radio">
