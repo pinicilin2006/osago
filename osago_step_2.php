@@ -468,7 +468,7 @@ $category_code = array(
 					  	<div class="form-group">
 					    	<label for="auto_doc_series" class="col-sm-4 control-label"><small>Серия</small></label>
 					    	<div class="col-sm-8">
-					      		<input type="text" class="form-control input-sm rusonly" name="auto_doc_series" id="auto_doc_series" required>
+					      		<input type="text" class="form-control input-sm <?php echo ($_SESSION['step_1']['citizenship'] == 1 ? 'rusonly' : '') ?>" name="auto_doc_series" id="auto_doc_series" required>
 					    	</div>
 					  	</div>
 
@@ -1178,11 +1178,17 @@ $(document).on("change", "#owner_doc_name", function(){
 	var a = $(this).val();
 	format_doc_series(a,'2');
 });
-/////////////////////////////Меняем формат полей при выборе документа о регистрации ТС///////////////////////
+<?php
+if($_SESSION['step_1']['citizenship'] == 1){
+?>
+/////////////////////////////Меняем формат полей при выборе документа о регистрации ТС при выборе места регистрации РФ///////////////////////
 $(document).on("change", "#auto_doc_type", function(){
 	format_auto_doc();
 });
 format_auto_doc();
+<?php
+}
+?>
 //////////////////////////////Проверка на правильность ИНН///////////////////////////////////////////////////
 $(document).on("change", ".inn", function(){
 	var a = $(this).val();
