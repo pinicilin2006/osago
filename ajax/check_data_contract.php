@@ -239,7 +239,7 @@ if($_SESSION['step_1']['category'] == 5){
 }
 //Ограничение по количеству пассажирских мест для категории D
 if($_SESSION['step_1']['category'] == 6){
-	if($number_seats < 8){
+	if($number_seats < 6){
 		$err_text .= "<li class=\"text-danger\">Минимальное число пассажиров не может быть меньше 6</li>";
 	}
 	if($number_seats > 16){
