@@ -173,13 +173,13 @@ if(!$auto_doc_type){
 if(!$auto_doc_series){
 	$err_text .= "<li class=\"text-danger\">Не указана серия документа о регистрации ТС</li>";
 }
-if($_SESSION['step_1']['citizenship'] == 1 && $auto_doc_series && iconv_strlen($auto_doc_series,'UTF-8') > 4){
+if($_SESSION['step_1']['place_reg'] == 1 && $auto_doc_series && iconv_strlen($auto_doc_series,'UTF-8') > 4){
 	$err_text .= "<li class=\"text-danger\">Не верно указана серия документа о регистрации ТС</li>";
 }
 if(!$auto_doc_number){
 	$err_text .= "<li class=\"text-danger\">Не указан номер документа о регистрации ТС</li>";
 }
-if($_SESSION['step_1']['citizenship'] == 1 && $auto_doc_number && iconv_strlen($auto_doc_number,'UTF-8') > 6){
+if($_SESSION['step_1']['place_reg'] == 1 && $auto_doc_number && iconv_strlen($auto_doc_number,'UTF-8') > 6){
 	$err_text .= "<li class=\"text-danger\">Не верно указан номер документа о регистрации ТС</li>";
 }
 if(!$auto_doc_date){
