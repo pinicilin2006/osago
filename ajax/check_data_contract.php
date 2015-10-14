@@ -265,9 +265,9 @@ if($_SESSION["step_1"]["drivers"] == 2){
 			if(empty(${"driver_".$x."_second_name"})){
 				$err_text .= "<li class=\"text-danger\">Не указана фамилия водителя №".$x."</li>";
 			}
-			if(empty(${"driver_".$x."_third_name"})){
-				$err_text .= "<li class=\"text-danger\">Не указано отчество водителя №".$x."</li>";
-			}
+			// if(empty(${"driver_".$x."_third_name"})){
+			// 	$err_text .= "<li class=\"text-danger\">Не указано отчество водителя №".$x."</li>";
+			// }
 			if(empty(${"driver_".$x."_date_birth"})){
 				$err_text .= "<li class=\"text-danger\">Не указана дата рождения водителя №".$x."</li>";
 			}
