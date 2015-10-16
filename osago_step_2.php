@@ -1609,7 +1609,7 @@ if($_SESSION["step_1"]["drivers"] == 2){
 
 	//Если водителей больше 4 уведомляем
 	$( document ).ready(function() {
-	   $('#driver_4:visible').show( function(){
+	   $('#driver_5:visible').show( function(){
 		   $('#modal_error_text').html('Водителей больше 4, Оформление только в офисе компании, т.к.необходимо ставить печати на оборотной стороне полиса');
 			$('#modal_error').modal();
 			
