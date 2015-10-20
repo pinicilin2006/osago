@@ -1548,39 +1548,16 @@ $( "#time_create" ).datepicker({
 	  onSelect: function(d,i) {
 		   var mes='';
 			$.each( $('div#bankDocument input'), function( key, value ) {
-			  if ($(this).val().length==0){
-				 mes = mes +','+$(this).attr('name'); 
+			if ($(this).val().length==0){
+			 	mes = mes +','+$(this).attr('name'); 
 				}		
-			 });
-			 if (mes !==''){
-				 alert('Не заполнены поля: '+ mes)
-				 $("#time_create").datepicker().val(i.lastVal);
-				 
-			 }
-			 
+			});
+			if (mes !==''){
+			 alert('Не заполнены поля: '+ mes)
+			 $("#time_create").datepicker().val(i.lastVal);			 
+			}			 
 		} 
-	  
-	
-	  
 });
-
-$( document ).ready(function() {
-	
-   $('#driver_4:visible').show( function(){
-	   $('#modal_error_text').html('Водителей больше 4, Оформление только в офисе компании, т.к.необходимо ставить печати на оборотной стороне полиса');
-		$('#modal_error').modal();
-		
-   });
-
-});
-
-
-
-
-
-
-
-
 
 <?php
 if($_SESSION["step_1"]["drivers"] == 2){

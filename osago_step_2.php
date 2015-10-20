@@ -1575,22 +1575,8 @@ if($_SESSION["step_1"]["drivers"] == 2){
         .append( $( "<span></span>" ).html( item.label+' ' ) )
         .append( $( "<em class='text-muted'></em>" ).html( item.first_name+' '+item.third_name ) )
         .appendTo( ul );
-    };  	
-//проверка данных формы
-	$('#main_form').validate({ // initialize the plugin
-    	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.
-    	submitHandler: function(form) {
-    	$('#address_data').html(' ');
-    	add_polis();
-    	return false; 
-    	}
-    }); 
-    // $('#main_form').submit(function( event ) {
-    // 	add_polis();
-    // 	return false;    	
-    // });
-	
-	//Если Способ оплаты банковским документом
+    }; 
+//Если Способ оплаты банковским документом
 	function onpaymentMethod(id){
 		if (id == 3){
 		  $('#bankDocument').slideDown();
@@ -1605,19 +1591,20 @@ if($_SESSION["step_1"]["drivers"] == 2){
 	});
 	$(function() {
 		onpaymentMethod($("#paymentMethod_id option:selected" ).val());
-	});
-
-	//Если водителей больше 4 уведомляем
-	$( document ).ready(function() {
-	   $('#driver_5:visible').show( function(){
-		   $('#modal_error_text').html('Водителей больше 4, Оформление только в офисе компании, т.к.необходимо ставить печати на оборотной стороне полиса');
-			$('#modal_error').modal();
-			
-	   });
-
-	});
- 
-
+	}); 	
+//проверка данных формы
+	$('#main_form').validate({ // initialize the plugin
+    	//Делаем ajax запрос на добавление данных полиса в базу в том случае если все необходимые поля заполнены.
+    	submitHandler: function(form) {
+    	$('#address_data').html(' ');
+    	add_polis();
+    	return false; 
+    	}
+    }); 
+    // $('#main_form').submit(function( event ) {
+    // 	add_polis();
+    // 	return false;    	
+    // });
 ///////////////////////////////////////////////////////////
 });
 
