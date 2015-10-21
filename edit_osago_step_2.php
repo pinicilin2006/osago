@@ -1473,6 +1473,8 @@ function owner_change_street(){
 			$("#start_time").val('00:00');
 		}		 
 	});
+//Заполняем время начала действия полиса при загрузке страницы	
+	time_start_today();
 //Отслеживаем изменение время старта
 	$(document).on("change", "#start_time", function(){
 		var timeNow = new Date();
