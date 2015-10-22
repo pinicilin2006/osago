@@ -1474,7 +1474,13 @@ function owner_change_street(){
 		}		 
 	});
 //Заполняем время начала действия полиса при загрузке страницы	
-	time_start_today();
+	<?php
+	$date_today = date("d.m.Y");
+	$date_start = $contract_data['start_date'];
+		if($date_today == $date_start){
+			time_start_today();
+		}
+	?>	
 //Отслеживаем изменение время старта
 	$(document).on("change", "#start_time", function(){
 		var timeNow = new Date();
