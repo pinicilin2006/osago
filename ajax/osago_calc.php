@@ -109,6 +109,8 @@ if($place_reg !=2){
 if($place_reg !=2){
 	$kt_query = mysql_fetch_assoc(mysql_query("SELECT * FROM `".(isset($city) ? 'kt_city' : 'kt_subject')."` WHERE `id` = '".(isset($city) ? $city : $subject)."'"));
 	$kt = $kt_query['koef_'.($category != 11  ? '1' : '2')];
+} else {
+	$kt = 1.7;//Для ТС иностраного государства
 }
 //Получаем КБМ
 if($place_reg == 1){
