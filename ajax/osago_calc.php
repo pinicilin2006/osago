@@ -116,9 +116,12 @@ if($place_reg == 1){
 	$kbm = $kbm_query["koef"];
 }
 
-//Получаем КО
+//Получаем КО для ТС РФ
 $ko = ($drivers == '1' || ($type_ins == 'jur') ? 1.8 : 1);
-
+//Для ТС не  РФ
+if($place_reg == '2'){
+	$ko = ($type_ins == 'jur' ? 1.8 : 1);
+}
 //Получаем КВС
 if($drivers == '2'){
 	$kvs_massive = array();
@@ -140,6 +143,7 @@ if($drivers == '2'){
 	}
 	$kvs = max($kvs_massive);
 }
+//Для ТС не РФ
 if($place_reg == '2'){
 	$kvs = ($type_ins == 'phiz' || $type_ins == 'ip' ? 1.7 : 1);
 }
