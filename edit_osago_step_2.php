@@ -628,31 +628,8 @@ $category_code = array(
 						      		<input type="text" class="form-control input-sm period_data" name="end_date" id="end_date" value="<?php 
 						      					if($_SESSION["step_1"]["place_reg"] == 3){
 									      			echo date('d.m.Y', strtotime("$contract_data[start_date] + 20 days"));
-									      		} elseif ($_SESSION["step_1"]["place_reg"] == 1) {
-									      			if($_SESSION["step_1"]["period_use"] == 1){
-									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 3 months - 1 day"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 2){
-									      				echo date('d.m.Y', strtotime(" $contract_data[start_date] + 4 months - 1 day"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 3){
-									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 5 months - 1 day"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 4){
-									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 6 months - 1 day"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 5){
-									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 7 months - 1 day"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 6){
-									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 8 months - 1 day"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 7){
-									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 9 months - 1 day"));
-									      			}
-									      			if($_SESSION["step_1"]["period_use"] == 8){
-									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 1 years - 1 day"));
-									      			}						      									      									      									      									      									      									      			
+									      		} elseif ($_SESSION["step_1"]["place_reg"] == 1) {									      			
+									      			echo date('d.m.Y', strtotime("$contract_data[start_date] + 1 year - 1 day"));						      									      									      									      									      									      									      			
 									      		} elseif ($_SESSION["step_1"]["place_reg"] == 2){
 									      			if($_SESSION["step_1"]["term_insurance"] == 1){
 									      				echo date('d.m.Y', strtotime("$contract_data[start_date] + 15 days - 1 day"));
