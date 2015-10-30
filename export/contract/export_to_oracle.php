@@ -391,7 +391,7 @@ $query_all_contract = mysql_query("SELECT * FROM `contract` WHERE `project` = '0
 			    $e = oci_error($query_in_oracle);  // Для обработки ошибок oci_execute
 			    echo '<br>';
 			    print htmlentities($e['message']);
-			    echo "<br>";
+			    echo "\n";
 			    // print "\n<pre>\n";
 			    // print htmlentities($e['sqltext']);
 			    // printf("\n%".($e['offset']+1)."s", "^");
