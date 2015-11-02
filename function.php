@@ -131,7 +131,7 @@ function create_sql_insert($massive){
     $v = '';//значение полей
     foreach ($massive as $key => $value) {
       $k .= $key.',';
-      $v .= "'".$value."',";
+      $v .= "'".mysql_real_escape_string($value)."',";
     }
     $k = substr($k, 0, -1);
     $v = substr($v, 0, -1);
