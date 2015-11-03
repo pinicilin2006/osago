@@ -510,3 +510,17 @@ function time_start_today(){
 		$("#start_time").prop("disabled", false)
 		$("#start_time").val(hhmm);	
 }
+
+function check_login(){
+			var a = 'check_login';
+			$.ajax({
+			  type: "POST",
+			  url: '/ajax/check_login.php',
+			  data: a,
+			  success: function(data) {
+			  	if(data == 'NO'){
+			  		window.location = "/login.php";
+			  	}
+			  }
+			});			
+}

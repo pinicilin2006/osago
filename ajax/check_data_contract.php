@@ -383,12 +383,26 @@ if($_SESSION['step_1']['place_reg'] == '1' && $_SESSION['step_1']['citizenship']
 	$auto_subject_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `kt_subject` WHERE `id` = '".$_SESSION['step_1']['subject']."'"));
 	$auto_subject = $auto_subject_data['id_fias'];//id_fias территории преимущественного использования ТС
 	if($auto_subject != $owner_subject){
-		$err_text .= "<li class=\"text-danger\">Место жительства собственника должно совпадать с территорией преимущественного использования ТС, указанной на этапе расчета стоимости полиса.</li>";
+		$err_text .= "<li class=\"text-danger\">Место жительства собственника должно совпадать с территорией преимущественного использования ТС, указанной на этапе расчета стоимости полиса (код 1). <b>Не совпадает регион.</b></li>";
 	}
 	//Проверяем город
+	if($_SESSION['step_1']['city']){
+		$owner_aoid = ($insisown == 2 ? $owner_aoid : $aoid);//id_fias собственника
+		$auto_city_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `kt_city` WHERE `id` = '".$_SESSION['step_1']['city']."'"));
+		$owner_aoid_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `d_fias_addrobj_3_4` WHERE `aoid` = '".$owner_aoid."'"));
+		if($auto_subject_data['kladr'] != $auto_city_data['kladr']){
+			if($auto_city_data['kladr'] != $owner_aoid_data['code']){
+				$err_text .= "<li class=\"text-danger\">Место жительства собственника должно совпадать с территорией преимущественного использования ТС, указанной на этапе расчета стоимости полиса (код 2). <b>Не совпадает город.</b></li>";				
+			}
+		} else {
+			if(mysql_num_rows(mysql_query("SELECT * FROM `kt_city` WHERE `kladr` = '".$owner_aoid_data['code']."'")) > 0){
+				$err_text .= "<li class=\"text-danger\">Место жительства собственника должно совпадать с территорией преимущественного использования ТС, указанной на этапе расчета стоимости полиса (код 3). <b>Не совпадает город.</b></li>";				
+			}
+		}
+	}
 }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Проверка набланк А7 для юриков. Юрикам А7 не выдаётся
+
+//Проверка на бланк А7 для юриков. Юрикам А7 не выдаётся
 if($a7_number && $_SESSION['step_1']['type_ins'] == 'jur'){
 	$err_text .= "<li class=\"text-danger\">Квитанция А7 юридическам лицам не выдаётся</li>";
 }
