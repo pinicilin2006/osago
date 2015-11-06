@@ -36,8 +36,8 @@ check_browser();
         </div>
     </div>
 </div>
-<div class="footer navbar-fixed-bottom text-center">
-  <small>©<?php echo date("Y") ?>. <a href="https://www.sngi.ru">Страховое общество «Сургутнефтегаз».</a> Все права защищены.</small>
+<div id='footer'>
+<?php require_once('template/footer.html') ?>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){

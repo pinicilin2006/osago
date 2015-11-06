@@ -1,5 +1,4 @@
 <?php
-
 require_once('config.php');
 require_once('function.php');
 connect_to_base();
@@ -36,10 +35,6 @@ check_browser();
         </div>
     </div>
 </div>
-<div id="footer">
-     <div class="container">
-        <div class="footer text-center">
-            <small>©<?php echo date("Y") ?>. <a href="https://www.sngi.ru">Страховое общество «Сургутнефтегаз».</a> Все права защищены.</small>
-        </div>
-    </div>
+<div id='footer'>
+<?php require_once('template/footer.html') ?>
 </div>

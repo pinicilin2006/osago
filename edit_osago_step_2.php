@@ -904,9 +904,7 @@ $category_code = array(
 		</div>
 	</div>
 </div>
-<div class="footer text-center">
-	<small>©<?php echo date("Y") ?>. <a href="https://www.sngi.ru">Страховое общество «Сургутнефтегаз».</a> Все права защищены.</small>
-</div>
+<?php require_once('template/footer.html') ?>
 <!-- Модаль для отображения ошибок -->
 	<div class="modal fade" id="modal_error">
 	  <div class="modal-dialog">

@@ -316,6 +316,7 @@ echo '</ul>
 		</tbody>
 	</table>
 </div>
+<?php require_once('template/footer.html') ?>
 
 
 
@@ -326,6 +327,7 @@ echo '</ul>
 		</div>
 	</div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="filter_help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -343,6 +345,7 @@ echo '</ul>
     </div>
   </div>
 </div>
+<?php require_once('template/footer.html') ?>
 </body>
 </html>
 <script type="text/javascript">
