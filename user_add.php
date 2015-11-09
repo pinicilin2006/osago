@@ -86,12 +86,17 @@ require_once('template/header.html');
 					  <hr align="center" size="2" />
 					  
 					  <div class="form-group">
-					  		<?php
-					  		$query=mysql_query("SELECT * FROM `rights` WHERE active = 1 ORDER BY priority");
-					  		while($row = mysql_fetch_assoc($query)){
-								echo "<label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"rights[]\" value=\"$row[id]\" >$row[name]</label><br>";
-							}
-							?>    
+							<div class="panel panel-primary">
+					  			<div class="panel-heading">ПРАВА ПОЛЬЗОВАТЕЛЯ:</div>
+					  			<div class="panel-body">					  
+							  		<?php
+							  		$query=mysql_query("SELECT * FROM `rights` WHERE active = 1 ORDER BY priority");
+							  		while($row = mysql_fetch_assoc($query)){
+										echo "<label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"rights[]\" value=\"$row[id]\" >$row[name]</label><br>";
+									}
+									?> 
+								</div>
+							</div>   
 					  </div>
 
 					  <hr align="center" size="2" />

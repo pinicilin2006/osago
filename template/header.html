@@ -56,7 +56,30 @@
         </div>
         <div class="collapse navbar-collapse" id="main_menu">
           <ul class="nav navbar-nav">
-            <li <?php echo ($_SERVER['PHP_SELF'] == "/osago.php" ?  " class=\"active\"" : "") ?>> <a href="/osago.php">Заключить новый договор</a></li>
+<?php
+$query_product = mysql_query("SELECT distinct p.url,p.name FROM `user_rights` u,`rights` r,`product` p where u.user_id = ".$_SESSION['user_id']." AND u.rights=r.id AND r.id_product > 0 AND p.id=r.id_product AND p.active=1");
+if(mysql_num_rows($query_product) == 1){
+  $product_data = mysql_fetch_assoc($query_product);
+?>
+            <li <?php echo ($_SERVER['PHP_SELF'] == $product_data['url'] ?  " class=\"active\"" : "") ?>> <a href="<?php echo $product_data['url']?>">Заключить новый договор</a></li>
+
+<?php
+}
+if(mysql_num_rows($query_product) > 1){
+  $acive_page = 0;
+  $product_menu = '';
+  while($row=mysql_fetch_assoc($query_product)) {
+    if($_SERVER['PHP_SELF'] == $row['url']){
+      $active_page = 1;
+    }
+    $product_menu .= '<li><a href="'.$row['url'].'">'.$row['name'].'</a></li><li class="divider" style="margin:0 0"></li>';
+  }
+  echo '<li '.($active_page == 1 ? 'class="active"' : '').'><a class="dropdown-toggle" data-toggle="dropdown" href="#">Заключить новый договор<span class="caret"></span></a>';
+  echo '<ul class="dropdown-menu">';
+  echo $product_menu;
+  echo '</ul></li>'; 
+}
+?>                      
             <li <?php echo ($_SERVER['PHP_SELF'] == "/contract.php" ?  " class=\"active\"" : "") ?>> <a href="/contract.php">Раннее заключённые договора</a></li>
              
              <?php if(isset($_SESSION["access"][11])){ ?>

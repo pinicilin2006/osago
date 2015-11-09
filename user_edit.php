@@ -24,7 +24,7 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".my
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
-	    			<h3 class="panel-title">Добавить пользователя:</h3>
+	    			<h3 class="panel-title">Редактировать пользователя:</h3>
 	  			</div>	  			
 	  			<div class="panel-body" id="user_data">
 					<form class="form-horizontal col-sm-8 col-sm-offset-2" role="form" id="main_form">
@@ -90,19 +90,22 @@ $row=mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".my
 					  </div>
 
 					  <hr align="center" size="2" />
-					  
 					  <div class="form-group">
-					  		<?php
-					  		$rights=mysql_fetch_assoc(mysql_query("SELECT * FROM `user_rights` WHERE `user_id` = '".mysql_real_escape_string($_POST["user"])."'"));					  		
-					  		$query=mysql_query("SELECT * FROM `rights` WHERE active = 1 ORDER BY priority");
-					  		while($row2 = mysql_fetch_assoc($query)){
-								echo "<label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"rights[]\" value=\"$row2[id]\"";
-								echo (mysql_num_rows(mysql_query("SELECT * FROM `user_rights` WHERE `user_id` = '".mysql_real_escape_string($_POST["user"])."' AND `rights` = '".$row2["id"]."'")) > 0 ? ' checked' : '');
-								echo ">$row2[name]</label><br>";
-							}
-							?>    
+							<div class="panel panel-primary">
+					  		<div class="panel-heading">ПРАВА ПОЛЬЗОВАТЕЛЯ:</div>
+					  			<div class="panel-body">
+							  		<?php
+							  		$rights=mysql_fetch_assoc(mysql_query("SELECT * FROM `user_rights` WHERE `user_id` = '".mysql_real_escape_string($_POST["user"])."'"));					  		
+							  		$query=mysql_query("SELECT * FROM `rights` WHERE active = 1 ORDER BY priority");
+							  		while($row2 = mysql_fetch_assoc($query)){
+										echo "<label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"rights[]\" value=\"$row2[id]\"";
+										echo (mysql_num_rows(mysql_query("SELECT * FROM `user_rights` WHERE `user_id` = '".mysql_real_escape_string($_POST["user"])."' AND `rights` = '".$row2["id"]."'")) > 0 ? ' checked' : '');
+										echo ">$row2[name]</label><br>";
+									}
+									?>    
+							  	</div>
+							</div>
 					  </div>
-
 					  <hr align="center" size="2" />
 
 					  <div class="form-group">
