@@ -975,6 +975,14 @@ hr {
   background-color: red;
   height: 2px;
 }
+.hr_red_2 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  border: 0;  
+  color: red;
+  background-color: red;
+  height: 1px;
+}
 .sr-only {
   position: absolute;
   width: 1px;

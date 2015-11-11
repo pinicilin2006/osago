@@ -23,10 +23,10 @@ require_once('../template/header.html');
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
 						  	<div class="form-group">
 						  	<hr>
-						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Выберите банк</small></label>
-						    	<div class="col-sm-7">							
+						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Выберите банк:</small></label>
+						    	<div class="col-sm-4">							
 									<select class="form-control input-sm" name="bank" id="bank" required>
-							  		<option value="" disabled selected>Наименование банка</option>
+							  		<option value="" disabled selected>Наименование банка:</option>
 							  		<?php
 							  			$query = mysql_query("select * from rights r, user_rights u where u.user_id=".$_SESSION['user_id']." and u.rights = r.id and r.active=1 and r.id_product=2");
 							  			while ($row = mysql_fetch_assoc($query)) {
@@ -49,5 +49,6 @@ require_once('../template/header.html');
 </div>
 <?php require_once('../template/footer.html') ?>
 </body>
+<?php require_once('modal.html') ?>
 </html>
 <?php require_once('../js/hypothec.js') ?>

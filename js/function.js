@@ -524,3 +524,36 @@ function check_login(){
 			  }
 			});			
 }
+
+///////////////////////////////////Функции для ипотеки/////////////////////////////////////////
+function bank_change(){
+	var a = $('#bank').val();
+	$('#bank_field').load('calc_form/'+a+'.php');
+}
+
+function get_field(){
+	var a = $('#prog_3_num').val();
+	var b = $('input[name=prog_3_type]:checked').val();
+	var c = $("#bank").val();
+	$.ajax({
+		url: '/ajax/hypothec_field.php',
+		type: 'POST',
+		data: {
+			num: a,
+			prog_type: b,
+			id_bank: c,
+		},
+		success: function(data) {
+			$("#field").html(data);
+			$(".date_birth").datepicker({
+			  dateFormat: "dd.mm.yy",
+			  maxDate: "-18Y",
+			  changeYear: true,
+			  changeMonth: true,
+			  yearRange: "c-70:c"
+			});			
+		}
+	});	
+}
+///////////////////////////////////////////////////////////////////////////////////////////////
+

@@ -3,8 +3,7 @@
 $id_bank = 13;
 session_start();
 if(!isset($_SESSION['user_id'])){
-	header("Location: ../../login.php");
-	exit;
+	echo '<center><span class="text-danger"><b>Закончилось время сессии. Необходимо выйти и снова войти в сервис.</b></span></center>';	exit;
 }
 // echo "<pre>";
 // print_r($_SESSION);
@@ -20,7 +19,7 @@ connect_to_base();
 	</div>
 </div>
 <div class="form-group ">
-	<label  class="col-sm-5 control-label" ><small>Характеристика недвижимого имущества</small></label>
+	<label  class="col-sm-5 control-label" ><small>Характеристика недвижимого имущества:</small></label>
 	<div class="col-sm-7">																			  		  
 		<?php
 			$query = mysql_query("SELECT * FROM `hypothec_house_tb` WHERE `active` = 1 AND `id_bank` = $id_bank");
@@ -46,6 +45,7 @@ connect_to_base();
 			<div class="radio">
 				<label><input type="radio" name="trim" value="2"><small>Включая внутреннюю отделку и инженерное оборудование</small></label>
 			</div>
+			<hr>
 			<div class="checkbox">
 				<label><input type="checkbox" name="house_age" value="1"><small>С момента постройки объекта недвижимости прошло 40 лет</small></label>
 			</div>
