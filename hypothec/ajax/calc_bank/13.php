@@ -21,6 +21,7 @@ $tb = 1;
 $t = 1;//Тариф итоговый
 $koef_age = 1;//Если объект недвижимости старше 40 лет
 $koef_fire = 1;//Имеются источники огня.
+$formula ='';
 //Получаем базовый тариф
 $query = mysql_query("SELECT * FROM ".($property_type == 'earth' ? '`hypothec_earth_tb`' : '`hypothec_house_tb`')." WHERE `id_bank` = ".$id_bank." AND `active` = 1 ".($property_type == 'earth' ? '' : ' AND `id` = '.$property_type));
 if(mysql_num_rows($query)<1){
@@ -41,6 +42,7 @@ if($property_type != 'earth'){
 		}
 		$koef_age_data = mysql_fetch_assoc($query);
 		$koef_age = $koef_age_data['koef'];
+		$formula .= '*'.$koef_age;
 	}
 	if($house_fire){
 		$query = mysql_query("SELECT * FROM `hypothec_house_fire_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
@@ -51,7 +53,11 @@ if($property_type != 'earth'){
 		}
 		$koef_fire_data = mysql_fetch_assoc($query);
 		$koef_fire = $koef_fire_data['koef'];
+		$formula .= '*'.$koef_fire;
 	}	
+}
+if($formula){
+	$formula = $tb.$formula.' = ';
 }
 $koef = round($tb * $koef_age * $koef_fire ,2);
 $tarif = round(($ins_summa / 100 )* $koef, 2);
@@ -61,4 +67,16 @@ $_SESSION['calc']['tb'] = $tb;
 $_SESSION['calc']['koef_age'] = $koef_age;
 $_SESSION['calc']['koef_fire'] = $koef_fire;
 $_SESSION['calc']['tarif'] = $tarif;
+$calc_result = '
+<div class="row">
+	<div  class="col-md-3 col-md-offset-5">
+	<ul>
+	<li><b>Страховая сумма: </b>'.number_format($ins_summa, 2, '.', ' ').'</li>
+	<li><b>Итоговый коэффициент: </b>'.$formula.$koef.'</li>
+	<li><b>Итоговый страховой тариф: </b> <span class="text-danger"><b>'.$tarif.'</b></span></li>
+	</ul>
+	</div>
+</div>
+<hr>
+';
 ?>

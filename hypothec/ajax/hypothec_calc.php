@@ -47,18 +47,7 @@ echo '
 		<h3 class="panel-title">Результат расчёта стоимости полиса ипотечного страхования:</h3>
 	</div>
   	<div class="panel-body">';
-echo '
-<div class="row">
-	<div  class="col-md-2 col-md-offset-5">
-	<ul>
-	<li><b>Страховая сумма: </b>'.number_format($ins_summa, 2, '.', ' ').'</li>
-	<li><b>Итоговый коэффициент: </b>'.$koef.'</li>
-	<li><b>Итоговый страховой тариф: </b> <span class="text-danger"><b>'.$tarif.'</b></span></li>
-	</ul>
-	</div>
-</div>
-<hr>
-';
+echo $calc_result;
 
 echo '<a href="/osago_step_2.php" class="btn btn-success btn-block " role="button" disabled>Оформить полис</a>';
 echo $button_return;
