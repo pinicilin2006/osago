@@ -3,7 +3,8 @@
 $id_bank = 13;
 session_start();
 if(!isset($_SESSION['user_id'])){
-	echo '<center><span class="text-danger"><b>Закончилось время сессии. Необходимо выйти и снова войти в сервис.</b></span></center>';	exit;
+	echo '<center><span class="text-danger"><b>Закончилось время сессии. Необходимо выйти и снова войти в сервис.</b></span></center>';	
+	exit;
 }
 // echo "<pre>";
 // print_r($_SESSION);
@@ -57,5 +58,5 @@ connect_to_base();
 </div>
 <hr>
 <div class="form-group">
-	<button type="submit" class="btn btn-success btn-block">Рассчитать стоимость</button>
+	<button type="submit" id="button_submit" class="btn btn-success btn-block">Рассчитать стоимость</button>
 </div>

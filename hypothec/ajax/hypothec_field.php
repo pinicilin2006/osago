@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user_id'])){
-	header("Location: login.php");
+	echo '<center><span class="text-danger"><b>Закончилось время сессии. Необходимо выйти и снова войти в сервис.</b></span></center>';
 	exit;
 }
 if(!isset($_POST['num']) || !is_numeric($_POST['num']) || !isset($_POST['prog_type']) || !is_numeric($_POST['prog_type']) || !isset($_POST['id_bank']) || !is_numeric($_POST['id_bank'])){
@@ -12,8 +12,8 @@ if(!isset($_POST['num']) || !is_numeric($_POST['num']) || !isset($_POST['prog_ty
 // print_r($_POST);
 // echo "</pre>";
 // exit();
-require_once('../config.php');
-require_once('../function.php');
+require_once('../../config.php');
+require_once('../../function.php');
 //require_once('../template/header.html');
 connect_to_base();
 $num = $_POST['num'];
@@ -136,7 +136,7 @@ for($x=1;$x<=$num;$x++){
 			</div>
 			<hr class="hr_line">									
 		</div>
-		<hr class="hr_red_2">	
+		<hr class="hr_red_2">			
 	';
 }
 echo $message;

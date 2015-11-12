@@ -526,17 +526,19 @@ function check_login(){
 }
 
 ///////////////////////////////////Функции для ипотеки/////////////////////////////////////////
+//Отображаем программы для выбранного банка
 function bank_change(){
 	var a = $('#bank').val();
 	$('#bank_field').load('calc_form/'+a+'.php');
 }
 
+//получаем поля для выбранного количества застрахованных по личному страхованию
 function get_field(){
 	var a = $('#prog_3_num').val();
 	var b = $('input[name=prog_3_type]:checked').val();
 	var c = $("#bank").val();
 	$.ajax({
-		url: '/ajax/hypothec_field.php',
+		url: 'ajax/hypothec_field.php',
 		type: 'POST',
 		data: {
 			num: a,
@@ -555,5 +557,21 @@ function get_field(){
 		}
 	});	
 }
+
+//Запрос на расчёт страховой премии
+function calc_hypothec(){
+	var a = $("#main_form").serialize();
+	$.ajax({
+		type: "POST",
+		url: '/hypothec/ajax/hypothec_calc.php',
+		data: a,
+		success: function(data) {
+		  	$("#user_data").slideUp();
+		  	$("#message").html(data);
+		}
+	});
+	return false;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 

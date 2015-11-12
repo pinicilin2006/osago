@@ -16,7 +16,7 @@ $(document).ready(function(){
 			$("#house_option").slideDown(400);
 			$("#earth_option").slideUp(400);
 		} else {
-			$("#house_option").slideUp(400);
+			$("#house_option").slideUp(400);			
 			$("#earth_option").slideDown(400);
 		}
 
@@ -24,11 +24,16 @@ $(document).ready(function(){
 
 	//Действия при смене программы страхования для снгб и прочих банков
 	$(document).on("change", ".ins_prog", function(){
-		if($(this).is(":checked")){
+		if($(this).is(":checked")){//отображение соответствующего блока
 			//alert('adada');
 			$("#prog_"+$(this).val()).slideDown();
 		} else {
 			$("#prog_"+$(this).val()).slideUp();
+		}
+		if($(".ins_prog").is(":checked")){
+			$("#button_calc").slideDown();
+		} else {
+			$("#button_calc").slideUp();
 		}
 	});
 
@@ -70,9 +75,12 @@ $(document).ready(function(){
 
 
 	//Действие при нажатие на кнопку расчёта
-    $('#main_form').submit(function( event ) {
-    	alert('eaeaew');
-    	return false;
-    });	
+	$('#main_form').validate({ // initialize the plugin
+		//Действие в том случае если все необходимые поля заполнены.
+    	submitHandler: function(form) {
+    	calc_hypothec();
+    	return false; 
+    	}
+    });     
 });
 </script>

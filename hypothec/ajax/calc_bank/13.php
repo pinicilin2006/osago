@@ -1,0 +1,64 @@
+<?php
+// echo 'сбербанк';
+// echo $button_return;
+$err_text = '';
+//блок проверки данных
+if(!$ins_summa){
+	$err_text .= "<li class=\"text-danger\">Отсутствуее страховая сумма.</li>";
+}
+if(!$property_type){
+	$err_text .= "<li class=\"text-danger\">Не указана характеристика недвижимого имущества.</li>";
+}
+if(!$trim && $property_type != 'earth'){
+	$err_text .= "<li class=\"text-danger\">Не указано включать внутреннюю отделку и инженерное оборудование или нет.</li>";
+}
+if(!empty($err_text)){
+	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\">$button_return</p>";
+	exit();
+}
+//Расчёт
+$tb = 1;
+$t = 1;//Тариф итоговый
+$koef_age = 1;//Если объект недвижимости старше 40 лет
+$koef_fire = 1;//Имеются источники огня.
+//Получаем базовый тариф
+$query = mysql_query("SELECT * FROM ".($property_type == 'earth' ? '`hypothec_earth_tb`' : '`hypothec_house_tb`')." WHERE `id_bank` = ".$id_bank." AND `active` = 1 ".($property_type == 'earth' ? '' : ' AND `id` = '.$property_type));
+if(mysql_num_rows($query)<1){
+	echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить базовый тариф. Обратитесь к администратору.</b></span></center>';	
+	echo $button_return;
+	exit;	
+}
+$tb_data = mysql_fetch_assoc($query);
+$tb = ($property_type == 'earth' ? $tb_data['koef'] : $tb_data['koef_'.$trim]);
+//Получаем доп коэффициенты для строений
+if($property_type != 'earth'){
+	if($house_age){
+		$query = mysql_query("SELECT * FROM `hypothec_house_age_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
+		if(mysql_num_rows($query)<1){
+		echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить тариф за возраст здания. Обратитесь к администратору.</b></span></center>';	
+		echo $button_return;
+		exit;			
+		}
+		$koef_age_data = mysql_fetch_assoc($query);
+		$koef_age = $koef_age_data['koef'];
+	}
+	if($house_fire){
+		$query = mysql_query("SELECT * FROM `hypothec_house_fire_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
+		if(mysql_num_rows($query)<1){
+		echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить тариф за источник открытого огня. Обратитесь к администратору.</b></span></center>';	
+		echo $button_return;
+		exit;			
+		}
+		$koef_fire_data = mysql_fetch_assoc($query);
+		$koef_fire = $koef_fire_data['koef'];
+	}	
+}
+$koef = round($tb * $koef_age * $koef_fire ,2);
+$tarif = round(($ins_summa / 100 )* $koef, 2);
+
+$_SESSION['calc']['koef'] = $koef;
+$_SESSION['calc']['tb'] = $tb;
+$_SESSION['calc']['koef_age'] = $koef_age;
+$_SESSION['calc']['koef_fire'] = $koef_fire;
+$_SESSION['calc']['tarif'] = $tarif;
+?>

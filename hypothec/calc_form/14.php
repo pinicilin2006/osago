@@ -170,3 +170,7 @@ connect_to_base();
 		</div>
 	</div>
 </div>
+<div class="form-group" id="button_calc" style="display:none">
+	<button type="submit" id="button_submit" class="btn btn-success btn-block">Рассчитать стоимость</button>
+</div>
+
