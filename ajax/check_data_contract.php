@@ -372,7 +372,7 @@ if($_SESSION['step_1']['type_ins'] == 'phiz' && $_SESSION['step_1']['place_reg']
 if($_SESSION['step_1']['place_reg'] == '1' && $auto_reg_number != 'Отсутствует'){
 	$num_format = "/^[а-яА-Я][0-9]{3}[а-яА-Я]{2}[0-9]{2,3}$|^[а-яА-Я]{2}[0-9]{5,6}$|^[0-9]{4}[а-яА-Я][0-9]{2}$|^[0-9]{3}[а-яА-Я]{1,2}[0-9]{3,5}$|^[0-9]{3,4}[а-яА-Я][0-9]{2}$/u";
 	$num_format_2 = "/^[0-9]{4}[а-яА-Я]{2}[0-9]{2,3}$|^[а-яА-Я]{2}[0-9]{6,7}$|^[0-9]{2,3}[а-яА-Я]{2}[0-9]{4}$/u";
-	if((!preg_match($num_format, $auto_reg_number) && $_SESSION['step_1']['category'] > 1) || (!preg_match($num_format_2, $auto_reg_number) && ($_SESSION['step_1']['category'] == 1 || $_SESSION['step_1']['category'] == 11))){
+	if((!preg_match($num_format, $auto_reg_number) && $_SESSION['step_1']['category'] != 1 && $_SESSION['step_1']['category'] != 11) || (!preg_match($num_format_2, $auto_reg_number) && ($_SESSION['step_1']['category'] == 1 || $_SESSION['step_1']['category'] == 11))){
 		$err_text .= "<li class=\"text-danger\">Государственный регистрационный номер ТС указан неверно.</li>";
 	}
 }
