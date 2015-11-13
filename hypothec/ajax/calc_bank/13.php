@@ -4,7 +4,7 @@
 $err_text = '';
 //блок проверки данных
 if(!$ins_summa){
-	$err_text .= "<li class=\"text-danger\">Отсутствуее страховая сумма.</li>";
+	$err_text .= "<li class=\"text-danger\">Отсутствует страховая сумма.</li>";
 }
 if(!$property_type){
 	$err_text .= "<li class=\"text-danger\">Не указана характеристика недвижимого имущества.</li>";
