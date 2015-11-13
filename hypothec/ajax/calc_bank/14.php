@@ -125,7 +125,7 @@ if($ins_prog_1){
 	</div>
 	';
 }
-if($ins_prog_1){
+if($ins_prog_2){
 	$query = mysql_query("SELECT * FROM `hypothec_titul_tb` WHERE `id_bank` = ".$id_bank." AND `active` = 1 AND `id` = ".$titul_option);
 		if(mysql_num_rows($query)<1){
 			echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить коэффициент по программе титул. Обратитесь к администратору.</b></span></center>';	
