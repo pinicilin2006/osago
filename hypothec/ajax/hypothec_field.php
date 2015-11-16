@@ -115,20 +115,20 @@ for($x=1;$x<=$num;$x++){
 				<label class="col-sm-5 control-label" ><small>Имеются заболевания:</small></label>
 				<div class="col-sm-7">
 					<div class="radio">
-						<label class="radio-inline"><input type="radio" name="disease_'.$x.'" class="disease" id="disease_yes" value="yes"><small>Да</small></label>
-						<label class="radio-inline"><input type="radio" name="disease_'.$x.'" class="disease" id="disease_no" value="no" checked><small>Нет</small></label>
+						<label class="radio-inline"><input type="radio" name="disease_'.$x.'" class="disease" id="disease_yes_'.$x.'" value="yes"><small>Да</small></label>
+						<label class="radio-inline"><input type="radio" name="disease_'.$x.'" class="disease" id="disease_no_'.$x.'" value="no" checked><small>Нет</small></label>
 					</div>
 				</div>
 			</div>
 			<hr class="hr_line">
-			<div class="form-group disease_yes disease_no" style="display:none">
+			<div class="form-group disease_yes_'.$x.' disease_no_'.$x.'" style="display:none">
 				<label  class="col-sm-5 control-label"><small>Заболевания:</small></label>
 				<div class="col-sm-7">
 					<div class="checkbox">';
 					$query = mysql_query("SELECT * FROM `hypothec_health_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
 					//echo mysql_num_rows($query);
 					while($row = mysql_fetch_assoc($query)){
-						$message .= '<label class="checkbox"><input type="checkbox" name="disease_name_'.$x.'[]" value="'.$row['id'].'"><small>'.$row['name'].'</small></label>';
+						$message .= '<label class="checkbox"><input type="checkbox" class="disease_name_'.$x.'" name="disease_name_'.$x.'[]" value="'.$row['id'].'"><small>'.$row['name'].'</small></label>';
 					}
 						$message .=	'
 					</div>

@@ -143,11 +143,12 @@ if($_POST){
 <?php	  					
 //Забираем данные 
 if(isset($_SESSION['access'][6])){
-	$query = "SELECT * FROM `contract` WHERE `unit_id` = '".$_SESSION['unit_id']."'";
+	$query = "SELECT * FROM `contract` WHERE (`unit_id` = '".$_SESSION['unit_id']."'";
 	$query_unit = mysql_query("SELECT * FROM `unit` WHERE `unit_parent_id` = '".$_SESSION['unit_id']."'");
 	while ($query_unit_data = mysql_fetch_assoc($query_unit)) {
 			$query .=' OR `unit_id` = '.$query_unit_data['unit_id'];
 		}
+	$query .= ')';
 } else {
 	$query = "SELECT * FROM `contract` WHERE `user_id` = '".$_SESSION['user_id']."'";
 }

@@ -1,4 +1,7 @@
 <?php
+// echo '<pre>';
+// print_r($_POST);
+// echo '</pre>';
 // echo 'сбербанк';
 // echo $button_return;
 $err_text = '';
@@ -14,14 +17,68 @@ if($ins_prog_1){
 		$err_text .= "<li class=\"text-danger\">Не указано включать внутреннюю отделку и инженерное оборудование или нет.</li>";
 	}
 }
+
 if($ins_prog_2){
 	if(!$ins_summa_2){
-		$err_text .= "<li class=\"text-danger\">Отсутствует страховая сумма по программе титул.</li>";
+		$err_text .= "<li class=\"text-danger\">Отсутствует страховая сумма по программе личного страхования.</li>";
 	}
 	if(!$titul_option){
 		$err_text .= "<li class=\"text-danger\">Не указанно количество переходов права собственности в истории недвижимого имущества:</li>";
 	}
 }
+
+if($ins_prog_3){
+	if(!$ins_summa_3){
+		$err_text .= "<li class=\"text-danger\">Отсутствует страховая сумма по программе личного страхования.</li>";
+	}
+	if(!$prog_3_type){
+		$err_text .= "<li class=\"text-danger\">Не указан вид личного страховая.</li>";
+	}
+	if(!$prog_3_num){
+		$err_text .= "<li class=\"text-danger\">Не указано количество застрахованных.</li>";
+	}
+	if($prog_3_num){
+		for($n = 1;$n <= $prog_3_num;$n++){
+			if(!${"date_birth_".$n}){
+				$err_text .= "<li class=\"text-danger\">Не указанна дата рождения застрахованного №".$n."</li>";
+			}
+			if(age(${"date_birth_".$n}) < 18){
+				$err_text .= "<li class=\"text-danger\">Указанная дата рождения застрахованного №".$n." меньше минимально допустимого возраста 18 лет.</li>";
+			}			
+			if(!${"sex_".$n}){
+				$err_text .= "<li class=\"text-danger\">Не указан пол застрахованного №".$n."</li>";
+			}
+			if(!${"sport_".$n}){
+				$err_text .= "<li class=\"text-danger\">Не указанно увлечение спортом застрахованного №".$n."</li>";
+			}
+			if(${"sport_".$n}){
+				if(!${"sport_type_".$n}){
+					$err_text .= "<li class=\"text-danger\">Не указан уровень увлечения спортом застрахованного №".$n."</li>";
+				}
+				if(!${"sport_category_".$n}){
+					$err_text .= "<li class=\"text-danger\">Не указан вид спорта (категория) застрахованного №".$n."</li>";
+				}								
+			}
+			if(!${"work_category_".$n}){
+				$err_text .= "<li class=\"text-danger\">Не указана сфера деятельности (категория) застрахованного №".$n."</li>";
+			}
+			if($prog_3_type && $prog_3_type == 2){
+				if(!${"health_".$n}){
+					$err_text .= "<li class=\"text-danger\">Не указанно предоставление медицинского обследования застрахованного №".$n."</li>";
+				}
+				if(!${"disease_".$n}){
+					$err_text .= "<li class=\"text-danger\">Не указанно имеются ли заболевания у застрахованного №".$n."</li>";
+				}
+				if(${"disease_".$n} == 'yes'){
+					if(!$_POST{"disease_name_".$n}){
+						$err_text .= "<li class=\"text-danger\">Не указаны заболевания у застрахованного №".$n."</li>";
+					}					
+				}									
+			}	
+		}
+	}		
+}
+
 if(!empty($err_text)){
 	echo "<br><p><ol>$err_text</ol></p><p class=\"text-center\">$button_return</p>";
 	exit();
@@ -125,6 +182,7 @@ if($ins_prog_1){
 	</div>
 	';
 }
+
 if($ins_prog_2){
 	$query = mysql_query("SELECT * FROM `hypothec_titul_tb` WHERE `id_bank` = ".$id_bank." AND `active` = 1 AND `id` = ".$titul_option);
 		if(mysql_num_rows($query)<1){
@@ -146,13 +204,57 @@ if($ins_prog_2){
 		<ul>
 		<li>Страховая сумма: '.number_format($ins_summa_2, 2, '.', ' ').'</li>
 		<li>Итоговый коэффициент: '.$titul_koef.'</li>
-		<li>Итоговый страховой тариф:  <span class="text-danger"><b>'.$tarif.'</b></span></li>
+		<li>Итоговая страховая премия:  <span class="text-danger"><b>'.$tarif.'</b></span></li>
 		</ul>
 		</em>
 		<hr class="hr_red">
 		</div>
 	</div>
 	';	
+}
+
+if($ins_prog_3){
+	for($n = 1;$n <= $prog_3_num;$n++){
+		$koef = 1;
+		$koef_sport = 1;
+		$koef_work = 1;
+		$age = age(${"date_birth_".$n});
+		//Основной коэффициент
+		$query = mysql_query("SELECT * FROM `hypothec_private_".$prog_3_type."_tb` WHERE `age` = ".$age." AND `id_bank` = ".$id_bank);
+		if(mysql_num_rows($query)<1){
+			echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить коэффициент по личному страхованию для застрахованного №'.$n.'. Обратитесь к администратору.</b></span></center>';	
+			echo $button_return;
+			exit;			
+		}
+		$koef_data = mysql_fetch_assoc($query);
+		$koef = $koef_data[${"sex_".$n}];
+		//Коэффициент за спорт
+		if(${"sport_".$n} == 'yes'){
+			$query = mysql_query("SELECT * FROM `hypothec_sport_koef` WHERE `id` = ".${"sport_category_".$n}." AND `id_bank` = ".$id_bank." AND `active` = 1");
+			if(mysql_num_rows($query)<1){
+				echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить коэффициент за спорт для застрахованного №'.$n.'. Обратитесь к администратору.</b></span></center>';	
+				echo $button_return;
+				exit;			
+			}
+			$koef_sport_data = mysql_fetch_assoc($query);
+			$koef_sport = (${"sport_type_".$n} == 1 ? $koef_sport_data['koef_1'] : $koef_sport_data['koef_2']);			
+		}
+		//Коэффициент за труд
+		$query = mysql_query("SELECT * FROM `hypothec_work_koef` WHERE `id` = ".${"work_category_".$n}." AND `id_bank` = ".$id_bank." AND `active` = 1");
+		if(mysql_num_rows($query)<1){
+			echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить коэффициент за труд для застрахованного №'.$n.'. Обратитесь к администратору.</b></span></center>';	
+			echo $button_return;
+			exit;			
+		}
+		$koef_work_data = mysql_fetch_assoc($query);
+		//Коэффициенты за здоровье
+		if($prog_3_type == '2'){
+			if(${"disease_".$n} == 'yes'){
+			
+			}
+
+		}
+	}	
 }
 
 
