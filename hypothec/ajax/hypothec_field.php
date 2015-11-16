@@ -104,9 +104,15 @@ for($x=1;$x<=$num;$x++){
 			<div class="form-group">
 				<label class="col-sm-5 control-label" ><small>Предоставление медицинского обследования:</small></label>
 				<div class="col-sm-7">
-					<div class="radio">
-						<label class="radio-inline"><input type="radio" name="health_'.$x.'" value="1" checked><small>Да</small></label>
-						<label class="radio-inline"><input type="radio" name="health_'.$x.'" value="2"><small>Нет</small></label>
+					<div class="radio">';
+					$query = mysql_query("SELECT * FROM `hypothec_medical_examination_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
+					$i = 1;
+					while($row = mysql_fetch_assoc($query)){
+						$message .= '<label class="radio-inline"><input type="radio" name="health_'.$x.'" value="'.$row['id'].'" '.($i == 1 ? ' checked' : '').'><small>'.$row['name'].'</small></label>';
+						$i++;
+					}
+
+					$message .=	'
 					</div>
 				</div>
 			</div>

@@ -84,6 +84,7 @@ if(!empty($err_text)){
 	exit();
 }
 //Расчёт
+$total_tarif = 0;
 //Расчёт по имущественному страхованию
 if($ins_prog_1){
 	$tb = 1;
@@ -157,7 +158,7 @@ if($ins_prog_1){
 	}
 	$koef = round($tb * $koef_age * $koef_fire * $koef_earth_fire * $koef_earth_danger ,2);
 	$tarif = round(($ins_summa_1 / 100 )* $koef, 2);
-
+	$total_tarif = $total_tarif + $tarif;
 	$_SESSION['calc'][1]['koef'] = $koef;
 	$_SESSION['calc'][1]['tb'] = $tb;
 	$_SESSION['calc'][1]['koef_age'] = $koef_age;
@@ -168,7 +169,7 @@ if($ins_prog_1){
 	$calc_result = '
 	<div class="row">
 		<div  class="col-md-3 col-md-offset-5">		
-		<b>Расчёт по имущественному страхованию:</b>
+		<b>Имущественное страхование:</b>
 		<hr class="hr_line">
 		<em>
 		<ul>
@@ -177,7 +178,7 @@ if($ins_prog_1){
 		<li>Итоговый страховой тариф:  <span class="text-danger"><b>'.$tarif.'</b></span></li>
 		</ul>
 		</em>
-		<hr class="hr_red">
+		<hr class="hr_red_2">
 		</div>
 	</div>
 	';
@@ -193,12 +194,13 @@ if($ins_prog_2){
 	$titul_data = mysql_fetch_assoc($query);
 	$titul_koef = $titul_data['koef'];
 	$tarif = round(($ins_summa_2 / 100) * $titul_koef, 2);
+	$total_tarif = $total_tarif + $tarif;
 	$_SESSION['calc'][2]['koef'] = $titul_koef;
 	$_SESSION['calc'][2]['tarif'] = $tarif;
 	$calc_result .= '
 	<div class="row">
 		<div class="col-md-3 col-md-offset-5">
-		<b>Расчёт по страхованию титула:</b>
+		<b>Страхованию титула:</b>
 		<hr class="hr_line">
 		<em>		
 		<ul>
@@ -207,7 +209,7 @@ if($ins_prog_2){
 		<li>Итоговая страховая премия:  <span class="text-danger"><b>'.$tarif.'</b></span></li>
 		</ul>
 		</em>
-		<hr class="hr_red">
+		<hr class="hr_red_2">
 		</div>
 	</div>
 	';	
@@ -218,6 +220,8 @@ if($ins_prog_3){
 		$koef = 1;
 		$koef_sport = 1;
 		$koef_work = 1;
+		$koef_health = 1;
+		$koef_medical_examination = 1;
 		$age = age(${"date_birth_".$n});
 		//Основной коэффициент
 		$query = mysql_query("SELECT * FROM `hypothec_private_".$prog_3_type."_tb` WHERE `age` = ".$age." AND `id_bank` = ".$id_bank);
@@ -247,16 +251,87 @@ if($ins_prog_3){
 			exit;			
 		}
 		$koef_work_data = mysql_fetch_assoc($query);
+		$koef_work = $koef_work_data['koef'];
 		//Коэффициенты за здоровье
 		if($prog_3_type == '2'){
 			if(${"disease_".$n} == 'yes'){
-			
+				//Коэффициент за болезни
+				if($age < 60){
+					$k_name = 'koef_1';
+				}
+				if($age > 59 && $age < 66){
+					$k_name = 'koef_2';
+				}
+				if($age > 65){
+					$k_name = 'koef_3';
+				}
+				$query = "SELECT MAX(`".$k_name."`) AS koef FROM `hypothec_health_koef` WHERE `id` IN (";
+				foreach ($_POST{"disease_name_".$n} as $key => $val) {
+					$query .= $val.",";
+				}
+				$query = substr($query, 0, -1);
+				$query .= ")";
+				$query = mysql_query($query);
+				if(mysql_num_rows($query)<1){
+					echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить коэффициент за здоровье для застрахованного №'.$n.'. Обратитесь к администратору.</b></span></center>';	
+					echo $button_return;
+					exit;			
+				}
+				$koef_health_data = mysql_fetch_assoc($query);
+				$koef_health = $koef_health_data['koef'];								
 			}
-
+			//Коэффициент за медицинское обследование
+			$query = mysql_query("SELECT * FROM `hypothec_medical_examination_koef` WHERE `id` = ".${"health_".$n});
+			if(mysql_num_rows($query)<1){
+				echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить коэффициент за прохождение медицинского о для застрахованного №'.$n.'. Обратитесь к администратору.</b></span></center>';	
+				echo $button_return;
+				exit;			
+			}		
+			$koef_medical_examination_data = mysql_fetch_assoc($query);
+			$koef_medical_examination = $koef_medical_examination_data['koef'];
 		}
+	//Производим расчёт
+		$koef_all = round($koef * $koef_sport * $koef_work * $koef_health * $koef_medical_examination , 2);
+		$ins_summa_personal = round($ins_summa_3 / $prog_3_num, 2);
+		$tarif = round(($ins_summa_personal / 100) * $koef_all, 2);
+		$total_tarif = $total_tarif + $tarif;
+		$_SESSION['calc'][3][$n]['koef'] = $koef;
+		$_SESSION['calc'][3][$n]['koef_sport'] = $koef_sport;
+		$_SESSION['calc'][3][$n]['koef_work'] = $koef_work;
+		$_SESSION['calc'][3][$n]['koef_health'] = $koef_health;
+		$_SESSION['calc'][3][$n]['koef_medical_examination'] = $koef_medical_examination;
+		$_SESSION['calc'][3][$n]['koef_all'] = $koef_all;
+		$_SESSION['calc'][3][$n]['tarif'] = $tarif;
+		$calc_result .= '
+		<div class="row">
+			<div class="col-md-3 col-md-offset-5">
+			<b>Личное страхование.</b> Застрахованный №'.$n.':
+			<hr class="hr_line">
+			<em>		
+			<ul>
+			<li>Страховая сумма: '.number_format($ins_summa_personal, 2, '.', ' ').'</li>
+			<li>Итоговый коэффициент: '.$koef_all.'</li>
+			<li>Итоговая страховая премия:  <span class="text-danger"><b>'.$tarif.'</b></span></li>
+			</ul>
+			</em>
+			<hr class="hr_red_2">
+			</div>
+		</div>
+		';			
 	}	
 }
 
+//Выводим общую стоимсоть полиса
+if($total_tarif > 0){
+	$calc_result .= '
+		<div class="row">
+			<div class="col-md-3 col-md-offset-5">
+			<b><h4>Общая стоимость полиса: <span class="text-danger">'.number_format($total_tarif, 2, '.', ' ').'</span></b></h4>
+			<hr class="hr_red_2">
+			</div>
+		</div>
+		';			
+}
 
 
 ?>
