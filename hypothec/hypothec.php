@@ -22,7 +22,7 @@ require_once('../template/header.html');
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post"> 
 						  	<div class="form-group">
-						  	<hr>
+						  	<hr class="hr_red_2">
 						    	<label  class="col-sm-5 control-label" style="word-wrap:break-word;"><small>Выберите банк:</small></label>
 						    	<div class="col-sm-4">							
 									<select class="form-control input-sm" name="bank" id="bank" required>
@@ -36,7 +36,7 @@ require_once('../template/header.html');
 									</select>
 						    	</div>						    	
 						  	</div>
-						  	<hr>
+						  	<hr class="hr_red_2">
 						  	<div id="bank_field"></div>											  						  			  						  						  							  	
 					</form>
 	  			</div>

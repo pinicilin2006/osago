@@ -7,14 +7,24 @@
 $err_text = '';
 //блок проверки данных
 if($ins_prog_1){
-	if(!$ins_summa_1){
-		$err_text .= "<li class=\"text-danger\">Отсутствует страховая сумма по имущественному страхованию.</li>";
+	if(!$ins_property_type_1 && !$ins_property_type_2){
+		$err_text .= "<li class=\"text-danger\">Не указан вид недвижимого имущества.</li>";
 	}
-	if(!$property_type){
-		$err_text .= "<li class=\"text-danger\">Не указана характеристика недвижимого имущества.</li>";
+	if($ins_property_type_1){
+		if(!$ins_summa_house){
+			$err_text .= "<li class=\"text-danger\">Отсутствует страховая сумма по строению.</li>";
+		}
+		if(!$property_type){
+			$err_text .= "<li class=\"text-danger\">Не указана характеристика недвижимого имущества.</li>";
+		}
+		if(!$trim){
+			$err_text .= "<li class=\"text-danger\">Не указано включать внутреннюю отделку и инженерное оборудование или нет.</li>";
+		}
 	}
-	if(!$trim && $property_type != 'earth'){
-		$err_text .= "<li class=\"text-danger\">Не указано включать внутреннюю отделку и инженерное оборудование или нет.</li>";
+	if($ins_property_type_2){
+		if(!$ins_summa_earth){
+			$err_text .= "<li class=\"text-danger\">Отсутствует страховая сумма по земельному участку.</li>";
+		}	
 	}
 }
 
@@ -87,48 +97,87 @@ if(!empty($err_text)){
 $total_tarif = 0;
 //Расчёт по имущественному страхованию
 if($ins_prog_1){
+	//Расчёт
+	$total_tarif = 0;
 	$tb = 1;
+	$t = 1;//Тариф итоговый
 	$koef_age = 1;//Если объект недвижимости старше 40 лет
 	$koef_fire = 1;//Имеются источники огня.
-	$koef_earth_danger = 1;//Если объект недвижимости старше 40 лет
-	$koef_earth_fire = 1;//Имеются источники огня.	
 	$formula ='';
-	//Получаем базовый тариф
-	$query = mysql_query("SELECT * FROM ".($property_type == 'earth' ? '`hypothec_earth_tb`' : '`hypothec_house_tb`')." WHERE `id_bank` = ".$id_bank." AND `active` = 1 ".($property_type == 'earth' ? '' : ' AND `id` = '.$property_type));
-	if(mysql_num_rows($query)<1){
-		echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить базовый тариф. Обратитесь к администратору.</b></span></center>';	
-		echo $button_return;
-		exit;	
-	}
-	$tb_data = mysql_fetch_assoc($query);
-	$tb = ($property_type == 'earth' ? $tb_data['koef'] : $tb_data['koef_'.$trim]);
-	//Получаем доп коэффициенты для строений
-	if($property_type != 'earth'){
-		if($house_age){
-			$query = mysql_query("SELECT * FROM `hypothec_house_age_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
-			if(mysql_num_rows($query)<1){
-			echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить тариф за возраст здания. Обратитесь к администратору.</b></span></center>';	
+	$calc_result = '';
+	//Рассчёты
+	if($ins_property_type_1){
+		$query = mysql_query("SELECT * FROM `hypothec_house_tb` WHERE `id_bank` = ".$id_bank." AND `active` = 1 AND `id` = ".$property_type);
+		if(mysql_num_rows($query)<1){
+			echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить базовый тариф. Обратитесь к администратору.</b></span></center>';	
 			echo $button_return;
-			exit;			
-			}
-			$koef_age_data = mysql_fetch_assoc($query);
-			$koef_age = $koef_age_data['koef'];
-			$formula .= '*'.$koef_age;
+			exit;	
 		}
-		if($house_fire){
-			$query = mysql_query("SELECT * FROM `hypothec_house_fire_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
-			if(mysql_num_rows($query)<1){
-			echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить тариф за источник открытого огня. Обратитесь к администратору.</b></span></center>';	
-			echo $button_return;
-			exit;			
+		$tb_data = mysql_fetch_assoc($query);
+		$tb = $tb_data['koef_'.$trim];
+		//Получаем доп коэффициенты для строений
+			if($house_age){
+				$query = mysql_query("SELECT * FROM `hypothec_house_age_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
+				if(mysql_num_rows($query)<1){
+				echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить тариф за возраст здания. Обратитесь к администратору.</b></span></center>';	
+				echo $button_return;
+				exit;			
+				}
+				$koef_age_data = mysql_fetch_assoc($query);
+				$koef_age = $koef_age_data['koef'];
+				$formula .= '*'.$koef_age;
 			}
-			$koef_fire_data = mysql_fetch_assoc($query);
-			$koef_fire = $koef_fire_data['koef'];
-			$formula .= '*'.$koef_fire;
-		}	
+			if($house_fire){
+				$query = mysql_query("SELECT * FROM `hypothec_house_fire_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
+				if(mysql_num_rows($query)<1){
+				echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить тариф за источник открытого огня. Обратитесь к администратору.</b></span></center>';	
+				echo $button_return;
+				exit;			
+				}
+				$koef_fire_data = mysql_fetch_assoc($query);
+				$koef_fire = $koef_fire_data['koef'];
+				$formula .= '*'.$koef_fire;
+			}	
+		if($formula){
+			$formula = $tb.$formula.' = ';
+		}
+		$koef = round($tb * $koef_age * $koef_fire ,2);
+		$tarif = round(($ins_summa_house / 100 )* $koef, 2);
+		$total_tarif = $total_tarif + $tarif;
+		$_SESSION['calc'][1]['house']['koef'] = $koef;
+		$_SESSION['calc'][1]['house']['tb'] = $tb;
+		$_SESSION['calc'][1]['house']['koef_age'] = $koef_age;
+		$_SESSION['calc'][1]['house']['koef_fire'] = $koef_fire;
+		$_SESSION['calc'][1]['house']['tarif'] = $tarif;
+		$calc_result .= '
+		<div class="row">
+			<div  class="col-md-3 col-md-offset-5">
+			<b>Страхование недвижимого имущества, за исключением земельных участков:</b>
+			<hr class="hr_line">
+			<em>
+			<ul>
+			<li>Страховая сумма: '.number_format($ins_summa_house, 2, '.', ' ').'</li>
+			<li>Итоговый коэффициент: '.$formula.$koef.'</li>
+			<li>Итоговый страховой тариф:  <span class="text-danger"><b>'.$tarif.'</b></span></li>
+			</ul>
+			</em>
+			<hr class="hr_red_2">
+			</div>
+		</div>
+		';
 	}
-	//Получаем доп коэффициенты для земельных участков
-	if($property_type == 'earth'){
+	if($ins_property_type_2){
+		$formula = '';
+		$koef_earth_fire = 1;
+		$koef_earth_danger = 1;
+		$query = mysql_query("SELECT * FROM `hypothec_earth_tb` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
+		if(mysql_num_rows($query)<1){
+			echo '<center><span class="text-danger"><b>Ошибка! Не удалось получить базовый тариф (земля). Обратитесь к администратору.</b></span></center>';	
+			echo $button_return;
+			exit;	
+		}
+		$tb_data = mysql_fetch_assoc($query);
+		$tb = $tb_data['koef'];
 		if($earth_fire){
 			$query = mysql_query("SELECT * FROM `hypothec_earth_fire_koef` WHERE `id_bank` = ".$id_bank." AND `active` = 1");
 			if(mysql_num_rows($query)<1){
@@ -150,38 +199,35 @@ if($ins_prog_1){
 			$koef_earth_danger_data = mysql_fetch_assoc($query);
 			$koef_earth_danger = $koef_earth_danger_data['koef'];
 			$formula .= '*'.$koef_earth_danger;
-		}	
-	}
-
-	if($formula){
-		$formula = $tb.$formula.' = ';
-	}
-	$koef = round($tb * $koef_age * $koef_fire * $koef_earth_fire * $koef_earth_danger ,2);
-	$tarif = round(($ins_summa_1 / 100 )* $koef, 2);
-	$total_tarif = $total_tarif + $tarif;
-	$_SESSION['calc'][1]['koef'] = $koef;
-	$_SESSION['calc'][1]['tb'] = $tb;
-	$_SESSION['calc'][1]['koef_age'] = $koef_age;
-	$_SESSION['calc'][1]['koef_fire'] = $koef_fire;
-	$_SESSION['calc'][1]['koef_earth_danger'] = $koef_earth_danger;
-	$_SESSION['calc'][1]['koef_earth_fire'] = $koef_earth_fire;
-	$_SESSION['calc'][1]['tarif'] = $tarif;
-	$calc_result = '
-	<div class="row">
-		<div  class="col-md-3 col-md-offset-5">		
-		<b>Имущественное страхование:</b>
-		<hr class="hr_line">
-		<em>
-		<ul>
-		<li>Страховая сумма: '.number_format($ins_summa_1, 2, '.', ' ').'</li>
-		<li>Итоговый коэффициент: '.$formula.$koef.'</li>
-		<li>Итоговый страховой тариф:  <span class="text-danger"><b>'.$tarif.'</b></span></li>
-		</ul>
-		</em>
-		<hr class="hr_red_2">
+		}		
+		if($formula){
+			$formula = $tb.$formula.' = ';
+		}
+		$koef = round($tb * $koef_earth_fire * $koef_earth_danger ,2);		
+		$tarif = round(($ins_summa_earth / 100 )* $koef, 2);
+		$total_tarif = $total_tarif + $tarif;
+		$_SESSION['calc'][1]['earth']['tb'] = $tb;
+		$_SESSION['calc'][1]['earth']['koef_earth_fire'] = $koef_earth_fire;
+		$_SESSION['calc'][1]['earth']['koef_earth_danger'] = $koef_earth_danger;
+		$_SESSION['calc'][1]['earth']['koef'] = $koef;
+		$_SESSION['calc'][1]['earth']['tarif'] = $tarif;
+		$calc_result .= '
+		<div class="row">
+			<div  class="col-md-3 col-md-offset-5">
+			<b>Страхование недвижимого имущества - земельные участки:</b>
+			<hr class="hr_line">
+			<em>
+			<ul>
+			<li>Страховая сумма: '.number_format($ins_summa_earth, 2, '.', ' ').'</li>
+			<li>Итоговый коэффициент: '.$formula.$koef.'</li>
+			<li>Итоговый страховой тариф:  <span class="text-danger"><b>'.$tarif.'</b></span></li>
+			</ul>
+			</em>
+			<hr class="hr_red_2">
+			</div>
 		</div>
-	</div>
-	';
+		';	
+	}
 }
 
 if($ins_prog_2){

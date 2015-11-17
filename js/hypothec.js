@@ -11,6 +11,22 @@ $(document).ready(function(){
 		bank_change();
 	});
 
+	//Действия при выборе вида недвижимости
+	$(document).on("change", ".ins_property_type", function(){
+		if($(this).is(":checked")){//отображение соответствующего блока
+			$("#ins_type_"+$(this).val()).slideDown();
+		} else {
+			$("#ins_type_"+$(this).val()).slideUp();
+		}
+		if($(".ins_property_type").is(":checked")){
+			$("#button_calc_1").slideDown();
+		} else {
+			$("#button_calc_1").slideUp();
+		}			
+		
+
+	});	
+	/////////////////////////////////////////////////////////
 	$(document).on("change", ".property_type", function(){
 		if($(this).val() != 'earth'){
 			$("#house_option").slideDown(400);
