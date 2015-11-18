@@ -49,7 +49,7 @@ echo '
   	<div class="panel-body">';
 echo $calc_result;
 
-echo '<a href="/osago_step_2.php" class="btn btn-success btn-block " role="button" disabled>Оформить полис</a>';
+echo '<a href="hypothec_step_2.php" class="btn btn-success btn-block " role="button">Оформить полис</a>';
 echo $button_return;
 echo '</div></div>';
 ?>

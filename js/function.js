@@ -573,5 +573,19 @@ function calc_hypothec(){
 	return false;
 }
 
+//Добавление полиса в базу данных
+function hypothec_polis_add(){
+			var a = $("#main_form").serialize();
+			$.ajax({
+			  type: "POST",
+			  url: '/hypothec/ajax/polis_add.php',
+			  data: a,
+			  success: function(data) {
+			  	$("#user_data").slideUp();
+			  	$("#message").html(data);
+			  }
+			});
+			return false;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
