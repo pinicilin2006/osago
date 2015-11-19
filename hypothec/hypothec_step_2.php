@@ -15,7 +15,7 @@ $id_bank = $_SESSION['step_1']['bank'];
 ?>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="col-md-8 col-md-offset-2" id="user_data">
+		<div class="col-md-10 col-md-offset-1" id="user_data">
 			<div class="panel panel-default">
 	  			<div class="panel-heading">
 	    			<h3 class="panel-title">Оформление полиса "Комплексного ипотечного страхования"</h3>
