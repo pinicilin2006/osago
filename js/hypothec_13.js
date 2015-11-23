@@ -1,6 +1,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+	
 	$(".date_birth").datepicker({
 	  dateFormat: "dd.mm.yy",
 	  maxDate: "-18Y",
@@ -8,14 +9,25 @@ $(document).ready(function(){
 	  changeMonth: true,
 	  yearRange: "c-70:c"
 	});
+	
 	$("#date_start").datepicker({
 	  dateFormat: "dd.mm.yy",
 	  minDate: "0",
 	  changeYear: true,
 	  changeMonth: true,
 	  yearRange: "c-70:c"
-	});	
+	});
+
+	$(".date_passport").datepicker({
+	  dateFormat: "dd.mm.yy",
+	  maxDate: "0",
+	  changeYear: true,
+	  changeMonth: true,
+	  yearRange: "c-70:c"
+	});
+
 	$(".date_birth").mask('00.00.0000');
+	$(".date_passport").mask('00.00.0000');
 	$("#phone_number").mask('(000)000-00-00');
 	
 	$(document).on("keyup", ".only-number", function(){

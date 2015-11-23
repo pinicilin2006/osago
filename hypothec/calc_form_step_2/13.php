@@ -57,7 +57,7 @@ if(!isset($_SESSION['user_id'])){
 			<div class="form-group">
 			    <label for="inn" class="col-sm-4 control-label"><small>ИНН:</small></label>
 			    <div class="col-sm-6">
-			      	<input type="text" class="form-control input-sm" name="inn"  id="inn" placeholder="Инн" required>
+			      	<input type="text" class="form-control input-sm" name="inn"  id="inn" placeholder="ИНН" required>
 			    </div>
 			</div>
 			<hr class="hr_red_2">	
@@ -99,7 +99,7 @@ if(!isset($_SESSION['user_id'])){
 			<div class="form-group">
 			    <label for="passport_date" class="col-sm-4 control-label"><small>Дата выдачи:</small></label>
 			    <div class="col-sm-6">
-			      	<input type="text" class="form-control input-sm" name="passport_date"  id="passport_date" placeholder="Дата выдачи" required>
+			      	<input type="text" class="form-control input-sm date_passport" name="passport_date"  id="passport_date" placeholder="Дата выдачи" required>
 			    </div>
 			</div>
 			<div class="form-group">
@@ -177,8 +177,15 @@ if(!isset($_SESSION['user_id'])){
 			</div>
 			<div class="form-group">
 			    <label for="property_year" class="col-sm-4 control-label"><small>Год постройки дома</small></label>
-			    <div class="col-sm-6">
-			      	<input type="text" class="form-control input-sm" name="property_year"  id="property_year" required>
+			    <div class="col-sm-3">
+			      	<select name="property_year" id="property_year" class="form-control">
+			      	<?php 
+			      		$year_now = date('Y');
+			      		for($y=$year_now;$y>=($year_now - 100);$y--){
+			      			echo '<option value="'.$y.'">'.$y.'</option>';
+			      		}
+			      	?>
+			      	</select>			      	
 			    </div>
 			</div>
 			<div class="form-group">
@@ -207,13 +214,6 @@ if(!isset($_SESSION['user_id'])){
 			    <div class="col-sm-3">
 			      	<input type="text" class="form-control input-sm" name="date_end"  id="date_end" required readonly="readonly" value="<?php echo date("d.m.Y", mktime(0, 0, 0, date("m")+12, date("d")+1,   date("Y"))) ?>">
 			    </div>
-			</div>			
-
-
-
-
-
-        	
-	</div>	
-	</fieldset>
-</div>
+			</div>			 
+		</fieldset>
+	</div>

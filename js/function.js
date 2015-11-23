@@ -578,7 +578,7 @@ function hypothec_polis_add(){
 			var a = $("#main_form").serialize();
 			$.ajax({
 			  type: "POST",
-			  url: '/hypothec/ajax/polis_add.php',
+			  url: '/hypothec/ajax/hypothec_polis_add.php',
 			  data: a,
 			  success: function(data) {
 			  	$("#user_data").slideUp();

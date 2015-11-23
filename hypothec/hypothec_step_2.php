@@ -23,24 +23,22 @@ $id_bank = $_SESSION['step_1']['bank'];
 	  			<div class="panel-body">
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post">
 					 <input type="hidden" name="md5_id" value="<?php echo md5(date("F j, Y, g:i:s "))?>"> 
-					<?php require_once('calc_form_step_2/'.$id_bank.'.php') ?>															  						  			  						  						  							  	
-					
+					<?php require_once('calc_form_step_2/'.$id_bank.'.php') ?>
+
+					<div class="col-md-12">
+						<hr class="hr_red_2">
+						<div class="form-group">
+							<div class="col-sm-6">
+								<button type="submit" name="action" value="add" class="btn btn-primary btn-block">Оформить полис</button>
+							</div>
+							<div class="col-sm-6">	
+								<button type="submit" name="action" value="project" class="btn btn-danger btn-block">Сохранить как проект</button>
+							</div>
+						</div>
+					</div>
+					</form>															  						  			  						  						  							  						
 	  			</div>
-			</div>
-			<div class="col-md-8 col-md-offset-2">
-				<div class="form-group">
-					<div class="col-sm-6">
-						<button type="submit" name="action" value="add" class="btn btn-primary btn-block">Оформить полис</button>
-					</div>
-					<div class="col-sm-6">	
-						<button type="submit" name="action" value="project" class="btn btn-danger btn-block">Сохранить как проект</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-8 col-md-offset-2">
-			<hr>
-			</div>
-			</form>			
+			</div>		
 		</div>
 		<div class="col-md-12">
 			<div id="message"></div>
