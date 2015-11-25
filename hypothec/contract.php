@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user_id'])){
-	header("Location: login.php");
+	header("Location: ../login.php");
 	exit;
 }
 	unset($_SESSION["step_1"]);
@@ -9,10 +9,10 @@ if(!isset($_SESSION['user_id'])){
 // echo "<pre>";
 // print_r($_POST);
 // echo "</pre>";
-require_once('config.php');
-require_once('function.php');
+require_once('../config.php');
+require_once('../function.php');
 connect_to_base();
-require_once('template/header.html');
+require_once('../template/header.html');
 //Забираем данные 
 if(isset($_SESSION['access'][6])){
 	$query_unit = mysql_query("SELECT * FROM `unit` WHERE `unit_parent_id` = '".$_SESSION['unit_id']."'");
@@ -25,7 +25,7 @@ if(isset($_SESSION['access'][6])){
 if(isset($_SESSION['access'][10])){
 	$query_agent = mysql_query("SELECT * FROM `user` ORDER BY `second_name`");
 }	
-require_once('template/header.html');
+require_once('../template/header.html');
 ?>
 <div class="container-fluid">
 	<div class="row-fluid">
@@ -51,16 +51,12 @@ require_once('template/header.html');
 									    <input type="text" class="form-control date_filter" id="date_3" name="date_end" value="<?php echo(isset($_POST['date_end']) ? $_POST['date_end'] : '')?>" placeholder="Договор действует до" data-toggle="tooltip" title="Дата окончания страхового периода">
 									    
 									</div>
-									<div class="form-group">
-									    <input type="text" class="form-control" name="bso_number" placeholder="№ БСО" value="<?php echo(isset($_POST['bso_number']) ? $_POST['bso_number'] : '')?>" data-toggle="tooltip" title="Номер выданного бланка строгой отчётности">
-									    
-									</div>
 <!-- 									<div class="form-group">
-									    <input type="text" class="form-control" name="second_name" placeholder="Фамилия страхователя" data-toggle="tooltip" title="Фамилия страхователя">
+									    <input type="text" class="form-control" name="bso_number" placeholder="№ БСО" value="<?php echo(isset($_POST['bso_number']) ? $_POST['bso_number'] : '')?>" data-toggle="tooltip" title="Номер выданного бланка строгой отчётности">
 									    
 									</div> -->
 <!-- 									<div class="form-group">
-									    <input type="text" class="form-control" name="auto_number" placeholder="Гос. номер ТС" data-toggle="tooltip" title="Государственный регистрационный номер транспортного средства">
+									    <input type="text" class="form-control" name="second_name" placeholder="Фамилия страхователя" data-toggle="tooltip" title="Фамилия страхователя">
 									    
 									</div> -->
 									<div class="form-group block" >
@@ -143,17 +139,17 @@ if($_POST){
 <?php	  					
 //Забираем данные 
 if(isset($_SESSION['access'][6])){
-	$query = "SELECT * FROM `contract` WHERE (`unit_id` = '".$_SESSION['unit_id']."'";
+	$query = "SELECT * FROM `hypothec_contract` WHERE (`unit_id` = '".$_SESSION['unit_id']."'";
 	$query_unit = mysql_query("SELECT * FROM `unit` WHERE `unit_parent_id` = '".$_SESSION['unit_id']."'");
 	while ($query_unit_data = mysql_fetch_assoc($query_unit)) {
 			$query .=' OR `unit_id` = '.$query_unit_data['unit_id'];
 		}
 	$query .= ')';
 } else {
-	$query = "SELECT * FROM `contract` WHERE `user_id` = '".$_SESSION['user_id']."'";
+	$query = "SELECT * FROM `hypothec_contract` WHERE `user_id` = '".$_SESSION['user_id']."'";
 }
 if(isset($_SESSION['access'][10])){
-	$query = "SELECT * FROM `contract` WHERE id > 0";
+	$query = "SELECT * FROM `hypothec_contract` WHERE id > 0";
 }
 //Проверка на ошибки в полях фильтра/////////////////////////////////
 $error = '';
@@ -243,7 +239,7 @@ if(mysql_num_rows(mysql_query($query))<1){
 			<th style = 'cursor: pointer;'>Дата заключения договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
 			<th style = 'cursor: pointer;'>Ф.И.О. агента <span class="glyphicon glyphicon-sort pull-right"></span></th>
 			<th style = 'cursor: pointer;'>Страхователь <span class="glyphicon glyphicon-sort pull-right"></span></th>
-			<th style = 'cursor: pointer;'>№ БСО <span class="glyphicon glyphicon-sort pull-right"></span></th>
+			<!-- <th style = 'cursor: pointer;'>№ БСО <span class="glyphicon glyphicon-sort pull-right"></span></th> -->
 			<th style = 'cursor: pointer;'>Дата начала действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
 			<th style = 'cursor: pointer;'>Дата окончания действия договора <span class="glyphicon glyphicon-sort pull-right"></span></th>
 			<th style = 'cursor: pointer;'>Страховой тариф <span class="glyphicon glyphicon-sort pull-right"></span></th>
@@ -268,18 +264,13 @@ while($row = mysql_fetch_assoc($query)){
 	echo "<td>".date('d.m.Y', strtotime($row["time_create"]))."</td>";
 	$user_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `user` WHERE `user_id` = '".$row['user_id']."'"));
 	echo "<td>".$user_data['second_name']." ".$user_data['first_name']." ".$user_data['third_name']."</td>";
-	$insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `".($row["insurer_type"] == 1 ? "contact_phiz" : "contact_jur")."` WHERE `id` = '".$row["insurer_id"]."'"));
-	if($row["insurer_type"] == 1){
-		echo "<td>".$insurer_data['second_name']." ".$insurer_data['first_name']." ".$insurer_data['third_name']."</td>";
-	} 
-	if($row["insurer_type"] == 2){
-		echo "<td>".$insurer_data['jur_name']."</td>";
-	}
-	echo "<td>".$row['bso_number']."</td>"; 
-	echo "<td>".$row['start_date']."</td>"; 
-	echo "<td>".$row['end_date']."</td>";
+	$insurer_data = mysql_fetch_assoc(mysql_query("SELECT * FROM `hypothec_contact` WHERE `id` = '".$row["contact_id"]."'"));
+	echo "<td>".$insurer_data['second_name']." ".$insurer_data['first_name']." ".$insurer_data['third_name']."</td>";
+	//echo "<td>".$row['bso_number']."</td>"; 
+	echo "<td>".$row['date_start']."</td>"; 
+	echo "<td>".$row['date_end']."</td>";
 	$calc_result = unserialize($row['calc_result']);
-	echo "<td>".$calc_result['t']."</td>";
+	echo "<td>".$calc_result['total_tarif']."</td>";
 	echo "<td>";
 	if($row['annuled'] == '1'){
 		echo "Аннулирован";
@@ -296,10 +287,6 @@ while($row = mysql_fetch_assoc($query)){
     	echo '<li><a href="/method/del.php?id='.$row['md5_id'].'"><small>Удалить</small></a></li><li class="divider" style="margin:0 0"></li>';
 	}
 echo '<li><a href="/print/statement.php?id='.$row['md5_id'].'" target="_blank"><small>Заявление</a></small></li>
-    <li class="divider" style="margin:0 0"></li>
-    <li><a href="/print/bso.php?id='.$row['md5_id'].'" target="_blank"><small>БСО</small></a></li>
-    <li class="divider" style="margin:0 0"></li>
-    <li><a href="/print/a7.php?id='.$row['md5_id'].'" target="_blank"><small>Бланк А7</small></a></li>
     <li class="divider" style="margin:0 0"></li>';
     if($row['annuled'] == '0' && $row['project'] == '0'){
     	echo '<li><a href="/method/anul.php?id='.$row['md5_id'].'"><small>Аннулировать</small></a></li><li class="divider" style="margin:0 0"></li>';
@@ -317,7 +304,7 @@ echo '</ul>
 		</tbody>
 	</table>
 </div>
-<?php require_once('template/footer.html') ?>
+<?php require_once('../template/footer.html') ?>
 
 
 

@@ -3,9 +3,6 @@
 require_once('hypothec_check_data_contract_all.php');
 //Проверки для данного банка
 //Данные недвижимости
-if(!$property_type_name){
-	$err_text .= "<li class=\"text-danger\">Не указан вид недвижимого имущества</li>";
-}
 if($_SESSION['step_1']['ins_property_type_1'] == '1'){
 	if(!$property_type_name){
 		$err_text .= "<li class=\"text-danger\">Не указан вид недвижимого имущества</li>";

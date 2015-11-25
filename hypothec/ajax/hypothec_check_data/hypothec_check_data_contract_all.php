@@ -25,7 +25,8 @@ foreach($_POST as $key => $val){
 	// 	continue;
 	// }
 	
-	$$key = mysql_real_escape_string($val);	
+	$$key = mysql_real_escape_string($val);
+	$step_2[$key] = $$key;	
 }
 //Блок проверки личных данных
 if(!$second_name){

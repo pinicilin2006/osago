@@ -127,6 +127,7 @@ if($ins_property_type_2){
 }
 //Выводим общую стоимсоть полиса
 if($total_tarif > 0){
+	$_SESSION['calc']['total_tarif'] = $total_tarif;
 	$calc_result .= '
 		<div class="row">
 			<div class="col-md-3 col-md-offset-5">

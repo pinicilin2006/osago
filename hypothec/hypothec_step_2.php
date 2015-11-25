@@ -24,7 +24,23 @@ $id_bank = $_SESSION['step_1']['bank'];
 					<form class="form-horizontal col-sm-10 col-sm-offset-1" role="form" id="main_form" method="post">
 					 <input type="hidden" name="md5_id" value="<?php echo md5(date("F j, Y, g:i:s "))?>"> 
 					<?php require_once('calc_form_step_2/'.$id_bank.'.php') ?>
-
+					<hr class="hr_red_2">	
+								<b>Срок действия договора:</b>
+								<hr>
+								<div class="form-group">
+								    <label for="date_start" class="col-sm-4 control-label"><small>12 месяцев с 00 часов 00 минут</small></label>
+								    <div class="col-sm-3">
+								      	<input type="text" class="form-control input-sm" name="date_start"  id="date_start" required readonly="readonly" value="<?php echo date("d.m.Y", mktime(0, 0, 0, date("m"), date("d")+1,   date("Y"))) ?>">
+								    </div>
+								</div>
+								<div class="form-group">
+								    <label for="date_end" class="col-sm-4 control-label"><small>по 24 часа 00 минут</small></label>
+								    <div class="col-sm-3">
+								      	<input type="text" class="form-control input-sm" name="date_end"  id="date_end" required readonly="readonly" value="<?php echo date("d.m.Y", mktime(0, 0, 0, date("m")+12, date("d")+1,   date("Y"))) ?>">
+								    </div>
+								</div>			 
+							</fieldset>
+						</div>
 					<div class="col-md-12">
 						<hr class="hr_red_2">
 						<div class="form-group">

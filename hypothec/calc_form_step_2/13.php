@@ -30,6 +30,15 @@ if(!isset($_SESSION['user_id'])){
 			      	<input type="text" class="form-control input-sm phiz_name register phiz_name_format" name="third_name"  id="third_name" placeholder="Отчество" required>
 			    </div>
 			</div>
+			<div class="form-group">
+				<label  class="col-sm-4 control-label" ><small>Пол:</small></label>
+				<div class="col-sm-6">
+					<div class="radio">
+						<label class="radio-inline sex"><input type="radio" name="sex" id="male" value="male" checked><small>Мужской</small></label>
+						<label class="radio-inline sex"><input type="radio" name="sex" id="female" value="female"><small>Женский</small></label>
+					</div>
+				</div>
+			</div>			
 		  	<div class="form-group">
 		    	<label for="date_birth" class="col-sm-4 control-label"><small>Дата рождения</small></label>
 		    	<div class="col-sm-6">
@@ -111,25 +120,28 @@ if(!isset($_SESSION['user_id'])){
 			<hr class="hr_red_2">	
 			<b>Данные недвижимого имущества:</b>
 			<hr>		
-				
-			<div class="form-group">
-			    <label for="property_type_name" class="col-sm-4 control-label"><small>Тип недвижимого имущества:</small></label>
-			    <div class="col-sm-6">
-			      	<select name="property_type_name" id="property_type_name" class="form-control">
-			      		<option value="1">жилой дом</option>
-			      		<option value="2">квартира</option>
-			      		<option value="3">комната</option>
-			      		<option value="4">общежитие</option>
-			      		<option value="5">иное</option>
-			      	</select>
-			    </div>
-			</div>
+<?php if($_SESSION['step_1']['ins_property_type_1']){?>				
+				<div class="form-group">
+				    <label for="property_type_name" class="col-sm-4 control-label"><small>Тип недвижимого имущества:</small></label>
+				    <div class="col-sm-6">
+				      	<select name="property_type_name" id="property_type_name" class="form-control">
+				      		<option value="1">жилой дом</option>
+				      		<option value="2">квартира</option>
+				      		<option value="3">комната</option>
+				      		<option value="4">общежитие</option>
+				      		<option value="5">иное</option>
+				      	</select>
+				    </div>
+				</div>				
 			<div class="form-group" style="display:none" id="property_other"> 
 			    <label for="property_type_name_other" class="col-sm-4 control-label"><small>Укажите тип недвижимости</small></label>
 			    <div class="col-sm-6">
 			      	<input type="text" class="form-control input-sm" name="property_type_name_other"  id="property_type_name_other" placeholder="Тип недвижимости" required>
 			    </div>
-			</div>					
+			</div>
+<?php
+	} 
+?>								
 			<div class="form-group">
 			    <label for="property_full_name" class="col-sm-4 control-label"><small>Полное наименование объекта, согласно свидетельства:</small></label>
 			    <div class="col-sm-6">
@@ -175,6 +187,7 @@ if(!isset($_SESSION['user_id'])){
 			      	<input type="text" class="form-control input-sm" name="property_credit_summa"  id="property_credit_summa" required>
 			    </div>
 			</div>
+<?php if($_SESSION['step_1']['ins_property_type_1']){?>				
 			<div class="form-group">
 			    <label for="property_year" class="col-sm-4 control-label"><small>Год постройки дома</small></label>
 			    <div class="col-sm-3">
@@ -200,20 +213,6 @@ if(!isset($_SESSION['user_id'])){
 			      	</select>
 			    </div>
 			</div>
-			<hr class="hr_red_2">	
-			<b>Срок действия договора:</b>
-			<hr>
-			<div class="form-group">
-			    <label for="date_start" class="col-sm-4 control-label"><small>12 месяцев с 00 часов 00 минут</small></label>
-			    <div class="col-sm-3">
-			      	<input type="text" class="form-control input-sm" name="date_start"  id="date_start" required readonly="readonly" value="<?php echo date("d.m.Y", mktime(0, 0, 0, date("m"), date("d")+1,   date("Y"))) ?>">
-			    </div>
-			</div>
-			<div class="form-group">
-			    <label for="date_end" class="col-sm-4 control-label"><small>по 24 часа 00 минут</small></label>
-			    <div class="col-sm-3">
-			      	<input type="text" class="form-control input-sm" name="date_end"  id="date_end" required readonly="readonly" value="<?php echo date("d.m.Y", mktime(0, 0, 0, date("m")+12, date("d")+1,   date("Y"))) ?>">
-			    </div>
-			</div>			 
-		</fieldset>
-	</div>
+<?php
+}
+?>			

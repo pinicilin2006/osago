@@ -43,6 +43,19 @@ $(document).ready(function(){
 			$("#property_other").slideUp();
 		}
 	});
+	//Определяем пол по фио
+	$(document).on("change", ".phiz_name", function(){
+		var a = $("#first_name").val(),
+			b = $("#second_name").val(),
+			c = $("#third_name").val(),
+			sex_by_russian_name = new SexByRussianName(b, a, c),
+			sex = sex_by_russian_name.get_gender();
+			if(sex == 0){
+				$("#female").prop('checked', true);
+			} else {
+				$("#male").prop('checked', true);
+			}
+	});
     //Прибавляем год к дате начал страхового периода
 	$("#date_start").change(function(){ 
 		var a = $(this).val();
